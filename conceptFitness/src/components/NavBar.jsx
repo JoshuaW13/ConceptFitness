@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
 import '../App.css'
-import viteLogo from '/vite.svg'
-import ProfileButton from './ProfileButton'
-import HomeButton from './HomeButton'
 
 function NavBar({FirstButton, SecondButton}) {
 

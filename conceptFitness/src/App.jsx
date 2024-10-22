@@ -7,7 +7,7 @@ import Home from './pages/Home.jsx'
 function App() {
 
   return (
-      <div className="w-[25vw] h-[90vh] bg-gray-500 rounded-lg shadow-lg flex items-center justify-center">
+      <div className="w-[25vw] h-[90vh] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
         <Home></Home>
       </div>
   )
