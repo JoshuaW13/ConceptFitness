@@ -15,7 +15,7 @@ function Login() {
 
   return (
       <div className='w-full h-full flex flex-col items-center gap-10'>
-        <div className='w-full text-black text-lg font-bold w-1/4 bg-gray-100 h-10 flex items-center justify-start px-2'>
+        <div className='text-black text-lg font-bold w-full bg-gray-100 h-10 flex items-center justify-start px-2'>
             <img src={viteLogo} alt="" className="h-full w-auto " />
         </div>
         <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
