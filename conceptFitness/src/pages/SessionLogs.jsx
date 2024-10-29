@@ -6,7 +6,7 @@ import ExerciseLog from '../components/ExerciseLog';
 import SessionLog from '../components/SessionLog';
 import DropDown from '../components/DropDown';
 
-function Logs() {
+function SessionLogs() {
     const sessionLogs = [];
     const exerciseLogs = [];
 
@@ -41,4 +41,4 @@ function Logs() {
     );
 }
 
-export default Logs;
+export default SessionLogs;

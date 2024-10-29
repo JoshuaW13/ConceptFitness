@@ -20,7 +20,7 @@ function Home() {
     navigate("/programs")
   }
   const navigateLogs = () =>{
-    navigate("/logs")
+    navigate("/sessionLogs")
   }
 
 
