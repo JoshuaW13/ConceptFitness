@@ -27,7 +27,7 @@ function Logs() {
     }
 
     return (
-        <div className='w-full h-full flex flex-col items-center'>
+        <div className='w-full h-full flex flex-col items-center gap-2'>
             <NavBar FirstButton={HomeButton} />
             <div className='bg-black w-[75%] rounded-lg'>
                 <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
@@ -36,7 +36,7 @@ function Logs() {
                 <label htmlFor="date">Date:</label>
                 <input type="date" id="date" name="date" />
             </form>
-            <div className='h-[75%] w-[75%] bg-gray-200 flex flex-col gap-2 p-2 overflow-y-auto'>
+            <div className='h-[75%] w-[75%] bg-gray-200 flex flex-col gap-2 overflow-y-auto'>
                 {sessionLogs}
             </div>
         </div>
