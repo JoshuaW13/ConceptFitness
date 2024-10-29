@@ -14,7 +14,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) 
         <div className='w-full flex flex-col items-center max-h-[100%]'>
             <InitialComponent />
             {isContentVisible && (
-                <div className='flex flex-col gap-2 bg-gray-300 w-full p-2 overflow-y-auto'>
+                <div className='flex flex-col gap-2 bg-gray-300 w-full p-2 overflow-y-auto scrollbar-hidden'>
                     {HiddenComponents.map((Component, index) => (
                         <Component key={index} />
                     ))}

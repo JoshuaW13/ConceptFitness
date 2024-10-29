@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import Menu from "@mui/icons-material/Menu";
 import Popup from './Popup';
+import ExerciseLogPopup from './ExerciseLogPopup';
 
 function ExerciseLog() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -20,7 +21,7 @@ function ExerciseLog() {
 
       {/* Popup */}
       {isPopupVisible && (
-        <Popup onClick={() => setIsPopupVisible(false)}></Popup>
+        <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseLogPopup}></Popup>
       )}
 
       <div className='flex flex-col space-y-2'>

@@ -10,18 +10,16 @@ function Logs() {
     const sessionLogs = [];
     const exerciseLogs = [];
 
-    // Create instances of ExerciseLog components
     for (let i = 0; i < 10; i++) {
-        exerciseLogs.push(() => <ExerciseLog key={i} />); // Store component constructors
+        exerciseLogs.push(() => <ExerciseLog key={i} />); 
     }
 
-    // Create DropDowns for each SessionLog
     for (let i = 0; i < 5; i++) {
         sessionLogs.push(
             <DropDown
                 key={i}
                 InitialComponent={SessionLog}
-                HiddenComponents={exerciseLogs} // Use HiddenComponents as an array of component constructors
+                HiddenComponents={exerciseLogs} 
             />
         );
     }
@@ -36,7 +34,7 @@ function Logs() {
                 <label htmlFor="date">Date:</label>
                 <input type="date" id="date" name="date" />
             </form>
-            <div className='h-[75%] w-[75%] bg-gray-200 flex flex-col gap-2 overflow-y-auto'>
+            <div className='h-[75%] w-[75%] bg-gray-200 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden'>
                 {sessionLogs}
             </div>
         </div>

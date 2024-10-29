@@ -1,22 +1,20 @@
-import React from 'react'
-import '../App.css'
+import React from 'react';
+import '../App.css';
 
-
-function Popup({onClick}) {
-
+function Popup({ onClick, Content }) {
   return (
-    <div className="absolute top-12 right-0 bg-white shadow-lg rounded-lg p-4 z-10">
-          <p className="text-gray-700">Popup Content</p>
-          <button 
-            className="mt-2 px-4 py-2 bg-red-500 text-white rounded" 
-            onClick={onClick}
-          >
-            Close
-          </button>
+    <div className="absolute top-12 right-0 bg-white shadow-lg rounded-lg p-4 z-10 flex flex-col text-sm">
+      <div className="flex-grow mb-4"> {/* Flex-grow allows the content area to expand */}
+        <Content />
+      </div>
+      <button 
+        className="px-4 py-2 bg-red-500 text-white rounded" 
+        onClick={onClick}
+      >
+        Close
+      </button>
     </div>
-  )
+  );
 }
 
-export default Popup
-
-
+export default Popup;

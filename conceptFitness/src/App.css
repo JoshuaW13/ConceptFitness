@@ -44,3 +44,18 @@
 .read-the-docs {
   color: #888;
 }
+
+/* styles.css */
+.scrollbar-hidden {
+  @apply overflow-hidden; /* Hides scrollbar but keeps content scrollable */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
