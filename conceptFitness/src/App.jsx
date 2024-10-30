@@ -5,7 +5,8 @@ import Profile from './pages/Profile.jsx';
 import Session from './pages/Session.jsx';
 import Catalogue from './pages/Catalogue.jsx';
 import Programs from './pages/Programs.jsx';
-import Logs from './pages/Logs.jsx';
+import SessionLogs from './pages/SessionLogs.jsx';
+import ExerciseLogs from './pages/ExerciseLogs.jsx';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="/session" element={<Session />} />
           <Route path="/catalogue" element={<Catalogue />} />
           <Route path="/programs" element={<Programs />} />
-          <Route path="/logs" element={<Logs />} />
+          <Route path="/sessionLogs" element={<SessionLogs />} />
+          <Route path="/exerciseLogs" element={<ExerciseLogs />} />
         </Routes>
       </div>
     </Router>
