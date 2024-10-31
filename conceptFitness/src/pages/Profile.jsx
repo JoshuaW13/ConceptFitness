@@ -18,20 +18,26 @@ function Profile() {
   return (
     <div className='w-full h-full flex flex-col items-center'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton}></NavBar>
-        <div className="w-[50%] h-[20%] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center mt-6 border-gray border-2">
-          <img src={ProfilePicture} className="w-[90%] h-[40%] flex "></img>
-          <p className='text-black m-4 w-[90%]'>Name</p>
+        <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow items-center'>
+          <div className="w-[50%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center border-gray border-2">
+            <div className="w-[30%] h-[60%] flex justify-content">
+              <img src={ProfilePicture}></img>
+            </div>
+            <div className='ml-4'>
+              <p className='text-black'>Name</p>
+            </div>
+          </div>
+          
+          <div className='flex flex-wrap justify-center gap-3 w-full m-4'>
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+              onClick={handleClick}>Metrics</button>
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+              >Goals</button>
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+              >Statistics</button>
+          </div>
+          {showMetrics && <MetricsWindow />}
         </div>
-
-        <div className='flex flex-row gap-4 m-4'>
-          <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
-          onClick={handleClick}>Metrics</button>
-          <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
-          >Goals</button>
-          <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
-          >Statistics</button>
-        </div>
-        {showMetrics && <MetricsWindow />}
 
     </div>
   )
