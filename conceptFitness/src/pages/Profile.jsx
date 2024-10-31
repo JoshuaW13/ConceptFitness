@@ -6,14 +6,23 @@ import HomeButton from '../components/HomeButton'
 import SettingsButton from '../components/SettingsButton'
 import ProfilePicture from '../assets/profilePicture.svg'
 import MetricsWindow from '../components/MetricsWindow'
+import GoalsWindow from '../components/GoalsWindow'
 
 function Profile() {
 
   const [showMetrics, setShowMetrics] = useState(false)
+  const [showGoals, setShowGoals] = useState(false)
 
-  const handleClick = () =>{
+  const handleMetrics = () =>{
     setShowMetrics(true)
+    setShowGoals(false)
   }
+
+  const handleGoals = () =>{
+    setShowGoals(true)
+    setShowMetrics(false)
+  }
+
 
   return (
     <div className='w-full h-full flex flex-col items-center'>
@@ -30,13 +39,14 @@ function Profile() {
           
           <div className='flex flex-wrap justify-center gap-3 w-full m-4'>
               <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
-              onClick={handleClick}>Metrics</button>
+              onClick={handleMetrics}>Metrics</button>
               <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
-              >Goals</button>
+              onClick={handleGoals}>Goals</button>
               <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
               >Statistics</button>
           </div>
           {showMetrics && <MetricsWindow />}
+          {showGoals && <GoalsWindow />}
         </div>
 
     </div>
