@@ -1,12 +1,19 @@
 import React from 'react'
 import '../App.css'
+import { useState } from 'react'
 import NavBar from '../components/navBar'
 import HomeButton from '../components/HomeButton'
 import SettingsButton from '../components/SettingsButton'
 import ProfilePicture from '../assets/profilePicture.svg'
-import ProfileButton from '../components/ProfileButton'
+import MetricsWindow from '../components/MetricsWindow'
 
 function Profile() {
+
+  const [showMetrics, setShowMetrics] = useState(false)
+
+  const handleClick = () =>{
+    setShowMetrics(true)
+  }
 
   return (
     <div className='w-full h-full flex flex-col items-center'>
@@ -18,16 +25,13 @@ function Profile() {
 
         <div className='flex flex-row gap-4 m-4'>
           <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
-          >Metrics</button>
+          onClick={handleClick}>Metrics</button>
           <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
           >Goals</button>
           <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
           >Statistics</button>
         </div>
-
-        {/* on click metrics, show this div
-        <div className="w-[90%] h-[45%] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center border-gray border-2">
-        </div> */}
+        {showMetrics && <MetricsWindow />}
 
     </div>
   )
