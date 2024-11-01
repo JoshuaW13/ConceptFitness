@@ -3,6 +3,7 @@ import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
 import SlidingDrawer from '../components/SlidingDrawer';
+import CatalogueDrawerContent from '../components/CatalogueDrawerContent';
 
 function Catalogue() {
 
@@ -23,7 +24,7 @@ function Catalogue() {
           </div>
         </div>
       </div>
-      <SlidingDrawer></SlidingDrawer>
+      <SlidingDrawer Content={CatalogueDrawerContent}></SlidingDrawer>
     </div>
   );
 }
