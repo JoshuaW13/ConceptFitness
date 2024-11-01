@@ -28,20 +28,19 @@ function Catalogue() {
         </div>
       </div>
 
-      {/* Drawer Toggle Button */}
-      <button onClick={toggleDrawer} className="fixed top-4 right-4 z-20 bg-blue-500 text-white p-2 rounded">
-        {isDrawerOpen ? 'Close Drawer' : 'Open Drawer'}
-      </button>
-
       {/* Right Drawer */}
       <div
         className={`h-full w-[90%] bg-blue-500 top-0 right-0 absolute transform ${
           isDrawerOpen ? 'translate-x-0 visible ' : 'translate-x-[100%]'
-        } transition-transform duration-300 ease-in-out z-10`}
+        } transition-transform duration-500 ease-in-out`}
       >
-        <div className="p-4">
+        {/* Drawer Toggle Button */}
+        <button onClick={toggleDrawer} className="absolute w-7 h-14 -left-7  top-1/2 bg-blue-500 text-white p-0 rounded">
+          {isDrawerOpen ? 'c' : 'o'}
+        </button>
+        <div className="p-3">
           <div className="flex flex-row justify-between m-2">
-            <input type="text" className="w-[75%] h-8 " placeholder="Search..."></input>
+            <input type="text" className="w-[75%] h-8 " placeholder="Program Name"></input>
             <button className=''></button>
           </div>
           <div className="flex flex-row justify-between m-2">
