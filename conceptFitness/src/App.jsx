@@ -11,7 +11,7 @@ import ExerciseLogs from './pages/ExerciseLogs.jsx';
 function App() {
   return (
     <Router>
-      <div className="w-[25vw] h-[90vh] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+      <div className="w-[100%] h-[100%] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
