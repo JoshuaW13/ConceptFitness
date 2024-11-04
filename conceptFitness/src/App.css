@@ -59,3 +59,26 @@
   scrollbar-width: none; /* For Firefox */
 }
 
+/* Constrain the CatalogueDrawerContent height and enable scrolling */
+.workout-list {
+  height: 200px; /* Adjust the height to fit your page layout */
+  overflow-y: auto;
+  width: 100%; /* Ensure it does not extend beyond the container */
+}
+
+.session-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.exercise-description-box {
+  max-width: 100%;
+}
+
+.video-placeholder {
+  height: 150px; /* Adjust as needed */
+}
+
+.session-page {
+  overflow: hidden; /* Prevents drawer overflow */
+}
