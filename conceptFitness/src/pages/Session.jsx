@@ -14,7 +14,7 @@ function Session() {
       
       <div className='flex justify-between w-full px-8 py-4'>
         <button className='time-button bg-gray-300 p-1 w-1/4 text-sm'>Time</button>
-        <button className='session-time-button bg-gray-300 p-1 w-1/4 text-sm'>Session Time</button>
+        <button className='session-time-button bg-gray-300 p-1 w-1/4 text-sm'>Finish Session</button>
       </div>
 
       <div className='flex w-full px-8 gap-4 flex-grow flex-col'>
@@ -54,7 +54,7 @@ function Session() {
         </div>
       </div>
       {/* Sliding Drawer with ExerciseLog components */}
-      <SlidingDrawer Content={() => (
+      <SlidingDrawer Content={() => (/*  */
         <div className="flex flex-col p-4 gap-4">
           <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
           <ExerciseLog />
