@@ -5,6 +5,7 @@ import HomeButton from '../components/HomeButton';
 import ExerciseDataHeader from '../components/ExerciseDataHeader';
 import DropDown from '../components/DropDown';
 import ExerciseData from '../components/ExerciseData'
+import ProfileButton from '../components/ProfileButton';
 
 function ExerciseLogs() {
 
@@ -22,7 +23,7 @@ function ExerciseLogs() {
 
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
-            <NavBar FirstButton={HomeButton} />
+            <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}/>
             <div className='bg-black w-[75%] rounded-lg'>
                 <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
             </div>

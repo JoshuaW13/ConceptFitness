@@ -5,6 +5,7 @@ import HomeButton from '../components/HomeButton';
 import ExerciseLog from '../components/ExerciseLog';
 import SessionLog from '../components/SessionLog';
 import DropDown from '../components/DropDown';
+import ProfileButton from '../components/ProfileButton'
 
 function SessionLogs() {
     const sessionLogs = [];
@@ -26,7 +27,7 @@ function SessionLogs() {
 
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
-            <NavBar FirstButton={HomeButton} />
+            <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}/>
             <div className='bg-black w-[75%] rounded-lg'>
                 <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
             </div>
