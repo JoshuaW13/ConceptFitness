@@ -33,7 +33,7 @@ function Home() {
             <div className='flex flex-col w-[30%] gap-4 flex-grow'>
               <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
                 onClick={navigateCatalogue} 
-              >Catalogue</button>
+              >Exercises</button>
               <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
                 onClick={navigatePrograms} 
               >Programs</button>
