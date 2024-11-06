@@ -8,7 +8,7 @@ import ExerciseDataPopup from "../components/ExerciseDataPopup"
 function ExerciseDataHeader({onClick}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
-    <div className='p-2 bg-gray-200 w-full rounded-t-lg font-semibold flex justify-between relative items-start'>
+    <div className='p-2 bg-gray-400 w-full rounded-t-lg font-semibold flex justify-between relative items-start'>
         <div className='flex items-center flex-col justify-betweenvp-2 rounded-lg mb-4 'onClick={onClick}>
             <p className='text-lg rounded-t-lg'>Exercise: Insert Name Here</p>
             <p className='text-base'>Tags: #</p>
