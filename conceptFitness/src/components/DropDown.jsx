@@ -11,7 +11,6 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) 
     const InitialComponent = () => <InitialComponentProp onClick={handleInitialClick} />;
 
     const hiddenComponentsArray = Array.isArray(HiddenComponents) ? HiddenComponents : [HiddenComponents];
-    console.log(hiddenComponentsArray.length + " the length is that!");
 
     return (
         <div className='w-full flex flex-col items-center max-h-[100%]'>
