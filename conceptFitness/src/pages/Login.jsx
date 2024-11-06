@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import viteLogo from "../../public/ConceptFitnessLogo.png";
+import viteLogo from "/ConceptFitnessLogo.png";
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 

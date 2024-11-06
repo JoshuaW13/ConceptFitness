@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import viteLogo from "../../public/ConceptFitnessLogo.png";
+import viteLogo from "/ConceptFitnessLogo.png";
 import { useNavigate } from 'react-router-dom';
 
 function HomeButton() {
