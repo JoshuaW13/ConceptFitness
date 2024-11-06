@@ -11,7 +11,7 @@ function Programs() {
   const exerciseLogs2 = [];
 
   for (let i = 0; i < 10; i++) {
-      exerciseLogs2.push(() => <ExerciseList key={i} />); 
+      exerciseLogs2.push(() => <ExerciseLog key={i} />); 
   }
 
   for (let i = 0; i < 5; i++) {
