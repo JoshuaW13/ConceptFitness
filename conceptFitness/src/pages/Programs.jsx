@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
-import ExerciseLog from '../components/Program';
-import SessionLog from '../components/SessionLog';
+import ExerciseInfo from '../components/ExerciseInfo';
+import ProgramLog from '../components/ProgramLog';
 import DropDown from '../components/DropDown';
 
 function Programs() {
-  const sessionLogs = [];
-  const exerciseLogs2 = [];
+  const ProgramLogs = [];
+  const exerciseLists = [];
 
-  for (let i = 0; i < 10; i++) {
-      exerciseLogs2.push(() => <ExerciseLog key={i} />); 
+  for (let i = 0; i < 5; i++) {
+    exerciseLists.push(() => <ExerciseInfo key={i} />); 
   }
 
   for (let i = 0; i < 5; i++) {
-      sessionLogs.push(
+      ProgramLogs.push(
           <DropDown
               key={i}
-              InitialComponent={SessionLog}
-              HiddenComponents={exerciseLogs2} 
+              InitialComponent={ProgramLog}
+              HiddenComponents={exerciseLists} 
           />
       );
   }
@@ -30,12 +30,8 @@ function Programs() {
           <div className='bg-black w-[75%] rounded-lg'>
               <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
           </div>
-          <form>
-              <label htmlFor="date">Date:</label>
-              <input type="date" id="date" name="date" />
-          </form>
           <div className='h-[75%] w-[75%] bg-gray-200 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden'>
-              {sessionLogs}
+              {ProgramLogs}
           </div>
       </div>
   );

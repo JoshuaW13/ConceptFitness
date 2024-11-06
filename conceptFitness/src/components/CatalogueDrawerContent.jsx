@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
 import '../App.css';
+import EditIcon from '../assets/EditIcon.png'
+import DropDown from '../components/DropDown';
+import ExerciseInfoHeader from '../components/ExerciseInfoHeader';
+import ExerciseInfo from '../components/ExerciseInfo';
 
 function CatalogueDrawerContent() {
-
+  const exerciseLists = [];
+  for (let i = 0; i < 5; i++) {
+    exerciseLists.push(
+      <DropDown
+        key={`dropdown-${i}`}
+        InitialComponent={ExerciseInfoHeader}
+        HiddenComponents={ExerciseInfo}
+      />
+    );
+  }
   return (
     <div className="p-3">
-          <div className="flex flex-row justify-between m-2">
-            <input type="text" className="w-[75%] h-8" placeholder="Program Name" />
-            <button className=''></button>
-          </div>
-          <div className="flex flex-row justify-between m-2">
-            <p>Tags:</p>
-            <input type="text" className="w-[75%] h-8" placeholder="Arm, Upper Body, Triceps, etc..." />
-          </div>
-          <div className="overflow-y-auto w-[95%] h-24 border-black border-4 border-solid m-4">
-            {/* Example Exercise Entries */}
-            {Array.from({ length: 5 }).map((_, index) => (
-              <div key={index} className="border-black border-2 text-black border-solid flex m-2 float-right w-[95%] justify-between">
-                <div className="m-1">
-                  <p>Exercise {index + 1}</p>
-                  <p>Testing</p>
-                </div>
-                <div className="flex flex-col justify-between m-2">
-                  <button className="w-7 h-7 shrink-0 bg-white border-black border-2 leading-none p-0 flex justify-center text-[20px] items-start">+</button>
-                  <button className="w-7 h-7 shrink-0 bg-white border-black border-2 leading-none p-0 flex justify-center text-[20px] items-start">...</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="flex flex-row justify-between m-2">
+        <input type="text" className="w-[80%] h-8 text-black bg-gray-300 p-2" placeholder="Program Name" />
+        <button className='w-[11%] bg-gray-300'>
+          <img src={EditIcon} alt="" className="p-1" />
+        </button>
+      </div>
+      <div className="flex flex-row justify-between m-2">
+        <p>Tags:</p>
+        <input type="text" className="w-[85%] text-black bg-gray-300 pl-2" placeholder="Arm, Upper Body, Triceps, etc..." />
+      </div>
+      <div className='h-[100%] w-[93%] bg-gray-300 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden'>
+        {exerciseLists}
+      </div>
+    </div>
   );
 }
 
