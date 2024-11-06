@@ -3,7 +3,7 @@ import '../App.css'
 import ExerciseGraph from "../assets/exerciseGraph.jpg"
 
 
-function ExerciseDataHeader({onClick}) {
+function ExerciseData({onClick}) {
 
   return (
     <div className='bg-gray-200 w-full rounded-lg font-semibold' onClick={onClick}>
@@ -19,4 +19,4 @@ function ExerciseDataHeader({onClick}) {
   )
 }
 
-export default ExerciseDataHeader
+export default ExerciseData
