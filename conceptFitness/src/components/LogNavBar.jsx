@@ -6,11 +6,10 @@ import ProfileButton from './ProfileButton';
 import HomeButton from './HomeButton';
 
 function LogNavbar() {
-
-    const logsNavButtons = [
-        SessionLogButton,  
-        ExerciseLogButton   
-    ];
+  const logsNavButtons = [
+      SessionLogButton,  
+      ExerciseLogButton   
+  ];
 
   return (
         <NavBar 

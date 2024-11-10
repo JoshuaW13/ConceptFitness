@@ -19,7 +19,9 @@ function CatalogueDrawerContent() {
   return (
     <div className="p-3">
       <div className="flex flex-row justify-between m-2">
-        <input type="text" className="w-[80%] h-8 text-black bg-gray-300 p-2" placeholder="Program Name" />
+        <button type="text" className="w-[80%] h-8 text-black bg-gray-300 pl-2 text-left text-lg">
+          Program Name
+        </button>
         <button className='w-[11%] bg-gray-300'>
           <img src={EditIcon} alt="" className="p-1" />
         </button>
