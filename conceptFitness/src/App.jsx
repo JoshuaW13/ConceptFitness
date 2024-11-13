@@ -3,7 +3,7 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx';
 import Session from './pages/Session.jsx';
-import Catalogue from './pages/Catalogue.jsx';
+import Catalogue from './pages/ExerciseList.jsx';
 import Programs from './pages/Programs.jsx';
 import SessionLogs from './pages/SessionLogs.jsx';
 import ExerciseLogs from './pages/ExerciseLogs.jsx';
