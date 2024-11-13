@@ -8,11 +8,11 @@ function ExerciseLog() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   return (
-    <div className='bg-gray-200 w-full rounded-lg shadow-md relative'>
-      <div className='flex items-center justify-between bg-gray-100 p-2 rounded-lg mb-4'>
-        <p className='text-gray-700 text-base font-semibold'>Exercise Name</p>
-        <button 
-          className="flex items-center text-black bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded transition duration-200 focus:outline-none" 
+    <div className="bg-gray-100 w-full rounded-lg shadow-md mb-4">
+      <div className="flex items-center justify-between bg-gray-200 p-3 rounded-lg">
+        <p className="text-gray-700 text-sm font-medium">Exercise Name</p>
+        <button
+          className="flex items-center justify-center text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 w-[33%]"
           onClick={() => setIsPopupVisible(!isPopupVisible)}
         >
           <Menu />
@@ -21,13 +21,13 @@ function ExerciseLog() {
 
       {/* Popup */}
       {isPopupVisible && (
-        <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseLogPopup}></Popup>
+        <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseLogPopup} />
       )}
 
-      <div className='flex flex-col space-y-2'>
-        <p className='text-gray-700'>Set 1</p>
-        <p className='text-gray-700'>Set 2</p>
-        <p className='text-gray-700'>Set 3</p>
+      <div className="flex flex-col space-y-2">
+        <p className="text-gray-700 text-sm">Set 1</p>
+        <p className="text-gray-700 text-sm">Set 2</p>
+        <p className="text-gray-700 text-sm">Set 3</p>
       </div>
     </div>
   );
