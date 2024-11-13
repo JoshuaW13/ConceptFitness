@@ -27,7 +27,7 @@ function ExerciseLogs() {
             <div className='bg-black w-[75%] rounded-lg'>
                 <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
             </div>
-            <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-4 overflow-y-auto m-3 scrollbar-hidden'>
+            <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-4 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
                 {exerciseLogs}
             </div>
         </div>

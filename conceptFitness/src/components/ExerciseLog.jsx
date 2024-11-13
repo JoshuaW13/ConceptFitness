@@ -12,7 +12,7 @@ function ExerciseLog() {
       <div className="flex items-center justify-between bg-gray-200 p-3 rounded-lg">
         <p className="text-gray-700 text-sm font-medium">Exercise Name</p>
         <button
-          className="flex items-center justify-center text-white bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 w-[33%]"
+          className="flex items-center justify-center text-gray-700 bg-gray-300 px-4 py-2 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 w-[33%]"
           onClick={() => setIsPopupVisible(!isPopupVisible)}
         >
           <Menu />

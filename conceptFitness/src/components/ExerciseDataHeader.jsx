@@ -8,7 +8,7 @@ function ExerciseDataHeader({ onClick }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   return (
-    <div className="p-4 bg-gray-200 w-full rounded-t-lg shadow-md flex justify-between items-center relative cursor-pointer shadow-md transition-transform hover:scale-105 transform">
+    <div className="p-4 bg-gray-200 w-full rounded-t-lg shadow-md flex justify-between items-center relative cursor-pointer transition-transform hover:scale-105 transform">
       <div className="flex items-start flex-col justify-between gap-1" onClick={onClick}>
         <p className="text-lg text-gray-800 font-semibold">Exercise: Insert Name Here</p>
         <p className="text-sm text-gray-600">Tags: #</p>

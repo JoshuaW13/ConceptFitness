@@ -30,7 +30,7 @@ function SessionLogs() {
             <LogNavbar></LogNavbar>
             <SearchBar></SearchBar>
             <DateInput></DateInput>
-            <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden'>
+            <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
                 {sessionLogs}
             </div>
         </div>
