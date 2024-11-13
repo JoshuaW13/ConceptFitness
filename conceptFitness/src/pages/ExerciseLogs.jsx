@@ -6,6 +6,9 @@ import ExerciseDataHeader from '../components/ExerciseDataHeader';
 import DropDown from '../components/DropDown';
 import ExerciseData from '../components/ExerciseData';
 import LogNavbar from '../components/LogNavBar';
+import SearchBar from '../components/SearchBar';
+
+
 
 function ExerciseLogs() {
 
@@ -24,9 +27,7 @@ function ExerciseLogs() {
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
             <LogNavbar />
-            <div className='bg-black w-[75%] rounded-lg'>
-                <input type="text" placeholder='Search...' className='text-black bg-gray-300 w-full' />
-            </div>
+            <SearchBar></SearchBar>
             <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-4 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
                 {exerciseLogs}
             </div>
