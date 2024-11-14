@@ -25,24 +25,27 @@ function Profile() {
 
 
   return (
-    <div className='w-full h-full flex flex-col items-center'>
+    <div className='w-full h-full flex flex-col items-center overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 rounded-lg'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton}></NavBar>
-        <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow items-center'>
-          <div className="w-[50%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center border-gray border-2">
-            <div className="w-[30%] h-[60%] flex justify-content">
-              <img src={ProfilePicture}></img>
+        <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
+          <div className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4">
+            <div className='flex flex-col items-center justify-center w-1/3'>
+              <div className="w-[60%] h-[60%]">
+                <img src={ProfilePicture}></img>
+              </div>
+              <p className='text-black'>Olivia Carter</p>
             </div>
-            <div className='ml-4'>
-              <p className='text-black'>Name</p>
+            <div className='flex flex-col justify-center w-2/3 pl-2'>
+              <p className='text-black'>I'm an aspiring entrepreneur wanting to use exercise to build discipline!</p>
             </div>
           </div>
           
-          <div className='flex flex-wrap justify-center gap-3 w-full m-4'>
-              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+          <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'
               onClick={handleMetrics}>Metrics</button>
-              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'
               onClick={handleGoals}>Goals</button>
-              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-200 focus:outline-none w-full sm:w-auto'
+              <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'
               >Statistics</button>
           </div>
           {showMetrics && <MetricsWindow />}
