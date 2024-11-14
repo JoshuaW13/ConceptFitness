@@ -82,3 +82,51 @@
 .session-page {
   overflow: hidden; /* Prevents drawer overflow */
 }
+
+
+.triangle-left {
+  border-right: 30px solid black;
+}
+
+.triangle-right {
+  border-left: 30px solid black;
+}
+/* Full width limitation for responsive design */
+.session-page {
+  max-width: 100%;
+  padding: 16px;
+}
+
+/* Triangle button styles */
+.triangle-left, .triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  cursor: pointer;
+}
+
+.triangle-left {
+  border-right: 30px solid black;
+}
+
+.triangle-right {
+  border-left: 30px solid black;
+}
+
+.exercise-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Responsive height adjustments */
+.video-placeholder {
+  height: 150px;
+}
+
+@media (min-width: 768px) {
+  .video-placeholder {
+    height: 200px;
+  }
+}
