@@ -10,7 +10,7 @@ function ExerciseLogPopup() {
     navigate("/exerciseLogs")
   }
   return (
-    <div className="">
+    <div className="flex flex-col">
           <button onClick={exerciseLogs}>Statistics</button>
           <button>Favorite</button>
           <button>Add to...</button>
