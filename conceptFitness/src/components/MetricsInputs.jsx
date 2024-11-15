@@ -16,7 +16,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
     const handleSave = () => {
         onSave(formData)
-        localStorage.setItem('metricsData', JSON.stringify(formData))
+        sessionStorage.setItem('metricsData', JSON.stringify(formData))
     } 
 
 

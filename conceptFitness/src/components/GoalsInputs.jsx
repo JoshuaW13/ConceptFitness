@@ -16,7 +16,7 @@ function GoalsInputs( {onSave, initialData} ) {
 
     const handleSave = () => {
         onSave(formData)
-        localStorage.setItem('goalsData', JSON.stringify(formData))
+        sessionStorage.setItem('goalsData', JSON.stringify(formData))
     }
 
     return (

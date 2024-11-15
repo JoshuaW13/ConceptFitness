@@ -7,19 +7,29 @@ import SettingsButton from '../components/SettingsButton'
 import ProfilePicture from '../assets/profilePicture.svg'
 import MetricsWindow from '../components/MetricsWindow'
 import GoalsWindow from '../components/GoalsWindow'
+import StatisticsWindow from '../components/StatisticsWindow'
 
 function Profile() {
 
   const [showMetrics, setShowMetrics] = useState(false)
   const [showGoals, setShowGoals] = useState(false)
+  const [showStatistics, setShowStatistics] = useState(false)
 
   const handleMetrics = () =>{
     setShowMetrics(true)
     setShowGoals(false)
+    setShowStatistics(false)
   }
 
   const handleGoals = () =>{
     setShowGoals(true)
+    setShowMetrics(false)
+    setShowStatistics(false)
+  }
+
+  const handleStatistics = () =>{
+    setShowStatistics(true)
+    setShowGoals(false)
     setShowMetrics(false)
   }
 
@@ -30,13 +40,13 @@ function Profile() {
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
           <div className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4">
             <div className='flex flex-col items-center justify-center w-1/3'>
-              <div className="w-[60%] h-[60%]">
+              <div className="w-[60%] h-[60%] mb-3">
                 <img src={ProfilePicture}></img>
               </div>
-              <p className='text-black'>Olivia Carter</p>
+              <p className='text-black text-sm'>Olivia Carter</p>
             </div>
             <div className='flex flex-col justify-center w-2/3 pl-2'>
-              <p className='text-black'>I'm an aspiring entrepreneur wanting to use exercise to build discipline!</p>
+              <p className='text-black text-sm'>I'm an aspiring entrepreneur wanting to use exercise to build discipline!</p>
             </div>
           </div>
           
@@ -46,10 +56,11 @@ function Profile() {
               <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'
               onClick={handleGoals}>Goals</button>
               <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'
-              >Statistics</button>
+              onClick={handleStatistics}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow />}
           {showGoals && <GoalsWindow />}
+          {showStatistics && <StatisticsWindow />}
         </div>
 
     </div>

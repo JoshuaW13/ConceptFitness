@@ -29,7 +29,7 @@ function GoalsWindow() {
     }
 
     useEffect(() => {
-        const savedData = localStorage.getItem('goalsData');
+        const savedData = sessionStorage.getItem('goalsData');
         if (savedData) {
             setGoalsData(JSON.parse(savedData));
         }

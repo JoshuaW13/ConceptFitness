@@ -29,7 +29,7 @@ function MetricsWindow() {
     }
 
     useEffect(() => {
-        const savedData = localStorage.getItem('metricsData');
+        const savedData = sessionStorage.getItem('metricsData');
         if (savedData) {
             setMetricsData(JSON.parse(savedData));
         }
