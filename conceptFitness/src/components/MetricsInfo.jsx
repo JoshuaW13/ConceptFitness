@@ -3,14 +3,8 @@ import '../App.css'
 
 function MetricsInfo( {data} ) {
     return (
-    //    <div className='flex flex-col items-start justify-center h-full pl-4 pb-4 gap-4'>
-    //         <p>Age: {data.age}</p>
-    //         <p>Weight: {data.weight}</p>
-    //         <p>Height: {data.height}</p>
-    //         <p>Activity Level: {data.activityLevel}</p>
-    //    </div>
         <div className='flex justify-between px-4'>
-            <div className='flex flex-col items-start justify-center h-full pl-4 pb-4 gap-4'>
+            <div className='flex flex-col items-start justify-center h-full pl-2 pb-4 gap-4'>
                 <p>Age</p>
                 <p>Weight</p>
                 <p>Height</p>

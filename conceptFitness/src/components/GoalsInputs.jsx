@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function MetricsInputs( {onSave, initialData} ) {
+function GoalsInputs( {onSave, initialData} ) {
 
     const [formData, setFormData] = useState(initialData)
 
@@ -16,19 +16,35 @@ function MetricsInputs( {onSave, initialData} ) {
 
     const handleSave = () => {
         onSave(formData)
-        localStorage.setItem('metricsData', JSON.stringify(formData))
-    } 
-
+        localStorage.setItem('goalsData', JSON.stringify(formData))
+    }
 
     return (
         <div className='flex flex-col gap-4'>            
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Age</p>
+                    <p className="w-[25%] text-right">Goal</p>
+                    <select
+                        name="goal"
+                        value={formData.goal}
+                        onChange={handleChange}
+                        className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                    >
+                        <option value="Select Goal">Select</option>
+                        <option value="Lose Weight">Lose Weight</option>
+                        <option value="Gain Weight">Gain Weight</option>
+                        <option value="Maintain Weight">Maintain Weight</option>
+                    </select>
+                </div>
+            </div>
+
+            <div className="flex flex-row items-center w-full max-w-md gap-4">
+                <div className='flex flex-row items-center w-full max-w-md gap-4'>
+                    <p className="w-[25%] text-right">Current Weight</p>
                     <input
                         type="text"
-                        name="age"
-                        value={formData.age}
+                        name="currentWeight"
+                        value={formData.currentWeight}
                         onChange={handleChange}
                         className="w-[50%] bg-white border border-black rounded px-2 py-1"
                     />
@@ -37,11 +53,11 @@ function MetricsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Weight</p>
+                    <p className="w-[25%] text-right">Target Weight</p>
                     <input
                         type="text"
-                        name="weight"
-                        value={formData.weight}
+                        name='targetWeight'
+                        value={formData.targetWeight}
                         onChange={handleChange}
                         className="w-[50%] bg-white border border-black rounded px-2 py-1"
                     />
@@ -49,32 +65,14 @@ function MetricsInputs( {onSave, initialData} ) {
             </div>
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
-                <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Height</p>
-                    <input
-                        type="text"
-                        name='height'
-                        value={formData.height}
-                        onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
-                    />
-                </div>
-            </div>
-
-            <div className="flex flex-row items-center w-full max-w-md gap-4">
-                <p className="w-[25%] text-right">Activity Level</p>
-                <select
-                    name="activityLevel"
-                    value={formData.activityLevel}
+                <p className="w-[25%] text-right">Target Date</p>
+                <input
+                    type="date"
+                    name="targetDate"
+                    value={formData.targetDate}
                     onChange={handleChange}
                     className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
-                >
-                    <option value="" disabled>Select</option>
-                    <option value="Sedentary">Sedentary</option>
-                    <option value="Lightly Active">Lightly Active</option>
-                    <option value="Active">Active</option>
-                    <option value="Very Active">Very Active</option>
-                </select>
+                />
             </div>
 
             <div className='flex justify-center'>
@@ -85,6 +83,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
         </div>
     )
+
 }
 
-export default MetricsInputs
+export default GoalsInputs
