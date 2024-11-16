@@ -40,7 +40,7 @@ function GoalsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Current Weight</p>
+                    <p className="w-[25%] text-right">Current Weight (lbs)</p>
                     <input
                         type="text"
                         name="currentWeight"
@@ -53,7 +53,7 @@ function GoalsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Target Weight</p>
+                    <p className="w-[25%] text-right">Target Weight (lbs)</p>
                     <input
                         type="text"
                         name='targetWeight'

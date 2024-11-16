@@ -37,7 +37,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Weight</p>
+                    <p className="w-[25%] text-right">Weight (lbs)</p>
                     <input
                         type="text"
                         name="weight"
@@ -50,7 +50,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Height</p>
+                    <p className="w-[25%] text-right">Height (cm)</p>
                     <input
                         type="text"
                         name='height'
