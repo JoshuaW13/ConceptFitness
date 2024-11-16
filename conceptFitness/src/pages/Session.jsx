@@ -71,7 +71,7 @@ function Session() {
           </div>
 
           {/* Workout Exercises List */}
-          <div className='workout-list bg-gray-200 p-4 rounded-md'>
+          <div className='workout-list bg-gray-200 p-4 rounded-md overflow-y-auto' style={{ maxHeight: '40vh' }}>
             <h3 className='text-lg font-bold mb-2'>Workout Exercises</h3>
             <CatalogueDrawerContent />
           </div>
@@ -87,7 +87,6 @@ function Session() {
             <ExerciseLog />
             <ExerciseLog />
             <ExerciseLog />
-            {/* Add more ExerciseLogs here to test scrolling */}
           </div>
         )} />
       </div>
