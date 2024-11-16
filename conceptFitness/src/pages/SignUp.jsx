@@ -9,6 +9,7 @@ function SignUp() {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
@@ -31,43 +32,48 @@ function SignUp() {
                 <img src={viteLogo} alt="" className="h-full w-auto " />
             </div>
             <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
-                <h2 className="text-xl mb-4">Login</h2>
+                <h2 className="text-xl text-black mb-6">Create an Account</h2>
                 <div className="mb-4">
-                    <label className="block text-gray-700" htmlFor="email">
-                        Email
-                    </label>
                     <input
                         type="email"
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="border rounded w-full py-2 px-3"
+                        placeholder='Email'
+                        className="bg-white border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700" htmlFor="password">
-                        Password
-                    </label>
+                    <input
+                        type="username"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder='Username'
+                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        required
+                    />
+                </div>
+                <div className="mb-4">
                     <input
                         type="password"
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="border rounded w-full py-2 px-3"
+                        placeholder='Password'
+                        className="bg-white border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700" htmlFor="confirmPassword">
-                        Confirm Password
-                    </label>
                     <input
                         type="password"
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="border rounded w-full py-2 px-3"
+                        placeholder='Confirm Password'
+                        className="bg-white border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -76,7 +82,7 @@ function SignUp() {
                 type="submit"
                 className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
                 >
-                Login
+                Sign Up
                 </button>
             </form>
         </div>
