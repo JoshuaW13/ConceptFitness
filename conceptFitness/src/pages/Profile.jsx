@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import { useState, useEffect } from 'react'
-import NavBar from '../components/navBar'
+import NavBar from '../components/NavBar'
 import HomeButton from '../components/HomeButton'
 import SettingsButton from '../components/SettingsButton'
 import MetricsWindow from '../components/MetricsWindow'

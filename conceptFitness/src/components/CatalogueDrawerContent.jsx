@@ -5,9 +5,16 @@ import BookIcon from '../assets/BookIcon.png'
 import DropDown from '../components/DropDown';
 import ExerciseInfoHeaderShort from '../components/ExerciseInfoHeaderShort';
 import ExerciseInfoShort from '../components/ExerciseInfoShort';
+import { useNavigate } from 'react-router-dom';
 
 function CatalogueDrawerContent() {
   const exerciseLists = [];
+  const navigate = useNavigate();
+
+  const navigatePrograms = () =>{
+    navigate("/programs")
+  }
+  
   for (let i = 0; i < 5; i++) {
     exerciseLists.push(
       <div className='p-0.5'>
@@ -22,7 +29,7 @@ function CatalogueDrawerContent() {
         <button type="text" className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg bg-[url('./assets/EditIcon.png')]">
           Program Name
         </button>
-        <button className='w-[11%] bg-gray-300'>
+        <button className='w-[11%] bg-gray-300' onClick={navigatePrograms} >
           <img src={BookIcon} alt="" className="p-1" />
         </button>
       </div>
