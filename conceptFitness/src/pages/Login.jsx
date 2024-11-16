@@ -3,14 +3,19 @@ import viteLogo from "/ConceptFitnessLogo.png";
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
-
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate("/home");
+    };
+    
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        navigate("/signUp");
     };
 
   return (
@@ -47,6 +52,10 @@ function Login() {
           className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
         >
           Login
+        </button>
+        <p className='text-black m-2'>Don't have an account?</p>
+        <button onClick={handleSignUp} className='bg-white text-blue-500 hover-underline'>
+          Sign Up
         </button>
       </form>
       </div>
