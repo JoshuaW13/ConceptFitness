@@ -25,6 +25,11 @@ function SignUp() {
         navigate("/home");
     };
 
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        navigate("/");
+    };
+
 
     return (
         <div className='w-full h-full flex flex-col items-center'>
@@ -83,6 +88,10 @@ function SignUp() {
                 className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
                 >
                 Sign Up
+                </button>
+                <p className='text-black m-2'>Already have an account?</p>
+                <button onClick={handleLogIn} className='bg-white text-blue-500 hover-underline'>
+                Log In
                 </button>
             </form>
         </div>
