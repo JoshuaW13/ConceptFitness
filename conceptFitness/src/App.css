@@ -59,3 +59,82 @@
   scrollbar-width: none; /* For Firefox */
 }
 
+
+/* for session page */
+.session-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;  /* Full height of the viewport */
+  overflow: hidden; 
+  padding-bottom: 2rem; 
+}
+
+/* Main scrollable container */
+.scrollable-container {
+  height: 100vh;  
+  overflow-y: auto;  
+  padding-bottom: 1rem;  
+  box-sizing: border-box;
+}
+
+/* Header and buttons positioning */
+.controls {
+  margin-bottom: 2rem; 
+}
+/* Triangle button styles */
+.triangle-left, .triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  cursor: pointer;
+}
+
+.triangle-left {
+  border-right: 30px solid black;
+}
+
+.triangle-right {
+  border-left: 30px solid black;
+}
+
+/* Workouts and exercise sections */
+.exercise-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Workout Exercises Box */
+.workout-list {
+  height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* Hide scrollbar but keep content scrollable */
+.scrollbar-hidden {
+  overflow-y: auto;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive adjustments */
+.video-placeholder {
+  height: 150px;
+}
+
+@media (min-width: 768px) {
+  .video-placeholder {
+    height: 200px;
+  }
+}
