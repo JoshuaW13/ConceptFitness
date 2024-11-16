@@ -25,14 +25,14 @@ function ExerciseLists() {
     <div className="w-full h-full flex flex-col items-center relative gap-2">
       {/* Pass component functions, not JSX */}
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
-      <div className='w-[75%] rounded-lg pl-2'>
+      <div className='w-[75%] pl-2'>
         <input 
           type="text" 
           placeholder='Search...' 
-          className='text-black bg-gray-300 w-full' 
+          className='text-black bg-gray-300 w-full text-center rounded-md' 
         />
       </div>
-      <div className='h-[75%] w-[75%] bg-gray-300 flex flex-col gap-2 p-2 overflow-y-auto m-3 scrollbar-hidden'>
+      <div className='h-[80%] w-[85%] bg-gray-300 flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-3 scrollbar-hidden'>
         {exerciseLists}
       </div>
       <SlidingDrawer Content={CatalogueDrawerContent}></SlidingDrawer>
