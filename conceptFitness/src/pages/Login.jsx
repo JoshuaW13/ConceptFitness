@@ -32,7 +32,7 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Email/Username'
-            className="bg-white border border-black rounded w-full py-2 px-3"
+            className="bg-white text-black border border-black rounded w-full py-2 px-3"
             required
           />
         </div>
@@ -43,7 +43,7 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder='Password'
-            className="bg-white border border-black rounded w-full py-2 px-3"
+            className="bg-white text-black border border-black rounded w-full py-2 px-3"
             required
           />
         </div>

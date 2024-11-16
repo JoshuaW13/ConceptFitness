@@ -25,6 +25,11 @@ function SignUp() {
         navigate("/home");
     };
 
+    const handleLogIn = (e) => {
+        e.preventDefault();
+        navigate("/");
+    };
+
 
     return (
         <div className='w-full h-full flex flex-col items-center'>
@@ -40,7 +45,7 @@ function SignUp() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder='Email'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -51,7 +56,7 @@ function SignUp() {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder='Username'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -62,7 +67,7 @@ function SignUp() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder='Password'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -73,7 +78,7 @@ function SignUp() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder='Confirm Password'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -83,6 +88,10 @@ function SignUp() {
                 className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
                 >
                 Sign Up
+                </button>
+                <p className='text-black m-2'>Already have an account?</p>
+                <button onClick={handleLogIn} className='bg-white text-blue-500 hover-underline'>
+                Log In
                 </button>
             </form>
         </div>
