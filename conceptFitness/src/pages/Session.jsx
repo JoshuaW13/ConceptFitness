@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
 import ProfileButton from '../components/ProfileButton';
 import CatalogueDrawerContent from '../components/CatalogueDrawerContent';
-import SlidingDrawer from '../components/SlidingDrawer';
+import SlidingDrawerWithScrolling from '../components/SlidingDrawerWithScrolling';
 import ExerciseLog from '../components/ExerciseLog';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,22 +38,21 @@ function Session() {
         </div>
 
         <div className='flex flex-col w-full px-8 gap-4 flex-grow'>
-           {/* Weight and Reps Section */}
-        <div className='controls flex items-center justify-center gap-4 w-full mb-4'>
-          <div className='triangle-left'></div>
-          <div className='flex flex-col items-center gap-4'>
-            <div className='flex items-center gap-2'>
-              <label className='text-lg'>Weight:</label>
-              <input type='number' className='weight-input w-16 text-center border p-1' />
+          {/* Weight and Reps Section */}
+          <div className='controls flex items-center justify-center gap-4 w-full mb-4'>
+            <div className='triangle-left'></div>
+            <div className='flex flex-col items-center gap-4'>
+              <div className='flex items-center gap-2'>
+                <label className='text-lg'>Weight:</label>
+                <input type='number' className='weight-input w-16 text-center border p-1' />
+              </div>
+              <div className='flex items-center gap-2'>
+                <label className='text-lg'>Reps:</label>
+                <input type='number' className='reps-input w-16 text-center border p-1' />
+              </div>
             </div>
-            <div className='flex items-center gap-2'>
-              <label className='text-lg'>Reps:</label>
-              <input type='number' className='reps-input w-16 text-center border p-1' />
-            </div>
+            <div className='triangle-right'></div>
           </div>
-          <div className='triangle-right'></div>
-        </div>
-          
 
           {/* Current Exercise Box */}
           <div className='exercise-description-box bg-gray-200 p-4 rounded-md'>
@@ -78,13 +77,17 @@ function Session() {
           </div>
         </div>
         
-        {/* Sliding Drawer with ExerciseLog components */}
-        <SlidingDrawer Content={() => (
+        {/* Sliding Drawer with Scrolling */}
+        <SlidingDrawerWithScrolling Content={() => (
           <div className="flex flex-col p-4 gap-4">
             <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
             <ExerciseLog />
             <ExerciseLog />
             <ExerciseLog />
+            <ExerciseLog />
+            <ExerciseLog />
+            <ExerciseLog />
+            {/* Add more ExerciseLogs here to test scrolling */}
           </div>
         )} />
       </div>
