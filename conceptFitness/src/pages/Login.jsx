@@ -19,30 +19,26 @@ function Login() {
             <img src={viteLogo} alt="" className="h-full w-auto " />
         </div>
         <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
-        <h2 className="text-xl mb-4">Login</h2>
+        <h2 className="text-xl text-black mb-4">Login</h2>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="email">
-            Email
-          </label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border rounded w-full py-2 px-3"
+            placeholder='Email/Username'
+            className="bg-white border border-black rounded w-full py-2 px-3"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="password">
-            Password
-          </label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border rounded w-full py-2 px-3"
+            placeholder='Password'
+            className="bg-white border border-black rounded w-full py-2 px-3"
             required
           />
         </div>
