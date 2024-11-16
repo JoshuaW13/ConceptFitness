@@ -45,7 +45,7 @@ function SignUp() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder='Email'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -56,7 +56,7 @@ function SignUp() {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder='Username'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -67,7 +67,7 @@ function SignUp() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder='Password'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
@@ -78,7 +78,7 @@ function SignUp() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder='Confirm Password'
-                        className="bg-white border border-black rounded w-full py-2 px-3"
+                        className="bg-white text-black border border-black rounded w-full py-2 px-3"
                         required
                     />
                 </div>
