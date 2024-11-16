@@ -32,7 +32,7 @@ function ExerciseLists() {
           className='text-black bg-gray-300 w-full text-center rounded-md' 
         />
       </div>
-      <div className='h-[80%] w-[85%] bg-gray-300 flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-3 scrollbar-hidden'>
+      <div className='h-[80%] w-[85%] flex flex-col bg-gray-200 gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
         {exerciseLists}
       </div>
       <SlidingDrawer Content={CatalogueDrawerContent}></SlidingDrawer>

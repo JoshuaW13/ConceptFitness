@@ -21,7 +21,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) 
             {/* Hidden content with smooth transition */}
             {isContentVisible && (
                 <div
-                    className={`flex flex-col gap-4 bg-white w-full p-4 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
+                    className={`flex flex-col gap-4 bg-white w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
                     style={{
                         opacity: isContentVisible ? 1 : 0,
                         transform: isContentVisible ? 'translateY(0)' : 'translateY(-10px)',  // Smooth fade-in and translate effect

@@ -6,8 +6,8 @@ import ExerciseImage from "../assets/ExerciseImage.png"
 function ExerciseInfoShort({onClick}) {
 
   return (
-    <div className='bg-gray-300 w-full h-8 rounded-b-lg font-semibold overflow-y-auto scrollbar-hidden' onClick={onClick}>
-        <p className='text-black'>Muscle: Muscle Name</p>
+    <div className='bg-gray-300 w-full h-8 rounded-b-lg overflow-y-auto scrollbar-hidden' onClick={onClick}>
+        <p className='text-black'>Target Muscle: Muscle Name</p>
     </div>
   )
 }

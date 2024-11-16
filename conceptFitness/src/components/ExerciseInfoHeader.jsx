@@ -8,27 +8,30 @@ import ExerciseDataPopup from "../components/ExerciseDataPopup"
 function ExerciseInfoHeader({onClick}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
-    <div className='flex p-1 bg-gray-500 w-full rounded-lg font-semibold'>
-      <div className="flex flex-col rounded-lg w-[92%]" onClick={onClick}>
-          <p className='flex text-lg rounded-t-lg justify-center'>Random Exercise</p>
-          <p className='flex pt-1 justify-center'>Equipment: Machine Name</p>
+    <div className='w-full'>
+      <div className='flex p-1 bg-gray-500 w-full rounded-t-lg font-semibold'>
+        <div className="flex flex-col rounded-lg w-[92%]" onClick={onClick}>
+            <p className='flex text-lg rounded-t-lg justify-center'>Exercise Name</p>
+            <p className='flex pt-1 justify-center'>Equipment: Machine Name</p>
+        </div>
+        <div className='flex flex-col justify-between'>
+          <button 
+            className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none" 
+            >
+            +
+          </button>
+          <button 
+            className="flex items-center text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 rounded transition duration-200 focus:outline-none" 
+            onClick={() => setIsPopupVisible(!isPopupVisible)}
+            >
+            <Menu />
+          </button>
+          {isPopupVisible && (
+            <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseDataPopup}></Popup>
+          )}
+        </div>
       </div>
-      <div className='flex flex-col justify-between'>
-        <button 
-          className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none" 
-          >
-          +
-        </button>
-        <button 
-          className="flex items-center text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 rounded transition duration-200 focus:outline-none" 
-          onClick={() => setIsPopupVisible(!isPopupVisible)}
-          >
-          <Menu />
-        </button>
-        {isPopupVisible && (
-          <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseDataPopup}></Popup>
-        )}
-      </div>
+      <p className='text-black bg-gray-300 rounded-b-lg'>Target Muscle: Muscle Name</p>
     </div>
   )
 }
