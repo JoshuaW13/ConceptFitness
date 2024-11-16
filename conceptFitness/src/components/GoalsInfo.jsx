@@ -11,10 +11,10 @@ function GoalsInfo( {data} ) {
                 <p>Target Date</p>
             </div>
             <div className='flex flex-col items-end justify-center h-full pr-4 pb-4 gap-4'>
-                <p>{data.goal}</p>
-                <p>{data.currentWeight}</p>
-                <p>{data.targetWeight}</p>
-                <p>{data.targetDate}</p>
+                <p>{data.goal || 'N/A'}</p>
+                <p>{data.currentWeight || 'N/A'}</p>
+                <p>{data.targetWeight || 'N/A'}</p>
+                <p>{data.targetDate || 'N/A'}</p>
             </div>
         </div>
     )
