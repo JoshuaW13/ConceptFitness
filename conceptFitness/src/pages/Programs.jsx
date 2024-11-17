@@ -3,8 +3,8 @@ import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton'
 import ProfileButton from '../components/ProfileButton'
-import ExerciseInfo from '../components/ExerciseInfo';
-import ExerciseInfoHeaderShort from '../components/ExerciseInfoHeaderShort'
+import ExerciseInfoShortish from '../components/ExerciseInfoShortish';
+import ExerciseInfoHeader from '../components/ExerciseInfoHeader'
 import ProgramLog from '../components/ProgramLog';
 import DropDown from '../components/DropDown';
 
@@ -17,8 +17,8 @@ function Programs() {
       ()=>
       <DropDown
         key={`dropdown-${i}`}
-        InitialComponent={ExerciseInfoHeaderShort}
-        HiddenComponents={ExerciseInfo}
+        InitialComponent={ExerciseInfoHeader}
+        HiddenComponents={ExerciseInfoShortish}
       />
     );
   }
