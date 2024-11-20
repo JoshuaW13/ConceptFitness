@@ -8,6 +8,7 @@ import HomeButton from '../components/HomeButton'
 import ProfileButton from '../components/ProfileButton'
 import SlidingDrawer from '../components/SlidingDrawer';
 import CatalogueDrawerContent from '../components/CatalogueDrawerContent';
+import SearchBar from '../components/SearchBar';
 
 function ExerciseLists() {
   const exerciseLists = [];
@@ -25,13 +26,7 @@ function ExerciseLists() {
     <div className="w-full h-full flex flex-col items-center relative gap-2">
       {/* Pass component functions, not JSX */}
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
-      <div className='w-[75%] pl-2'>
-        <input 
-          type="text" 
-          placeholder='Search...' 
-          className='text-black bg-gray-300 w-full text-center rounded-md' 
-        />
-      </div>
+      <SearchBar/>
       <div className='h-[80%] w-[85%] flex flex-col bg-gray-200 gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
         {exerciseLists}
       </div>
