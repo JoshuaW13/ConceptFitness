@@ -17,13 +17,21 @@ function ExerciseDataHeader({ onClick }) {
 
       <button
         className="flex items-center text-gray-700 bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-        onClick={() => setIsPopupVisible(!isPopupVisible)}
+        onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+          event.stopPropagation();  // Prevent the event from bubbling up to the parent
+        }}
       >
         <Menu />
       </button>
 
       {isPopupVisible && (
-        <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseDataPopup} />
+        <Popup 
+          onClick={(event) => {
+            event.stopPropagation();  // Prevent the event from bubbling up to the parent
+            setIsPopupVisible(false);  // Close the popup
+          }} 
+          Content={ExerciseDataPopup} 
+        />
       )}
     </div>
   );
