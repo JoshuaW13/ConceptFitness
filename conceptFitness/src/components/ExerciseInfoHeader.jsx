@@ -9,7 +9,7 @@ function ExerciseInfoHeader({onClick}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
     <div className='w-full'>
-      <div className='flex p-1 bg-gray-500 w-full rounded-t-lg font-semibold'>
+      <div className='flex p-1 bg-gray-200 w-full rounded-t-lg font-semibold'>
         <div className="flex flex-col rounded-lg w-[92%]" onClick={onClick}>
             <p className='flex text-lg rounded-t-lg justify-center'>Exercise Name</p>
             <p className='flex pt-1 justify-center'>Equipment: Machine Name</p>
@@ -31,7 +31,7 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
           )}
         </div>
       </div>
-      <p className='text-black bg-gray-300 rounded-b-lg'>Target Muscle: Muscle Name</p>
+      <p className='text-black rounded-b-lg'>Target Muscle: Muscle Name</p>
     </div>
   )
 }

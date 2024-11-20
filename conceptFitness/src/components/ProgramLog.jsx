@@ -11,8 +11,8 @@ function ProgramLog({onClick}) {
   }
 
   return (
-    <div className='bg-gray-400 w-full rounded-t-lg font-semibold' onClick={onClick}>
-        <div className='flex bg-gray-500 rounded-t-lg w-full p-1'>
+    <div className='bg-gray-200 w-full rounded-t-lg font-semibold' onClick={onClick}>
+        <div className='flex bg-gray-200 rounded-t-lg w-full p-1'>
           <p className='flex text-lg w-[92%] justify-center'>Program Name: Name</p>
           <button className='flex w-7 h-7  bg-gray-300' onClick={navigateSession} >
             <img src={StartIcon} alt="" className="p-1" />
