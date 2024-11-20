@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import '../App.css';
 import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBar() {
+function SearchBar({InitialText}) {
   const inputRef = useRef(null);
 
   const handleIconClick = () => {
@@ -19,7 +19,7 @@ function SearchBar() {
       <input
         ref={inputRef} // Attach the ref to the input field
         type="text"
-        placeholder="Search..."
+        placeholder={InitialText!=null ? InitialText : "Search..."}
         className="text-black bg-transparent w-full p-1 pl-3 outline-none"
       />
     </div>
