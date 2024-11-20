@@ -15,7 +15,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) 
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="flex bg-gray-200 w-full rounded-t-lg shadow-md" onClick={handleInitialClick}>
+            <div className="flex bg-gray-200 text-black w-full rounded-t-lg shadow-md" onClick={handleInitialClick}>
                 {/* Render InitialComponent */}
                 <DropDownArrow
                     className=" cursor-pointer"

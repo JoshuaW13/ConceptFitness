@@ -3,7 +3,7 @@ import '../App.css';
 
 function Popup({ onClick, Content }) {
   return (
-    <div className="absolute top-12 right-0 bg-white shadow-lg rounded-lg p-4 z-10 flex flex-col text-sm">
+    <div className="absolute top-0 right-0 bg-white shadow-lg rounded p-2 z-10 flex flex-col text-sm">
       <div className="flex-grow mb-4"> {/* Flex-grow allows the content area to expand */}
         <Content />
       </div>
