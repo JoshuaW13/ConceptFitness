@@ -9,7 +9,7 @@ function ExerciseInfoHeader({onClick, exerciseName, exerciseEquipment, targetMus
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
     <div className='w-full'>
-      <div className='flex p-1 bg-gray-200 w-full rounded-t-lg font-semibold'>
+      <div className='flex p-1 w-full rounded-t-lg font-semibold'>
         <div className="flex flex-col rounded-lg w-[92%]" onClick={onClick}>
             <p className='flex text-lg rounded-t-lg justify-center'>{exerciseName}</p>
             <p className='flex pt-1 justify-center'>Equipment: {exerciseEquipment}</p>

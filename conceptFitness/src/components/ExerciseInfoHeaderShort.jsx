@@ -9,7 +9,7 @@ import ExerciseDataPopupSearch from "../components/ExerciseDataPopupSearch"
 function ExerciseInfoHeaderShort({onClick, exerciseName, exerciseEquipment}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
-    <div className='flex p-1 bg-gray-200 text-black w-full rounded-t-lg font-semibold'>
+    <div className='flex p-1 text-black w-full rounded-t-lg font-semibold'>
       <div className='flex flex-col rounded-lg w-[92%]'onClick={onClick}>
           <p className='text-lg rounded-t-lg'>{exerciseName}</p>
           <p className='text-base'>Equipment: {exerciseEquipment}</p>

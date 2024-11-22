@@ -38,7 +38,7 @@ function Programs() {
       <div className='w-full h-full flex flex-col items-center gap-2'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
         <SearchBar/>
-          <div className='h-[80%] w-[85%] flex flex-col bg-gray-200 gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
+          <div className='h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
               {ProgramLogs}
           </div>
       </div>

@@ -15,7 +15,7 @@ function ProgramLog({onClick}) {
   }
 
   return (
-    <div className='bg-gray-200 text-black w-full rounded-t-lg font-semibold'>
+    <div className='text-black w-full rounded-t-lg font-semibold'>
       <div className='flex rounded-t-lg w-full h-full p-1 items-center'>
         <div className='flex flex-col w-full'>
           <p className='text-lg w-[92%]' onClick={onClick}>Program Name</p>

@@ -4,9 +4,14 @@ import DropDownArrow from "@mui/icons-material/ArrowDropDown";
 
 function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps }) {
     const [isContentVisible, setIsContentVisible] = useState(false);
+    const [isPressed, setIsPressed] = useState(false);
 
-    const handleInitialClick = () => {
+    const handleClick = () => {
         setIsContentVisible(!isContentVisible);
+        setIsPressed(true);
+        console.log(isPressed)
+        setTimeout(() => {setIsPressed(false);}, 50); 
+        console.log(isPressed)
     };
 
     const InitialComponent = InitialComponentProp;
@@ -15,7 +20,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="flex bg-gray-200 text-black w-full rounded-t-lg shadow-md" onClick={handleInitialClick}>
+            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(212 221 223)', transition: 'background-color 0.1s ease'}} onClick={handleClick}>
                 {/* Render InitialComponent */}
                 <DropDownArrow
                     className=" cursor-pointer"
@@ -39,7 +44,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
                     }}
                 >
                     {hiddenComponentsArray.map((Component, index) => (
-                        <Component key={index} />
+                        <Component key={index} /> 
                     ))}
                 </div>
             )}
