@@ -8,23 +8,26 @@ import Programs from './pages/Programs.jsx';
 import SessionLogs from './pages/SessionLogs.jsx';
 import ExerciseLogs from './pages/ExerciseLogs.jsx';
 import SignUp from './pages/SignUp.jsx';
+import { ExerciseCatalogueProvider } from './contexts/ExerciseCatalogueContext.jsx';
 
 function App() {
   return (
     <Router>
-      <div className="w-[25vw] h-[90vh] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/session" element={<Session />} />
-          <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/sessionLogs" element={<SessionLogs />} />
-          <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-          <Route path="/signUp" element={<SignUp />} />
-        </Routes>
-      </div>
+      <ExerciseCatalogueProvider>
+        <div className="w-[25vw] h-[90vh] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/session" element={<Session />} />
+            <Route path="/catalogue" element={<Catalogue />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/sessionLogs" element={<SessionLogs />} />
+            <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+            <Route path="/signUp" element={<SignUp />} />
+          </Routes>
+        </div>
+      </ExerciseCatalogueProvider>
     </Router>
   );
 }

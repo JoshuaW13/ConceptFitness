@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import DropDownArrow from "@mui/icons-material/ArrowDropDown";
 
-function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) {
+function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps }) {
     const [isContentVisible, setIsContentVisible] = useState(false);
 
     const handleInitialClick = () => {
@@ -24,7 +24,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents }) 
                         transform: isContentVisible ? 'rotate(-90deg)' : 'rotate(0deg)', // Rotate when content is visible
                     }}
                 />
-                <InitialComponent />
+                {React.createElement(InitialComponent, InitialProps)}
                 
                 {/* Position the DropDownArrow absolutely to overlap */}
                 
