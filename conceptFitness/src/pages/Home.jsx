@@ -23,7 +23,6 @@ function Home() {
     navigate("/sessionLogs")
   }
 
-
   return (
       <div className='w-full h-full flex flex-col items-center text-black'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
