@@ -8,7 +8,7 @@ function ExerciseLog() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   return (
-    <div className="bg-gray-100 w-full rounded-lg shadow-md mb-4">
+    <div className="bg-gray-100 w-full rounded-lg shadow-md mb-4 relative">
       <div className="flex items-center justify-between bg-gray-200 p-3 rounded-lg">
         <p className="text-gray-700 text-sm font-medium">Exercise Name</p>
         <button
