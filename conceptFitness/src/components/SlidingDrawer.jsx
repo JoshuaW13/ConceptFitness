@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import ListIcon from '../assets/ListIcon.png'
 
-function SlidingDrawer({Content}) {
+function SlidingDrawer({Content, contentProps}) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -25,7 +25,7 @@ function SlidingDrawer({Content}) {
           >
           <img src={ListIcon} alt="" className="p-1" />
         </button>
-        <Content></Content>
+        {React.createElement(Content, contentProps)}
       </div>
       
     </>

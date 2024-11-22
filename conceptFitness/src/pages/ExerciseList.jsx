@@ -13,6 +13,7 @@ import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContex
 
 function ExerciseLists() {
   const { exercises } = useExerciseCatalogueContext();
+  const [plannedExercises, setPlannedExercises] = useState([])
 
   return (
     <div className="w-full h-full flex flex-col items-center relative gap-2">
@@ -29,7 +30,10 @@ function ExerciseLists() {
           />
         ))}
       </div>
-      <SlidingDrawer Content={CatalogueDrawerContent}></SlidingDrawer>
+      <SlidingDrawer 
+      Content={CatalogueDrawerContent}
+      contentProps={{plannedExercises: plannedExercises}}
+      ></SlidingDrawer>
     </div>
   );
 }
