@@ -10,7 +10,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
         setIsContentVisible(!isContentVisible);
         setIsPressed(true);
         console.log(isPressed)
-        setTimeout(() => {setIsPressed(false);}, 50); 
+        setTimeout(() => {setIsPressed(false);}, 100); 
         console.log(isPressed)
     };
 
@@ -20,7 +20,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(212 221 223)', transition: 'background-color 0.1s ease'}} onClick={handleClick}>
+            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(212 221 223)', transition: 'background-color 0.3s ease'}} onClick={handleClick}>
                 {/* Render InitialComponent */}
                 <DropDownArrow
                     className=" cursor-pointer"
