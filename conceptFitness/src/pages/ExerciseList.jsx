@@ -20,15 +20,13 @@ function ExerciseLists() {
   const [filteredExercises, setFilteredExercises] = useState([])
 
   const filterSearch = () => {
-    if(!searchState) {
-      console.log("Running")
+    if(!searchState && searchText != null) {
       exercises.forEach((exercise) => {        
-        if(exercise.name.toLowerCase().includes(searchText.toLowerCase()) || exercise.equipment.toLowerCase().includes(searchText.toLowerCase()) || exercise.targetMuscle.toLowerCase().includes(searchText.toLowerCase())) {
+        if(exercise.name.toLowerCase().replace(/\s/g, '').replace(/-/g, "").includes(searchText.toLowerCase().replace(/\s/g, '').replace(/-/g, "")) || exercise.equipment.toLowerCase().replace(/\s/g, '').replace(/-/g, "").includes(searchText.toLowerCase().replace(/\s/g, '').replace(/-/g, "")) || exercise.targetMuscle.toLowerCase().replace(/\s/g, '').replace(/-/g, "").includes(searchText.toLowerCase().replace(/\s/g, '').replace(/-/g, ""))) {
           filteredList.push(exercise)
       }}) 
       setFilteredExercises(filteredList)
       setSearchState(true)
-      console.log(filteredList)
     }
   }
 
