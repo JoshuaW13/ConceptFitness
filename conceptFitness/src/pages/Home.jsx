@@ -29,22 +29,22 @@ function Home() {
         <Calender className="flex-grow"></Calender>
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
           <div className='flex flex-row gap-2 flex-grow'>
-            <div className='flex flex-col w-[30%] gap-4 flex-grow'>
-              <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+            <div className='flex flex-col w-[40%] gap-4 flex-grow'>
+              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
                 onClick={navigateCatalogue} 
               >Exercises</button>
-              <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
                 onClick={navigatePrograms} 
               >Programs</button>
-              <button className='bg-gray-300 text-sm flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
-            <div className='w-[80%] bg-gray-300 rounded-lg flex-grow'>
-              Goals
+            <div className='w-[80%] bg-gray-300 rounded-lg flex-grow text-l font-semibold'>
+              <p className='pt-1'>Goals</p>
             </div>
           </div>
-          <button className='bg-gray-300 flex-grow-[0.25] hover:bg-gray-200 focus:outline-none'
+          <button className='bg-gray-300 text-2xl flex-grow-[0.3] hover:bg-gray-200 focus:outline-none'
             onClick={startSession}          
           >Start Session</button>
         </div>
