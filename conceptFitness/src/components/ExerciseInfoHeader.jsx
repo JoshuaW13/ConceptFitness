@@ -5,7 +5,7 @@ import Menu from "@mui/icons-material/Menu";
 import ExerciseDataPopup from "../components/ExerciseDataPopup"
 
 
-function ExerciseInfoHeader({onClick, exerciseName, exerciseEquipment, targetMuscle}) {
+function ExerciseInfoHeader({onClick, exerciseName, exerciseEquipment, targetMuscle, handleClick}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
     <div className='w-full'>
@@ -16,6 +16,7 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
         </div>
         <div className='flex flex-col justify-between relative'>
           <button 
+            onClick={handleClick}
             className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none" 
             >
             +

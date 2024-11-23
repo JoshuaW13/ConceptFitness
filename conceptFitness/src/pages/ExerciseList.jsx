@@ -16,6 +16,18 @@ function ExerciseLists() {
   const [searchText, setSearchText] = useState("");
   const [searchState, setSearchState] = useState(true);
   const [plannedExercises, setPlannedExercises] = useState([])
+
+  const planExercise = (key) => {
+    const exerciseToAdd = exercises.find((exercise) => exercise.id == key);
+  
+    const uniqueKey = `${exerciseToAdd.id}-${Date.now()}-${Math.random()}`;
+  
+    setPlannedExercises((prevExercises) => [
+      ...prevExercises,
+      { ...exerciseToAdd, id: uniqueKey },  // Add unique key to the exercise object
+    ]);
+  };
+  
   const filteredList = []
   const [filteredExercises, setFilteredExercises] = useState([])
 
@@ -49,7 +61,13 @@ function ExerciseLists() {
           key={exercise.id} // Use exercise.id directly as the key
           InitialComponent={ExerciseInfoHeader}
           HiddenComponents={ExerciseInfo}
-          InitialProps={{exerciseName: exercise.name, exerciseEquipment: exercise.equipment, targetMuscle: exercise.targetMuscle}}
+          InitialProps={{
+              exerciseName: exercise.name,
+              exerciseEquipment: exercise.equipment,
+              targetMuscle: exercise.targetMuscle,
+              handleClick: () => planExercise(exercise.id), // Pass the exercise.id as an argument
+            }}
+            
         />))}
       </div>
       <SlidingDrawer 
