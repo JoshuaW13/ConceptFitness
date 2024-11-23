@@ -20,12 +20,13 @@ function ExerciseLists() {
   const planExercise = (e, key) => {
     e.stopPropagation();
     const exerciseToAdd = exercises.find((exercise) => exercise.id == key);
-  
-    const uniqueKey = `${exerciseToAdd.id}-${Date.now()}-${Math.random()}`;
+    if(plannedExercises.some((exercise)=>exercise.id=== exerciseToAdd.id)){
+      return;
+    }  
   
     setPlannedExercises((prevExercises) => [
       ...prevExercises,
-      { ...exerciseToAdd, id: uniqueKey },  // Add unique key to the exercise object
+      { ...exerciseToAdd },  // Add unique key to the exercise object
     ]);
   };
   
