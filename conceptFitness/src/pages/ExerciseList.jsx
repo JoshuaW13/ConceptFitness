@@ -68,6 +68,9 @@ function ExerciseLists() {
               targetMuscle: exercise.targetMuscle,
               handleClick: (e) => planExercise(e, exercise.id), // Pass the exercise.id as an argument
             }}
+          HiddenProps={{
+            description: exercise.description
+          }}
             
         />))}
       </div>

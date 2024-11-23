@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import DropDownArrow from "@mui/icons-material/ArrowDropDown";
 
-function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps }) {
+function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps , HiddenProps}) {
     const [isContentVisible, setIsContentVisible] = useState(false);
     const [isPressed, setIsPressed] = useState(false);
 
@@ -43,8 +43,8 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
                         transform: isContentVisible ? 'translateY(0)' : 'translateY(-10px)',
                     }}
                 >
-                    {hiddenComponentsArray.map((Component, index) => (
-                        <Component key={index} /> 
+                     {hiddenComponentsArray.map((Component, index) => (
+                        React.createElement(Component, { ...HiddenProps, key: index })
                     ))}
                 </div>
             )}
