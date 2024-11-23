@@ -17,7 +17,8 @@ function ExerciseLists() {
   const [searchState, setSearchState] = useState(true);
   const [plannedExercises, setPlannedExercises] = useState([])
 
-  const planExercise = (key) => {
+  const planExercise = (e, key) => {
+    e.stopPropagation();
     const exerciseToAdd = exercises.find((exercise) => exercise.id == key);
   
     const uniqueKey = `${exerciseToAdd.id}-${Date.now()}-${Math.random()}`;
@@ -65,7 +66,7 @@ function ExerciseLists() {
               exerciseName: exercise.name,
               exerciseEquipment: exercise.equipment,
               targetMuscle: exercise.targetMuscle,
-              handleClick: () => planExercise(exercise.id), // Pass the exercise.id as an argument
+              handleClick: (e) => planExercise(e, exercise.id), // Pass the exercise.id as an argument
             }}
             
         />))}
