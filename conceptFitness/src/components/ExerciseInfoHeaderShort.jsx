@@ -6,7 +6,14 @@ import SearchIcon from "../assets/SearchIcon.png"
 import ExerciseDataPopupSearch from "../components/ExerciseDataPopupSearch"
 
 
-function ExerciseInfoHeaderShort({onClick, exerciseName, exerciseEquipment}) {
+function ExerciseInfoHeaderShort({id, onClick, exerciseName, exerciseEquipment, plannedExercises, setPlannedExercises}) {
+
+  const removeExercise = (id) => {
+    setPlannedExercises((prevExercises) =>
+      prevExercises.filter(exercise => exercise.id !== id)
+    );
+  };
+
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
     <div className='flex p-1 text-black w-full rounded-t-lg font-semibold'>
@@ -17,6 +24,7 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
       <div className='flex flex-col justify-between'>
         <button 
           className="text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none"
+          onClick={()=>removeExercise(id)}
           >
           -
         </button>

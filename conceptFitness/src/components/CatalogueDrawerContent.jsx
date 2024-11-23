@@ -7,7 +7,7 @@ import ExerciseInfoHeaderShort from '../components/ExerciseInfoHeaderShort';
 import ExerciseInfoShort from '../components/ExerciseInfoShort';
 import { useNavigate } from 'react-router-dom';
 
-function CatalogueDrawerContent({plannedExercises}) {
+function CatalogueDrawerContent({plannedExercises, setPlannedExercises}) {
   const navigate = useNavigate();
 
   const navigatePrograms = () =>{
@@ -32,8 +32,11 @@ function CatalogueDrawerContent({plannedExercises}) {
         {plannedExercises.map((exercise)=>(
           <div className='p-0.5' key={exercise.id}>
             <ExerciseInfoHeaderShort 
+            id={exercise.id}
             exerciseName={exercise.name}
-            exerciseEquipment={exercise.equipment}            
+            exerciseEquipment={exercise.equipment}
+            plannedExercises={plannedExercises}  
+            setPlannedExercises={setPlannedExercises}
             ></ExerciseInfoHeaderShort>
             <ExerciseInfoShort
             targetMuscle={exercise.targetMuscle}

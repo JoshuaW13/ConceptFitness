@@ -72,7 +72,7 @@ function ExerciseLists() {
       </div>
       <SlidingDrawer 
       Content={CatalogueDrawerContent}
-      contentProps={{plannedExercises: plannedExercises}}
+      contentProps={{plannedExercises: plannedExercises, setPlannedExercises: setPlannedExercises}}
       ></SlidingDrawer>
     </div>
   );
