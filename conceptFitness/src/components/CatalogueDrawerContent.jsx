@@ -34,9 +34,13 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
   }, []);
 
   // Using useSensors to add both touch and pointer sensors
-  const sensors = useSensors(
-    useSensor(TouchSensor)     // Touch sensor for mobile/tablet
-  );
+  const sensors = useSensors(useSensor(TouchSensor, {
+    // Press delay of 250ms, with tolerance of 5px of movement
+    activationConstraint: {
+      delay: 1000,
+      tolerance: 5,
+    },
+  }));
 
   return (
     <div className="p-3 h-[85%]">
