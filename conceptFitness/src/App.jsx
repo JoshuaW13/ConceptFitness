@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <ExerciseCatalogueProvider>
-        <div className="w-[25vw] h-[90vh] bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+        <div className="sm:aspect-[9/16] sm:h-[90vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
