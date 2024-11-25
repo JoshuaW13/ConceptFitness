@@ -9,6 +9,7 @@ import SessionLogs from './pages/SessionLogs.jsx';
 import ExerciseLogs from './pages/ExerciseLogs.jsx';
 import SignUp from './pages/SignUp.jsx';
 import { ExerciseCatalogueProvider } from './contexts/ExerciseCatalogueContext.jsx';
+import Settings from './pages/Settings.jsx';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/programs" element={<Programs />} />
             <Route path="/sessionLogs" element={<SessionLogs />} />
             <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/signUp" element={<SignUp />} />
           </Routes>
         </div>
