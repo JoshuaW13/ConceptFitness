@@ -69,10 +69,14 @@ function Session() {
             </div>
             <p className='text-sm'>A push-up is a common exercise used in strength training to build upper body strength.</p>
           </div>
+          
+
 
           {/* Workout Exercises List */}
-          <div className='workout-list bg-gray-200 p-4 rounded-md'>
-            <h3 className='text-lg font-bold mb-2'>Workout Exercises</h3>
+
+          <div className="workout-list bg-gray-200 p-4 rounded-md shadow-md">
+            <h3 className="text-lg font-bold mb-4">Workout Exercises</h3>
+            <div className="workout-items flex flex-col gap-4"></div>
             <CatalogueDrawerContent />
           </div>
         </div>
