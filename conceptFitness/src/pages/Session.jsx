@@ -69,14 +69,10 @@ function Session() {
             </div>
             <p className='text-sm'>A push-up is a common exercise used in strength training to build upper body strength.</p>
           </div>
-          
-
 
           {/* Workout Exercises List */}
-
-          <div className="workout-list bg-gray-200 p-4 rounded-md shadow-md">
-            <h3 className="text-lg font-bold mb-4">Workout Exercises</h3>
-            <div className="workout-items flex flex-col gap-4"></div>
+          <div className='workout-list bg-gray-200 p-4 rounded-md overflow-y-auto' style={{ maxHeight: '40vh' }}>
+            <h3 className='text-lg font-bold mb-2'>Workout Exercises</h3>
             <CatalogueDrawerContent />
           </div>
         </div>
@@ -91,7 +87,6 @@ function Session() {
             <ExerciseLog />
             <ExerciseLog />
             <ExerciseLog />
-            {/* Add more ExerciseLogs here to test scrolling */}
           </div>
         )} />
       </div>

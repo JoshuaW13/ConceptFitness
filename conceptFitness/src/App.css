@@ -159,4 +159,57 @@
   .video-placeholder {
     height: 200px;
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+.sortable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sortable-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.sortable-item.dragging {
+  opacity: 0.5;
+}
+
+.sortable-item-content {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* CSS: Disable scrolling while dragging */
+
+
+/* Ensure the container holding draggable items behaves correctly on touch devices */
+.drag-container {
+  -webkit-user-drag: none; /* Disable image dragging on touch devices */
+  user-select: none;       /* Prevent text selection while dragging */
+}
+
+/* Add some touch-friendly styles for the items being dragged */
+.dragging {
+  touch-action: none;  /* Disable scrolling while dragging */
+  user-select: none;    /* Prevent text selection while dragging */
+  cursor: grabbing;     /* Change cursor to grabbing when dragging */
+  opacity: 0.5;         /* Reduce opacity during dragging */
+  transform: scale(1.05); /* Slight scaling effect to indicate dragging */
+}
+
+/* Ensure smooth transitions during drag */
+* {
+  transition: all 0.2s ease;
+}
+
+
+>>>>>>> 16d22ecb49235147963f482a07f1360ad363c49a

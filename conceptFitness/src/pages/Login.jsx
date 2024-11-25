@@ -3,14 +3,19 @@ import viteLogo from "/ConceptFitnessLogo.png";
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
-
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate("/home");
+    };
+    
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        navigate("/signUp");
     };
 
   return (
@@ -19,30 +24,26 @@ function Login() {
             <img src={viteLogo} alt="" className="h-full w-auto " />
         </div>
         <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
-        <h2 className="text-xl mb-4">Login</h2>
+        <h2 className="text-xl text-black mb-4">Login</h2>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="email">
-            Email
-          </label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border rounded w-full py-2 px-3"
+            placeholder='Email/Username'
+            className="bg-white text-black border border-black rounded w-full py-2 px-3"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="password">
-            Password
-          </label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border rounded w-full py-2 px-3"
+            placeholder='Password'
+            className="bg-white text-black border border-black rounded w-full py-2 px-3"
             required
           />
         </div>
@@ -51,6 +52,10 @@ function Login() {
           className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
         >
           Login
+        </button>
+        <p className='text-black m-2'>Don't have an account?</p>
+        <button onClick={handleSignUp} className='bg-white text-blue-500 hover-underline'>
+          Sign Up
         </button>
       </form>
       </div>
