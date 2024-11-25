@@ -159,10 +159,6 @@
   .video-placeholder {
     height: 200px;
   }
-<<<<<<< HEAD
-}
-=======
-}
 
 .sortable-list {
   display: flex;
@@ -211,5 +207,4 @@
   transition: all 0.2s ease;
 }
 
-
->>>>>>> 16d22ecb49235147963f482a07f1360ad363c49a
+}
