@@ -2,8 +2,10 @@ import '../App.css'
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Calender() {
+  const navigate = useNavigate();
   var firstDate = new Date()
   var lastDate = new Date()
   const [firstDay, setFirstDay] = useState("")
@@ -30,6 +32,10 @@ function Calender() {
     lastDate.setTime(firstDate.getTime() + (6 * 86400000))
     setLastDay(lastDate.toDateString().substring(4, 10))
     console.log(lastDate)
+  }
+
+  const navigatePrograms = () =>{
+    navigate("/programs")
   }
 
   useEffect(() => {
@@ -84,26 +90,47 @@ function Calender() {
         </div>
       </div>
       <div className='flex h-full w-[350%]'>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
-        <div className='h-full w-full border-black border-2'>
-          
+        <div className='relative h-full w-full border-black border-2'>
+          <p>Test</p>
+          <div>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+          </div>
         </div>
       </div>
     </div>

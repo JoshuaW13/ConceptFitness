@@ -4,7 +4,7 @@ import '../App.css';
 function SessionLog({ onClick }) {
   return (
     <div
-      className="bg-gray-200 w-full rounded-t-lg font-semibold"
+      className="w-full rounded-t-lg font-semibold"
       onClick={onClick}
     >
       <p className="text-sm text-gray-800 p-3 rounded-t-lg">
