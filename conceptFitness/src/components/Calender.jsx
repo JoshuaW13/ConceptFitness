@@ -3,6 +3,9 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Popup_Bot from './Popup_Bot';
+import Menu from "@mui/icons-material/Menu";
+import CalenderPopup from "../components/CalenderPopup";
 
 function Calender() {
   const navigate = useNavigate();
@@ -11,6 +14,8 @@ function Calender() {
   const [firstDay, setFirstDay] = useState("")
   const [lastDay, setLastDay] = useState("")
   const [currDay, setCurrDay] = useState(0)
+
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const currDate = () => {
     var curr = new Date; 
@@ -62,7 +67,7 @@ function Calender() {
       <div className='flex h-[20%] w-[350%]'>
         <div className='relative h-full w-full border-black border-2'>
           <p className='text-l font-semibold'>Sunday</p>
-          <p className='absolute -top-1 right-0.5 text-black '>{firstDay.slice(-2)}</p>
+          <p className='absolute -top-1 right-0.5 text-black '>{parseInt(firstDay.slice(-2)) + 0}</p>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p className='text-l font-semibold'>Monday</p>
@@ -89,49 +94,100 @@ function Calender() {
           <p className='absolute -top-1 right-0.5 text-black '>{parseInt(firstDay.slice(-2)) + 6}</p>
         </div>
       </div>
-      <div className='flex h-full w-[350%]'>
+      <div className='relative flex h-full w-[350%]'>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
         <div className='relative h-full w-full border-black border-2'>
           <p>Test</p>
           <div>
-            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300' onClick={navigatePrograms}>+</button>
+            <button className='absolute h-6 w-6 bottom-0.5 right-0.5 bg-gray-300'
+              onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+                event.stopPropagation();  // Prevent the event from bubbling up to the parent
+              }}
+              >
+              <Menu />
+            </button>
           </div>
         </div>
+        {isPopupVisible && (
+        <Popup_Bot
+          onClick={(event) => {
+            event.stopPropagation();  // Prevent the event from bubbling up to the parent
+            setIsPopupVisible(false);  // Close the popup
+          }} 
+          Content={CalenderPopup} 
+        />
+        )}
       </div>
     </div>
   )
