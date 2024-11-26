@@ -91,6 +91,8 @@ const SortableItem = ({ exercise, activeItem, setPlannedExercises, plannedExerci
   // Add appropriate styling for touch interactions
   const draggingClass = isDragging ? 'dragging' : '';
 
+ 
+
   return (
     <div
       ref={setNodeRef}
@@ -109,6 +111,12 @@ const SortableItem = ({ exercise, activeItem, setPlannedExercises, plannedExerci
         exerciseEquipment={exercise.equipment}
         plannedExercises={plannedExercises}
         setPlannedExercises={setPlannedExercises}
+        onRemove={()=>{
+          const id = exercise.id
+          setPlannedExercises((prevExercises) =>
+            prevExercises.filter(exercise => exercise.id !== id)
+          );
+        }}
       />
       <ExerciseInfoShort targetMuscle={exercise.targetMuscle} />
     </div>

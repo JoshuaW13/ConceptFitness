@@ -19,8 +19,21 @@ export const ProgramProvider = ({ children }) => {
     setPrograms((prevPrograms) => prevPrograms.filter(ex => ex.id !== id));
   };
 
+  const removeExerciseFromProgram = (programId, exerciseId) => {
+    setPrograms((prevPrograms) => {
+      return prevPrograms.map((program) => {
+        if (program.id === programId) {
+          // Remove the exercise from the program's exercises array
+          const updatedExercises = program.exercises.filter((exercise) => exercise !== exerciseId);
+          return { ...program, exercises: updatedExercises };
+        }
+        return program;
+      });
+    });
+  };
+
   return (
-    <ProgramContext.Provider value={{ programs, addProgram, removeProgram }}>
+    <ProgramContext.Provider value={{ programs, addProgram, removeProgram, removeExerciseFromProgram }}>
       {children}
     </ProgramContext.Provider>
   );
