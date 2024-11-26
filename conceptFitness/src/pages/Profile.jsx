@@ -10,6 +10,7 @@ import StatisticsWindow from '../components/StatisticsWindow'
 import editIcon from '../assets/EditIcon.png'
 import ProfileInfo from '../components/ProfileInfo'
 import ProfileInputs from '../components/ProfileInputs'
+// import SettingsPopup from '../components/SettingsPopup'
 
 function Profile() {
 
@@ -41,10 +42,6 @@ function Profile() {
     setActiveTab(tab)
   }
 
-  // const handleTabClick = (tab) => {
-  //   setActiveTab(tab); // Set active button/tab
-  // };
-
   const handleEdit = () => {
     setShowProfileInfo(false)
     setShowProfileInput(true)    
@@ -68,8 +65,9 @@ function Profile() {
   }, []);
 
   return (
-    <div className='background'>
-        <NavBar FirstButton={HomeButton} SecondButton={SettingsButton}></NavBar>
+    // very outer div on profile page has background class from App.css and makes the background relative
+    <div className='background relative background'>
+        <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
           <div className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
             <div>
@@ -87,10 +85,6 @@ function Profile() {
               onClick={() => handleGoals('Goals')}>Goals</button>
               <button className={`button profile-page-button ${activeTab === "Statistics" ? "bg-[#E85A4F]" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
-              {/* <button className='button profile-page-button'
-              onClick={handleGoals}>Goals</button>
-              <button className='button profile-page-button'
-              onClick={handleStatistics}>Statistics</button> */}
           </div>
           {showMetrics && <MetricsWindow />}
           {showGoals && <GoalsWindow />}

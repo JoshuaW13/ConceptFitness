@@ -1,22 +1,39 @@
 import React from 'react'
 import '../App.css'
 import settingsLogo from '/settings.svg'
-import { useNavigate } from 'react-router-dom';
+import SettingsPopup from '../components/SettingsPopup'
+import { useState } from 'react'
+
+// import { useNavigate } from 'react-router-dom';
 
 
 function SettingsButton() {
-  const navigate = useNavigate();
-  const handleClick = ()=>{
-    navigate("/settings")
+  // const navigate = useNavigate();
+  // const handleClick = ()=>{
+  //   navigate("/settings")
+  // }
+
+  const [showSettings, setShowSettings] = useState(false)
+
+  const handleSettings = () => {
+    setShowSettings(true)
+  }
+
+  const handleSettingsClose = () => {
+    setShowSettings(false)
   }
 
   return (
-    <button className="text-black text-lg font-bold w-1/4 h-10 flex items-center justify-center hover:bg-gray-200 focus:outline-none"
-      style={{ backgroundColor: '#EAE7DC' }}
-      onClick={handleClick}
-    >
-        <img src={settingsLogo} alt="" className="p-6" />
-    </button>
+    <div className='w-1/4 h-10 flex items-center justify-center'>
+        <button className="h-10 font-bold hover:bg-gray-200 focus:outline-none flex items-center justify-center"
+          style={{ backgroundColor: '#EAE7DC' }}
+          onClick={handleSettings}
+        >
+            <img src={settingsLogo} alt="" className="p-6" />
+        </button>
+    
+        {showSettings && <SettingsPopup onClose={handleSettingsClose}/>}
+    </div>
   )
 }
 
