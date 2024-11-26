@@ -9,27 +9,30 @@ import SessionLogs from './pages/SessionLogs.jsx';
 import ExerciseLogs from './pages/ExerciseLogs.jsx';
 import SignUp from './pages/SignUp.jsx';
 import { ExerciseCatalogueProvider } from './contexts/ExerciseCatalogueContext.jsx';
+import {ProgramProvider} from "./contexts/ProgramsContext";
 import Settings from './pages/Settings.jsx';
 
 function App() {
   return (
     <Router>
-      <ExerciseCatalogueProvider>
-        <div className="sm:aspect-[9/16] sm:h-[90vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/session" element={<Session />} />
-            <Route path="/catalogue" element={<Catalogue />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/sessionLogs" element={<SessionLogs />} />
-            <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/signUp" element={<SignUp />} />
-          </Routes>
-        </div>
-      </ExerciseCatalogueProvider>
+      <ProgramProvider>
+        <ExerciseCatalogueProvider>
+          <div className="sm:aspect-[9/16] sm:h-[90vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/session" element={<Session />} />
+              <Route path="/catalogue" element={<Catalogue />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/sessionLogs" element={<SessionLogs />} />
+              <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/signUp" element={<SignUp />} />
+            </Routes>
+          </div>
+        </ExerciseCatalogueProvider>
+      </ProgramProvider>
     </Router>
   );
 }

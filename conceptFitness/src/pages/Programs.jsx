@@ -8,8 +8,13 @@ import ExerciseInfoHeaderShort from '../components/ExerciseInfoHeaderShort'
 import ProgramLog from '../components/ProgramLog';
 import DropDown from '../components/DropDown';
 import SearchBar from '../components/SearchBar';
+import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import {useProgramContext} from "../contexts/ProgramsContext";
+
 
 function Programs() {
+  const { exercises } = useExerciseCatalogueContext();
+  const {programs} = useProgramContext();
   const ProgramLogs = [];
   const exerciseLists = [];
 
@@ -39,7 +44,18 @@ function Programs() {
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
         <SearchBar/>
           <div className='h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
-              {ProgramLogs}
+              {programs.map((program)=>{
+                return (<DropDown
+                key={program.id}
+                InitialComponent={ProgramLog}
+                HiddenComponents={exerciseLists} 
+                InitialProps={{
+                  name:program.name,
+                  tags: program.tags,
+                  numExercises: exerciseLists.length
+                }}
+            />)
+              })}
           </div>
       </div>
   );
