@@ -52,7 +52,7 @@ function Programs() {
                 InitialProps={{
                   name:program.name,
                   tags: program.tags,
-                  numExercises: exerciseLists.length
+                  numExercises: program.exercises.length
                 }}
             />)
               })}
