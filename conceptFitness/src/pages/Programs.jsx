@@ -33,6 +33,9 @@ function Programs() {
           exerciseEquipment: exercise.equipment,
           onRemove: onRemove, 
         }}
+        HiddenProps={{
+          description: exercise.description
+        }}
       />;
   };
 
