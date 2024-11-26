@@ -11,7 +11,8 @@ function SettingsButton() {
   }
 
   return (
-    <button className="text-black text-lg font-bold w-1/4 bg-gray-300 h-10 flex items-center justify-center hover:bg-gray-200 focus:outline-none"
+    <button className="text-black text-lg font-bold w-1/4 h-10 flex items-center justify-center hover:bg-gray-200 focus:outline-none"
+      style={{ backgroundColor: '#EAE7DC' }}
       onClick={handleClick}
     >
         <img src={settingsLogo} alt="" className="p-6" />
