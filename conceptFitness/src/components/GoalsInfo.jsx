@@ -4,10 +4,10 @@ import '../App.css'
 function GoalsInfo( {data} ) {
     return (
         <div className='flex justify-between px-4'>
-            <div className='flex flex-col items-start justify-center h-full pl-4 pb-4 gap-4'>
+            <div className='flex flex-col items-start justify-center h-full pl-2 pb-4 gap-4'>
                 <p>Goal</p>
-                <p>Current Weight</p>
-                <p>Target Weight</p>
+                <p>Current Weight (lbs)</p>
+                <p>Target Weight (lbs) </p>
                 <p>Target Date</p>
             </div>
             <div className='flex flex-col items-end justify-center h-full pr-4 pb-4 gap-4'>
