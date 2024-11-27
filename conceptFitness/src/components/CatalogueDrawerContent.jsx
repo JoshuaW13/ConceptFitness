@@ -45,9 +45,8 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
   return (
     <div className="p-3 h-[85%]">
       <div className="flex flex-row justify-between m-2">
-        <button type="text" className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg">
-          Program Name
-        </button>
+        <input type="text" placeholder="Edit Program Name Here" className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg rounded-md">
+        </input>
         <button className='w-[11%] bg-gray-300' onClick={navigatePrograms}>
           <img src={BookIcon} alt="" className="p-1" />
         </button>
