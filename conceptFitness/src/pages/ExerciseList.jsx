@@ -16,6 +16,7 @@ function ExerciseLists() {
   const [searchText, setSearchText] = useState("");
   const [searchState, setSearchState] = useState(true);
   const [plannedExercises, setPlannedExercises] = useState([])
+  const[tags, setTags]=useState([]);
 
   const planExercise = (e, key) => {
     e.stopPropagation();
@@ -77,7 +78,11 @@ function ExerciseLists() {
       </div>
       <SlidingDrawer 
       Content={CatalogueDrawerContent}
-      contentProps={{plannedExercises: plannedExercises, setPlannedExercises: setPlannedExercises}}
+      contentProps={{plannedExercises: plannedExercises, 
+        setPlannedExercises: setPlannedExercises,
+        tags: tags,
+        setTags: setTags,
+      }}
       ></SlidingDrawer>
     </div>
   );

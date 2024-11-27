@@ -11,11 +11,10 @@ import ExerciseInfoShort from '../components/ExerciseInfoShort';
 import { useNavigate } from 'react-router-dom';
 import Tag from '../components/Tag';
 
-function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
+function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, setTags }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(null); // Track which item is currently hovered over
   const [inputTag, setInputTag] = useState("");
-  const[tags, setTags]=useState([]);
 
   const navigatePrograms = () => {
     navigate("/programs");
@@ -75,7 +74,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
             <Tag key={index} text={tag} removable={true}
             onRemove={()=>{
               setTags((prevTags) =>
-                prevTags.filter(tag => tag !== tag)
+                prevTags.filter(text => text !== tag)
               );
             }}
             >
