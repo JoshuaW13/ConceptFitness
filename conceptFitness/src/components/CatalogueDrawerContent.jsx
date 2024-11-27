@@ -53,7 +53,6 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
   };
 
   const addTag = ()=>{
-    console.log("Adding tag!"+inputTag);
     setTags((prevTags) => [...prevTags, inputTag]);
   }
 
@@ -70,10 +69,16 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
           <img src={BookIcon} alt="" className="p-1" />
         </button>
       </div>
-      <div className='overflow-x-auto h-[5%] flex gap-1 justify-center'>
+      <div className='overflow-x-auto scrollbar-hidden h-[5%] flex gap-1'>
         {
           tags.map((tag, index)=>(
-            <Tag key={index} text={tag}>
+            <Tag key={index} text={tag} removable={true}
+            onRemove={()=>{
+              setTags((prevTags) =>
+                prevTags.filter(tag => tag !== tag)
+              );
+            }}
+            >
             </Tag>
           ))
         }
