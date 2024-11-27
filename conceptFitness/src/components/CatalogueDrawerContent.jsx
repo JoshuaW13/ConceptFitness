@@ -90,7 +90,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
         sensors={sensors}  // Using both Pointer and Touch sensors
       >
         <SortableContext items={plannedExercises.map((exercise) => exercise.id)} strategy={verticalListSortingStrategy}>
-          <div className='w-[93%] flex-grow max-h-[78%] bg-gray-200 flex flex-col rounded-lg gap-2 overflow-y-auto m-3 scrollbar-hidden'>
+          <div className='w-[93%] flex-grow h-[78%] bg-gray-200 flex flex-col rounded-lg gap-2 overflow-y-auto m-3 scrollbar-hidden'>
             {plannedExercises.map((exercise) => (
               <SortableItem
                 key={exercise.id}
