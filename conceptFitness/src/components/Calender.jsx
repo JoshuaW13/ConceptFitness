@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import CalenderBox from "../components/CalenderBox"
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useCalendarContext } from '../contexts/CalendarContext';
+import dayjs from 'dayjs'
 
 function Calender() {
   const navigate = useNavigate();
@@ -15,26 +16,26 @@ function Calender() {
   const [firstDay, setFirstDay] = useState("")
   const [lastDay, setLastDay] = useState("")
   const [currDay, setCurrDay] = useState(0)
-  const {days, addProgramToDay, removeProgramFromDay} = useProgramContext();
+  // const {days, addProgramToDay, removeProgramFromDay} = useCalendarContext();
 
   const currDate = () => {
-    var curr = new Date; 
-    firstDate.setDate(curr.getDate() - curr.getDay())
-    lastDate.setDate(firstDate.getDate() + 6)
+    var curr = dayjs()
+    firstDate = (curr.subtract(curr.day(), 'days')).toDate()
+    lastDate = (dayjs(firstDate).add(6, 'days')).toDate()
 
-    setFirstDay(firstDate.toDateString().substring(4, 10))
-    setLastDay(lastDate.toDateString().substring(4, 10))
-    setCurrDay(curr.getDay())
+    setFirstDay(dayjs(firstDate).format('MMM D'))
+    setLastDay(dayjs(lastDate).format('MMM D'))
+    setCurrDay(curr.day())
   }
 
   const changeWeek = () => {
-    firstDate.setTime(firstDate.getTime() + (7 * 86400000))
-    setFirstDay(firstDate.toDateString().substring(4, 10))
+    console.log(firstDate)
+    firstDate = (dayjs(firstDate).add(7, 'days')).toDate()
+    setFirstDay(dayjs(firstDate).format('MMM D'))
     console.log(firstDate)
 
-    lastDate.setTime(firstDate.getTime() + (6 * 86400000))
-    setLastDay(lastDate.toDateString().substring(4, 10))
-    console.log(lastDate)
+    lastDate = (dayjs(firstDate).add(6, 'days')).toDate()
+    setLastDay(dayjs(lastDate).format('MMM D'))
   }
 
   const generateCalender = () => {
@@ -61,16 +62,16 @@ function Calender() {
 
   return (
     <div className="w-[90%] h-[35%] bg-gray-50 rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 border-gray border-2 overflow-x-auto scrollbar-none">        
-      <div className='flex sticky top-0 w-full left-0 align-middle items-center justify-between pb-1'>
-        <button className='flex bg-gray-300 w-8 h-8 justify-center items-center' onClick={changeWeek((-1))}>
+      <div className='flex sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between pb-1'>
+        <button className='flex bg-gray-300 w-8 h-8 justify-center items-center'>
           <ArrowLeftIcon fontSize='large'/>
         </button>
         <p className='text-2xl font-semibold pb-1'>{firstDay} - {lastDay} </p>
-        <button className='flex bg-gray-300 w-8 h-8 justify-center items-center' onClick={changeWeek((1))}>
+        <button className='flex bg-gray-300 w-8 h-8 justify-center items-center' onClick={changeWeek}>
           <ArrowRightIcon fontSize='large'/>
         </button>
       </div>
-      <div id="calendar" className='flex h-full w-[400%]'>
+      <div id="calendar" className='flex h-full w-[325%]'>
         {generateCalender()}
       </div>
     </div>
