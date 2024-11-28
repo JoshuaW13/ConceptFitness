@@ -13,10 +13,9 @@ import { useProgramContext } from "../contexts/ProgramsContext";
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 import { useLocation } from 'react-router-dom';
 
-function ExerciseLists({route}) {
+function ExerciseLists() {
   const location = useLocation(); // Access the location object
   const { programToEditId } = location.state || {}; // Retrieve the programToEditId from the state
-  console.log("The program we are editing is ", programToEditId);
   const { exercises } = useExerciseCatalogueContext();
   const [searchText, setSearchText] = useState("");
   const [searchState, setSearchState] = useState(true);
@@ -28,17 +27,43 @@ function ExerciseLists({route}) {
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
 
-  const planExercise = (e, key) => {
-    e.stopPropagation();
-    const exerciseToAdd = exercises.find((exercise) => exercise.id === key);
-    if (plannedExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
+
+  const prepareProgramToEdit = () =>{
+    if(programToEditId===undefined){
       return;
     }
+    const programToEdit = programs.find((program)=>program.id===programToEditId);
+    setProgramName(programToEdit.name)
+    for(let i=0;i<programToEdit.exercises.length;i++){
+      planExercise(programToEdit.exercises[i]);
+    }
+    for(let i=0;i<programToEdit.tags.length;i++){
+      addTag(programToEdit.tags[i]);
+    }
+  }
 
-    setPlannedExercises((prevExercises) => [
-      ...prevExercises,
-      { ...exerciseToAdd },  // Add unique key to the exercise object
-    ]);
+  const addTag = (tagToAdd)=>{
+    if(!tagToAdd) return;
+    setTags((prevTags)=>{
+      if (tags.some((tag) => tag === tagToAdd)) {
+        return prevTags;
+      }
+      return [...prevTags, tagToAdd];
+    })
+  }
+
+  const planExercise = (key) => {
+    const exerciseToAdd = exercises.find((exercise) => exercise.id === key);
+    if (!exerciseToAdd) return;  // Ensure the exercise exists
+  
+    // Directly check for duplicates before updating state
+    setPlannedExercises((prevExercises) => {
+      // Avoid adding if the exercise is already in the planned exercises list
+      if (prevExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
+        return prevExercises;
+      }
+      return [...prevExercises, exerciseToAdd];
+    });
   };
 
   const filteredList = []
@@ -80,6 +105,11 @@ function ExerciseLists({route}) {
     };
   }, []);
 
+  useEffect(()=>{
+    console.log("Adding exercises!");
+    prepareProgramToEdit();
+  }, [programToEditId])
+
   const saveProgram = (currentPlannedExercises, currentTags, name) => {
     if (currentPlannedExercises.length === 0) {
       return;
@@ -110,7 +140,10 @@ function ExerciseLists({route}) {
               exerciseName: exercise.name,
               exerciseEquipment: exercise.equipment,
               targetMuscle: exercise.targetMuscle,
-              handleClick: (e) => planExercise(e, exercise.id), // Pass the exercise.id as an argument
+              handleClick: (e) => {
+                e.stopPropagation()
+                planExercise(exercise.id)
+              }, // Pass the exercise.id as an argument
             }}
             HiddenProps={{
               description: exercise.description
