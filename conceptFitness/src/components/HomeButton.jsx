@@ -12,7 +12,8 @@ function HomeButton() {
 
   return (
     <button 
-      className="text-black text-lg font-bold w-1/4 bg-gray-300 h-10 flex items-center justify-center hover:bg-gray-200 focus:outline-none p-1"
+      className="text-black text-lg font-bold w-1/4 h-10 flex items-center justify-center focus:outline-none p-1"
+      // style={{ backgroundColor: '#EAE7DC' }}
       onClick={handleClick}
     >
       <img 
