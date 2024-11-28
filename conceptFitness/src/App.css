@@ -104,9 +104,10 @@
 
 /* Main scrollable container */
 .scrollable-container {
-  height: 100vh;  
-  overflow-y: auto;  
-  padding-bottom: 1rem;  
+  flex-grow: 1; /* Let it expand to take remaining space */
+  height: calc(100vh - 80px); /* Subtract fixed header height if needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 1rem; /* Optional padding */
   box-sizing: border-box;
 }
 
@@ -130,6 +131,25 @@
 .triangle-right {
   border-left: 30px solid black;
 }
+.exercise-list {
+  max-height: 300px;  
+  overflow-y: auto;  
+}
+.exercise-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.exercise-item:hover {
+  background-color: #f0f0f0;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
 /* Workout Exercises Container */
 .workout-list {
   display: flex;
