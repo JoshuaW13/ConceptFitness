@@ -3,14 +3,15 @@ import '../App.css'
 import { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import HomeButton from '../components/HomeButton'
-import SettingsButton from '../components/SettingsButton'
+// import SettingsButton from '../components/SettingsButton'
+import settingsLogo from '/settings.svg'
 import MetricsWindow from '../components/MetricsWindow'
 import GoalsWindow from '../components/GoalsWindow'
 import StatisticsWindow from '../components/StatisticsWindow'
 import editIcon from '../assets/EditIcon.png'
 import ProfileInfo from '../components/ProfileInfo'
 import ProfileInputs from '../components/ProfileInputs'
-// import SettingsPopup from '../components/SettingsPopup'
+import SettingsPopup from '../components/SettingsPopup'
 
 function Profile() {
 
@@ -20,6 +21,9 @@ function Profile() {
   const [showProfileInfo, setShowProfileInfo] = useState(true)
   const [showProfileInput, setShowProfileInput] = useState(false)
   const [activeTab, setActiveTab] = useState('')
+  const [showSettings, setShowSettings] = useState(false)
+  const [unitSystem, setUnitSystem] = useState('metric')
+
 
   const handleMetrics = (tab) =>{
     setShowMetrics(true)
@@ -56,6 +60,18 @@ function Profile() {
     setShowProfileInput(false)
     setShowProfileInfo(true)
   }
+  
+  const handleSettings = () => {
+    setShowSettings(true)
+  }
+
+  const handleSettingsClose = () => {
+    setShowSettings(false)
+  }
+
+  const handleUnitChange = (newUnit) => {
+    setUnitSystem(newUnit)
+  }
 
   useEffect(() => {
     const savedData = sessionStorage.getItem('profileData');
@@ -63,6 +79,21 @@ function Profile() {
         setProfileData(JSON.parse(savedData));
     }
   }, []);
+
+  function SettingsButton() {
+    return (
+      <div className='w-1/4 h-10 flex items-center justify-center'>
+          <button className="h-10 font-bold hover:bg-gray-200 focus:outline-none flex items-center justify-center"
+            style={{ backgroundColor: '#EAE7DC' }}
+            onClick={handleSettings}
+          >
+              <img src={settingsLogo} alt="" className="p-6" />
+          </button>
+      
+          {showSettings && <SettingsPopup onClose={handleSettingsClose} onUnitChange={handleUnitChange}/>}
+      </div>
+    )
+  }
 
   return (
     // very outer div on profile page has background class from App.css and makes the background relative
@@ -86,7 +117,7 @@ function Profile() {
               <button className={`button profile-page-button ${activeTab === "Statistics" ? "bg-[#E85A4F]" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
-          {showMetrics && <MetricsWindow />}
+          {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}
           {showGoals && <GoalsWindow />}
           {showStatistics && <StatisticsWindow />}
         </div>
