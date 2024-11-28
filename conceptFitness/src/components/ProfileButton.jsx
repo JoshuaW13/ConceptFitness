@@ -18,8 +18,9 @@ function ProfileButton() {
   return (
     <div className='relative'>
       <button className="text-black bg-gray-300 hover:bg-gray-200 px-4 py-2 rounded ml-4 focus:outline-none relative"
-      onClick={handleClick}
-    >
+        style={{ backgroundColor: '#EAE7DC' }}
+        onClick={handleClick}
+      >
       <Profile />
     </button>
     {/* Popup */}
