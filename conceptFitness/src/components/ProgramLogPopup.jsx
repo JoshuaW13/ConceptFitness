@@ -3,11 +3,12 @@ import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
 
-function ExerciseLogPopup() {
+function ExerciseLogPopup({programId}) {
   const navigate = useNavigate();
 
   const catalogue = () =>{
-    navigate("/catalogue")
+    console.log("The program id before navigating is "+programId);
+    navigate("/catalogue", { state: { programToEditId: programId } }); 
   }
   return (
     <div className="flex flex-col">
