@@ -5,7 +5,7 @@ import editIcon from '../assets/EditIcon.png'
 import GoalsInfo from './GoalsInfo'
 import GoalsInputs from './GoalsInputs'
 
-function GoalsWindow() {
+function GoalsWindow( {unitSystem} ) {
 
     const [showGoalsInfo, setShowGoalsInfo] = useState(true)
     const [showGoalsInput, setShowGoalsInput] = useState(false)
@@ -43,8 +43,8 @@ function GoalsWindow() {
                 </button>
             </div>
             <div className='mt-10'>
-                {showGoalsInput && <GoalsInputs onSave={handleSave} initialData={goalsData} />}
-                {showGoalsInfo && <GoalsInfo data={goalsData} />}
+                {showGoalsInput && <GoalsInputs onSave={handleSave} initialData={goalsData} unitSystem={unitSystem} />}
+                {showGoalsInfo && <GoalsInfo data={goalsData} unitSystem={unitSystem} />}
             </div>            
         </div>
     )

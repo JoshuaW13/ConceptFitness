@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 function SettingsPopup({ onClose, onUnitChange }) {
 
-    const [selectedUnit, setSelectedUnit] = useState('metric')
+    const [selectedUnit, setSelectedUnit] = useState('')
 
     const handleUnitSelection = (e) => {
         setSelectedUnit(e.target.value)

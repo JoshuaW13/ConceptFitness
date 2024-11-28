@@ -2,9 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function MetricsInputs( {onSave, initialData} ) {
+function MetricsInputs( {onSave, initialData, unitSystem} ) {
 
     const [formData, setFormData] = useState(initialData)
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs'
+    const heightUnit = unitSystem === 'metric' ? 'cm' : 'ft/in'
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -37,7 +40,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Weight (kg)</p>
+                    <p className="w-[25%] text-right">Weight ({weightUnit})</p>
                     <input
                         type="text"
                         name="weight"
@@ -50,7 +53,7 @@ function MetricsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Height (cm)</p>
+                    <p className="w-[25%] text-right">Height ({heightUnit})</p>
                     <input
                         type="text"
                         name='height'

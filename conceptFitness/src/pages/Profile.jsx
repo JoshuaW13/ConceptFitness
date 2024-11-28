@@ -118,7 +118,7 @@ function Profile() {
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}
-          {showGoals && <GoalsWindow />}
+          {showGoals && <GoalsWindow unitSystem={unitSystem} />}
           {showStatistics && <StatisticsWindow />}
         </div>
 

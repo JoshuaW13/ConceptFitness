@@ -43,7 +43,7 @@ function MetricsWindow( {unitSystem} ) {
                 </button>
             </div>
             <div className='mt-10'>
-                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} />}
+                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} unitSystem={unitSystem} />}
                 {showMetricsInfo && <MetricsInfo data={metricsData} unitSystem={unitSystem} />}
             </div>
             
