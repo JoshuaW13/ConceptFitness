@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
 import '../App.css';
-import StartIcon from '../assets/startIcon.png';
+import StartIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import Popup from './Popup';
-import Menu from "@mui/icons-material/Menu";
-import ProgramLogPopup from "../components/ProgramLogPopup";
+import DeleteIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import EditIcon from "@mui/icons-material/Edit"
 import { useNavigate } from 'react-router-dom';
+import { useProgramContext } from "../contexts/ProgramsContext"; 
+import ConfirmationPopup from './ConfirmationPopup';
 import Tag from './Tag';
+import Popup_Notif from './Popup_Notif';
 
 function ProgramLog({ id, onClick, name, tags, numExercises }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const { removeProgram } = useProgramContext();
 
   const navigate = useNavigate();
   const navigateSession = () => {
     navigate("/session");
   };
+
+  const navigateCatalogue = () =>{
+    navigate("/catalogue", { state: { programToEditId: id } }); 
+  }
+
+  const handleProgramDelete = ()=>{
+    setIsPopupVisible(true);
+  }
+
+  const deleteProgram = ()=>{
+    removeProgram(id)
+  }
 
   return (
     <div className='text-black w-full rounded-t-lg font-semibold'>
@@ -37,25 +53,26 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
         </div>
 
           {/* The below div is overflowing outside it's parent!!! */}
-          <div className='flex flex-col justify-between w-auto'>
+          <div className='flex flex-col justify-between w-auto gap-1 relative'>
             <button className='flex w-6 h-6 bg-gray-300' onClick={navigateSession}>
-              <img src={StartIcon} alt="" className="p-1" />
+              <StartIcon/>
             </button>
-            <button
-              className='flex relative items-center text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 rounded transition duration-200 focus:outline-none'
-              onClick={(e) => { setIsPopupVisible(!isPopupVisible); e.stopPropagation() }}
-            >
-              <Menu />
-              {isPopupVisible && (
-                <Popup className="relative" 
-                onClick={(e) => { setIsPopupVisible(false); e.stopPropagation() }} 
-                Content={ProgramLogPopup} 
-                contentProps={{
-                  programId: id
-                }}
-                />
-              )}
+            <button className='flex w-6 h-6 bg-gray-300' onClick={navigateCatalogue}>
+              <EditIcon/>
             </button>
+            <button className='flex w-6 h-6 bg-gray-300' onClick={(e)=>{e.stopPropagation();handleProgramDelete()}}>
+              <DeleteIcon/>
+            </button>
+            {isPopupVisible && (
+            <Popup className="relative" 
+            onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
+            Content={ConfirmationPopup}
+            contentProps={{
+              message: "Are you sure you want to delete this program?",
+              onConfirm: deleteProgram,
+            }}
+            />
+          )}
           </div>
 
       </div>
