@@ -11,9 +11,12 @@ import CatalogueDrawerContent from '../components/CatalogueDrawerContent';
 import SearchBar from '../components/SearchBar';
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-function ExerciseLists() {
+function ExerciseLists({route}) {
+  const location = useLocation(); // Access the location object
+  const { programToEditId } = location.state || {}; // Retrieve the programToEditId from the state
+  console.log("The program we are editing is ", programToEditId);
   const { exercises } = useExerciseCatalogueContext();
   const [searchText, setSearchText] = useState("");
   const [searchState, setSearchState] = useState(true);
@@ -24,7 +27,6 @@ function ExerciseLists() {
   const [tags, setTags] = useState([]);
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
-  const navigate = useNavigate();  // React Router hook to detect route changes
 
   const planExercise = (e, key) => {
     e.stopPropagation();
@@ -67,7 +69,6 @@ function ExerciseLists() {
     plannedExercisesRef.current = plannedExercises;
     tagsRef.current = tags;
     programNameRef.current = programName
-    console.log(plannedExercises)
   }, [plannedExercises, tags, programName]); 
 
   useEffect(() => {
@@ -80,7 +81,6 @@ function ExerciseLists() {
   }, []);
 
   const saveProgram = (currentPlannedExercises, currentTags, name) => {
-    console.log(name + " is the name that setting to apparently causes an error wtf")
     if (currentPlannedExercises.length === 0) {
       return;
     }

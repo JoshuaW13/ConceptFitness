@@ -53,6 +53,7 @@ function Programs() {
                 return constructExercise(exerciseId, index, program.id);
               })}
               InitialProps={{
+                id: program.id,
                 name: program.name,
                 tags: program.tags,
                 numExercises: program.exercises.length,

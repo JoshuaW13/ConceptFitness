@@ -7,7 +7,7 @@ import ProgramLogPopup from "../components/ProgramLogPopup";
 import { useNavigate } from 'react-router-dom';
 import Tag from './Tag';
 
-function ProgramLog({ onClick, name, tags, numExercises }) {
+function ProgramLog({ id, onClick, name, tags, numExercises }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -47,7 +47,13 @@ function ProgramLog({ onClick, name, tags, numExercises }) {
             >
               <Menu />
               {isPopupVisible && (
-                <Popup className="relative" onClick={(e) => { setIsPopupVisible(false); e.stopPropagation() }} Content={ProgramLogPopup} />
+                <Popup className="relative" 
+                onClick={(e) => { setIsPopupVisible(false); e.stopPropagation() }} 
+                Content={ProgramLogPopup} 
+                contentProps={{
+                  programId: id
+                }}
+                />
               )}
             </button>
           </div>
