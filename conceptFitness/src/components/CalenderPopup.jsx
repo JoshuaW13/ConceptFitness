@@ -1,18 +1,11 @@
 import React from 'react'
 import '../App.css'
-
 import { useProgramContext } from "../contexts/ProgramsContext";
 import ProgramHeader from '../components/ProgramHeader';
 import ProgramHeaderContent from '../components/ProgramHeaderContent';
-import { useCalendarContext } from '../contexts/CalendarContext';
 
 function CalenderPopup() {
   const { programs } = useProgramContext()
-  const { days } = useCalendarContext()
-
-  const selectedDay = () => {
-    return days.find((d) => d.selected == true).id
-  }
 
   return (
     <div className="flex flex-col items-center align-middle" onClick={(e) => e.stopPropagation()}>

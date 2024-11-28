@@ -47,6 +47,7 @@ function CalenderBox({Day, Date}) {
                     onClick={(event) => {
                         event.stopPropagation();  // Prevent the event from bubbling up to the parent
                         setIsPopupVisible(false);  // Close the popup
+                        days.find((d) => d.id == Day).selected = false
                     }} 
                     Content={CalenderPopup}
                     Title={'Add Program'}
