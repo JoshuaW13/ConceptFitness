@@ -5,7 +5,7 @@ import editIcon from '../assets/EditIcon.png'
 import MetricsInputs from './MetricsInputs'
 import MetricsInfo from './MetricsInfo'
 
-function MetricsWindow() {
+function MetricsWindow( {unitSystem} ) {
 
     const [showMetricsInfo, setShowMetricsInfo] = useState(true)
     const [showMetricsInput, setShowMetricsInput] = useState(false)
@@ -43,8 +43,8 @@ function MetricsWindow() {
                 </button>
             </div>
             <div className='mt-10'>
-                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} />}
-                {showMetricsInfo && <MetricsInfo data={metricsData} />}
+                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} unitSystem={unitSystem} />}
+                {showMetricsInfo && <MetricsInfo data={metricsData} unitSystem={unitSystem} />}
             </div>
             
         </div>

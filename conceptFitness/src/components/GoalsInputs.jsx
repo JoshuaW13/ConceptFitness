@@ -2,9 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function GoalsInputs( {onSave, initialData} ) {
+function GoalsInputs( {onSave, initialData, unitSystem} ) {
 
     const [formData, setFormData] = useState(initialData)
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs'
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -40,20 +42,7 @@ function GoalsInputs( {onSave, initialData} ) {
 
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Current Weight (lbs)</p>
-                    <input
-                        type="text"
-                        name="currentWeight"
-                        value={formData.currentWeight}
-                        onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
-                    />
-                </div>
-            </div>
-
-            <div className="flex flex-row items-center w-full max-w-md gap-4">
-                <div className='flex flex-row items-center w-full max-w-md gap-4'>
-                    <p className="w-[25%] text-right">Target Weight (lbs)</p>
+                    <p className="w-[25%] text-right">Target Weight ({weightUnit})</p>
                     <input
                         type="text"
                         name='targetWeight'

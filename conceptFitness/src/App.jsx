@@ -29,7 +29,6 @@ function App() {
                 <Route path="/programs" element={<Programs />} />
                 <Route path="/sessionLogs" element={<SessionLogs />} />
                 <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-                <Route path="/settings" element={<Settings />} />
                 <Route path="/signUp" element={<SignUp />} />
               </Routes>
             </div>

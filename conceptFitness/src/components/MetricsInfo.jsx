@@ -1,13 +1,17 @@
 import React from 'react'
 import '../App.css'
 
-function MetricsInfo( {data} ) {
+function MetricsInfo( {data, unitSystem} ) {
+
+    const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs'
+    const heightUnit = unitSystem === 'metric' ? 'cm' : 'ft/in'
+
     return (
         <div className='flex justify-between px-4'>
             <div className='flex flex-col items-start justify-center h-full pl-2 pb-4 gap-4'>
                 <p>Age</p>
-                <p>Weight (lbs)</p>
-                <p>Height (cm)</p>
+                <p>Weight ({weightUnit})</p>
+                <p>Height ({heightUnit})</p>
                 <p>Activity Level</p>
             </div>
             <div className='flex flex-col items-end justify-center h-full pr-4 pb-4 gap-4'>

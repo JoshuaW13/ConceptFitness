@@ -11,11 +11,10 @@ import ExerciseInfoShort from '../components/ExerciseInfoShort';
 import { useNavigate } from 'react-router-dom';
 import Tag from '../components/Tag';
 
-function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
+function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, setTags, programName, setProgramName }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(null); // Track which item is currently hovered over
   const [inputTag, setInputTag] = useState("");
-  const[tags, setTags]=useState([]);
 
   const navigatePrograms = () => {
     navigate("/programs");
@@ -45,7 +44,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
     },
   }));
 
-  const handleKeyDown = (event) => {
+  const handleTagEntered = (event) => {
     if (event.key === "Enter") {
       addTag(); // Add tag when Enter is pressed
       setInputTag("");
@@ -56,14 +55,18 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
     setTags((prevTags) => [...prevTags, inputTag]);
   }
 
-  const handleInputChange = (event) => {
+  const handleTagInputChanged = (event) => {
     setInputTag(event.target.value); // Update the state with the new value
   };
+
+  const handleNameInputChanged = (event) =>{
+    setProgramName(event.target.value);
+  }
 
   return (
     <div className="p-3 h-full w-full flex-col">
       <div className="flex flex-row justify-between m-2">
-        <input type="text" placeholder="Edit Program Name Here" className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg rounded-md">
+        <input type="text" onChange={handleNameInputChanged} placeholder="Edit Program Name Here" value={programName} className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg rounded-md">
         </input>
         <button className='w-[11%] bg-gray-300' onClick={navigatePrograms}>
           <img src={BookIcon} alt="" className="p-1" />
@@ -75,7 +78,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
             <Tag key={index} text={tag} removable={true}
             onRemove={()=>{
               setTags((prevTags) =>
-                prevTags.filter(tag => tag !== tag)
+                prevTags.filter(text => text !== tag)
               );
             }}
             >
@@ -85,7 +88,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
       </div>
       <div className="flex flex-row justify-between m-2">
         <p>Tags:</p>
-        <input onChange={handleInputChange} onKeyDown={handleKeyDown} value={inputTag} type="text" className="w-[85%] text-black bg-gray-300 pl-2 rounded-md" placeholder="Arm, Upper Body, Triceps, etc..." />
+        <input onChange={handleTagInputChanged} onKeyDown={handleTagEntered} value={inputTag} type="text" className="w-[85%] text-black bg-gray-300 pl-2 rounded-md" placeholder="Arm, Upper Body, Triceps, etc..." />
       </div>
 
       {/* DnD context with sensors */}
