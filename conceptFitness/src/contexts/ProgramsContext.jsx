@@ -19,8 +19,19 @@ export const ProgramProvider = ({ children }) => {
   ]);
 
   const addProgram = (program) => {
-    setPrograms((prevPrograms) => [...prevPrograms, program]);
+    setPrograms((prevPrograms) => {
+      const programExists = prevPrograms.some((p) => p.id === program.id);
+      
+      if (programExists) {
+        return prevPrograms.map((p) =>
+          p.id === program.id ? { ...p, ...program } : p
+        );
+      } else {
+        return [...prevPrograms, program];
+      }
+    });
   };
+  
 
   const removeProgram = (id) => {
     setPrograms((prevPrograms) => prevPrograms.filter(ex => ex.id !== id));

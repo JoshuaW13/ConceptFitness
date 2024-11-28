@@ -45,7 +45,7 @@ function ExerciseLists() {
   const addTag = (tagToAdd)=>{
     if(!tagToAdd) return;
     setTags((prevTags)=>{
-      if (tags.some((tag) => tag === tagToAdd)) {
+      if (prevTags.some((tag) => tag == tagToAdd)) {
         return prevTags;
       }
       return [...prevTags, tagToAdd];
@@ -117,9 +117,10 @@ function ExerciseLists() {
     const exercisesToAdd = currentPlannedExercises.map((plannedExercise) => {
       return plannedExercise.id;
     })
+    const idToAdd = programToEditId?programToEditId: programs.length + 1
     let programToAdd = {
-      id: programs.length + 1,
-      name: name,
+      id: idToAdd,
+      name: name===""?"My Program #"+idToAdd: name,
       tags: currentTags,
       exercises: exercisesToAdd,
     }
