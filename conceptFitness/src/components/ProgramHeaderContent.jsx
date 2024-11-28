@@ -5,11 +5,20 @@ import { useCalendarContext } from '../contexts/CalendarContext';
 import { useNavigate } from 'react-router-dom';
 import Tag from './Tag';
 
-function ProgramHeaderContent({ onClick, name, tags, numExercises }) {
-  const {days, addProgramToDay} = useCalendarContext()
+function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
+  const { days } = useCalendarContext()
+  const navigate = useNavigate()
+
+  const navigateHome = () => {
+    navigate("/home");
+  };
 
   const assignProgram = () => {
-
+    const selectedDay = days.find((d) => d.selected == true);
+    console.log(selectedDay)
+    selectedDay.program = id
+    selectedDay.selected = false
+    navigateHome()
   }
 
   return (
@@ -31,7 +40,7 @@ function ProgramHeaderContent({ onClick, name, tags, numExercises }) {
             )}
           </div>
 
-          <p className='text-base' onClick={onClick}># of Exercises: {numExercises}</p>
+          <p className='text-base'># of Exercises: {numExercises}</p>
         </div>
       </div>
     </div>

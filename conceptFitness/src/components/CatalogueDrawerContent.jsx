@@ -69,7 +69,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises }) {
           <img src={BookIcon} alt="" className="p-1" />
         </button>
       </div>
-      <div className='overflow-x-auto scrollbar-hidden h-[5%] flex gap-1'>
+      <div className='overflow-x-auto scrollbar-hidden h-[3%] flex gap-1'>
         {
           tags.map((tag, index)=>(
             <Tag key={index} text={tag} removable={true}

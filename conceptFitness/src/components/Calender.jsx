@@ -11,7 +11,6 @@ function Calender() {
   const navigate = useNavigate();
   var firstDate = new Date()
   var lastDate = new Date()
-  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const [firstDay, setFirstDay] = useState("")
   const [lastDay, setLastDay] = useState("")
   const [currDay, setCurrDay] = useState(0)
@@ -40,7 +39,7 @@ function Calender() {
 
   const generateCalender = () => {
     for (var i = 0; i < 7; i++) {
-      boxs.push(<CalenderBox key={i} Day={dayNames[i]} Date={parseInt(firstDay.slice(-2)) + i}></CalenderBox>)
+      boxs.push(<CalenderBox key={i} Day={i} Date={parseInt(firstDay.slice(-2)) + i}></CalenderBox>)
     }
     return boxs
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import CloseIcon from '@mui/icons-material/Close';
 
-function Popup_FullScreen({ onClick, Content, Title }) {
+function Popup_FullScreen({onClick, Content, Title }) {
   return (
     <div className="absolute h-full w-full top-0 left-0 bg-black/70 z-10 flex">
       <div className='flex flex-col h-full w-full my-10 mx-5 mb-5 bg-gray-300 rounded-lg'>

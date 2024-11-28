@@ -9,7 +9,14 @@ export const ProgramProvider = ({ children }) => {
     name: "Monday Arms",
     tags: ["arms", "upper body", "fun"],
     exercises:[1,2,5,6,10],
-  }]);
+  },
+  {
+    id: 2,
+    name: "Tuesday Kicks",
+    tags: ["legs", "glutes"],
+    exercises:[4,9,14,15],
+  }
+  ]);
 
   const addProgram = (program) => {
     setPrograms((prevPrograms) => [...prevPrograms, program]);
