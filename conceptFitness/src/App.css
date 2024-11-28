@@ -1,13 +1,44 @@
-@tailwind base
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
   text-align: center;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
+
+.background {
+  background: #EAE7DC;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #8E8D8A;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem;
+  /* background: #8E8D8A; */
+  background: white;
+  color: white;
+}
+
+/* <nav className="flex items-center justify-between p-4 bg-gray-100 w-full rounded-tr rounded-tl max-h-[12%]"> */
+
 
 .logo {
   height: 6em;
@@ -207,5 +238,15 @@
   transition: all 0.2s ease;
 }
 
-
+.profile-page-button {
+  background-color: #D8C3A5; /* Equivalent to bg-gray-300 */
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  padding: 0.75rem; /* Equivalent to p-3 */
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  border: black 1px solid; /* Black border with 1px width */
+  font-weight: bold; /* Bold text */
+}
 }

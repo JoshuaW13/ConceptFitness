@@ -6,7 +6,7 @@ function NavBar({ FirstButton, SecondButton, OtherButtons }) {
   const otherButtonsArray = Array.isArray(OtherButtons) ? OtherButtons : [];
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-gray-100 w-full rounded-tr rounded-tl max-h-[12%]">
+    <nav className="navbar">
       {FirstButton && <FirstButton />}
       {otherButtonsArray.map((Component, index) => (
         <Component key={index} />
