@@ -11,23 +11,9 @@ import { useSessionLogContext } from '../contexts/SessionLogContext';
 function SessionLogs() {
     const {sessionLogs} = useSessionLogContext();
 
-    // for (let i = 0; i < 10; i++) {
-    //     exerciseLogs.push(() => <ExerciseLog key={i} />); 
-    // }
-
-    // for (let i = 0; i < 5; i++) {
-    //     sessionLogs.push(
-    //         <DropDown
-    //             key={i}
-    //             InitialComponent={SessionLog}
-    //             HiddenComponents={exerciseLogs} 
-    //         />
-    //     );
-    // }
-
     const constructExerciseLog = (exerciseRecord, index)=>{
         return() =>
-            <ExerciseLog key={index} />
+            <ExerciseLog key={index} exerciseRecord={exerciseRecord}/>
         
     }
 

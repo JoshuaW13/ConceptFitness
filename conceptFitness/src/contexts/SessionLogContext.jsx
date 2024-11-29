@@ -15,15 +15,15 @@ export const SessionLogProvider = ({ children }) => {
             sets:[
                 {
                     reps: 2,
-                    weight: 1
+                    weight: 3
                 },
                 {
                     reps: 2,
                     weight: 1
                 },
                 {
-                    reps: 2,
-                    weight: 1
+                    reps: 3,
+                    weight: 25
                 },
             ]
         },
@@ -31,16 +31,16 @@ export const SessionLogProvider = ({ children }) => {
             id:2,
             sets:[
                 {
-                    reps: 2,
+                    reps: 3,
                     weight: 1
                 },
                 {
-                    reps: 2,
+                    reps: 8,
                     weight: 1
                 },
                 {
-                    reps: 2,
-                    weight: 1
+                    reps: 200,
+                    weight: 47
                 },
             ]
         }
