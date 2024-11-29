@@ -14,6 +14,8 @@ function Session() {
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
   const [weights, setWeights] = useState({}); // State to store weights
   const [reps, setReps] = useState({}); // State to store reps
+  const [timer, setTimer] = useState(0); // Timer state to track elapsed time
+  const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
 
   // Hardcoded list of programs and their exercises
   const programs = [
@@ -37,6 +39,20 @@ function Session() {
       localStorage.setItem('completedExercises', JSON.stringify(completedExercises));
     }
   }, [completedExercises]);
+
+  // Timer logic: increment time every second if the timer is running
+  useEffect(() => {
+    let interval;
+    if (isTimerRunning) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000); // Increment timer by 1 second
+    } else {
+      clearInterval(interval); // Clear interval when timer is stopped
+    }
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [isTimerRunning]);
 
   // Function to go to the previous exercise
   const handlePrevExercise = () => {
@@ -94,6 +110,9 @@ function Session() {
 
     // Show the confirmation popup
     setIsPopupVisible(true);
+
+    // Stop the timer when session is finished
+    setIsTimerRunning(false);
   };
 
   const handleBackToHome = () => {
@@ -111,13 +130,29 @@ function Session() {
     ? selectedProgram.exercises[currentExerciseIndex]
     : null;
 
+  // Format the timer in mm:ss format
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
   return (
     <div className="session-page w-full h-full relative">
       <div className="scrollable-container">
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
 
         <div className="flex justify-between w-full px-8 py-4">
-          <button className="time-button bg-gray-300 p-1 w-1/4 text-sm">Time</button>
+          {isTimerRunning ? (
+            <button className="time-button bg-gray-300 p-1 w-1/4 text-sm">{formatTime(timer)}</button>
+          ) : (
+            <button
+              className="time-button bg-gray-300 p-1 w-1/4 text-sm"
+              onClick={() => setIsTimerRunning(true)} // Start the timer
+            >
+              Start Timer
+            </button>
+          )}
           <button 
             className="session-time-button bg-gray-300 p-1 w-1/4 text-sm"
             onClick={handleFinishSession}
@@ -159,14 +194,14 @@ function Session() {
             {currentExercise ? (
               <>
                 <div className="video-placeholder bg-white w-full relative mb-2">
-                  <img
-                    src="https://www.goodfreephotos.com/albums/people/guy-doing-push-up.jpg"
-                    alt={currentExercise}
-                    className="absolute inset-0 w-full h-full object-cover rounded-md"
-                  />
-                  <button className="play-button absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2">
-                    ▶
-                  </button>
+                  <video
+                    src="https://www.youtube.com/embed/IODxDxX7oi4"
+                    type="video/mp4"
+                    controls
+                    className="w-full h-full object-cover rounded-md"
+                  >
+                    Your browser do not support video tag
+                 </video>
                 </div>
                 <p className="text-sm">{currentExercise} is a common exercise used in strength training.</p>
               </>
@@ -212,7 +247,6 @@ function Session() {
                 <div className="exercise-header">
                   <span className="text-md font-semibold">Exercises</span>
                 </div>
-                {/* Apply max-height and scroll to make it scrollable */}
                 <div className="max-h-40 overflow-y-auto">
                   {selectedProgram.exercises.map((exercise, index) => (
                     <div
@@ -269,4 +303,4 @@ function Session() {
   );
 }
 
-export default Session;
+export default Session;  
