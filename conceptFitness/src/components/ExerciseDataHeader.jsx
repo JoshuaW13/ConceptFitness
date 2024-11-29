@@ -3,16 +3,18 @@ import '../App.css';
 import Popup from './Popup';
 import Menu from "@mui/icons-material/Menu";
 import ExerciseDataPopup from "../components/ExerciseDataPopup";
+import Tag from './Tag';
 
-function ExerciseDataHeader({ onClick }) {
+function ExerciseDataHeader({ onClick, exercise }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   return (
     <div className="p-4 flex w-full justify-between items-center relative">
       <div className="flex items-start flex-col justify-between gap-1" onClick={onClick}>
-        <p className="text-lg text-gray-800 font-semibold">Exercise: Insert Name Here</p>
-        <p className="text-sm text-gray-600">Tags: #</p>
-        <p className="text-sm text-gray-600">Equipment: random machine</p>
+        <p className="text-lg text-gray-800 font-semibold">{exercise.name}</p>
+        <p className="text-sm text-gray-600">
+        </p>
+        <p className="text-sm text-gray-600">Equipment: {exercise.equipment}</p>
       </div>
 
       <button

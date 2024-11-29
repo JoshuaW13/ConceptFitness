@@ -44,7 +44,7 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
                 <Tag key={index} text={tag} />
               ))
             ) : (
-              <p>No tags available</p>
+              <p></p>
             )}
           </div>
 
