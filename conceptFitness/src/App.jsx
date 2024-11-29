@@ -13,6 +13,7 @@ import {ProgramProvider} from "./contexts/ProgramsContext";
 import Settings from './pages/Settings.jsx';
 import { CalendarProvider } from './contexts/CalendarContext.jsx';
 import { SessionLogProvider } from './contexts/SessionLogContext.jsx';
+import { ExerciseLogProvider } from './contexts/ExerciseLogContext.jsx';
 
 function App() {
   return (
@@ -20,21 +21,23 @@ function App() {
       <ProgramProvider>
         <ExerciseCatalogueProvider>
           <SessionLogProvider>
-            <CalendarProvider>
-              <div className="sm:aspect-[9/18] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
-                <Routes>
-                  <Route path="/" element={<Login />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/session" element={<Session />} />
-                  <Route path="/catalogue" element={<Catalogue />} />
-                  <Route path="/programs" element={<Programs />} />
-                  <Route path="/sessionLogs" element={<SessionLogs />} />
-                  <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-                  <Route path="/signUp" element={<SignUp />} />
-                </Routes>
-              </div>
-            </CalendarProvider>
+            <ExerciseLogProvider>
+              <CalendarProvider>
+                <div className="sm:aspect-[9/18] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+                  <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/session" element={<Session />} />
+                    <Route path="/catalogue" element={<Catalogue />} />
+                    <Route path="/programs" element={<Programs />} />
+                    <Route path="/sessionLogs" element={<SessionLogs />} />
+                    <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+                    <Route path="/signUp" element={<SignUp />} />
+                  </Routes>
+                </div>
+              </CalendarProvider>
+            </ExerciseLogProvider>
           </SessionLogProvider>
         </ExerciseCatalogueProvider>
       </ProgramProvider>
