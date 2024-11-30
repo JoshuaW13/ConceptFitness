@@ -17,7 +17,11 @@ function MetricsInfo( {data, unitSystem} ) {
             <div className='flex flex-col items-end justify-center h-full pr-4 pb-4 gap-4'>
                 <p>{data.age || 'N/A'}</p>
                 <p>{data.weight || 'N/A'}</p>
-                <p>{data.height || 'N/A'}</p>
+                {unitSystem === 'metric' ? (
+                    <p>{data.height || 'N/A'}</p>
+                ):(
+                    <p>{data.heightFt || 'N/A'}ft {data.heightIn || 'N/A'}in </p>
+                )}
                 <p>{data.activityLevel || 'N/A'}</p>
             </div>
         </div>

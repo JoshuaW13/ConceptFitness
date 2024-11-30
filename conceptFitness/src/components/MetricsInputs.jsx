@@ -54,13 +54,34 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
                     <p className="w-[25%] text-right">Height ({heightUnit})</p>
-                    <input
-                        type="text"
-                        name='height'
-                        value={formData.height}
-                        onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
-                    />
+                    {unitSystem === 'metric' ? (
+                        <input
+                            type="text"
+                            name='height'
+                            value={formData.height}
+                            onChange={handleChange}
+                            className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                        />
+                    ) : (
+                        <div className="flex gap-2 w-[50%]">
+                            <input
+                                type="text"
+                                name="heightFt"
+                                value={formData.heightFt || ''}
+                                onChange={handleChange}
+                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                placeholder="ft"
+                            ></input>
+                            <input
+                                type="text"
+                                name="heightIn"
+                                value={formData.heightIn || ''}
+                                onChange={handleChange}
+                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                placeholder="in"
+                            ></input>
+                        </div>
+                    )}
                 </div>
             </div>
 

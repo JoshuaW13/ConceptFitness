@@ -61,6 +61,7 @@ function GoalsInputs( {onSave, initialData, unitSystem} ) {
                     value={formData.targetDate}
                     onChange={handleChange}
                     className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                    style={{colorScheme: "light"}}
                 />
             </div>
 
