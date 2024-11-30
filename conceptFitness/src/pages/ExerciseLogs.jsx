@@ -37,6 +37,9 @@ function ExerciseLogs() {
                             exercise: exercises.find((exercise) => exercise.id == exerciseLog.exerciseId)
                         }}
                         HiddenComponents={ExerciseData}
+                        HiddenProps={{
+                            exercise: exercises.find((exercise) => exercise.id == exerciseLog.exerciseId)
+                        }}
                     />
                 ))}
             </div>
