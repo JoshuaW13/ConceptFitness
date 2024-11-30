@@ -44,7 +44,7 @@ export const CalendarProvider = ({ children }) => {
   {
     id: 6,
     day: "Saturday",
-    program: 1,
+    program: 2,
     selected: false,
   },
   ]);

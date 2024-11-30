@@ -14,6 +14,10 @@ function CalenderBox({Day, Date}) {
     const { days } = useCalendarContext()
 
     const getProgramName = () => {
+        const daySchedule = days.find((d) => d.id == Day)
+        if(daySchedule.program===undefined){
+            return;
+        }
         console.log(programs.find((p) => p.id == (days.find((d) => d.id == Day)).program).name)
         setProgramName(programs.find((p) => p.id == (days.find((d) => d.id == Day)).program).name)
     }

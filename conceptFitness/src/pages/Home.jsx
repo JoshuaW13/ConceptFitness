@@ -6,12 +6,22 @@ import HomeButton from '../components/HomeButton'
 import ProfileButton from '../components/ProfileButton'
 import Calender from '../components/Calender'
 import { useNavigate } from 'react-router-dom';
+import { useCalendarContext } from '../contexts/CalendarContext'
 
 function Home() {
+  const{days} = useCalendarContext();
+
   const navigate = useNavigate();
 
   const startSession = () =>{
-    navigate("/session")
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const daySchedule = days.find((d) => d.id == dayOfWeek)
+    if(daySchedule.program===undefined){
+      navigate("/programs");
+    }else{
+      navigate("/session")
+    }
   }
   const navigateCatalogue = () =>{
     navigate("/catalogue")
