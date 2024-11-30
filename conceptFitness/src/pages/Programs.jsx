@@ -40,7 +40,6 @@ function Programs() {
   };
 
   const addNewProgram = ()=>{
-    console.log("navigating on click")
     navigate("/catalogue")
   }
 

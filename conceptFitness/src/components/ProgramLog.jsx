@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { useProgramContext } from "../contexts/ProgramsContext"; 
 import ConfirmationPopup from './ConfirmationPopup';
 import Tag from './Tag';
-import Popup_Notif from './Popup_Notif';
 
 function ProgramLog({ id, onClick, name, tags, numExercises }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -16,7 +15,7 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
 
   const navigate = useNavigate();
   const navigateSession = () => {
-    navigate("/session");
+    navigate("/session",{state:{programToStart:id}});
   };
 
   const navigateCatalogue = () =>{

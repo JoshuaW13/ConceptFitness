@@ -4,9 +4,11 @@ import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
 import ProfileButton from '../components/ProfileButton';
 import SlidingDrawerWithScrolling from '../components/SlidingDrawerWithScrolling';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Session() {
+  const location = useLocation(); // Access the location object
+  const { programToStart } = location.state || {}; // Retrieve the programToStart from the state
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [selectedProgram, setSelectedProgram] = useState(null); // Selected program

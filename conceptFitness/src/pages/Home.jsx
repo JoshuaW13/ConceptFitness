@@ -20,7 +20,7 @@ function Home() {
     if(daySchedule.program===undefined){
       navigate("/programs");
     }else{
-      navigate("/session")
+      navigate("/session",{ state: { programToStart: daySchedule.program } })
     }
   }
   const navigateCatalogue = () =>{
