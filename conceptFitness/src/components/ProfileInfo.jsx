@@ -8,7 +8,7 @@ function ProfileInfo ( {data} ) {
             <div className='flex flex-col justify-center w-1/2'>
               <div className="w-[70%] mb-1">
                 <img src={ProfilePicture} className='mb-1'></img>
-                <p className='text-black text-sm'>Olivia Carter</p>
+                <p className='text-black text-sm'>{ data.username || 'Username' }</p>
               </div>
             </div>
 

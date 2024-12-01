@@ -22,15 +22,17 @@ function ProfileInputs ( {onSave, initialData} ) {
 
 
     return (
-        <div className='flex flex-col gap-4'>
-            <div className="flex flex-row items-center justify-center w-full max-w-md">
+        <div className='flex flex-col'>
+            <div className="flex w-full max-w-md">
                 <input
-                    placeholder='Username'
-                    className='w-[50%] bg-white border border-black rounded px-2 py-1'
+                    name='username'
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder='New Username'
+                    className='w-[100%] w-[70%] bg-white border border-black rounded px-2 py-1 mb-3 text-black text-sm'
                 ></input>
             </div>       
-            <div className="flex flex-row items-center w-full max-w-md">
-                <p className="w-[25%] text-right">Bio</p>
+            <div className="flex justify-center w-full max-w-md">
                 <textarea
                     name="bio"
                     value={formData.bio}
@@ -42,7 +44,7 @@ function ProfileInputs ( {onSave, initialData} ) {
                 ></textarea>
             </div>
 
-            <div className="text-right text-gray-500 text-sm">
+            <div className="text-left text-gray-500 text-sm mb-6">
                 {maxChars - formData.bio.length} characters remaining
             </div>
 
