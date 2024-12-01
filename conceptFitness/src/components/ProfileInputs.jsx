@@ -4,6 +4,7 @@ import '../App.css'
 
 function ProfileInputs ( {onSave, initialData} ) {
 
+    const maxChars = 80
     const [formData, setFormData] = useState(initialData)
 
     const handleChange = (e) => {
@@ -30,9 +31,13 @@ function ProfileInputs ( {onSave, initialData} ) {
                     onChange={handleChange}
                     rows={3}
                     placeholder='Write a Bio...'
-                    maxLength={60}
+                    maxLength={maxChars}
                     className="w-[100%] bg-white text-black text-sm border border-black rounded px-2 py-1"
                 ></textarea>
+            </div>
+
+            <div className="text-right text-gray-500 text-sm">
+                {maxChars - formData.bio.length} characters remaining
             </div>
 
             <div className='flex justify-center'>
