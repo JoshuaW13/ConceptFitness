@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import ListIcon from '../assets/ListIcon.png'
 
-function SlidingDrawer({Content, contentProps}) {
+function SlidingDrawer({Content, contentProps, numExercises}) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -24,6 +24,9 @@ function SlidingDrawer({Content, contentProps}) {
           style={{ top: '50%', transform: 'translateY(-50%) translateX(50%)' }} // Center vertically and move slightly outside
           >
           <img src={ListIcon} alt="" className="p-1" />
+          <div className='absolute w-4 h-4 -top-1 -left-1 bg-gray-300 text-black rounded-sm'>
+            <p className='absolute -top-1 left-1'>{numExercises}</p>
+          </div>
         </button>
         {React.createElement(Content, contentProps)}
       </div>

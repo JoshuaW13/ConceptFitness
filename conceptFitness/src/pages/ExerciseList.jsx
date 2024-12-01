@@ -23,6 +23,7 @@ function ExerciseLists() {
   const programNameRef = useRef(programName);
   const [plannedExercises, setPlannedExercises] = useState([])
   const plannedExercisesRef = useRef(plannedExercises);
+  const [numExercises, setNumExercises] = useState(0)
   const [tags, setTags] = useState([]);
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
@@ -159,8 +160,11 @@ function ExerciseLists() {
           tags: tags,
           setTags: setTags,
           programName: programName,
-          setProgramName: setProgramName
+          setProgramName: setProgramName,
+          numExercises: numExercises,
+          setNumExercises: setNumExercises,
         }}
+        numExercises={numExercises} 
       ></SlidingDrawer>
     </div>
   );
