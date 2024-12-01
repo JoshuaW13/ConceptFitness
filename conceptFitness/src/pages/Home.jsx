@@ -50,11 +50,11 @@ function Home() {
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
-            <div className='w-[80%] bg-[#8E8D8A] rounded-lg flex-grow text-l font-bold'>
+            <div className='w-[80%] bg-[#D8C3A5] rounded-lg flex-grow text-l font-bold border border-black'>
               <p className='pt-1'>Goals</p>
             </div>
           </div>
-          <button className='button text-xl bg-[#E85A4F]'
+          <button className='button text-xl bg-green-500'
             onClick={startSession}          
           >Start Session</button>
         </div>

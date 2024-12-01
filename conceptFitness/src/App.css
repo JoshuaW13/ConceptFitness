@@ -36,8 +36,8 @@
   padding-bottom: 0.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  /* background: #8E8D8A; */
-  background: #EAE7DC;
+  background: #8E8D8A;
+  /* background: #EAE7DC; */
   color: white;
 }
 
@@ -259,5 +259,19 @@ label {
   border-radius: 0.25rem; /* Slightly rounded corners */
   border: black 1px solid; /* Black border with 1px width */
   font-weight: bold; /* Bold text */
+}
+
+.save-button {
+  width: 20%;
+  background-color: #22C55E;
+  padding: 0.25rem;
+  margin: 0.5rem;
+}
+
+.cancel-button {
+  width: 30%;
+  background-color: #E85A4F;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 }

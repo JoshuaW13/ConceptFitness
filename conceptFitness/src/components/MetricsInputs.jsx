@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function MetricsInputs( {onSave, initialData, unitSystem} ) {
+function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
 
     const [formData, setFormData] = useState(initialData)
 
@@ -20,8 +20,7 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
     const handleSave = () => {
         onSave(formData)
         sessionStorage.setItem('metricsData', JSON.stringify(formData))
-    } 
-
+    }
 
     return (
         <div className='flex flex-col gap-4'>            
@@ -102,8 +101,11 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='w-[20%] bg-green-300 p-1 m-2'>
+                <button onClick={handleSave} className='save-button'>
                     Save
+                </button>
+                <button onClick={onCancel} className='cancel-button'>
+                    Cancel
                 </button>
             </div>
 

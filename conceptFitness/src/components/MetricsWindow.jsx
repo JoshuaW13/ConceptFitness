@@ -28,6 +28,11 @@ function MetricsWindow( {unitSystem} ) {
         setShowMetricsInfo(true)
     }
 
+    const handleCancel = () => {
+        setShowMetricsInput(false)
+        setShowMetricsInfo(true)
+    }
+
     useEffect(() => {
         const savedData = sessionStorage.getItem('metricsData');
         if (savedData) {
@@ -43,7 +48,7 @@ function MetricsWindow( {unitSystem} ) {
                 </button>
             </div>
             <div className='mt-10'>
-                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} unitSystem={unitSystem} />}
+                {showMetricsInput && <MetricsInputs onSave={handleSave} onCancel={handleCancel} initialData={metricsData} unitSystem={unitSystem} />}
                 {showMetricsInfo && <MetricsInfo data={metricsData} unitSystem={unitSystem} />}
             </div>
             

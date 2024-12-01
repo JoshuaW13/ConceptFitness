@@ -28,6 +28,11 @@ function GoalsWindow( {unitSystem} ) {
         setShowGoalsInfo(true)
     }
 
+    const handleCancel = () => {
+        setShowGoalsInput(false)
+        setShowGoalsInfo(true)
+    }
+
     useEffect(() => {
         const savedData = sessionStorage.getItem('goalsData');
         if (savedData) {
@@ -43,7 +48,7 @@ function GoalsWindow( {unitSystem} ) {
                 </button>
             </div>
             <div className='mt-10'>
-                {showGoalsInput && <GoalsInputs onSave={handleSave} initialData={goalsData} unitSystem={unitSystem} />}
+                {showGoalsInput && <GoalsInputs onSave={handleSave} onCancel={handleCancel} initialData={goalsData} unitSystem={unitSystem} />}
                 {showGoalsInfo && <GoalsInfo data={goalsData} unitSystem={unitSystem} />}
             </div>            
         </div>
