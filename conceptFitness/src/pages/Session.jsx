@@ -10,6 +10,7 @@ import SessionExerciseHeader from '../components/SessionExerciseHeader';
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 import NextIcon from "@mui/icons-material/ArrowForward"
 import BackIcon from "@mui/icons-material/ArrowBack"
+import TabbedContainer from '../components/SessionTabContainer';
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -270,27 +271,42 @@ function Session() {
 
         {/* Sliding Drawer with Scrolling */}
         <SlidingDrawerWithScrolling 
-        isDrawerOpen={slidingDrawerOpen}
-        setIsDrawerOpen={setSlidingDrawerOpen}
-        Content={()=>
-          selectedProgram&&<div className='flex flex-col gap-1'>
-            <h3 className="text-lg font-bold mb-2">{selectedProgram&& selectedProgram.name}</h3>
-          {
-            selectedProgram.exercises.map((exerciseId, index)=>(
-                <SessionExerciseHeader key={index}
-                  exerciseName={exercises.find(exercise=>exercise.id===exerciseId).name}
-                  onClick={(e)=>{
-                  console.log("Swapping exercise");
-                  e.stopPropagation()
-                  setSlidingDrawerOpen(false);
-                  swapCurrentExercise(exerciseId)
-                  }}
-                >
-                </SessionExerciseHeader>
-            ))
-          }
-        </div>
-        } />
+          isDrawerOpen={slidingDrawerOpen}
+          setIsDrawerOpen={setSlidingDrawerOpen}
+          Content={() => (
+            <TabbedContainer
+              FirstTab={() => (
+                selectedProgram && (
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
+                    {selectedProgram.exercises.map((exerciseId, index) => {
+                      const exercise = exercises.find(ex => ex.id === exerciseId);
+                      if (!exercise) return null; // Handle case where exercise is not found
+
+                      return (
+                        <SessionExerciseHeader
+                          key={index}
+                          exerciseName={exercise.name}
+                          onClick={(e) => {
+                            console.log("Swapping exercise");
+                            e.stopPropagation();
+                            setSlidingDrawerOpen(false);
+                            swapCurrentExercise(exerciseId);
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
+                )
+              )}
+              SecondTab={()=>
+                <div>
+                  Logs go here
+                </div>
+              }
+            />
+          )}
+        />
       </div>
     </div>
   );
