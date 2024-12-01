@@ -32,10 +32,7 @@ function SignUp() {
 
 
     return (
-        <div className='w-full h-full flex flex-col items-center'>
-            <div className='text-black text-lg font-bold w-full bg-gray-100 h-10 flex items-center justify-start px-2'>
-                <img src={viteLogo} alt="" className="h-full w-auto " />
-            </div>
+        <div className='w-full h-full flex flex-col justify-center items-center'>
             <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
                 <h2 className="text-xl text-black mb-6">Create an Account</h2>
                 <div className="mb-4">

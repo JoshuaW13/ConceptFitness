@@ -259,6 +259,8 @@ label {
   border-radius: 0.25rem; /* Slightly rounded corners */
   border: black 1px solid; /* Black border with 1px width */
   font-weight: bold; /* Bold text */
+  color: white;
+  border-radius: 9999px;
 }
 
 .save-button {

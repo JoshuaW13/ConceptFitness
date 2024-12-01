@@ -50,7 +50,7 @@ function Home() {
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
-            <div className='w-[80%] bg-[#D8C3A5] rounded-lg flex-grow text-l font-bold border border-black'>
+            <div className='w-[80%] bg-[#D8C3A5] rounded-lg flex-grow text-l font-bold border border-black text-white'>
               <p className='pt-1'>Goals</p>
             </div>
           </div>

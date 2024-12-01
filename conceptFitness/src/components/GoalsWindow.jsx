@@ -4,11 +4,13 @@ import '../App.css'
 import editIcon from '../assets/EditIcon.png'
 import GoalsInfo from './GoalsInfo'
 import GoalsInputs from './GoalsInputs'
+import CancelPopup from './CancelPopup'
 
 function GoalsWindow( {unitSystem} ) {
 
     const [showGoalsInfo, setShowGoalsInfo] = useState(true)
     const [showGoalsInput, setShowGoalsInput] = useState(false)
+    const [showCancelPopup, setShowCancelPopup] = useState(false)
 
     const [goalsData, setGoalsData] = useState({
         goal: '',
@@ -29,8 +31,19 @@ function GoalsWindow( {unitSystem} ) {
     }
 
     const handleCancel = () => {
-        setShowGoalsInput(false)
+        setShowCancelPopup(true)
+    }
+
+    const handleConfirmCancel = () => {
+        setShowCancelPopup(false)
         setShowGoalsInfo(true)
+        setShowGoalsInput(false)
+    }
+
+    const handleKeepEditing = () => {
+        setShowCancelPopup(false)
+        setShowGoalsInput(true)
+        setShowGoalsInfo(false)
     }
 
     useEffect(() => {
@@ -48,7 +61,16 @@ function GoalsWindow( {unitSystem} ) {
                 </button>
             </div>
             <div className='mt-10'>
-                {showGoalsInput && <GoalsInputs onSave={handleSave} onCancel={handleCancel} initialData={goalsData} unitSystem={unitSystem} />}
+                {showGoalsInput && <GoalsInputs
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                    initialData={goalsData}
+                    unitSystem={unitSystem}
+                />}
+                {showCancelPopup && <CancelPopup 
+                    onConfirmCancel={handleConfirmCancel}
+                    onKeepEditing={handleKeepEditing}
+                />}
                 {showGoalsInfo && <GoalsInfo data={goalsData} unitSystem={unitSystem} />}
             </div>            
         </div>
