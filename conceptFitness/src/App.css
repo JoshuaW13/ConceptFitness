@@ -31,7 +31,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   /* background: #8E8D8A; */
   background: white;
   color: white;
