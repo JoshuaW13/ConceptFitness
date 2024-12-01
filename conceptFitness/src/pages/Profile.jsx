@@ -100,9 +100,7 @@ function Profile() {
     <div className='background relative background'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
-          <div
-            className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative"
-          >
+          <div className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
             <div>
               <button onClick={handleEdit} className='absolute top-2 right-2 bg-gray-300'>
                   <img src={editIcon} alt="" className='w-6 h-6 p-1'></img>

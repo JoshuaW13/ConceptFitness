@@ -12,8 +12,8 @@ function ProfileInfo ( {data} ) {
               <p className='text-black text-sm'>Olivia Carter</p>
             </div>
 
-            <div className='flex flex-col justify-center w-2/3 pl-2'>
-              <p className='text-black text-sm'>{data.bio}</p>
+            <div className='flex flex-col justify-center w-[80%] pl-2'>
+              <p className='text-black text-sm'>{data.bio || 'Write a Bio...'}</p>
             </div>
         </div>
     )
