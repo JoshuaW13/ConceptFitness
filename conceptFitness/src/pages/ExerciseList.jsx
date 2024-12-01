@@ -29,8 +29,8 @@ function ExerciseLists() {
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
   const [flyer, setFlyer] = useState(null);
-  const [height, setHeight] = useState(0)
-  const [width, setWidth] = useState(0)
+  const [target, setTarget] = useState(null);
+
 
 
   const prepareProgramToEdit = () =>{
@@ -57,7 +57,7 @@ function ExerciseLists() {
     })
   }
 
-  const planExercise = (key) => {
+  const planExercise = (key, e) => {
     const exerciseToAdd = exercises.find((exercise) => exercise.id === key);
     if (!exerciseToAdd) return;  // Ensure the exercise exists
   
@@ -67,6 +67,7 @@ function ExerciseLists() {
       if (prevExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
         return prevExercises;
       }
+      handleFlyer(e)
       return [...prevExercises, exerciseToAdd];
     });
   };
@@ -115,11 +116,6 @@ function ExerciseLists() {
     prepareProgramToEdit();
   }, [programToEditId])
 
-  useEffect(() => {
-    setHeight(screen.current.clientHeight)
-    setWidth(screen.current.clientWidth)
-  })
-
   const saveProgram = (currentPlannedExercises, currentTags, name) => {
     if (currentPlannedExercises.length === 0) {
       return;
@@ -152,8 +148,8 @@ function ExerciseLists() {
 
   const endFlyer = () => {
     setFlyer({
-      x: width - 30,
-      y: height/2 - 10,
+      x: target.x,
+      y: target.y,
     });
 
     setTimeout(() => {
@@ -177,8 +173,7 @@ function ExerciseLists() {
               targetMuscle: exercise.targetMuscle,
               handleClick: (e) => {
                 e.stopPropagation()
-                planExercise(exercise.id)
-                handleFlyer(e)
+                planExercise(exercise.id, e)
               }, // Pass the exercise.id as an argument
             }}
             HiddenProps={{
@@ -199,6 +194,7 @@ function ExerciseLists() {
           setNumExercises: setNumExercises,
         }}
         numExercises={numExercises} 
+        setTarget={setTarget}
       ></SlidingDrawer>
       {flyer && (
         <div

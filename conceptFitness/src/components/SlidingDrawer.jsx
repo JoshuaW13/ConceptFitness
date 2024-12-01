@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
 import ListIcon from '../assets/ListIcon.png'
+import { drawerClasses } from '@mui/material';
 
-function SlidingDrawer({Content, contentProps, numExercises}) {
+function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
+  const drawerButton = useRef(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+
+  useEffect (() => {
+    const button = drawerButton.current.getBoundingClientRect();
+    setTarget( {
+      x: button.x,
+      y: button.y + 11,
+    })
+  })
 
   return (
     <>
@@ -19,6 +29,7 @@ function SlidingDrawer({Content, contentProps, numExercises}) {
       >
         {/* Drawer Toggle Button */}
         <button
+          ref={drawerButton}
           onClick={toggleDrawer}
           className="absolute w-7 h-14 left-[-2.5rem] bg-gray-500 hover:bg-gray-400 text-white p-0 rounded-l-lg rounded-r-none"
           style={{ top: '50%', transform: 'translateY(-50%) translateX(50%)' }} // Center vertically and move slightly outside
