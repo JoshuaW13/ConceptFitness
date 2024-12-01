@@ -20,7 +20,13 @@ function MetricsInfo( {data, unitSystem} ) {
                 {unitSystem === 'metric' ? (
                     <p>{data.height || 'N/A'}</p>
                 ):(
-                    <p>{data.heightFt || 'N/A'}ft {data.heightIn || 'N/A'}in </p>
+                    data.heightFt || data.heightIn ? (
+                        <p>
+                            {data.heightFt || '0'}ft {data.heightIn || '0'}in
+                        </p>
+                    ) : (
+                    <p>N/A</p>
+                    )
                 )}
                 <p>{data.activityLevel || 'N/A'}</p>
             </div>
