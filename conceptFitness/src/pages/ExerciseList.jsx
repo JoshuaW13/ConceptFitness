@@ -9,6 +9,7 @@ import ProfileButton from '../components/ProfileButton'
 import SlidingDrawer from '../components/SlidingDrawer';
 import CatalogueDrawerContent from '../components/CatalogueDrawerContent';
 import SearchBar from '../components/SearchBar';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 import { useLocation } from 'react-router-dom';
@@ -27,6 +28,9 @@ function ExerciseLists() {
   const [tags, setTags] = useState([]);
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
+  const [flyer, setFlyer] = useState(null);
+  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState(0)
 
 
   const prepareProgramToEdit = () =>{
@@ -111,6 +115,11 @@ function ExerciseLists() {
     prepareProgramToEdit();
   }, [programToEditId])
 
+  useEffect(() => {
+    setHeight(screen.current.clientHeight)
+    setWidth(screen.current.clientWidth)
+  })
+
   const saveProgram = (currentPlannedExercises, currentTags, name) => {
     if (currentPlannedExercises.length === 0) {
       return;
@@ -128,8 +137,28 @@ function ExerciseLists() {
     addProgram(programToAdd);
   }
 
+  const handleFlyer = (e) => {
+    const button = e.target.getBoundingClientRect();
+
+    setFlyer({
+      x: button.x,
+      y: button.y,
+      targetX: width,
+      targetY: height/2
+    });
+
+    console.log(button.x)
+    console.log(button.y)
+    console.log(width)
+    console.log(height/2)
+
+    setTimeout(() => {
+      setFlyer(null); // Clear the flyer after the animation
+    }, 3000); // Match the duration of the animation
+  };
+
   return (
-    <div className="w-full h-full flex flex-col items-center relative gap-2">
+    <div ref={screen} className="w-full h-full flex flex-col items-center relative gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
       <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
       <div className='h-[80%] w-[85%] flex flex-col bg-gray-200 gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
@@ -145,6 +174,7 @@ function ExerciseLists() {
               handleClick: (e) => {
                 e.stopPropagation()
                 planExercise(exercise.id)
+                handleFlyer(e)
               }, // Pass the exercise.id as an argument
             }}
             HiddenProps={{
@@ -166,6 +196,21 @@ function ExerciseLists() {
         }}
         numExercises={numExercises} 
       ></SlidingDrawer>
+      {flyer && (
+        <div
+          className="flyer"
+          style={{
+            top: flyer.y,
+            left: flyer.x,
+            transform: `translate(${flyer.targetX - flyer.x}px, ${
+              flyer.targetY - flyer.y
+            }px)`,
+            transition: "transform 3.0s ease",
+          }}
+        >
+          <FitnessCenterIcon fontSize='small' className='text-black'></FitnessCenterIcon>
+        </div>
+      )}
     </div>
   );
 }
