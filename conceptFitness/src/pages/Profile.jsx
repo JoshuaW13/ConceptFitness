@@ -110,11 +110,11 @@ function Profile() {
             {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
-              <button className={`button profile-page-button ${activeTab === "Metrics" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Metrics" ? "bg-[#E85A4F]" : ""}`}
               onClick={() => handleMetrics('Metrics')}>Metrics</button>
-              <button className={`button profile-page-button ${activeTab === "Goals" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Goals" ? "bg-[#E85A4F]" : ""}`}
               onClick={() => handleGoals('Goals')}>Goals</button>
-              <button className={`button profile-page-button ${activeTab === "Statistics" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Statistics" ? "bg-[#E85A4F]" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}

@@ -24,6 +24,7 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #8E8D8A;
+  color: black
 }
 
 .navbar {
@@ -248,7 +249,7 @@ label {
   transition: all 0.2s ease;
 }
 
-.profile-page-button {
+.button {
   background-color: #D8C3A5; /* Equivalent to bg-gray-300 */
   font-size: 0.875rem; /* Equivalent to text-sm */
   display: flex; /* Flexbox for alignment */

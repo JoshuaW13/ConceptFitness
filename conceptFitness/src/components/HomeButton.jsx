@@ -12,7 +12,7 @@ function HomeButton() {
   
   return (
     <button 
-      className="text-black text-lg font-bold w-1/4 h-10 flex items-center justify-center focus:outline-none border-black"
+      className="text-black p-1 h-11 flex items-center justify-center focus:outline-none border-black"
       // style={{ backgroundColor: '#EAE7DC' }}
       onClick={handleClick}
     >

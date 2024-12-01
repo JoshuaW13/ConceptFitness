@@ -34,27 +34,27 @@ function Home() {
   }
 
   return (
-      <div className='w-full h-full flex flex-col items-center text-black'>
+      <div className='background'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
         <Calender className="flex-grow"></Calender>
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
           <div className='flex flex-row gap-2 flex-grow'>
             <div className='flex flex-col w-[40%] gap-4 flex-grow'>
-              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+              <button className='button text-xl'
                 onClick={navigateCatalogue} 
               >Exercises</button>
-              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+              <button className='button text-xl'
                 onClick={navigatePrograms} 
               >Programs</button>
-              <button className='bg-gray-300 text-xl flex items-center justify-center flex-grow hover:bg-gray-200 focus:outline-none'
+              <button className='button text-xl'
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
-            <div className='w-[80%] bg-gray-300 rounded-lg flex-grow text-l font-semibold'>
+            <div className='w-[80%] bg-[#8E8D8A] rounded-lg flex-grow text-l font-bold'>
               <p className='pt-1'>Goals</p>
             </div>
           </div>
-          <button className='bg-gray-300 text-2xl flex-grow-[0.3] hover:bg-gray-200 focus:outline-none'
+          <button className='button text-xl bg-[#E85A4F]'
             onClick={startSession}          
           >Start Session</button>
         </div>
