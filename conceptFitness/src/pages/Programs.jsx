@@ -10,12 +10,12 @@ import DropDown from '../components/DropDown';
 import SearchBar from '../components/SearchBar';
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 import { useProgramContext } from "../contexts/ProgramsContext";
-
-
+import { useNavigate } from 'react-router-dom';
 
 function Programs() {
   const { exercises } = useExerciseCatalogueContext();
   const { programs, removeExerciseFromProgram } = useProgramContext();
+  const navigate = useNavigate();
 
   const constructExercise = (exerciseId, index, programId) => {
     const exercise = exercises.find(exercise=>exercise.id===exerciseId)
@@ -39,10 +39,17 @@ function Programs() {
       />;
   };
 
+  const addNewProgram = ()=>{
+    navigate("/catalogue")
+  }
+
   return (
     <div className="w-full h-full flex flex-col items-center gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
-      <SearchBar />
+      <div className='flex gap-1 justify-center'>
+        <SearchBar />
+        <button className='w-[10%]' onClick={addNewProgram}>+</button>
+      </div>
       <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden">
         {programs.map((program) => {
           return (
@@ -53,6 +60,7 @@ function Programs() {
                 return constructExercise(exerciseId, index, program.id);
               })}
               InitialProps={{
+                id: program.id,
                 name: program.name,
                 tags: program.tags,
                 numExercises: program.exercises.length,

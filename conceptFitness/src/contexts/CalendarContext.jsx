@@ -6,39 +6,46 @@ const CalendarContext = createContext();
 export const CalendarProvider = ({ children }) => {
   const [days, setDays]=useState([
   {
-    id: 1,
+    id: 0,
     day: "Sunday",
-    program: 0
+    program: 1,
+    selected: false,
   }, 
   {
-    id: 2,
+    id: 1,
     day: "Monday",
-    program: 1
+    program: 1,
+    selected: false,
+  },
+  {
+    id: 2,
+    day: "Tuesday",
+    program: 1,
+    selected: false,
   },
   {
     id: 3,
-    day: "Tuesday",
-    program: 0
+    day: "Wednesday",
+    program: 1,
+    selected: false,
   },
   {
     id: 4,
-    day: "Wednesday",
-    program: 0
+    day: "Thursday",
+    program: 1,
+    selected: false,
   },
   {
     id: 5,
-    day: "Thursday",
-    program: 0
+    day: "Friday",
+    program: 1,
+    selected: false,
   },
   {
     id: 6,
-    day: "Friday",
-    program: 0
-  },
-  {
-    id: 7,
     day: "Saturday",
-    program: 0
+    program: 2,
+    selected: false,
   },
   ]);
 

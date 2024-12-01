@@ -12,106 +12,150 @@ export const ExerciseCatalogueProvider = ({ children }) => {
       name: "Pull Up", 
       equipment: "Pull Up Bar", 
       targetMuscle: "Back, Arms", 
-      description: "Pull-ups are a bodyweight exercise that primarily targets the back and arm muscles, especially the latissimus dorsi. It involves pulling the body up while gripping a horizontal bar, helping to build upper body strength and endurance."
+      description: "Pull-ups are a bodyweight exercise that primarily targets the back and arm muscles, especially the latissimus dorsi. It involves pulling the body up while gripping a horizontal bar, helping to build upper body strength and endurance.",
+      maxWeight: 0, // Bodyweight exercise, no max weight
+      currentSets: 3, // Example default
+      maxReps: 12 // Example default
     },
     { 
       id: 2, 
       name: "Pushup", 
       equipment: "NA", 
       targetMuscle: "Chest, Triceps", 
-      description: "Push-ups are a classic bodyweight exercise that works the chest, triceps, and shoulders. By lowering and raising the body with the arms while in a plank position, push-ups help to improve upper body strength and core stability."
+      description: "Push-ups are a classic bodyweight exercise that works the chest, triceps, and shoulders. By lowering and raising the body with the arms while in a plank position, push-ups help to improve upper body strength and core stability.",
+      maxWeight: 0, // Bodyweight exercise
+      currentSets: 4, // Example default
+      maxReps: 15 // Example default
     },
     { 
       id: 3, 
       name: "Muscle Up", 
       equipment: "Pull Up Bar", 
       targetMuscle: "Back, Chest, Tricep", 
-      description: "The muscle-up is an advanced bodyweight exercise that combines a pull-up and a dip. It targets the back, chest, and triceps while requiring explosive strength to transition from a pull-up into a dip on a bar."
+      description: "The muscle-up is an advanced bodyweight exercise that combines a pull-up and a dip. It targets the back, chest, and triceps while requiring explosive strength to transition from a pull-up into a dip on a bar.",
+      maxWeight: 0, // Bodyweight exercise
+      currentSets: 2, // Example default
+      maxReps: 5 // Example default
     },
     { 
       id: 4, 
       name: "Squat", 
       equipment: "Squat Rack", 
       targetMuscle: "Hamstring, Glutes", 
-      description: "The squat is a fundamental lower body exercise that targets the hamstrings, glutes, and quads. By bending the knees and lowering the hips towards the ground, squats improve leg strength, mobility, and overall lower body power."
+      description: "The squat is a fundamental lower body exercise that targets the hamstrings, glutes, and quads. By bending the knees and lowering the hips towards the ground, squats improve leg strength, mobility, and overall lower body power.",
+      maxWeight: 100, // Example max weight
+      currentSets: 4, // Example default
+      maxReps: 8 // Example default
     },
     { 
       id: 5, 
       name: "Bench Press", 
       equipment: "Bench and Barbell", 
       targetMuscle: "Chest, Arms", 
-      description: "The bench press is a classic upper body exercise targeting the chest, shoulders, and triceps. By lowering a barbell to the chest and pressing it upwards, this exercise helps to build upper body strength and muscle mass."
+      description: "The bench press is a classic upper body exercise targeting the chest, shoulders, and triceps. By lowering a barbell to the chest and pressing it upwards, this exercise helps to build upper body strength and muscle mass.",
+      maxWeight: 120, // Example max weight
+      currentSets: 3, // Example default
+      maxReps: 6 // Example default
     },
     { 
       id: 6, 
       name: "Dips", 
       equipment: "Dip Bar", 
       targetMuscle: "Chest, Triceps", 
-      description: "Dips are a bodyweight exercise performed on parallel bars, targeting the chest and triceps. The movement involves lowering the body and then pushing back up, helping to improve upper body strength, particularly in the arms and chest."
+      description: "Dips are a bodyweight exercise performed on parallel bars, targeting the chest and triceps. The movement involves lowering the body and then pushing back up, helping to improve upper body strength, particularly in the arms and chest.",
+      maxWeight: 0, // Bodyweight exercise
+      currentSets: 3, // Example default
+      maxReps: 10 // Example default
     },
     { 
       id: 7, 
       name: "Cable Row", 
       equipment: "Cable Row Machine", 
       targetMuscle: "Back", 
-      description: "The cable row is a strength training exercise that primarily targets the muscles of the back, including the latissimus dorsi, rhomboids, and traps. It involves pulling a cable attachment towards the torso, promoting good posture and back strength."
+      description: "The cable row is a strength training exercise that primarily targets the muscles of the back, including the latissimus dorsi, rhomboids, and traps. It involves pulling a cable attachment towards the torso, promoting good posture and back strength.",
+      maxWeight: 80, // Example max weight
+      currentSets: 4, // Example default
+      maxReps: 12 // Example default
     },
     { 
       id: 8, 
       name: "Bulgarian Split Squat", 
       equipment: "Bench", 
       targetMuscle: "Hamstring, Glutes", 
-      description: "The Bulgarian split squat is a unilateral leg exercise that targets the hamstrings, glutes, and quads. By elevating one leg on a bench and lowering the body into a lunge, this exercise improves balance, strength, and muscle development in the legs."
+      description: "The Bulgarian split squat is a unilateral leg exercise that targets the hamstrings, glutes, and quads. By elevating one leg on a bench and lowering the body into a lunge, this exercise improves balance, strength, and muscle development in the legs.",
+      maxWeight: 50, // Example max weight (with dumbbells)
+      currentSets: 3, // Example default
+      maxReps: 8 // Example default
     },
     { 
       id: 9, 
       name: "Nordic Hamstring Curl", 
       equipment: "Foot Anchor", 
       targetMuscle: "Hamstrings", 
-      description: "The Nordic hamstring curl is an advanced exercise designed to target the hamstrings. By kneeling and slowly lowering the body forward using only the hamstrings for control, this movement helps to increase hamstring strength and prevent injuries."
+      description: "The Nordic hamstring curl is an advanced exercise designed to target the hamstrings. By kneeling and slowly lowering the body forward using only the hamstrings for control, this movement helps to increase hamstring strength and prevent injuries.",
+      maxWeight: 0, // Bodyweight exercise
+      currentSets: 3, // Example default
+      maxReps: 6 // Example default
     },
     { 
       id: 10, 
       name: "Military press", 
       equipment: "Dumbbells", 
       targetMuscle: "Shoulders, Arms", 
-      description: "The military press, also known as the overhead press, is a compound exercise that targets the shoulders and arms. By pressing dumbbells overhead while maintaining a tight core, this exercise strengthens the shoulders and improves upper body stability."
+      description: "The military press, also known as the overhead press, is a compound exercise that targets the shoulders and arms. By pressing dumbbells overhead while maintaining a tight core, this exercise strengthens the shoulders and improves upper body stability.",
+      maxWeight: 40, // Example max weight (with dumbbells)
+      currentSets: 4, // Example default
+      maxReps: 8 // Example default
     },
     { 
       id: 11, 
       name: "Bicep Curls", 
       equipment: "Dumbbells", 
       targetMuscle: "Bicep", 
-      description: "Bicep curls are a basic arm exercise that isolate the biceps. By curling dumbbells towards the shoulders while keeping the elbows stationary, this exercise builds bicep strength and definition."
+      description: "Bicep curls are a basic arm exercise that isolate the biceps. By curling dumbbells towards the shoulders while keeping the elbows stationary, this exercise builds bicep strength and definition.",
+      maxWeight: 25, // Example max weight (with dumbbells)
+      currentSets: 3, // Example default
+      maxReps: 12 // Example default
     },
     { 
       id: 12, 
       name: "Hammer Curls", 
       equipment: "Dumbbells", 
       targetMuscle: "Bicep, Wrists", 
-      description: "Hammer curls are a variation of the traditional bicep curl that targets both the biceps and forearms. By holding the dumbbells with a neutral grip and curling them towards the shoulders, this exercise improves arm strength and grip endurance."
+      description: "Hammer curls are a variation of the traditional bicep curl that targets both the biceps and forearms. By holding the dumbbells with a neutral grip and curling them towards the shoulders, this exercise improves arm strength and grip endurance.",
+      maxWeight: 25, // Example max weight (with dumbbells)
+      currentSets: 3, // Example default
+      maxReps: 12 // Example default
     },
     { 
       id: 13, 
       name: "Deadlift", 
       equipment: "Barbell", 
       targetMuscle: "Back, Hamstrings, Glutes", 
-      description: "The deadlift is a full-body exercise that focuses on the posterior chain, including the back, hamstrings, and glutes. By lifting a barbell from the ground while keeping the back straight, deadlifts help to build strength and power in the lower body and back."
+      description: "The deadlift is a full-body exercise that focuses on the posterior chain, including the back, hamstrings, and glutes. By lifting a barbell from the ground while keeping the back straight, deadlifts help to build strength and power in the lower body and back.",
+      maxWeight: 180, // Example max weight
+      currentSets: 3, // Example default
+      maxReps: 5 // Example default
     },
     { 
       id: 14, 
       name: "Front Squat", 
       equipment: "Barbell", 
       targetMuscle: "Quads, Glutes", 
-      description: "The front squat is a variation of the squat that places more emphasis on the quads. By holding a barbell across the front of the shoulders and squatting down, this exercise strengthens the legs and helps improve posture."
+      description: "The front squat is a variation of the squat that places more emphasis on the quads. By holding a barbell across the front of the shoulders and squatting down, this exercise strengthens the legs and helps improve posture.",
+      maxWeight: 100, // Example max weight
+      currentSets: 4, // Example default
+      maxReps: 8 // Example default
     },
     { 
       id: 15, 
       name: "Overhead Squat", 
       equipment: "Barbell", 
       targetMuscle: "Core, Shoulders, Quads", 
-      description: "The overhead squat is an advanced compound exercise that challenges the entire body, with a focus on the shoulders, core, and quads. By holding a barbell overhead while squatting, it improves balance, mobility, and overall strength."
-    },
+      description: "The overhead squat is an advanced compound exercise that challenges the entire body, with a focus on the shoulders, core, and quads. By holding a barbell overhead while squatting, it improves balance, mobility, and overall strength.",
+      maxWeight: 60, // Example max weight
+      currentSets: 3, // Example default
+    }
     // Add descriptions for remaining exercises similarly
   ]);
 
