@@ -22,8 +22,14 @@ function ProfileInputs ( {onSave, initialData} ) {
 
 
     return (
-        <div className='flex flex-col gap-4'>            
-            <div className="flex flex-row items-center w-full max-w-md gap-4">
+        <div className='flex flex-col gap-4'>
+            <div className="flex flex-row items-center justify-center w-full max-w-md">
+                <input
+                    placeholder='Username'
+                    className='w-[50%] bg-white border border-black rounded px-2 py-1'
+                ></input>
+            </div>       
+            <div className="flex flex-row items-center w-full max-w-md">
                 <p className="w-[25%] text-right">Bio</p>
                 <textarea
                     name="bio"
