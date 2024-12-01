@@ -83,7 +83,7 @@ function Profile() {
   function SettingsButton() {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
-          <button className="h-10 font-bold hover:bg-gray-200 focus:outline-none flex items-center justify-center"
+          <button className="h-10 font-bold hover:bg-gray-200 focus:outline-none border-black flex items-center justify-center"
             style={{ backgroundColor: '#EAE7DC' }}
             onClick={handleSettings}
           >
@@ -100,7 +100,9 @@ function Profile() {
     <div className='background relative background'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
-          <div className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
+          <div
+            className="w-[100%] h-[30%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative"
+          >
             <div>
               <button onClick={handleEdit} className='absolute top-2 right-2 bg-gray-300'>
                   <img src={editIcon} alt="" className='w-6 h-6 p-1'></img>

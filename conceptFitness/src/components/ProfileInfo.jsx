@@ -13,7 +13,6 @@ function ProfileInfo ( {data} ) {
             </div>
 
             <div className='flex flex-col justify-center w-2/3 pl-2'>
-              {/* <p className='text-black text-sm'>I'm an aspiring entrepreneur wanting to use exercise to build discipline!</p> */}
               <p className='text-black text-sm'>{data.bio}</p>
             </div>
         </div>
