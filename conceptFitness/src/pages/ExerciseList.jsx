@@ -143,19 +143,23 @@ function ExerciseLists() {
     setFlyer({
       x: button.x,
       y: button.y,
-      targetX: width,
-      targetY: height/2
     });
 
-    console.log(button.x)
-    console.log(button.y)
-    console.log(width)
-    console.log(height/2)
+    requestAnimationFrame(() => {
+      endFlyer()
+    });
+  };
+
+  const endFlyer = () => {
+    setFlyer({
+      x: width - 30,
+      y: height/2 - 10,
+    });
 
     setTimeout(() => {
-      setFlyer(null); // Clear the flyer after the animation
-    }, 3000); // Match the duration of the animation
-  };
+      setFlyer(null); 
+    }, 600); 
+  }
 
   return (
     <div ref={screen} className="w-full h-full flex flex-col items-center relative gap-2">
@@ -198,14 +202,14 @@ function ExerciseLists() {
       ></SlidingDrawer>
       {flyer && (
         <div
-          className="flyer"
+          key={"hello"}
+          className="fixed"
           style={{
-            top: flyer.y,
-            left: flyer.x,
-            transform: `translate(${flyer.targetX - flyer.x}px, ${
-              flyer.targetY - flyer.y
-            }px)`,
-            transition: "transform 3.0s ease",
+            top: flyer.y - 2,
+            left: flyer.x + 2,
+            zIndex: 999,
+            transform: `0.7s ease`,
+            transition: `top 0.7s ease, left 0.7s ease`
           }}
         >
           <FitnessCenterIcon fontSize='small' className='text-black'></FitnessCenterIcon>
