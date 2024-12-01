@@ -282,8 +282,6 @@ function Session() {
           isDrawerOpen={slidingDrawerOpen}
           setIsDrawerOpen={setSlidingDrawerOpen}
           Content={() => (
-            <TabbedContainer
-              FirstTab={() => (
                 selectedProgram && (
                   <div className="flex flex-col gap-1">
                     <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
@@ -307,14 +305,7 @@ function Session() {
                   </div>
                 )
               )}
-              SecondTab={()=>
-                <div>
-                  Logs go here
-                </div>
-              }
             />
-          )}
-        />
       </div>
     </div>
   );
