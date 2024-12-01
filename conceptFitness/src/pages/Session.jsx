@@ -84,17 +84,19 @@ function Session() {
     );
   };
 
-  // Function to go to the next exercise
-  const handleNextExercise = () => {
-    setCurrentExerciseIndex((prevIndex) =>
-      prevIndex < selectedProgram.exercises.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
-  // Function to handle selecting a program
-  const handleProgramSelect = () => {
-    
-  };
+  const prevExercise = () => {
+    const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
+    const exerciseIndexToSet = currentExerciseIndex-1;
+    const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    swapCurrentExercise(exerciseIdToSet);
+  }
+  
+  const nextExercise = ()=>{
+    const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
+    const exerciseIndexToSet = currentExerciseIndex+1;
+    const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    swapCurrentExercise(exerciseIdToSet);
+  }
 
   // Function to handle weight and reps input change
   const handleInputChange = (exerciseIndex, type, value) => {
@@ -210,13 +212,19 @@ function Session() {
           {/* Current Exercise Box */}
           <div className="exercise-description-box bg-gray-200 p-4 rounded-md">
             <div className='flex justify-center items-center gap-4'>
-              <button className='flex w-6 h-6 bg-gray-300'>
-                <BackIcon/>
-              </button>
+              {
+                selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[0] && (
+                  <button className="flex w-6 h-6 bg-gray-300" onClick={prevExercise}>
+                    <BackIcon />
+                  </button>
+                )
+              }
               <h3 className="text-lg font-bold mb-2">{currentExercise&& currentExercise.name}</h3>
-              <button className='flex w-6 h-6 bg-gray-300'>
-                <NextIcon/>
-              </button>
+                {selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[selectedProgram.exercises.length-1] && 
+                (<button className='flex w-6 h-6 bg-gray-300' onClick={nextExercise}>
+                  <NextIcon/>
+                </button>)
+              }
             </div>
             {currentExercise ? (
               <>
