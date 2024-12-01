@@ -5,6 +5,11 @@ import HomeButton from '../components/HomeButton';
 import ProfileButton from '../components/ProfileButton';
 import SlidingDrawerWithScrolling from '../components/SlidingDrawerWithScrolling';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useProgramContext } from '../contexts/ProgramsContext';
+import SessionExerciseHeader from '../components/SessionExerciseHeader';
+import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import NextIcon from "@mui/icons-material/ArrowForward"
+import BackIcon from "@mui/icons-material/ArrowBack"
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -12,20 +17,35 @@ function Session() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [selectedProgram, setSelectedProgram] = useState(null); // Selected program
+  const [currentExercise, setCurrentExercise] = useState();
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0); // Index of current exercise
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
   const [weights, setWeights] = useState({}); // State to store weights
   const [reps, setReps] = useState({}); // State to store reps
   const [timer, setTimer] = useState(0); // Timer state to track elapsed time
   const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
+  const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
 
   // Hardcoded list of programs and their exercises
-  const programs = [
-    { name: 'Forearm Workout', exercises: ['Wrist Curl', 'Reverse Wrist Curl', 'Finger Curl'] },
-    { name: 'Upper Body Workout', exercises: ['Push-ups', 'Pull-ups', 'Bench Press'] },
-  ];
+  // const programs = [
+  //   { name: 'Forearm Workout', exercises: ['Wrist Curl', 'Reverse Wrist Curl', 'Finger Curl'] },
+  //   { name: 'Upper Body Workout', exercises: ['Push-ups', 'Pull-ups', 'Bench Press'] },
+  // ];
+
+  const {programs} = useProgramContext();
+  const {exercises} = useExerciseCatalogueContext();
 
   const navigate = useNavigate();
+
+  //load the program defaults
+  useEffect(()=>{
+    const programToSelect = programs.find(program=>program.id===programToStart)
+    setSelectedProgram(programToSelect);
+    //setSearchTerm(program.name); // Set the search input to the selected program's name
+    setCurrentExercise(exercises.find(exercise=>exercise.id===programToSelect.exercises[0])); // Reset to the first exercise
+    setWeights({}); // Reset weights
+    setReps({}); // Reset reps
+  },[])
 
   // Load completed exercises from localStorage when the component is mounted
   useEffect(() => {
@@ -71,12 +91,8 @@ function Session() {
   };
 
   // Function to handle selecting a program
-  const handleProgramSelect = (program) => {
-    setSelectedProgram(program);
-    setSearchTerm(program.name); // Set the search input to the selected program's name
-    setCurrentExerciseIndex(0); // Reset to the first exercise
-    setWeights({}); // Reset weights
-    setReps({}); // Reset reps
+  const handleProgramSelect = () => {
+    
   };
 
   // Function to handle weight and reps input change
@@ -122,15 +138,16 @@ function Session() {
     navigate('/home');
   };
 
+  const swapCurrentExercise = (exerciseId)=>{
+    setCurrentExercise(exercises.find(exercise=>exercise.id===exerciseId)); // Reset to the first exercise
+  }
+
   // Filter the programs based on the search term
-  const filteredPrograms = programs.filter((program) =>
-    program.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredPrograms = programs.filter((program) =>
+  //   program.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   // Get current exercise details based on the selected program and current exercise index
-  const currentExercise = selectedProgram
-    ? selectedProgram.exercises[currentExerciseIndex]
-    : null;
 
   // Format the timer in mm:ss format
   const formatTime = (time) => {
@@ -166,10 +183,9 @@ function Session() {
         <div className="flex flex-col w-full px-8 gap-4 flex-grow">
           {/* Weight and Reps Section */}
           <div className="controls flex items-center justify-center gap-4 w-full mb-4">
-            <div className="triangle-left" onClick={handlePrevExercise}></div>
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center gap-2">
-                <label className="text-lg">Weight:</label>
+                <label className="text-base">Weight:</label>
                 <input
                   type="number"
                   className="weight-input w-16 text-center border p-1"
@@ -178,7 +194,7 @@ function Session() {
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-lg">Reps:</label>
+                <label className="text-base">Reps:</label>
                 <input
                   type="number"
                   className="reps-input w-16 text-center border p-1"
@@ -187,12 +203,20 @@ function Session() {
                 />
               </div>
             </div>
-            <div className="triangle-right" onClick={handleNextExercise}></div>
+            <button className='text-sm'>Save Set</button>
           </div>
 
           {/* Current Exercise Box */}
           <div className="exercise-description-box bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Current Exercise</h3>
+            <div className='flex justify-center items-center gap-4'>
+              <button className='flex w-6 h-6 bg-gray-300'>
+                <BackIcon/>
+              </button>
+              <h3 className="text-lg font-bold mb-2">{currentExercise&& currentExercise.name}</h3>
+              <button className='flex w-6 h-6 bg-gray-300'>
+                <NextIcon/>
+              </button>
+            </div>
             {currentExercise ? (
               <>
                 <div className="video-placeholder bg-white w-full relative mb-2">
@@ -205,7 +229,7 @@ function Session() {
                     Your browser do not support video tag
                  </video>
                 </div>
-                <p className="text-sm">{currentExercise} is a common exercise used in strength training.</p>
+                <p className="text-sm">{currentExercise.description}</p>
               </>
             ) : (
               <p className="text-sm">Select a program to begin.</p>
@@ -213,61 +237,25 @@ function Session() {
           </div>
 
           {/* Program Input and Dropdown */}
-          <div className="workout-list bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Workout Exercises</h3>
-            <div className="flex items-center gap-2">
-              <label className="text-md font-semibold">Current Program</label>
-              <input
-                type="text"
-                className="w-full border rounded p-2"
-                placeholder="Search programs..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input
-              />
-            </div>
-            {searchTerm && (
-              <div className="program-dropdown bg-white border rounded shadow-md mt-2 max-h-40 overflow-y-auto">
-                {filteredPrograms.length > 0 ? (
-                  filteredPrograms.map((program, index) => (
-                    <div
-                      key={index}
-                      className="p-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => handleProgramSelect(program)}
-                    >
-                      {program.name}
-                    </div>
-                  ))
-                ) : (
-                  <div className="p-2 text-gray-500">No programs found</div>
-                )}
-              </div>
-            )}
+          {/* <div className="workout-list bg-gray-100 p-4 rounded-md">
+            <h3 className="text-lg font-bold mb-2">{selectedProgram&& selectedProgram.name}</h3>
 
-            {/* List of Exercises for the Selected Program */}
-            {selectedProgram && (
-              <div className="exercise-list mt-4 max-h-40 overflow-y-auto">
-                <div className="exercise-header">
-                  <span className="text-md font-semibold">Exercises</span>
-                </div>
-                <div className="max-h-40 overflow-y-auto">
-                  {selectedProgram.exercises.map((exercise, index) => (
-                    <div
-                      key={index}
-                      className="exercise-item p-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => setCurrentExerciseIndex(index)}
+            {selectedProgram&&<div className='flex flex-col gap-1'>
+              {
+                selectedProgram.exercises.map((exerciseId, index)=>(
+                    <SessionExerciseHeader key={index}
+                      exerciseName={exercises.find(exercise=>exercise.id===exerciseId).name}
                     >
-                      <span className="font-semibold">Exercise {index + 1}:</span> {exercise}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+                    </SessionExerciseHeader>
+                ))
+              }
+            </div>}
+          </div> */}
         </div>
 
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="fixed inset-0 -opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 max-w-md text-center">
               <h2 className="text-lg font-bold mb-2">Session Completed!</h2>
               <button
@@ -281,25 +269,28 @@ function Session() {
         )}
 
         {/* Sliding Drawer with Scrolling */}
-        <SlidingDrawerWithScrolling Content={() => (
-          <div className="flex flex-col p-4 gap-4">
-            <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
-            {completedExercises.map((session, index) => (
-              <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
-                <h3 className="text-lg font-semibold">{session.program.name}</h3>
-                <div className="exercises-list">
-                  {session.exercises.map((exercise, idx) => (
-                    <div key={idx} className="exercise-entry p-2">
-                      <p>{exercise.exercise}</p>
-                      <p>Weight: {exercise.weight}</p>
-                      <p>Reps: {exercise.reps}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )} />
+        <SlidingDrawerWithScrolling 
+        isDrawerOpen={slidingDrawerOpen}
+        setIsDrawerOpen={setSlidingDrawerOpen}
+        Content={()=>
+          selectedProgram&&<div className='flex flex-col gap-1'>
+            <h3 className="text-lg font-bold mb-2">{selectedProgram&& selectedProgram.name}</h3>
+          {
+            selectedProgram.exercises.map((exerciseId, index)=>(
+                <SessionExerciseHeader key={index}
+                  exerciseName={exercises.find(exercise=>exercise.id===exerciseId).name}
+                  onClick={(e)=>{
+                  console.log("Swapping exercise");
+                  e.stopPropagation()
+                  setSlidingDrawerOpen(false);
+                  swapCurrentExercise(exerciseId)
+                  }}
+                >
+                </SessionExerciseHeader>
+            ))
+          }
+        </div>
+        } />
       </div>
     </div>
   );

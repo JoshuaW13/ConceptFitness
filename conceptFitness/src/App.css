@@ -105,10 +105,10 @@
 }
 /* Triangle button styles */
 .triangle-left, .triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
+  /* width: 10px;
+  height: 10px; */
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   cursor: pointer;
 }
 
