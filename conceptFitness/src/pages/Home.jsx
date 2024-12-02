@@ -10,6 +10,8 @@ import { useCalendarContext } from '../contexts/CalendarContext'
 
 function Home() {
   const{days} = useCalendarContext();
+  const [isNotifVisible, setIsNotifVisible] = useState(false);
+  const [notifMsg, setNotifMsg] = useState("")
 
   const navigate = useNavigate();
 
@@ -36,7 +38,7 @@ function Home() {
   return (
       <div className='w-full h-full flex flex-col items-center text-black'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
-        <Calender className="flex-grow"></Calender>
+        <Calender className="flex-grow" setIsNotifVisible={setIsNotifVisible} setNotifMsg={setNotifMsg}></Calender>
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
           <div className='flex flex-row gap-2 flex-grow'>
             <div className='flex flex-col w-[40%] gap-4 flex-grow'>
@@ -58,7 +60,11 @@ function Home() {
             onClick={startSession}          
           >Start Session</button>
         </div>
-        
+        {isNotifVisible && (
+          <Popup_Notif 
+            Content={notifMsg}
+          />
+        )}
       </div>
   )
 }

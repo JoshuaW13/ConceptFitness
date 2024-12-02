@@ -5,8 +5,7 @@ import { useCalendarContext } from '../contexts/CalendarContext';
 import Popup_Notif from '../components/Popup_Notif';
 import Tag from './Tag';
 
-function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+function ProgramHeaderContent({ onClick, id, name, tags, numExercises, setIsNotifVisible, setNotifMsg}) {
   const { days } = useCalendarContext()
   const msg = "Testing"
 
@@ -18,9 +17,10 @@ function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
   }
 
   const showNotif = () => {
-    setIsPopupVisible(true);
+    setNotifMsg("Program has been added")
+    setIsNotifVisible(true);
     setTimeout(() => {
-      setIsPopupVisible(false);
+      setIsNotifVisible(false);
     }, 2000);    
   }
 
@@ -46,9 +46,7 @@ function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
           <p className='text-base'># of Exercises: {numExercises}</p>
         </div>
       </div>
-      {isPopupVisible && (
-        <Popup_Notif Content={msg}/>
-      )}
+      {showNotif()}
     </div>
   );
 }
