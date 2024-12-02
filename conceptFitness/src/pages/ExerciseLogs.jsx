@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
@@ -15,12 +15,38 @@ function ExerciseLogs() {
     const {exercises}=useExerciseCatalogueContext();
     console.log(exerciseLogs);
 
+    const filteredList = []
+    const [searchText, setSearchText] = useState("");
+    const [searchState, setSearchState] = useState(true);
+    const [filteredExerciseLog, setFilteredExerciseLog] = useState([])
+  
+    const filterSearch = () => {
+      if (searchText === "") {
+        setFilteredExerciseLog(exerciseLogs);
+        setSearchState(true);
+      } else if (!searchState && searchText != null) {
+        exerciseLogs.forEach((exerciseLog) => {
+            exercises.forEach((exercise) => {
+                if((exercise.name.includes(searchText) || exercise.equipment.includes(searchText))&& exercise.id == exerciseLog.exerciseId) {
+                    filteredList.push(exerciseLog)
+                } 
+            })
+        })
+        setFilteredExerciseLog(filteredList);
+        setSearchState(true);
+      }
+    }
+
+    useEffect(() => {
+        filterSearch();
+    }, [searchState]);
+
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
             <LogNavbar />
-            <SearchBar></SearchBar>
+            <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."}></SearchBar>
             <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-4 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
-                {exerciseLogs.map((exerciseLog,index)=>(
+                {filteredExerciseLog.map((exerciseLog,index)=>(
                     <DropDown
                         key={index}
                         InitialComponent={ExerciseDataHeader}
