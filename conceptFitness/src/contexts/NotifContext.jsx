@@ -12,7 +12,7 @@ export const NotifProvider = ({ children }) => {
     setIsNotifVisible(true);
     setTimeout(() => {
       setIsNotifVisible(false);
-    }, 2000);    
+    }, 1500);    
   }
 
   return (
