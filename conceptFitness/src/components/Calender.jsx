@@ -59,7 +59,7 @@ function Calender() {
 
 
   return (
-    <div className="w-[90%] h-[35%] bg-gray-50 rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 border-gray border-2 overflow-x-auto scrollbar-none">        
+    <div className="w-[90%] h-[35%] bg-gray-50 rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 border-gray border-2 overflow-x-auto scrollbar-none z-2">        
       <div className='flex flex-col sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between'>
         <button className='bg-gray-300 w-8 h-8 justify-center items-center hidden'>
           <ArrowLeftIcon fontSize='large'/>

@@ -27,7 +27,7 @@ function CalenderBox({Day, Date}) {
     }, [isPopupVisible])
 
     return (
-        <div className='flex flex-col h-full w-full'>
+        <div className='flex flex-col h-full w-full z-3'>
             <div className='relative h-[20%] w-full border-black border-2'>
                 <p className='flex text-xl font-semibold h-full items-center justify-center -mt-0.5'>{dayNames[Day]}</p>
                 <p className='absolute text-xl -top-1 right-1 text-black'>{Date}</p>
@@ -42,14 +42,13 @@ function CalenderBox({Day, Date}) {
                         event.stopPropagation();  // Prevent the event from bubbling up to the parent
                     }}
                     >
-                    <Menu className=''/>
+                        <Menu className=''/>
                     </button>
                 </div>
             </div>
             {isPopupVisible && (
                 <Popup_FullScreen
                     onClick={(event) => {
-                        event.stopPropagation();  // Prevent the event from bubbling up to the parent
                         setIsPopupVisible(false);  // Close the popup
                         days.find((d) => d.id == Day).selected = false
                     }} 

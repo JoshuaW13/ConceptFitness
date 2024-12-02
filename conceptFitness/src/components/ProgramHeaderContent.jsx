@@ -4,11 +4,11 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import { useCalendarContext } from '../contexts/CalendarContext';
 import Popup_Notif from '../components/Popup_Notif';
 import Tag from './Tag';
+import { useNotifContext } from "../contexts/NotifContext.jsx";
 
 function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
   const { days } = useCalendarContext()
-  const msg = "Testing"
+  const { setNotifMsg, setIsNotifVisible } = useNotifContext();
 
   const assignProgram = () => {
     const selectedDay = days.find((d) => d.selected == true);
@@ -18,10 +18,12 @@ function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
   }
 
   const showNotif = () => {
-    setIsPopupVisible(true);
+    setNotifMsg("Day program has been set")
+    setIsNotifVisible(true);
     setTimeout(() => {
-      setIsPopupVisible(false);
+      setIsNotifVisible(false);
     }, 2000);    
+    onClick()
   }
 
   return (
@@ -31,7 +33,6 @@ function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
           <p className='relative text-lg w-full'>{name}
             <EventAvailableIcon className='absolute right-0 rounded-md bg-gray-400' fontSize='medium' onClick={assignProgram}/>
           </p>
-
           {/* Only render the tags once, conditionally */}
           <div className='flex gap-1 justify-center'>
             {tags && tags.length > 0 ? (
@@ -42,13 +43,9 @@ function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
               <p>No tags available</p>
             )}
           </div>
-
           <p className='text-base'># of Exercises: {numExercises}</p>
         </div>
       </div>
-      {isPopupVisible && (
-        <Popup_Notif Content={msg}/>
-      )}
     </div>
   );
 }
