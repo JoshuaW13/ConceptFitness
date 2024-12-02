@@ -1,20 +1,19 @@
 import React from 'react'
 import '../App.css'
-import ProfilePicture from '../assets/profilePicture.svg'
+import ProfilePicture from '../assets/profilePicture.png'
 
 function ProfileInfo ( {data} ) {
     return (
         <div className="flex p-4 relative">
-            <div className='flex flex-col items-center justify-center w-1/4'>
-              <div className="w-[70%] h-[70%] mb-1">
-                <img src={ProfilePicture}></img>
+            <div className='flex flex-col justify-center w-1/2'>
+              <div className="w-[70%] mb-1">
+                <img src={ProfilePicture} className='mb-1'></img>
+                <p className='text-black text-sm'>{ data.username || 'Username' }</p>
               </div>
-              <p className='text-black text-sm'>Olivia Carter</p>
             </div>
 
-            <div className='flex flex-col justify-center w-2/3 pl-2'>
-              {/* <p className='text-black text-sm'>I'm an aspiring entrepreneur wanting to use exercise to build discipline!</p> */}
-              <p className='text-black text-sm'>{data.bio}</p>
+            <div className='flex flex-col justify-center w-[80%] pl-2'>
+              <p className='text-black text-sm'>{data.bio || 'Write a Bio...'}</p>
             </div>
         </div>
     )

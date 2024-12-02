@@ -15,7 +15,7 @@ function ProfilePopup() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col text-black">
           <button onClick={profile}>Profile</button>
           <button onClick={logOut}>Log Out</button>
     </div>

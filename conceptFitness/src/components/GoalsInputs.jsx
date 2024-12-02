@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function GoalsInputs( {onSave, initialData, unitSystem} ) {
+function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
 
     const [formData, setFormData] = useState(initialData)
 
@@ -61,12 +61,16 @@ function GoalsInputs( {onSave, initialData, unitSystem} ) {
                     value={formData.targetDate}
                     onChange={handleChange}
                     className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                    style={{colorScheme: "light"}}
                 />
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='w-[20%] bg-green-300 p-1 m-2'>
+                <button onClick={handleSave} className='save-button'>
                     Save
+                </button>
+                <button onClick={onCancel} className='cancel-button'>
+                    Cancel
                 </button>
             </div>
 

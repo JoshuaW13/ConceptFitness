@@ -9,11 +9,11 @@ function HomeButton() {
   const handleClick = () => {
     navigate("/home");
   }
-
+  
   return (
     <button 
-      className="text-black bg-gray-300 h-11 w-14 p-1 rounded focus:outline-none relative"
-      // style={{ backgroundColor: '#EAE7DC' }}
+      className="text-black p-1 h-11 flex items-center justify-center focus:outline-none border-black"
+      style={{ backgroundColor: '#EAE7DC' }}
       onClick={handleClick}
     >
       <img 

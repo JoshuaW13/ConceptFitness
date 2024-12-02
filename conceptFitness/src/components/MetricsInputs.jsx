@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function MetricsInputs( {onSave, initialData, unitSystem} ) {
+function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
 
     const [formData, setFormData] = useState(initialData)
 
@@ -20,8 +20,7 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
     const handleSave = () => {
         onSave(formData)
         sessionStorage.setItem('metricsData', JSON.stringify(formData))
-    } 
-
+    }
 
     return (
         <div className='flex flex-col gap-4'>            
@@ -54,13 +53,34 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
                     <p className="w-[25%] text-right">Height ({heightUnit})</p>
-                    <input
-                        type="text"
-                        name='height'
-                        value={formData.height}
-                        onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
-                    />
+                    {unitSystem === 'metric' ? (
+                        <input
+                            type="text"
+                            name='height'
+                            value={formData.height}
+                            onChange={handleChange}
+                            className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                        />
+                    ) : (
+                        <div className="flex gap-2 w-[50%]">
+                            <input
+                                type="text"
+                                name="heightFt"
+                                value={formData.heightFt || ''}
+                                onChange={handleChange}
+                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                placeholder="ft"
+                            ></input>
+                            <input
+                                type="text"
+                                name="heightIn"
+                                value={formData.heightIn || ''}
+                                onChange={handleChange}
+                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                placeholder="in"
+                            ></input>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -81,8 +101,11 @@ function MetricsInputs( {onSave, initialData, unitSystem} ) {
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='w-[20%] bg-green-300 p-1 m-2'>
+                <button onClick={handleSave} className='save-button'>
                     Save
+                </button>
+                <button onClick={onCancel} className='cancel-button'>
+                    Cancel
                 </button>
             </div>
 

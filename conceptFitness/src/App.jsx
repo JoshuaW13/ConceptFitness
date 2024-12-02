@@ -10,7 +10,6 @@ import ExerciseLogs from './pages/ExerciseLogs.jsx';
 import SignUp from './pages/SignUp.jsx';
 import { ExerciseCatalogueProvider } from './contexts/ExerciseCatalogueContext.jsx';
 import {ProgramProvider} from "./contexts/ProgramsContext";
-import Settings from './pages/Settings.jsx';
 import { CalendarProvider } from './contexts/CalendarContext.jsx';
 import { SessionLogProvider } from './contexts/SessionLogContext.jsx';
 import { ExerciseLogProvider } from './contexts/ExerciseLogContext.jsx';
@@ -23,7 +22,7 @@ function App() {
           <SessionLogProvider>
             <ExerciseLogProvider>
               <CalendarProvider>
-                <div className="sm:aspect-[9/18] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
+                <div className="sm:aspect-[9/15] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center">
                   <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/home" element={<Home />} />

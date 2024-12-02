@@ -24,6 +24,7 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #8E8D8A;
+  color: black
 }
 
 .navbar {
@@ -35,8 +36,8 @@
   padding-bottom: 0.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  /* background: #8E8D8A; */
-  background: white;
+  background: #8E8D8A;
+  /* background: #EAE7DC; */
   color: white;
 }
 
@@ -248,7 +249,7 @@ label {
   transition: all 0.2s ease;
 }
 
-.profile-page-button {
+.button {
   background-color: #D8C3A5; /* Equivalent to bg-gray-300 */
   font-size: 0.875rem; /* Equivalent to text-sm */
   display: flex; /* Flexbox for alignment */
@@ -258,5 +259,23 @@ label {
   border-radius: 0.25rem; /* Slightly rounded corners */
   border: black 1px solid; /* Black border with 1px width */
   font-weight: bold; /* Bold text */
+  color: white;
+  border-radius: 9999px;
+}
+
+.save-button {
+  width: 20%;
+  background-color: #22C55E;
+  padding: 0.25rem;
+  margin: 0.5rem;
+  color: white;
+}
+
+.cancel-button {
+  width: 30%;
+  background-color: #E85A4F;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: white;
 }
 }
