@@ -17,10 +17,8 @@ function Session() {
   const location = useLocation(); // Access the location object
   const { programToStart } = location.state || {}; // Retrieve the programToStart from the state
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [selectedProgram, setSelectedProgram] = useState(null); // Selected program
   const [currentExercise, setCurrentExercise] = useState();
-  const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0); // Index of current exercise
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
   const [weights, setWeights] = useState({}); // State to store weights
   const [reps, setReps] = useState({}); // State to store reps
