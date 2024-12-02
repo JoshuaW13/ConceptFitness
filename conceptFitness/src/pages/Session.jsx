@@ -14,7 +14,8 @@ import DropDown from '../components/DropDown';
 import SessionSetLog from '../components/SessionSetLog';
 import Popup from '../components/Popup';
 import ConfirmationPopup from '../components/ConfirmationPopup';
-import { SessionLogProvider, useSessionLogContext } from '../contexts/SessionLogContext';
+import { useSessionLogContext } from '../contexts/SessionLogContext';
+import { useExerciseLogContext } from '../contexts/ExerciseLogContext';
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -34,6 +35,7 @@ function Session() {
   const {programs} = useProgramContext();
   const {exercises} = useExerciseCatalogueContext();
   const {sessionLogs, addSessionLog} = useSessionLogContext();
+  const {exerciseLogs, updateExerciseLog} = useExerciseLogContext();
 
   const navigate = useNavigate();
 
@@ -125,6 +127,7 @@ function Session() {
   };
 
   const saveSessionLogAndReturnHome = ()=>{
+    //save exercise log
     let sessionRecordToSave = {
       id: sessionLogs.length+1,
       programId: selectedProgram.id,
@@ -133,15 +136,37 @@ function Session() {
       exerciseRecords:[],
     }
     exerciseToLogData.forEach((recordArray, exerciseId) => {
-      console.log("exercise id: "+exerciseId);
       const setsToAdd=[];
+      let newExerciseLog = exerciseLogs.find((exerciseLog) => exerciseLog.exerciseId == exerciseId)
+      if(newExerciseLog===undefined){
+        console.log("Made a new log!");
+        newExerciseLog={
+          id:exerciseLogs.length+1,
+          exerciseId: exerciseId,
+          reps:0,
+          sets:0,
+          weight:0,
+        }
+      }else{
+      console.log("Updating existing exercise!");
+
+      }
+      if(newExerciseLog.sets<recordArray.length){
+        newExerciseLog.sets = recordArray.length
+      }
       for(let i =0;i<recordArray.length;i++){
         setsToAdd.push({reps:recordArray[i].reps,weight:recordArray[i].weight});
+        if(recordArray[i].reps>newExerciseLog.reps){
+          newExerciseLog.reps = recordArray[i].reps;
+        }
+        if(recordArray[i].weight>newExerciseLog.weight){
+          newExerciseLog.weight = recordArray[i].weight;
+        }
       }
       sessionRecordToSave.exerciseRecords.push({id:exerciseId, sets:setsToAdd});
+      updateExerciseLog(newExerciseLog);
     });
     addSessionLog(sessionRecordToSave);
-    console.log(sessionRecordToSave);
     navigate("/home")
   }
 

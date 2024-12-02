@@ -41,8 +41,28 @@ export const ExerciseLogProvider = ({ children }) => {
     setExerciseLogs((prevExerciseLogs) => prevExerciseLogs.filter(ex => ex.id !== id));
   };
 
+  const updateExerciseLog = (updatedLog) => {
+    setExerciseLogs((prevExerciseLogs) => {
+      const existingLog = prevExerciseLogs.find((exerciseLog) => exerciseLog.id === updatedLog.id);
+  
+      // If the log does not exist, add the updatedLog to the array
+      if (!existingLog) {
+        return [...prevExerciseLogs, updatedLog];
+      }
+  
+      // If the log exists, update it with the new values
+      return prevExerciseLogs.map((exerciseLog) =>
+        exerciseLog.id === updatedLog.id
+          ? { ...exerciseLog, ...updatedLog }
+          : exerciseLog
+      );
+    });
+  };
+  
+  
+
   return (
-    <ExerciseLogContext.Provider value={{ exerciseLogs, addExerciseLog, removeExerciseLog }}>
+    <ExerciseLogContext.Provider value={{ exerciseLogs, addExerciseLog, removeExerciseLog, updateExerciseLog }}>
       {children}
     </ExerciseLogContext.Provider>
   );
