@@ -8,21 +8,13 @@ import { useNotifContext } from "../contexts/NotifContext.jsx";
 
 function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
   const { days } = useCalendarContext()
-  const { setNotifMsg, setIsNotifVisible } = useNotifContext();
+  const { showNotif } = useNotifContext();
 
   const assignProgram = () => {
     const selectedDay = days.find((d) => d.selected == true);
     console.log(selectedDay)
     selectedDay.program = id
-    showNotif()
-  }
-
-  const showNotif = () => {
-    setNotifMsg("Day program has been set")
-    setIsNotifVisible(true);
-    setTimeout(() => {
-      setIsNotifVisible(false);
-    }, 2000);    
+    showNotif("Program Scheduled")
     onClick()
   }
 

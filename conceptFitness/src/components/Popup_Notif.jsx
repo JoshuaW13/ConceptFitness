@@ -4,6 +4,7 @@ import { useNotifContext } from "../contexts/NotifContext";
 
 function Popup_Notif() {
   const { notifMsg, isNotifVisible } = useNotifContext();
+
   return (
     <div className={`absolute w-[80%] h-fit py-5 z-99 border-2 border-black bottom-[8%] flex items-center rounded-xl justify-center bg-white
       transition-all duration-500 ease-in-out ${

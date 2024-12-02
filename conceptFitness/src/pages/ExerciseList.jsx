@@ -12,9 +12,11 @@ import SearchBar from '../components/SearchBar';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import { useNotifContext } from "../contexts/NotifContext.jsx";
 import { useLocation } from 'react-router-dom';
 
 function ExerciseLists() {
+  const { showNotif } = useNotifContext();
   const location = useLocation(); // Access the location object
   const { programToEditId } = location.state || {}; // Retrieve the programToEditId from the state
   const { exercises } = useExerciseCatalogueContext();
@@ -65,6 +67,7 @@ function ExerciseLists() {
     setPlannedExercises((prevExercises) => {
       // Avoid adding if the exercise is already in the planned exercises list
       if (prevExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
+        showNotif("Exercise Already In Program")
         return prevExercises;
       }
       handleFlyer(e)

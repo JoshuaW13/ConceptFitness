@@ -7,8 +7,16 @@ export const NotifProvider = ({ children }) => {
   const [isNotifVisible, setIsNotifVisible] = useState(false)
   const [notifMsg, setNotifMsg] = useState("")
 
+  const showNotif = (msg) => {
+    setNotifMsg(msg)
+    setIsNotifVisible(true);
+    setTimeout(() => {
+      setIsNotifVisible(false);
+    }, 2000);    
+  }
+
   return (
-    <NotifContext.Provider value={{notifMsg, isNotifVisible, setNotifMsg, setIsNotifVisible}}>
+    <NotifContext.Provider value={{notifMsg, isNotifVisible, setNotifMsg, setIsNotifVisible, showNotif}}>
       {children}
     </NotifContext.Provider>
   );
