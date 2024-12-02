@@ -44,13 +44,13 @@ function Programs() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center gap-2">
+    <div className="background gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
       <div className='flex gap-1 justify-center'>
         <SearchBar />
-        <button className='w-[10%]' onClick={addNewProgram}>+</button>
+        <button className='w-[20%] bg-green-400' onClick={addNewProgram}>+</button>
       </div>
-      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden">
+      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg shadow-lg border-gray border-2 overflow-y-auto m-2 scrollbar-hidden bg-white">
         {programs.map((program) => {
           return (
             <DropDown

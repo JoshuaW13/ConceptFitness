@@ -20,7 +20,7 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(223 226 235)', transition: 'background-color 0.3s ease'}} onClick={handleClick}>
+            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : '#EAE7DC', transition: 'background-color 0.3s ease'}} onClick={handleClick}>
                 {/* Render InitialComponent */}
                 <DropDownArrow
                     className=" cursor-pointer"

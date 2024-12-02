@@ -45,7 +45,7 @@ function StatisticsWindow() {
             x: {
                 title: {
                     display: true,
-                    text: 'Month',
+                    text: 'Days',
                 },
             },
             y: {
