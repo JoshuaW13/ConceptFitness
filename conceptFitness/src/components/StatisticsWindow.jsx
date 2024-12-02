@@ -23,7 +23,7 @@ ChartJS.register (
 function StatisticsWindow() {
 
     const data = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
         datasets: [
             {
                 label: 'Weight (lbs)',
