@@ -70,7 +70,8 @@ function ExerciseLists() {
         showNotif("Exercise Already In Program")
         return prevExercises;
       }
-      handleFlyer(e)
+      if(e != undefined)
+        handleFlyer(e)
       return [...prevExercises, exerciseToAdd];
     });
   };
