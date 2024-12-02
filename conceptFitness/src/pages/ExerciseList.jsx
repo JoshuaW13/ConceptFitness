@@ -12,9 +12,11 @@ import SearchBar from '../components/SearchBar';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import { useNotifContext } from "../contexts/NotifContext.jsx";
 import { useLocation } from 'react-router-dom';
 
 function ExerciseLists() {
+  const { showNotif } = useNotifContext();
   const location = useLocation(); // Access the location object
   const { programToEditId } = location.state || {}; // Retrieve the programToEditId from the state
   const { exercises } = useExerciseCatalogueContext();
@@ -29,8 +31,8 @@ function ExerciseLists() {
   const tagsRef = useRef(tags);
   const { programs, addProgram } = useProgramContext();
   const [flyer, setFlyer] = useState(null);
-  const [height, setHeight] = useState(0)
-  const [width, setWidth] = useState(0)
+  const [target, setTarget] = useState(null);
+
 
 
   const prepareProgramToEdit = () =>{
@@ -57,7 +59,7 @@ function ExerciseLists() {
     })
   }
 
-  const planExercise = (key) => {
+  const planExercise = (key, e) => {
     const exerciseToAdd = exercises.find((exercise) => exercise.id === key);
     if (!exerciseToAdd) return;  // Ensure the exercise exists
   
@@ -65,8 +67,10 @@ function ExerciseLists() {
     setPlannedExercises((prevExercises) => {
       // Avoid adding if the exercise is already in the planned exercises list
       if (prevExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
+        showNotif("Exercise Already In Program")
         return prevExercises;
       }
+      handleFlyer(e)
       return [...prevExercises, exerciseToAdd];
     });
   };
@@ -115,11 +119,6 @@ function ExerciseLists() {
     prepareProgramToEdit();
   }, [programToEditId])
 
-  useEffect(() => {
-    setHeight(screen.current.clientHeight)
-    setWidth(screen.current.clientWidth)
-  })
-
   const saveProgram = (currentPlannedExercises, currentTags, name) => {
     if (currentPlannedExercises.length === 0) {
       return;
@@ -143,22 +142,26 @@ function ExerciseLists() {
     setFlyer({
       x: button.x,
       y: button.y,
-      targetX: width,
-      targetY: height/2
     });
 
-    console.log(button.x)
-    console.log(button.y)
-    console.log(width)
-    console.log(height/2)
-
-    setTimeout(() => {
-      setFlyer(null); // Clear the flyer after the animation
-    }, 3000); // Match the duration of the animation
+    requestAnimationFrame(() => {
+      endFlyer()
+    });
   };
 
+  const endFlyer = () => {
+    setFlyer({
+      x: target.x,
+      y: target.y,
+    });
+
+    setTimeout(() => {
+      setFlyer(null); 
+    }, 600); 
+  }
+
   return (
-    <div ref={screen} className="w-full h-full flex flex-col items-center relative gap-2">
+    <div ref={screen} className="w-full h-full flex flex-col items-center relative gap-2 overflow-y-hidden overflow-x-hidden">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
       <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
       <div className='h-[80%] w-[85%] flex flex-col bg-gray-200 gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden'>
@@ -173,8 +176,7 @@ function ExerciseLists() {
               targetMuscle: exercise.targetMuscle,
               handleClick: (e) => {
                 e.stopPropagation()
-                planExercise(exercise.id)
-                handleFlyer(e)
+                planExercise(exercise.id, e)
               }, // Pass the exercise.id as an argument
             }}
             HiddenProps={{
@@ -195,17 +197,18 @@ function ExerciseLists() {
           setNumExercises: setNumExercises,
         }}
         numExercises={numExercises} 
+        setTarget={setTarget}
       ></SlidingDrawer>
       {flyer && (
         <div
-          className="flyer"
+          key={"hello"}
+          className="fixed"
           style={{
-            top: flyer.y,
-            left: flyer.x,
-            transform: `translate(${flyer.targetX - flyer.x}px, ${
-              flyer.targetY - flyer.y
-            }px)`,
-            transition: "transform 3.0s ease",
+            top: flyer.y - 2,
+            left: flyer.x + 2,
+            zIndex: 999,
+            transform: `0.7s ease`,
+            transition: `top 0.7s ease, left 0.7s ease`
           }}
         >
           <FitnessCenterIcon fontSize='small' className='text-black'></FitnessCenterIcon>
