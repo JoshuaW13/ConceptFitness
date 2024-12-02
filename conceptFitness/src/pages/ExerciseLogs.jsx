@@ -13,16 +13,7 @@ import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContex
 function ExerciseLogs() {
     const {exerciseLogs}=useExerciseLogContext();
     const {exercises}=useExerciseCatalogueContext();
-
-    // for (let i = 0; i < 5; i++) {
-    //     exerciseLogs.push(
-    //         <DropDown
-    //             key={i}
-    //             InitialComponent={ExerciseDataHeader}
-    //             HiddenComponents={ExerciseData}
-    //         />
-    //     );
-    // }
+    console.log(exerciseLogs);
 
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
@@ -38,7 +29,7 @@ function ExerciseLogs() {
                         }}
                         HiddenComponents={ExerciseData}
                         HiddenProps={{
-                            exercise: exercises.find((exercise) => exercise.id == exerciseLog.exerciseId)
+                            exercise: exerciseLog
                         }}
                     />
                 ))}
