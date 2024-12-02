@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
@@ -39,6 +39,31 @@ function Programs() {
       />;
   };
 
+  const filteredList = []
+  const [searchText, setSearchText] = useState("");
+  const [searchState, setSearchState] = useState(true);
+  const [filteredPrograms, setFilteredPrograms] = useState([])
+
+  const filterSearch = () => {
+    if (searchText === "") {
+      setFilteredPrograms(programs);
+      setSearchState(true);
+    } else if (!searchState && searchText != null) {
+      programs.forEach((program) => {
+        if (program.name.toLowerCase().replace(/\s/g, '').replace(/-|,/g, "").includes(searchText.toLowerCase().replace(/\s/g, '').replace(/-/g, "")) || 
+            program.tags.find((item) => item.includes(searchText)) != undefined) {
+          filteredList.push(program)
+        }
+      })
+      setFilteredPrograms(filteredList);
+      setSearchState(true);
+    }
+  }
+
+  useEffect(() => {
+    filterSearch();
+  }, [searchState]);
+
   const addNewProgram = ()=>{
     navigate("/catalogue")
   }
@@ -47,11 +72,11 @@ function Programs() {
     <div className="w-full h-full flex flex-col items-center gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
       <div className='flex gap-1 justify-center'>
-        <SearchBar />
+        <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
         <button className='w-[10%]' onClick={addNewProgram}>+</button>
       </div>
       <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden">
-        {programs.map((program) => {
+        {filteredPrograms.map((program) => {
           return (
             <DropDown
               key={program.id}
