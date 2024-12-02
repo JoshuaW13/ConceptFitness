@@ -43,14 +43,6 @@ export const CalendarProvider = ({ children }) => {
   ]);
 
   const [dayPrograms, setDayPrograms] = useState([
-    {
-      date: "Dec 3, 2024",
-      program: 1,
-    },
-    {
-      date: "Dec 5, 2024",
-      program: 1,
-    },
   ])
 
   const addProgramToDay = (date, programId) => {

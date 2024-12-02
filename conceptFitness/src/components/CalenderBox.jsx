@@ -35,7 +35,8 @@ function CalenderBox({Day, Date}) {
                 <p className='absolute text-xl -top-1 right-1 text-black'>{Date.substring(4, Date.indexOf(","))}</p>
             </div>
             <div className='relative h-full w-full border-black border-2'>
-                <p>{programName}</p>
+                <p className={`font-semibold text-xl ${programName=="" ? "hidden" : "visible"}`}>Program:</p>
+                <p className='font-normal text-xl'>{programName}</p>
                 <div>
                     <button className='absolute h-8 w-8 bottom-1 right-1 bg-gray-300 rounded-md'
                     onClick={(event) => {setIsPopupVisible(!isPopupVisible)

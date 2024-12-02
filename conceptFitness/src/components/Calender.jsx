@@ -42,7 +42,6 @@ function Calender() {
     var boxesList = []
     for (var i = 0; i < 7; i++) {
       var boxDate = (dayjs(firstDay).add(i, 'days')).format('MMM D, YYYY')
-      console.log(boxDate)
       boxesList.push(<CalenderBox key={i} Day={i} Date={boxDate}></CalenderBox>)
     }
     setBoxes(boxesList)
@@ -75,7 +74,7 @@ function Calender() {
           <ArrowRightIcon fontSize='large'/>
         </button>
       </div>
-      <div id="calender" className='flex flex-grow h-full w-full overflow-x-auto scrollbar-none'>
+      <div id="calender" className='flex flex-grow h-full w-full overflow-x-auto scrollbar-none' onLoad={focusCalender()}>
         {boxes}
       </div>
     </div>
