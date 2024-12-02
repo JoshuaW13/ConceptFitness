@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import viteLogo from "/ConceptFitnessLogo.png";
+import HomeIcon from "@mui/icons-material/Home"
 import { useNavigate } from 'react-router-dom';
 
 function HomeButton() {
@@ -12,16 +12,11 @@ function HomeButton() {
   
   return (
     <button 
-      className="text-black p-1 h-11 flex items-center justify-center focus:outline-none border-black"
+      className="text-black px-4 py-2 border-black rounded ml-4 focus:outline-none relative"
       style={{ backgroundColor: '#EAE7DC' }}
       onClick={handleClick}
     >
-      <img 
-        src={viteLogo} 
-        alt="Home Logo" 
-        className="h-full w-full object-contain"  // Use object-contain to maintain aspect ratio
-        style={{ height: '100% !important', width: '100% !important' }}
-      />
+      <HomeIcon/>
     </button>
   );
 }
