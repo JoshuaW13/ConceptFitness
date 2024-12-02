@@ -54,7 +54,7 @@ function Home() {
               <p className='pt-1'>Goals</p>
             </div>
           </div>
-          <button className='button text-xl bg-green-500'
+          <button className='button text-xl bg-[#8E8D8A]'
             onClick={startSession}          
           >Start Session</button>
         </div>
