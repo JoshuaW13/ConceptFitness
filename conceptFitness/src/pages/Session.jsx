@@ -10,7 +10,8 @@ import SessionExerciseHeader from '../components/SessionExerciseHeader';
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 import NextIcon from "@mui/icons-material/ArrowForward"
 import BackIcon from "@mui/icons-material/ArrowBack"
-import TabbedContainer from '../components/SessionTabContainer';
+import DropDown from '../components/DropDown';
+import SessionSetLog from '../components/SessionSetLog';
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -26,6 +27,7 @@ function Session() {
   const [timer, setTimer] = useState(0); // Timer state to track elapsed time
   const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
   const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
+  const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
 
   // Hardcoded list of programs and their exercises
   // const programs = [
@@ -46,6 +48,11 @@ function Session() {
     setCurrentExercise(exercises.find(exercise=>exercise.id===programToSelect.exercises[0])); // Reset to the first exercise
     setWeights({}); // Reset weights
     setReps({}); // Reset reps
+    const newExerciseMap = new Map(exerciseToLogData);
+    for(let i =0;i<programToSelect.exercises.length;i++){
+      newExerciseMap.set(programToSelect.exercises[i].id, [])            
+    }
+    setExerciseToLogData(newExerciseMap);
   },[])
 
   // Load completed exercises from localStorage when the component is mounted
@@ -145,6 +152,14 @@ function Session() {
     setCurrentExercise(exercises.find(exercise=>exercise.id===exerciseId)); // Reset to the first exercise
   }
 
+  const saveSet = ()=>{
+    const newExerciseToLogMap = new Map(exerciseToLogData);
+    const newRecords = newExerciseToLogMap.get(currentExercise.id) || [];
+    newRecords.push({weight: 10, reps: 10})
+    newExerciseToLogMap.set(currentExercise.id, newRecords);
+    setExerciseToLogData(newExerciseToLogMap);
+  }
+
   // Filter the programs based on the search term
   // const filteredPrograms = programs.filter((program) =>
   //   program.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -206,7 +221,7 @@ function Session() {
                 />
               </div>
             </div>
-            <button className='text-sm'>Save Set</button>
+            <button className='text-sm' onClick={saveSet}>Save Set</button>
           </div>
 
           {/* Current Exercise Box */}
@@ -282,30 +297,38 @@ function Session() {
           isDrawerOpen={slidingDrawerOpen}
           setIsDrawerOpen={setSlidingDrawerOpen}
           Content={() => (
-                selectedProgram && (
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
-                    {selectedProgram.exercises.map((exerciseId, index) => {
-                      const exercise = exercises.find(ex => ex.id === exerciseId);
-                      if (!exercise) return null; // Handle case where exercise is not found
+            selectedProgram && (
+              <div className="flex flex-col gap-1">
+                <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
+                {selectedProgram.exercises.map((exerciseId, index) => {
+                  const exercise = exercises.find(ex => ex.id === exerciseId);
+                  if (!exercise) return null; // Handle case where exercise is not found
 
-                      return (
-                        <SessionExerciseHeader
-                          key={index}
-                          exerciseName={exercise.name}
-                          onClick={(e) => {
-                            console.log("Swapping exercise");
-                            e.stopPropagation();
-                            setSlidingDrawerOpen(false);
-                            swapCurrentExercise(exerciseId);
-                          }}
-                        />
-                      );
-                    })}
-                  </div>
-                )
-              )}
-            />
+                  return (
+                    <DropDown
+                      key={index}
+                      isActive={exerciseToLogData.get(exercise.id)?.length>0}
+                      InitialComponent={SessionExerciseHeader}
+                      InitialProps={{
+                        exerciseName: exercise.name,
+                        onClick: (e) => {
+                          console.log("Swapping exercise");
+                          e.stopPropagation();
+                          setSlidingDrawerOpen(false);
+                          swapCurrentExercise(exerciseId);
+                        },
+                      }}
+                      HiddenComponents={SessionSetLog}
+                      HiddenProps={{
+                        exerciseRecords: exerciseToLogData.get(exercise.id)
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            )
+          )}
+        />
       </div>
     </div>
   );
