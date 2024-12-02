@@ -11,26 +11,28 @@ function CalenderBox({Day, Date}) {
     const [programName, setProgramName] = useState("")
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const { programs } = useProgramContext()
-    const { days } = useCalendarContext()
+    const { days, dayPrograms } = useCalendarContext()
 
     const getProgramName = () => {
-        const daySchedule = days.find((d) => d.id == Day)
-        if(daySchedule.program===undefined){
-            return;
+        const daySchedule = dayPrograms.find((d) => d.date == Date)
+        if(daySchedule == undefined){
+            console.log("No Program Found: ", Date)
+            setProgramName("")
+            return
         }
-        console.log(programs.find((p) => p.id == (days.find((d) => d.id == Day)).program).name)
-        setProgramName(programs.find((p) => p.id == (days.find((d) => d.id == Day)).program).name)
+        console.log(programs.find((p) => p.id == (dayPrograms.find((d) => d.date == Date)).program).name, ": ", Date)
+        setProgramName(programs.find((p) => p.id == (dayPrograms.find((d) => d.date == Date)).program).name)
     }
     
     useEffect(() => {
         getProgramName()
-    }, [isPopupVisible])
+    })
 
     return (
         <div className='flex flex-col flex-shrink-0 h-full w-[50%] z-3'>
             <div className='relative h-[20%] w-full border-black border-2'>
                 <p className='flex text-xl font-semibold h-full items-center justify-center -mt-0.5'>{dayNames[Day]}</p>
-                <p className='absolute text-xl -top-1 right-1 text-black'>{Date}</p>
+                <p className='absolute text-xl -top-1 right-1 text-black'>{Date.substring(4, Date.indexOf(","))}</p>
             </div>
             <div className='relative h-full w-full border-black border-2'>
                 <p>{programName}</p>
@@ -53,6 +55,7 @@ function CalenderBox({Day, Date}) {
                     days.find((d) => d.id == Day).selected = false
                 }} 
                 Content={CalenderPopup}
+                selectedDate={Date}
                 Title={'Add Program'}
             />
             )}

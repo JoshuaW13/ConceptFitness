@@ -17,7 +17,7 @@ function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
       x: button.x,
       y: button.y + 11,
     })
-  })
+  }, [])
 
   return (
     <>

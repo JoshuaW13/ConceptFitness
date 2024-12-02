@@ -4,7 +4,7 @@ import { useProgramContext } from "../contexts/ProgramsContext";
 import ProgramHeader from '../components/ProgramHeader';
 import ProgramHeaderContent from '../components/ProgramHeaderContent';
 
-function CalenderPopup({onClick}) {
+function CalenderPopup({onClick, selectedDate}) {
   const { programs } = useProgramContext()
 
   return (
@@ -20,7 +20,8 @@ function CalenderPopup({onClick}) {
                 name: program.name,
                 tags: program.tags,
                 numExercises: program.exercises.length,
-                onClick: onClick
+                onClick: onClick,
+                selectedDate: selectedDate
               }}
             />
           );

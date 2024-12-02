@@ -8,73 +8,75 @@ export const CalendarProvider = ({ children }) => {
   {
     id: 0,
     day: "Sunday",
-    program: 1,
     selected: false,
   }, 
   {
     id: 1,
     day: "Monday",
-    program: 1,
     selected: false,
   },
   {
     id: 2,
     day: "Tuesday",
-    program: 1,
     selected: false,
   },
   {
     id: 3,
     day: "Wednesday",
-    program: 1,
     selected: false,
   },
   {
     id: 4,
     day: "Thursday",
-    program: 1,
     selected: false,
   },
   {
     id: 5,
     day: "Friday",
-    program: 1,
     selected: false,
   },
   {
     id: 6,
     day: "Saturday",
-    program: 2,
     selected: false,
   },
   ]);
 
-  const addProgramToDay = (dayId, programId) => {
-    setDays((prevDay) => {
-      return prevDay.map((day) => {
-        if (day.id === dayId) {
-          const updatedProgram = day.program = programId;
-          return { ...day, program: updatedProgram };
-        }
-        return day;
-      });
+  const [dayPrograms, setDayPrograms] = useState([
+    {
+      date: "Dec 3, 2024",
+      program: 1,
+    },
+    {
+      date: "Dec 5, 2024",
+      program: 1,
+    },
+  ])
+
+  const addProgramToDay = (date, programId) => {
+    setDayPrograms((dayPrograms) => {
+      const index = dayPrograms.findIndex((dayProgram) => dayProgram.date === date);
+  
+      if (index !== -1) {
+        // Update existing entry
+        return dayPrograms.map((dayProgram, i) =>
+          i === index ? { ...dayProgram, program: programId } : dayProgram
+        );
+      } else {
+        // Add new entry
+        return [...dayPrograms, { date, program: programId }];
+      }
     });
   };
 
-  const removeProgramFromDay = (dayId) => {
-    setDays((prevDay) => {
-      return prevDay.map((day) => {
-        if (day.id === dayId) {
-          const updatedProgram = day.program = 0;
-          return { ...day, program: updatedProgram };
-        }
-        return day;
-      });
-    });
+  const removeProgramFromDay = (date) => {
+    setDayPrograms((prevDayPrograms) => 
+      prevDayPrograms.filter((dayProgram) => dayProgram.date !== date)
+    );
   };
 
   return (
-    <CalendarContext.Provider value={{days, addProgramToDay, removeProgramFromDay}}>
+    <CalendarContext.Provider value={{days, dayPrograms, addProgramToDay, removeProgramFromDay}}>
       {children}
     </CalendarContext.Provider>
   );

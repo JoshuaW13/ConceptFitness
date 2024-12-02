@@ -6,14 +6,12 @@ import Popup_Notif from '../components/Popup_Notif';
 import Tag from './Tag';
 import { useNotifContext } from "../contexts/NotifContext.jsx";
 
-function ProgramHeaderContent({ onClick, id, name, tags, numExercises }) {
-  const { days } = useCalendarContext()
+function ProgramHeaderContent({ onClick, selectedDate, id, name, tags, numExercises }) {
+  const { addProgramToDay } = useCalendarContext()
   const { showNotif } = useNotifContext();
 
   const assignProgram = () => {
-    const selectedDay = days.find((d) => d.selected == true);
-    console.log(selectedDay)
-    selectedDay.program = id
+    addProgramToDay(selectedDate, id)
     showNotif("Program Scheduled")
     onClick()
   }

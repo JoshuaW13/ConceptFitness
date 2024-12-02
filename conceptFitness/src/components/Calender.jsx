@@ -14,7 +14,7 @@ function Calender() {
   const [firstDay, setFirstDay] = useState("")
   const [lastDay, setLastDay] = useState("")
   const [currDay, setCurrDay] = useState(0)
-  const boxs = []
+  const [boxes, setBoxes] = useState([])
   // const {days, addProgramToDay, removeProgramFromDay} = useCalendarContext();
 
   const currDate = () => {
@@ -22,31 +22,39 @@ function Calender() {
     firstDate = (curr.subtract(curr.day(), 'days')).toDate()
     lastDate = (dayjs(firstDate).add(6, 'days')).toDate()
 
-    setFirstDay(dayjs(firstDate).format('MMM D'))
-    setLastDay(dayjs(lastDate).format('MMM D'))
+    setFirstDay(dayjs(firstDate).format('MMM D, YYYY'))
+    setLastDay(dayjs(lastDate).format('MMM D, YYYY'))
     setCurrDay(curr.day())
   }
 
   const changeWeek = (i) => {
     var firstDateNew = (dayjs(firstDay).add((7 * i), 'days')).toDate()
-    setFirstDay(dayjs(firstDateNew).format('MMM D'))
+    setFirstDay(dayjs(firstDateNew).format('MMM D, YYYY'))
     console.log(firstDay)
 
-    var lastDateNew = (dayjs(lastDay).add(6, 'days')).toDate()
-    setLastDay(dayjs(lastDateNew).format('MMM D'))
+    var lastDateNew = (dayjs(firstDateNew).add(6, 'days')).toDate()
+    setLastDay(dayjs(lastDateNew).format('MMM D, YYYY'))
     console.log(lastDay)
   }
 
   const generateCalender = () => {
+    if (!firstDay) return;
+    var boxesList = []
     for (var i = 0; i < 7; i++) {
-      boxs.push(<CalenderBox Day={i} Date={parseInt(firstDay.slice(-2)) + i}></CalenderBox>)
+      var boxDate = (dayjs(firstDay).add(i, 'days')).format('MMM D, YYYY')
+      console.log(boxDate)
+      boxesList.push(<CalenderBox key={i} Day={i} Date={boxDate}></CalenderBox>)
     }
-    return boxs
+    setBoxes(boxesList)
   }
 
   useEffect(() => {
     currDate()
   }, [])
+
+  useEffect(() => {
+    generateCalender()
+  }, [firstDay])
 
   const focusCalender = () => {
     setTimeout(() => {
@@ -62,13 +70,13 @@ function Calender() {
         <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
           <ArrowLeftIcon fontSize='large'/>
         </button>
-        <p className='flex text-2xl font-semibold pb-1 pt-1'>{firstDay} - {lastDay} </p>
+        <p className='flex text-2xl font-semibold pb-1 pt-1'>{firstDay.substring(0, firstDay.indexOf(","))} - {lastDay.substring(0, lastDay.indexOf(","))} </p>
         <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(1)}>
           <ArrowRightIcon fontSize='large'/>
         </button>
       </div>
-      <div id="calender" className='flex flex-grow h-full w-full overflow-x-auto scrollbar-none' onLoad={focusCalender()}>
-        {generateCalender()}
+      <div id="calender" className='flex flex-grow h-full w-full overflow-x-auto scrollbar-none'>
+        {boxes}
       </div>
     </div>
   )
