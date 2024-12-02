@@ -224,10 +224,10 @@ function Session() {
 
   return (
     <div className="session-page w-full h-full relative">
-      <div className="scrollable-container">
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
+      <div className="overflow-auto scrollbar-none" >
 
-        <div className="flex justify-between w-full px-8 py-4">
+        <div className="flex justify-between w-full px-8 py-4 ">
           {isTimerRunning ? (
             <button className="time-button bg-gray-300 p-1 w-1/4 text-sm">{formatTime(timer)}</button>
           ) : (

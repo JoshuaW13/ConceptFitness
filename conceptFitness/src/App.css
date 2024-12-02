@@ -99,7 +99,6 @@
   flex-grow: 1; /* Let it expand to take remaining space */
   height: calc(100vh - 80px); /* Subtract fixed header height if needed */
   overflow-y: auto; /* Enable vertical scrolling */
-  padding: 1rem; /* Optional padding */
   box-sizing: border-box;
 }
 
