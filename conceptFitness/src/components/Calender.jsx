@@ -27,9 +27,9 @@ function Calender() {
     setCurrDay(curr.day())
   }
 
-  const changeWeek = () => {
+  const changeWeek = (i) => {
     console.log(firstDate)
-    firstDate = (dayjs(firstDate).add(7, 'days')).toDate()
+    firstDate = (dayjs(firstDate).add((7 * i), 'days')).toDate()
     setFirstDay(dayjs(firstDate).format('MMM D'))
     console.log(firstDate)
 
@@ -53,17 +53,17 @@ function Calender() {
       const cal = document.getElementById("calender"); 
       const calObject = cal.getBoundingClientRect();
       cal.scrollLeft =  calObject.width * (((currDay - 1) * 0.5 ) + 0.25); 
-    }, 50); 
+    }, 10); 
   }
 
   return (
     <div className="w-[90%] h-[35%] bg-gray-50 rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 border-gray border-2 z-2">        
-      <div className='flex flex-col sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between'>
-        <button className='bg-gray-300 w-8 h-8 justify-center items-center hidden'>
+      <div className='flex sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between'>
+        <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
           <ArrowLeftIcon fontSize='large'/>
         </button>
         <p className='flex text-2xl font-semibold pb-1 pt-1'>{firstDay} - {lastDay} </p>
-        <button className='bg-gray-300 w-8 h-8 justify-center items-center hidden' onClick={changeWeek}>
+        <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(1)}>
           <ArrowRightIcon fontSize='large'/>
         </button>
       </div>
