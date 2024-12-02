@@ -12,6 +12,7 @@ import editIcon from '../assets/EditIcon.png'
 import ProfileInfo from '../components/ProfileInfo'
 import ProfileInputs from '../components/ProfileInputs'
 import SettingsPopup from '../components/SettingsPopup'
+import CancelPopup from '../components/CancelPopup'
 
 function Profile() {
 
@@ -23,6 +24,7 @@ function Profile() {
   const [activeTab, setActiveTab] = useState('')
   const [showSettings, setShowSettings] = useState(false)
   const [unitSystem, setUnitSystem] = useState('metric')
+  const [showCancelPopup, setShowCancelPopup] = useState(false)
 
 
   const handleMetrics = (tab) =>{
@@ -73,6 +75,22 @@ function Profile() {
     setUnitSystem(newUnit)
   }
 
+  const handleCancel = () => {
+    setShowCancelPopup(true)
+  }
+
+  const handleConfirmCancel = () => {
+    setShowCancelPopup(false)
+    setShowProfileInput(false)
+    setShowProfileInfo(true)
+  }
+
+  const handleKeepEditing = () => {
+    setShowCancelPopup(false)
+    setShowProfileInput(true)
+    setShowProfileInfo(false)
+  }
+
   useEffect(() => {
     const savedData = sessionStorage.getItem('profileData');
     if (savedData) {
@@ -106,7 +124,15 @@ function Profile() {
                   <img src={editIcon} alt="" className='w-6 h-6 p-1'></img>
               </button>
             </div>
-            {showProfileInput && <ProfileInputs onSave={handleSave} initialData={profileData} />}
+            {showProfileInput && <ProfileInputs
+              onSave={handleSave}
+              onCancel={handleCancel}
+              initialData={profileData}
+            />}
+            {showCancelPopup && <CancelPopup
+              onConfirmCancel={handleConfirmCancel}
+              onKeepEditing={handleKeepEditing}        
+            />}
             {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>

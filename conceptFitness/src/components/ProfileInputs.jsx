@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function ProfileInputs ( {onSave, initialData} ) {
+function ProfileInputs ( {onSave, onCancel, initialData} ) {
 
     const maxChars = 80
     const [formData, setFormData] = useState(initialData)
@@ -49,8 +49,11 @@ function ProfileInputs ( {onSave, initialData} ) {
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='w-[30%] bg-green-300 p-1 text-black'>
+                <button onClick={handleSave} className='save-button w-[30%]'>
                     Save
+                </button>
+                <button onClick={onCancel} className='cancel-button w-[40%]'>
+                    Cancel
                 </button>
             </div>
 
