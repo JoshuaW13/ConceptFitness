@@ -155,6 +155,16 @@ function Session() {
     setIsTimerRunning(false);
   };
 
+  const deleteSetData = (indexToDelete, exerciseToDelete)=>{
+    const newExerciseToLogMap = new Map(exerciseToLogData);
+    const newRecords = newExerciseToLogMap.get(exerciseToDelete) || [];
+    if(newRecords.length>=indexToDelete){
+      newRecords.splice(indexToDelete,1);
+    }
+    newExerciseToLogMap.set(exerciseToDelete, newRecords);
+    setExerciseToLogData(newExerciseToLogMap);
+  }
+
   const handleBackToHome = () => {
     setIsPopupVisible(false);
     navigate('/home');
@@ -170,7 +180,6 @@ function Session() {
     const updatedSetData = { ...currentSetData };
 
     if(newRecords.length>=currentSetData.number){
-      console.log("Went in here!");
       newRecords[currentSetData.number-1] = {weight: currentSetData.weight, reps: currentSetData.reps}
       updatedSetData.number = newRecords.length+1;
     }else{
@@ -350,6 +359,11 @@ function Session() {
                           swapCurrentExercise(exercise.id);
                           setSlidingDrawerOpen(false);
                           setCurrentSetData(setData);
+                        },
+                        onDelete: (e, indexToRemove)=>{
+                          e.stopPropagation();
+                          deleteSetData(indexToRemove, exercise.id)
+                          setSlidingDrawerOpen(false);
                         }
                       }}
                     />
