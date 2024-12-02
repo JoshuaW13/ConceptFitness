@@ -11,7 +11,6 @@ import SignUp from './pages/SignUp.jsx';
 import Popup_Notif from './components/Popup_Notif.jsx';
 import { ExerciseCatalogueProvider } from './contexts/ExerciseCatalogueContext.jsx';
 import {ProgramProvider} from "./contexts/ProgramsContext";
-import Settings from './pages/Settings.jsx';
 import { CalendarProvider } from './contexts/CalendarContext.jsx';
 import { SessionLogProvider } from './contexts/SessionLogContext.jsx';
 import { ExerciseLogProvider } from './contexts/ExerciseLogContext.jsx';

@@ -4,11 +4,13 @@ import '../App.css'
 import editIcon from '../assets/EditIcon.png'
 import MetricsInputs from './MetricsInputs'
 import MetricsInfo from './MetricsInfo'
+import CancelPopup from './CancelPopup'
 
 function MetricsWindow( {unitSystem} ) {
 
     const [showMetricsInfo, setShowMetricsInfo] = useState(true)
     const [showMetricsInput, setShowMetricsInput] = useState(false)
+    const [showCancelPopup, setShowCancelPopup] = useState(false)
 
     const [metricsData, setMetricsData] = useState({
         age: '',
@@ -28,6 +30,22 @@ function MetricsWindow( {unitSystem} ) {
         setShowMetricsInfo(true)
     }
 
+    const handleCancel = () => {
+        setShowCancelPopup(true)
+    }
+
+    const handleConfirmCancel = () => {
+        setShowCancelPopup(false)
+        setShowMetricsInfo(true)
+        setShowMetricsInput(false)
+    }
+
+    const handleKeepEditing = () => {
+        setShowCancelPopup(false)
+        setShowMetricsInput(true)
+        setShowMetricsInfo(false)
+    }
+
     useEffect(() => {
         const savedData = sessionStorage.getItem('metricsData');
         if (savedData) {
@@ -43,7 +61,16 @@ function MetricsWindow( {unitSystem} ) {
                 </button>
             </div>
             <div className='mt-10'>
-                {showMetricsInput && <MetricsInputs onSave={handleSave} initialData={metricsData} unitSystem={unitSystem} />}
+                {showMetricsInput && <MetricsInputs
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                    initialData={metricsData}
+                    unitSystem={unitSystem}
+                />}
+                {showCancelPopup && <CancelPopup
+                    onConfirmCancel={handleConfirmCancel}
+                    onKeepEditing={handleKeepEditing}
+                />}
                 {showMetricsInfo && <MetricsInfo data={metricsData} unitSystem={unitSystem} />}
             </div>
             

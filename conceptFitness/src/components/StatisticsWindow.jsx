@@ -54,7 +54,7 @@ function StatisticsWindow() {
                     text: 'Weight (lbs)',
                 }, 
                 min: 95,
-                max: 110   
+                max: 110,
             },
         },
     };
@@ -62,7 +62,7 @@ function StatisticsWindow() {
     return (
         <div className="w-full max-w-lg bg-gray-50 rounded-lg shadow-lg flex flex-col border border-gray-300 text-black p-5 relative">
             <h2 className='text-xl font-bold mb-4'>Weight Change Over Time</h2>
-            <div className='h-64 w-full'>
+            <div className='h-64 w-60'>
                 <Line data={data} options={options} />
             </div>
         </div>
