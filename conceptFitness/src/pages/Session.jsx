@@ -12,6 +12,9 @@ import NextIcon from "@mui/icons-material/ArrowForward"
 import BackIcon from "@mui/icons-material/ArrowBack"
 import DropDown from '../components/DropDown';
 import SessionSetLog from '../components/SessionSetLog';
+import Popup from '../components/Popup';
+import ConfirmationPopup from '../components/ConfirmationPopup';
+import { SessionLogProvider, useSessionLogContext } from '../contexts/SessionLogContext';
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -28,14 +31,9 @@ function Session() {
   const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
   const [currentSetData, setCurrentSetData]=useState({number:1,weight:0,reps:0});
 
-  // Hardcoded list of programs and their exercises
-  // const programs = [
-  //   { name: 'Forearm Workout', exercises: ['Wrist Curl', 'Reverse Wrist Curl', 'Finger Curl'] },
-  //   { name: 'Upper Body Workout', exercises: ['Push-ups', 'Pull-ups', 'Bench Press'] },
-  // ];
-
   const {programs} = useProgramContext();
   const {exercises} = useExerciseCatalogueContext();
+  const {sessionLogs, addSessionLog} = useSessionLogContext();
 
   const navigate = useNavigate();
 
@@ -47,11 +45,6 @@ function Session() {
     setCurrentExercise(exercises.find(exercise=>exercise.id===programToSelect.exercises[0])); // Reset to the first exercise
     setWeights({}); // Reset weights
     setReps({}); // Reset reps
-    const newExerciseMap = new Map(exerciseToLogData);
-    for(let i =0;i<programToSelect.exercises.length;i++){
-      newExerciseMap.set(programToSelect.exercises[i].id, [])            
-    }
-    setExerciseToLogData(newExerciseMap);
   },[])
 
   // Load completed exercises from localStorage when the component is mounted
@@ -87,13 +80,6 @@ function Session() {
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [isTimerRunning]);
-
-  // Function to go to the previous exercise
-  const handlePrevExercise = () => {
-    setCurrentExerciseIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : selectedProgram.exercises.length - 1
-    );
-  };
 
   const prevExercise = () => {
     const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
@@ -131,27 +117,33 @@ function Session() {
       return; // Exit if no program is selected
     }
 
-    const sessionRecord = {
-      program: selectedProgram,
-      exercises: selectedProgram.exercises.map((exercise, index) => ({
-        exercise,
-        weight: weights[index] || 'N/A', // Use 'N/A' if no weight is provided
-        reps: reps[index] || 'N/A', // Use 'N/A' if no reps are provided
-      })),
-    };
-
-    // Add the new session record to the state
-    setCompletedExercises((prev) => {
-      const updatedExercises = [...prev, sessionRecord];
-      return updatedExercises;
-    });
-
     // Show the confirmation popup
     setIsPopupVisible(true);
 
     // Stop the timer when session is finished
     setIsTimerRunning(false);
   };
+
+  const saveSessionLogAndReturnHome = ()=>{
+    let sessionRecordToSave = {
+      id: sessionLogs.length+1,
+      programId: selectedProgram.id,
+      date: Date('2024-11-29'),
+      durationMinutes: 90,
+      exerciseRecords:[],
+    }
+    exerciseToLogData.forEach((recordArray, exerciseId) => {
+      console.log("exercise id: "+exerciseId);
+      const setsToAdd=[];
+      for(let i =0;i<recordArray.length;i++){
+        setsToAdd.push({reps:recordArray[i].reps,weight:recordArray[i].weight});
+      }
+      sessionRecordToSave.exerciseRecords.push({id:exerciseId, sets:setsToAdd});
+    });
+    addSessionLog(sessionRecordToSave);
+    console.log(sessionRecordToSave);
+    navigate("/home")
+  }
 
   const deleteSetData = (indexToDelete, exerciseToDelete)=>{
     const newExerciseToLogMap = new Map(exerciseToLogData);
@@ -310,18 +302,27 @@ function Session() {
 
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
-          <div className="fixed inset-0 -opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 max-w-md text-center">
-              <h2 className="text-lg font-bold mb-2">Session Completed!</h2>
-              <button
-                onClick={handleBackToHome}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
-              >
-                Back to Home
-              </button>
-            </div>
+        <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+          <div className="p-6 rounded-lg shadow-lg relative">
+            <Popup
+              onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
+              Content={ConfirmationPopup}
+              contentProps={{
+                message: exerciseToLogData.size==0? 
+                "No exercises recorded. Are you sure you would like to return to the main menu?":
+                "Would you like to complete this workout?"
+                ,
+                onConfirm: saveSessionLogAndReturnHome,
+              }}
+              isCentered={true}  // Ensures it's centered
+            />
           </div>
-        )}
+        </div>
+      )}
+
+
+
+
 
         {/* Sliding Drawer with Scrolling */}
         <SlidingDrawerWithScrolling 
