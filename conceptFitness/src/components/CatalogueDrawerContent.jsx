@@ -4,7 +4,6 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { useSortable } from '@dnd-kit/sortable';
 import { arrayMove } from '@dnd-kit/sortable';
 import '../App.css';
-import EditIcon from '../assets/EditIcon.png';
 import BookIcon from '../assets/BookIcon.png';
 import ExerciseInfoHeaderShort from '../components/ExerciseInfoHeaderShort';
 import ExerciseInfoShort from '../components/ExerciseInfoShort';

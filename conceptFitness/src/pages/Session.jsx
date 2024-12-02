@@ -28,6 +28,7 @@ function Session() {
   const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
   const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
   const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
+  const [currentSetData, setCurrentSetData]=useState({number:1,weight:0,reps:0});
 
   // Hardcoded list of programs and their exercises
   // const programs = [
@@ -62,6 +63,11 @@ function Session() {
       setCompletedExercises(JSON.parse(storedExercises));
     }
   }, []);
+
+  // useEffect(()=>{
+  //   console.log("The current set data is "+currentSetData.reps);
+
+  // }, [currentSetData])
 
   // Save completed exercises to localStorage when they change
   useEffect(() => {
@@ -106,12 +112,18 @@ function Session() {
   }
 
   // Function to handle weight and reps input change
-  const handleInputChange = (exerciseIndex, type, value) => {
+  const handleInputChange = (type, value) => {
+    // Create a copy of currentSetData and update the specific field
+    const updatedSetData = { ...currentSetData }; 
+  
     if (type === 'weight') {
-      setWeights((prev) => ({ ...prev, [exerciseIndex]: value }));
+      updatedSetData.weight = value; // Update the weight field
     } else if (type === 'reps') {
-      setReps((prev) => ({ ...prev, [exerciseIndex]: value }));
+      updatedSetData.reps = value; // Update the reps field
     }
+  
+    // Set the new state with updatedSetData
+    setCurrentSetData(updatedSetData);
   };
 
   // Handle finishing the session and showing the confirmation popup
@@ -155,9 +167,21 @@ function Session() {
   const saveSet = ()=>{
     const newExerciseToLogMap = new Map(exerciseToLogData);
     const newRecords = newExerciseToLogMap.get(currentExercise.id) || [];
-    newRecords.push({weight: 10, reps: 10})
+    const updatedSetData = { ...currentSetData };
+
+    if(newRecords.length>=currentSetData.number){
+      console.log("Went in here!");
+      newRecords[currentSetData.number-1] = {weight: currentSetData.weight, reps: currentSetData.reps}
+      updatedSetData.number = newRecords.length+1;
+    }else{
+      newRecords.push({weight: currentSetData.weight, reps: currentSetData.reps})
+      updatedSetData.number = updatedSetData.number+1;
+    }
     newExerciseToLogMap.set(currentExercise.id, newRecords);
     setExerciseToLogData(newExerciseToLogMap);
+    updatedSetData.weight = 0;
+    updatedSetData.reps = 0;
+    setCurrentSetData(updatedSetData)
   }
 
   // Filter the programs based on the search term
@@ -207,8 +231,8 @@ function Session() {
                 <input
                   type="number"
                   className="weight-input w-16 text-center border p-1"
-                  value={weights[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'weight', e.target.value)}
+                  value={currentSetData.weight || ''}
+                  onChange={(e) => handleInputChange('weight', e.target.value)}
                 />
               </div>
               <div className="flex items-center gap-2">
@@ -216,8 +240,8 @@ function Session() {
                 <input
                   type="number"
                   className="reps-input w-16 text-center border p-1"
-                  value={reps[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'reps', e.target.value)}
+                  value={currentSetData.reps || ''}
+                  onChange={(e) => handleInputChange('reps', e.target.value)}
                 />
               </div>
             </div>
@@ -312,7 +336,6 @@ function Session() {
                       InitialProps={{
                         exerciseName: exercise.name,
                         onClick: (e) => {
-                          console.log("Swapping exercise");
                           e.stopPropagation();
                           setSlidingDrawerOpen(false);
                           swapCurrentExercise(exerciseId);
@@ -320,7 +343,14 @@ function Session() {
                       }}
                       HiddenComponents={SessionSetLog}
                       HiddenProps={{
-                        exerciseRecords: exerciseToLogData.get(exercise.id)
+                        exerciseRecords: exerciseToLogData.get(exercise.id),
+                        onEdit: (e, setData)=>{
+                          console.log("setting new set!");
+                          e.stopPropagation();
+                          swapCurrentExercise(exercise.id);
+                          setSlidingDrawerOpen(false);
+                          setCurrentSetData(setData);
+                        }
                       }}
                     />
                   );
