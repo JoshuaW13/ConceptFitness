@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function Popup_FullScreen({onClick, Content, Title }) {
   return (
-    <div className="absolute h-full w-full top-0 left-0 bg-black/70 z-10 flex items-center">
+    <div className="absolute h-full w-full top-0 left-0 bg-black/0 z-10 flex items-center">
       <div className='flex flex-col h-[95%] w-full mx-5 bg-gray-300 rounded-lg z-10'>
         <div className="flex flex-col h-full w-fill z-10">
           <div className='flex w-full mt-3 z-10'>
