@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import ListIcon from '../assets/ListIcon.png';
 
-function SlidingDrawerWithScrolling({ Content }) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+function SlidingDrawerWithScrolling({ Content, isDrawerOpen, setIsDrawerOpen }) {
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);

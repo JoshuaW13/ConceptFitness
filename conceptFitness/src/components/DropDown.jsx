@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import '../App.css';
 import DropDownArrow from "@mui/icons-material/ArrowDropDown";
 
-function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps , HiddenProps}) {
+function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps , HiddenProps, isActive=true}) {
     const [isContentVisible, setIsContentVisible] = useState(false);
     const [isPressed, setIsPressed] = useState(false);
 
     const handleClick = () => {
+        if(!isActive){
+            return;
+        }
         setIsContentVisible(!isContentVisible);
         setIsPressed(true);
         console.log(isPressed)
@@ -22,13 +25,13 @@ function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, In
         <div className="w-full flex flex-col items-center">
             <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(223 226 235)', transition: 'background-color 0.3s ease'}} onClick={handleClick}>
                 {/* Render InitialComponent */}
-                <DropDownArrow
+                {isActive&&<DropDownArrow
                     className=" cursor-pointer"
                     sx={{
                         transition: 'transform 0.3s ease',
                         transform: isContentVisible ? 'rotate(-90deg)' : 'rotate(0deg)', // Rotate when content is visible
                     }}
-                />
+                />}
                 {React.createElement(InitialComponent, InitialProps)}
                 
                 {/* Position the DropDownArrow absolutely to overlap */}

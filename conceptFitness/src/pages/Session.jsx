@@ -5,27 +5,47 @@ import HomeButton from '../components/HomeButton';
 import ProfileButton from '../components/ProfileButton';
 import SlidingDrawerWithScrolling from '../components/SlidingDrawerWithScrolling';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useProgramContext } from '../contexts/ProgramsContext';
+import SessionExerciseHeader from '../components/SessionExerciseHeader';
+import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import NextIcon from "@mui/icons-material/ArrowForward"
+import BackIcon from "@mui/icons-material/ArrowBack"
+import DropDown from '../components/DropDown';
+import SessionSetLog from '../components/SessionSetLog';
+import Popup from '../components/Popup';
+import ConfirmationPopup from '../components/ConfirmationPopup';
+import { SessionLogProvider, useSessionLogContext } from '../contexts/SessionLogContext';
 
 function Session() {
   const location = useLocation(); // Access the location object
   const { programToStart } = location.state || {}; // Retrieve the programToStart from the state
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [selectedProgram, setSelectedProgram] = useState(null); // Selected program
-  const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0); // Index of current exercise
+  const [currentExercise, setCurrentExercise] = useState();
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
   const [weights, setWeights] = useState({}); // State to store weights
   const [reps, setReps] = useState({}); // State to store reps
   const [timer, setTimer] = useState(0); // Timer state to track elapsed time
   const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
+  const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
+  const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
+  const [currentSetData, setCurrentSetData]=useState({number:1,weight:0,reps:0});
 
-  // Hardcoded list of programs and their exercises
-  const programs = [
-    { name: 'Forearm Workout', exercises: ['Wrist Curl', 'Reverse Wrist Curl', 'Finger Curl'] },
-    { name: 'Upper Body Workout', exercises: ['Push-ups', 'Pull-ups', 'Bench Press'] },
-  ];
+  const {programs} = useProgramContext();
+  const {exercises} = useExerciseCatalogueContext();
+  const {sessionLogs, addSessionLog} = useSessionLogContext();
 
   const navigate = useNavigate();
+
+  //load the program defaults
+  useEffect(()=>{
+    const programToSelect = programs.find(program=>program.id===programToStart)
+    setSelectedProgram(programToSelect);
+    //setSearchTerm(program.name); // Set the search input to the selected program's name
+    setCurrentExercise(exercises.find(exercise=>exercise.id===programToSelect.exercises[0])); // Reset to the first exercise
+    setWeights({}); // Reset weights
+    setReps({}); // Reset reps
+  },[])
 
   // Load completed exercises from localStorage when the component is mounted
   useEffect(() => {
@@ -34,6 +54,11 @@ function Session() {
       setCompletedExercises(JSON.parse(storedExercises));
     }
   }, []);
+
+  // useEffect(()=>{
+  //   console.log("The current set data is "+currentSetData.reps);
+
+  // }, [currentSetData])
 
   // Save completed exercises to localStorage when they change
   useEffect(() => {
@@ -56,36 +81,33 @@ function Session() {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [isTimerRunning]);
 
-  // Function to go to the previous exercise
-  const handlePrevExercise = () => {
-    setCurrentExerciseIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : selectedProgram.exercises.length - 1
-    );
-  };
-
-  // Function to go to the next exercise
-  const handleNextExercise = () => {
-    setCurrentExerciseIndex((prevIndex) =>
-      prevIndex < selectedProgram.exercises.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
-  // Function to handle selecting a program
-  const handleProgramSelect = (program) => {
-    setSelectedProgram(program);
-    setSearchTerm(program.name); // Set the search input to the selected program's name
-    setCurrentExerciseIndex(0); // Reset to the first exercise
-    setWeights({}); // Reset weights
-    setReps({}); // Reset reps
-  };
+  const prevExercise = () => {
+    const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
+    const exerciseIndexToSet = currentExerciseIndex-1;
+    const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    swapCurrentExercise(exerciseIdToSet);
+  }
+  
+  const nextExercise = ()=>{
+    const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
+    const exerciseIndexToSet = currentExerciseIndex+1;
+    const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    swapCurrentExercise(exerciseIdToSet);
+  }
 
   // Function to handle weight and reps input change
-  const handleInputChange = (exerciseIndex, type, value) => {
+  const handleInputChange = (type, value) => {
+    // Create a copy of currentSetData and update the specific field
+    const updatedSetData = { ...currentSetData }; 
+  
     if (type === 'weight') {
-      setWeights((prev) => ({ ...prev, [exerciseIndex]: value }));
+      updatedSetData.weight = value; // Update the weight field
     } else if (type === 'reps') {
-      setReps((prev) => ({ ...prev, [exerciseIndex]: value }));
+      updatedSetData.reps = value; // Update the reps field
     }
+  
+    // Set the new state with updatedSetData
+    setCurrentSetData(updatedSetData);
   };
 
   // Handle finishing the session and showing the confirmation popup
@@ -95,21 +117,6 @@ function Session() {
       return; // Exit if no program is selected
     }
 
-    const sessionRecord = {
-      program: selectedProgram,
-      exercises: selectedProgram.exercises.map((exercise, index) => ({
-        exercise,
-        weight: weights[index] || 'N/A', // Use 'N/A' if no weight is provided
-        reps: reps[index] || 'N/A', // Use 'N/A' if no reps are provided
-      })),
-    };
-
-    // Add the new session record to the state
-    setCompletedExercises((prev) => {
-      const updatedExercises = [...prev, sessionRecord];
-      return updatedExercises;
-    });
-
     // Show the confirmation popup
     setIsPopupVisible(true);
 
@@ -117,20 +124,71 @@ function Session() {
     setIsTimerRunning(false);
   };
 
+  const saveSessionLogAndReturnHome = ()=>{
+    let sessionRecordToSave = {
+      id: sessionLogs.length+1,
+      programId: selectedProgram.id,
+      date: Date('2024-11-29'),
+      durationMinutes: 90,
+      exerciseRecords:[],
+    }
+    exerciseToLogData.forEach((recordArray, exerciseId) => {
+      console.log("exercise id: "+exerciseId);
+      const setsToAdd=[];
+      for(let i =0;i<recordArray.length;i++){
+        setsToAdd.push({reps:recordArray[i].reps,weight:recordArray[i].weight});
+      }
+      sessionRecordToSave.exerciseRecords.push({id:exerciseId, sets:setsToAdd});
+    });
+    addSessionLog(sessionRecordToSave);
+    console.log(sessionRecordToSave);
+    navigate("/home")
+  }
+
+  const deleteSetData = (indexToDelete, exerciseToDelete)=>{
+    const newExerciseToLogMap = new Map(exerciseToLogData);
+    const newRecords = newExerciseToLogMap.get(exerciseToDelete) || [];
+    if(newRecords.length>=indexToDelete){
+      newRecords.splice(indexToDelete,1);
+    }
+    newExerciseToLogMap.set(exerciseToDelete, newRecords);
+    setExerciseToLogData(newExerciseToLogMap);
+  }
+
   const handleBackToHome = () => {
     setIsPopupVisible(false);
     navigate('/home');
   };
 
+  const swapCurrentExercise = (exerciseId)=>{
+    setCurrentExercise(exercises.find(exercise=>exercise.id===exerciseId)); // Reset to the first exercise
+  }
+
+  const saveSet = ()=>{
+    const newExerciseToLogMap = new Map(exerciseToLogData);
+    const newRecords = newExerciseToLogMap.get(currentExercise.id) || [];
+    const updatedSetData = { ...currentSetData };
+
+    if(newRecords.length>=currentSetData.number){
+      newRecords[currentSetData.number-1] = {weight: currentSetData.weight, reps: currentSetData.reps}
+      updatedSetData.number = newRecords.length+1;
+    }else{
+      newRecords.push({weight: currentSetData.weight, reps: currentSetData.reps})
+      updatedSetData.number = updatedSetData.number+1;
+    }
+    newExerciseToLogMap.set(currentExercise.id, newRecords);
+    setExerciseToLogData(newExerciseToLogMap);
+    updatedSetData.weight = 0;
+    updatedSetData.reps = 0;
+    setCurrentSetData(updatedSetData)
+  }
+
   // Filter the programs based on the search term
-  const filteredPrograms = programs.filter((program) =>
-    program.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredPrograms = programs.filter((program) =>
+  //   program.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   // Get current exercise details based on the selected program and current exercise index
-  const currentExercise = selectedProgram
-    ? selectedProgram.exercises[currentExerciseIndex]
-    : null;
 
   // Format the timer in mm:ss format
   const formatTime = (time) => {
@@ -166,33 +224,46 @@ function Session() {
         <div className="flex flex-col w-full px-8 gap-4 flex-grow">
           {/* Weight and Reps Section */}
           <div className="controls flex items-center justify-center gap-4 w-full mb-4">
-            <div className="triangle-left" onClick={handlePrevExercise}></div>
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center gap-2">
-                <label className="text-lg">Weight:</label>
+                <label className="text-base">Weight:</label>
                 <input
                   type="number"
                   className="weight-input w-16 text-center border p-1"
-                  value={weights[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'weight', e.target.value)}
+                  value={currentSetData.weight || ''}
+                  onChange={(e) => handleInputChange('weight', e.target.value)}
                 />
               </div>
               <div className="flex items-center gap-2">
-                <label className="text-lg">Reps:</label>
+                <label className="text-base">Reps:</label>
                 <input
                   type="number"
                   className="reps-input w-16 text-center border p-1"
-                  value={reps[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'reps', e.target.value)}
+                  value={currentSetData.reps || ''}
+                  onChange={(e) => handleInputChange('reps', e.target.value)}
                 />
               </div>
             </div>
-            <div className="triangle-right" onClick={handleNextExercise}></div>
+            <button className='text-sm' onClick={saveSet}>Save Set</button>
           </div>
 
           {/* Current Exercise Box */}
           <div className="exercise-description-box bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Current Exercise</h3>
+            <div className='flex justify-center items-center gap-4'>
+              {
+                selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[0] && (
+                  <button className="flex w-6 h-6 bg-gray-300" onClick={prevExercise}>
+                    <BackIcon />
+                  </button>
+                )
+              }
+              <h3 className="text-lg font-bold mb-2">{currentExercise&& currentExercise.name}</h3>
+                {selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[selectedProgram.exercises.length-1] && 
+                (<button className='flex w-6 h-6 bg-gray-300' onClick={nextExercise}>
+                  <NextIcon/>
+                </button>)
+              }
+            </div>
             {currentExercise ? (
               <>
                 <div className="video-placeholder bg-white w-full relative mb-2">
@@ -205,7 +276,7 @@ function Session() {
                     Your browser do not support video tag
                  </video>
                 </div>
-                <p className="text-sm">{currentExercise} is a common exercise used in strength training.</p>
+                <p className="text-sm">{currentExercise.description}</p>
               </>
             ) : (
               <p className="text-sm">Select a program to begin.</p>
@@ -213,93 +284,94 @@ function Session() {
           </div>
 
           {/* Program Input and Dropdown */}
-          <div className="workout-list bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Workout Exercises</h3>
-            <div className="flex items-center gap-2">
-              <label className="text-md font-semibold">Current Program</label>
-              <input
-                type="text"
-                className="w-full border rounded p-2"
-                placeholder="Search programs..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input
-              />
-            </div>
-            {searchTerm && (
-              <div className="program-dropdown bg-white border rounded shadow-md mt-2 max-h-40 overflow-y-auto">
-                {filteredPrograms.length > 0 ? (
-                  filteredPrograms.map((program, index) => (
-                    <div
-                      key={index}
-                      className="p-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => handleProgramSelect(program)}
-                    >
-                      {program.name}
-                    </div>
-                  ))
-                ) : (
-                  <div className="p-2 text-gray-500">No programs found</div>
-                )}
-              </div>
-            )}
+          {/* <div className="workout-list bg-gray-100 p-4 rounded-md">
+            <h3 className="text-lg font-bold mb-2">{selectedProgram&& selectedProgram.name}</h3>
 
-            {/* List of Exercises for the Selected Program */}
-            {selectedProgram && (
-              <div className="exercise-list mt-4 max-h-40 overflow-y-auto">
-                <div className="exercise-header">
-                  <span className="text-md font-semibold">Exercises</span>
-                </div>
-                <div className="max-h-40 overflow-y-auto">
-                  {selectedProgram.exercises.map((exercise, index) => (
-                    <div
-                      key={index}
-                      className="exercise-item p-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => setCurrentExerciseIndex(index)}
+            {selectedProgram&&<div className='flex flex-col gap-1'>
+              {
+                selectedProgram.exercises.map((exerciseId, index)=>(
+                    <SessionExerciseHeader key={index}
+                      exerciseName={exercises.find(exercise=>exercise.id===exerciseId).name}
                     >
-                      <span className="font-semibold">Exercise {index + 1}:</span> {exercise}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+                    </SessionExerciseHeader>
+                ))
+              }
+            </div>}
+          </div> */}
         </div>
 
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 max-w-md text-center">
-              <h2 className="text-lg font-bold mb-2">Session Completed!</h2>
-              <button
-                onClick={handleBackToHome}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
-              >
-                Back to Home
-              </button>
-            </div>
+        <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+          <div className="p-6 rounded-lg shadow-lg relative">
+            <Popup
+              onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
+              Content={ConfirmationPopup}
+              contentProps={{
+                message: exerciseToLogData.size==0? 
+                "No exercises recorded. Are you sure you would like to return to the main menu?":
+                "Would you like to complete this workout?"
+                ,
+                onConfirm: saveSessionLogAndReturnHome,
+              }}
+              isCentered={true}  // Ensures it's centered
+            />
           </div>
-        )}
+        </div>
+      )}
+
+
+
+
 
         {/* Sliding Drawer with Scrolling */}
-        <SlidingDrawerWithScrolling Content={() => (
-          <div className="flex flex-col p-4 gap-4">
-            <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
-            {completedExercises.map((session, index) => (
-              <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
-                <h3 className="text-lg font-semibold">{session.program.name}</h3>
-                <div className="exercises-list">
-                  {session.exercises.map((exercise, idx) => (
-                    <div key={idx} className="exercise-entry p-2">
-                      <p>{exercise.exercise}</p>
-                      <p>Weight: {exercise.weight}</p>
-                      <p>Reps: {exercise.reps}</p>
-                    </div>
-                  ))}
-                </div>
+        <SlidingDrawerWithScrolling 
+          isDrawerOpen={slidingDrawerOpen}
+          setIsDrawerOpen={setSlidingDrawerOpen}
+          Content={() => (
+            selectedProgram && (
+              <div className="flex flex-col gap-1">
+                <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
+                {selectedProgram.exercises.map((exerciseId, index) => {
+                  const exercise = exercises.find(ex => ex.id === exerciseId);
+                  if (!exercise) return null; // Handle case where exercise is not found
+
+                  return (
+                    <DropDown
+                      key={index}
+                      isActive={exerciseToLogData.get(exercise.id)?.length>0}
+                      InitialComponent={SessionExerciseHeader}
+                      InitialProps={{
+                        exerciseName: exercise.name,
+                        onClick: (e) => {
+                          e.stopPropagation();
+                          setSlidingDrawerOpen(false);
+                          swapCurrentExercise(exerciseId);
+                        },
+                      }}
+                      HiddenComponents={SessionSetLog}
+                      HiddenProps={{
+                        exerciseRecords: exerciseToLogData.get(exercise.id),
+                        onEdit: (e, setData)=>{
+                          console.log("setting new set!");
+                          e.stopPropagation();
+                          swapCurrentExercise(exercise.id);
+                          setSlidingDrawerOpen(false);
+                          setCurrentSetData(setData);
+                        },
+                        onDelete: (e, indexToRemove)=>{
+                          e.stopPropagation();
+                          deleteSetData(indexToRemove, exercise.id)
+                          setSlidingDrawerOpen(false);
+                        }
+                      }}
+                    />
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        )} />
+            )
+          )}
+        />
       </div>
     </div>
   );
