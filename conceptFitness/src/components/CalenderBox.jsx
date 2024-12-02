@@ -6,7 +6,7 @@ import CalenderPopup from "../components/CalenderPopup";
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useCalendarContext } from '../contexts/CalendarContext';
 
-function CalenderBox({Day, Date, setIsNotifVisible, setNotifMsg}) {
+function CalenderBox({Day, Date}) {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [programName, setProgramName] = useState("")
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -54,10 +54,6 @@ function CalenderBox({Day, Date, setIsNotifVisible, setNotifMsg}) {
                         days.find((d) => d.id == Day).selected = false
                     }} 
                     Content={CalenderPopup}
-                    contentProps={{
-                        setIsNotifVisible: setIsNotifVisible,
-                        setNotifMsg: setNotifMsg
-                    }}
                     Title={'Add Program'}
                 />
             )}

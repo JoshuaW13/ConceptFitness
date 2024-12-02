@@ -7,7 +7,7 @@ import CalenderBox from "../components/CalenderBox"
 import { useProgramContext } from "../contexts/ProgramsContext";
 import dayjs from 'dayjs'
 
-function Calender(setNotifMsg, setIsNotifVisible) {
+function Calender() {
   const navigate = useNavigate();
   var firstDate = new Date()
   var lastDate = new Date()
@@ -39,13 +39,7 @@ function Calender(setNotifMsg, setIsNotifVisible) {
 
   const generateCalender = () => {
     for (var i = 0; i < 7; i++) {
-      boxs.push(<CalenderBox 
-        key={i} 
-        Day={i} 
-        Date={parseInt(firstDay.slice(-2)) + i} 
-        setNotifMsg={setNotifMsg}
-        setIsNotifVisible={setIsNotifVisible}
-      ></CalenderBox>)
+      boxs.push(<CalenderBox key={i} Day={i} Date={parseInt(firstDay.slice(-2)) + i}></CalenderBox>)
     }
     return boxs
   }

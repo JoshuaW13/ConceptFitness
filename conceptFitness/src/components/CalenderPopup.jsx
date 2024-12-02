@@ -4,7 +4,7 @@ import { useProgramContext } from "../contexts/ProgramsContext";
 import ProgramHeader from '../components/ProgramHeader';
 import ProgramHeaderContent from '../components/ProgramHeaderContent';
 
-function CalenderPopup(setIsNotifVisible, setNotifMsg) {
+function CalenderPopup() {
   const { programs } = useProgramContext()
 
   return (
@@ -20,8 +20,6 @@ function CalenderPopup(setIsNotifVisible, setNotifMsg) {
                 name: program.name,
                 tags: program.tags,
                 numExercises: program.exercises.length,
-                setIsNotifVisible: setIsNotifVisible,
-                setNotifMsg: setNotifMsg
               }}
             />
           );
