@@ -83,10 +83,19 @@ function Session() {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [isTimerRunning]);
 
+  const resetSetData = (exerciseId)=>{
+    const updatedSetData = { ...currentSetData };
+    updatedSetData.weight =0;
+    updatedSetData.reps =0;
+    updatedSetData.number = exerciseToLogData.get(exerciseId).length+1;
+    setCurrentSetData(updatedSetData);
+  }
+
   const prevExercise = () => {
     const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
     const exerciseIndexToSet = currentExerciseIndex-1;
     const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    resetSetData(exerciseIdToSet)
     swapCurrentExercise(exerciseIdToSet);
   }
   
@@ -94,6 +103,7 @@ function Session() {
     const currentExerciseIndex = selectedProgram.exercises.indexOf(currentExercise.id);
     const exerciseIndexToSet = currentExerciseIndex+1;
     const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
+    resetSetData(exerciseIdToSet)
     swapCurrentExercise(exerciseIdToSet);
   }
 
@@ -372,6 +382,7 @@ function Session() {
                           e.stopPropagation();
                           setSlidingDrawerOpen(false);
                           swapCurrentExercise(exerciseId);
+                          resetSetData(exerciseId)
                         },
                       }}
                       HiddenComponents={SessionSetLog}
