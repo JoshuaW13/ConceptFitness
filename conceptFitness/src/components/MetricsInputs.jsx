@@ -101,11 +101,11 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='save-button'>
-                    Save
-                </button>
                 <button onClick={onCancel} className='cancel-button'>
                     Cancel
+                </button>
+                <button onClick={handleSave} className='save-button'>
+                    Save
                 </button>
             </div>
 
