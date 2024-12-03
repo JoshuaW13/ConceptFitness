@@ -66,9 +66,9 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
   return (
     <div className="p-3 h-full w-full flex-col">
       <div className="flex flex-row justify-between m-2">
-        <input type="text" onChange={handleNameInputChanged} placeholder="Edit Program Name Here" value={programName} className="w-[80%] h-8 text-black bg-gray-300 hover:bg-gray-400 pl-2 text-left text-lg rounded-md">
+        <input type="text" onChange={handleNameInputChanged} placeholder="Edit Program Name Here" value={programName} className="w-[80%] h-8 text-black bg-white pl-2 text-left text-lg rounded-md">
         </input>
-        <button className='w-[11%] bg-gray-300' onClick={navigatePrograms}>
+        <button className='w-[11%] bg-white' onClick={navigatePrograms}>
           <img src={BookIcon} alt="" className="p-1" />
         </button>
       </div>
@@ -87,8 +87,8 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
         }
       </div>
       <div className="flex flex-row justify-between m-2">
-        <p>Tags:</p>
-        <input onChange={handleTagInputChanged} onKeyDown={handleTagEntered} value={inputTag} type="text" className="w-[85%] text-black bg-gray-300 pl-2 rounded-md" placeholder="Arm, Upper Body, Triceps, etc..." />
+        <p className='text-white font-semibold mr-4'>Tags</p>
+        <input onChange={handleTagInputChanged} onKeyDown={handleTagEntered} value={inputTag} type="text" className="w-[85%] text-black bg-white pl-2 rounded-md" placeholder="Arm, Upper Body, etc..." />
       </div>
 
       {/* DnD context with sensors */}
@@ -98,7 +98,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
         sensors={sensors}  // Using both Pointer and Touch sensors
       >
         <SortableContext items={plannedExercises.map((exercise) => exercise.id)} strategy={verticalListSortingStrategy}>
-          <div className='w-[93%] flex-grow h-[78%] bg-gray-200 flex flex-col rounded-lg gap-2 overflow-y-auto m-3 scrollbar-hidden'>
+          <div className='w-[93%] flex-grow h-[78%] bg-white flex flex-col rounded-lg gap-2 overflow-y-auto m-3 scrollbar-hidden'>
             {plannedExercises.map((exercise) => (
               <SortableItem
                 key={exercise.id}

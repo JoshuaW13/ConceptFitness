@@ -12,12 +12,3 @@ function ConfirmationPopup({message, onConfirm}) {
 }
 
 export default ConfirmationPopup
-
-
-
-// <button 
-//         className="px-1 py-1 bg-red-500 text-white rounded" 
-//         onClick={onClick}
-//       >
-//         Close
-//       </button>
