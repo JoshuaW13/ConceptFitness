@@ -27,7 +27,7 @@ function ExerciseLogs() {
       } else if (!searchState && searchText != null) {
         exerciseLogs.forEach((exerciseLog) => {
             exercises.forEach((exercise) => {
-                if((exercise.name.includes(searchText) || exercise.equipment.includes(searchText))&& exercise.id == exerciseLog.exerciseId) {
+                if((exercise.name.toLowerCase().includes(searchText.toLowerCase()) || exercise.equipment.toLowerCase().includes(searchText.toLowerCase()))&& exercise.id == exerciseLog.exerciseId) {
                     filteredList.push(exerciseLog)
                 } 
             })
