@@ -18,6 +18,7 @@ function Session() {
   const [reps, setReps] = useState({}); // State to store reps
   const [timer, setTimer] = useState(0); // Timer state to track elapsed time
   const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
+  const [activeExerciseIndex, setActiveExerciseIndex] = useState(null);
 
   // Hardcoded list of programs and their exercises
   const programs = [
@@ -140,92 +141,70 @@ function Session() {
   };
 
   return (
-    <div className="session-page w-full h-full relative">
-      <div className="scrollable-container">
-        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
-
-        <div className="flex justify-between w-full px-8 py-4">
-          {isTimerRunning ? (
-            <button className="time-button bg-gray-300 p-1 w-1/4 text-sm">{formatTime(timer)}</button>
-          ) : (
-            <button
-              className="time-button bg-gray-300 p-1 w-1/4 text-sm"
-              onClick={() => setIsTimerRunning(true)} // Start the timer
-            >
-              Start Timer
-            </button>
-          )}
-          <button 
-            className="session-time-button bg-gray-300 p-1 w-1/4 text-sm"
-            onClick={handleFinishSession}
+    <div className="background session-page relative overflow-y-auto">
+      <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
+      <div className="flex justify-between w-full px-8 py-4">
+        {isTimerRunning ? (
+          <button className="button">{formatTime(timer)}</button>
+        ) : (
+          <button
+            className="button"
+            onClick={() => setIsTimerRunning(true)} // Start the timer
           >
-            Finish Session
+            Start Timer
           </button>
-        </div>
+        )}
+        <button 
+          className="button"
+          onClick={handleFinishSession}
+        >
+          Finish Session
+        </button>
+      </div>
 
-        <div className="flex flex-col w-full px-8 gap-4 flex-grow">
-          {/* Weight and Reps Section */}
-          <div className="controls flex items-center justify-center gap-4 w-full mb-4">
-            <div className="triangle-left" onClick={handlePrevExercise}></div>
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center gap-2">
-                <label className="text-lg">Weight:</label>
-                <input
-                  type="number"
-                  className="weight-input w-16 text-center border p-1"
-                  value={weights[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'weight', e.target.value)}
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label className="text-lg">Reps:</label>
-                <input
-                  type="number"
-                  className="reps-input w-16 text-center border p-1"
-                  value={reps[currentExerciseIndex] || ''}
-                  onChange={(e) => handleInputChange(currentExerciseIndex, 'reps', e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="triangle-right" onClick={handleNextExercise}></div>
-          </div>
-
-          {/* Current Exercise Box */}
-          <div className="exercise-description-box bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Current Exercise</h3>
-            {currentExercise ? (
-              <>
-                <div className="video-placeholder bg-white w-full relative mb-2">
-                  <video
-                    src="https://www.youtube.com/embed/IODxDxX7oi4"
-                    type="video/mp4"
-                    controls
-                    className="w-full h-full object-cover rounded-md"
-                  >
-                    Your browser do not support video tag
-                 </video>
-                </div>
-                <p className="text-sm">{currentExercise} is a common exercise used in strength training.</p>
-              </>
-            ) : (
-              <p className="text-sm">Select a program to begin.</p>
-            )}
-          </div>
-
-          {/* Program Input and Dropdown */}
-          <div className="workout-list bg-gray-200 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">Workout Exercises</h3>
+      <div className="flex flex-col w-full px-8 gap-4 flex-grow">
+        {/* Weight and Reps Section */}
+        <div className="controls flex items-center justify-center gap-4 w-full mb-4">
+          <div className="triangle-left" onClick={handlePrevExercise}></div>
+          <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-md font-semibold">Current Program</label>
+              <label className="text-lg">Weight</label>
               <input
-                type="text"
-                className="w-full border rounded p-2"
-                placeholder="Search programs..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input
+                type="number"
+                className="input-field w-[40%] p-1"
+                value={weights[currentExerciseIndex] || ''}
+                onChange={(e) => handleInputChange(currentExerciseIndex, 'weight', e.target.value)}
               />
             </div>
-            {searchTerm && (
+            <div className="flex items-center gap-2 ml-5">
+              <label className="text-lg">Reps</label>
+              <input
+                type="number"
+                className="input-field w-[45%] p-1"
+                value={reps[currentExerciseIndex] || ''}
+                onChange={(e) => handleInputChange(currentExerciseIndex, 'reps', e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="triangle-right" onClick={handleNextExercise}></div>
+        </div>
+
+        {/* Program Input and Dropdown */}
+        <div className="workout-list bg-[#D8C3A5] p-4 rounded-md">
+          <h3 className="text-lg font-bold mb-2">Workout Exercises</h3>
+          <div className="flex items-center gap-2">
+            <label className="text-md font-semibold">Current Program</label>
+            <input
+              type="text"
+              className="input-field w-full"
+              placeholder="Search Programs"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input
+            />
+          </div>
+          {searchTerm && (
+            <div>
+              <p className='flex font-semibold'>Results:</p>
               <div className="program-dropdown bg-white border rounded shadow-md mt-2 max-h-40 overflow-y-auto">
                 {filteredPrograms.length > 0 ? (
                   filteredPrograms.map((program, index) => (
@@ -241,66 +220,94 @@ function Session() {
                   <div className="p-2 text-gray-500">No programs found</div>
                 )}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* List of Exercises for the Selected Program */}
-            {selectedProgram && (
-              <div className="exercise-list mt-4 max-h-40 overflow-y-auto">
-                <div className="exercise-header">
-                  <span className="text-md font-semibold">Exercises</span>
-                </div>
-                <div className="max-h-40 overflow-y-auto">
-                  {selectedProgram.exercises.map((exercise, index) => (
-                    <div
-                      key={index}
-                      className="exercise-item p-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => setCurrentExerciseIndex(index)}
-                    >
-                      <span className="font-semibold">Exercise {index + 1}:</span> {exercise}
-                    </div>
-                  ))}
-                </div>
+          {/* List of Exercises for the Selected Program */}
+          {selectedProgram && (
+            <div className="bg-[#EAE7DC] exercise-list rounded-lg shadow-lg mt-4 max-h-40 overflow-y-auto">
+              <div className="exercise-header">
+                <span className="text-md font-semibold">Exercises</span>
               </div>
-            )}
-          </div>
+              <div className=" max-h-40">
+                {selectedProgram.exercises.map((exercise, index) => (
+                  <div
+                    key={index}
+                    className={`rounded-lg ${
+                      activeExerciseIndex === index ? 'bg-[#E85A4F]' : 'bg-[#E98074]'
+                    } m-2 p-2 cursor-pointer overflow-y-auto`}
+                    onClick={() => {
+                      setCurrentExerciseIndex(index);
+                      setActiveExerciseIndex(index);
+                    }}
+                  >
+                    <span className="font-semibold">Exercise {index + 1}:</span> {exercise}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Finish Session Confirmation Popup */}
-        {isPopupVisible && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 max-w-md text-center">
-              <h2 className="text-lg font-bold mb-2">Session Completed!</h2>
-              <button
-                onClick={handleBackToHome}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
-              >
-                Back to Home
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Sliding Drawer with Scrolling */}
-        <SlidingDrawerWithScrolling Content={() => (
-          <div className="flex flex-col p-4 gap-4">
-            <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
-            {completedExercises.map((session, index) => (
-              <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
-                <h3 className="text-lg font-semibold">{session.program.name}</h3>
-                <div className="exercises-list">
-                  {session.exercises.map((exercise, idx) => (
-                    <div key={idx} className="exercise-entry p-2">
-                      <p>{exercise.exercise}</p>
-                      <p>Weight: {exercise.weight}</p>
-                      <p>Reps: {exercise.reps}</p>
-                    </div>
-                  ))}
-                </div>
+        {/* Current Exercise Box */}
+        <div className="exercise-description-box bg-[#D8C3A5] p-4 rounded-md">
+          <h3 className="text-lg font-bold mb-2">Current Exercise</h3>
+          {currentExercise ? (
+            <>
+              <p className="text-sm mb-4">{currentExercise} is a common exercise used in strength training.</p>
+              <div className="video-placeholder bg-white w-full relative mb-2">
+                <video
+                  src="https://www.youtube.com/embed/IODxDxX7oi4"
+                  type="video/mp4"
+                  controls
+                  className="w-full h-full object-cover rounded-md"
+                >
+                  Your browser does not support video tag
+                </video>
               </div>
-            ))}
-          </div>
-        )} />
+            </>
+          ) : (
+            <p className="text-sm">Select a program to begin.</p>
+          )}
+        </div>
       </div>
+
+      {/* Finish Session Confirmation Popup */}
+      {isPopupVisible && (
+        <div className="absolute inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 max-w-md text-center">
+            <h2 className="text-lg font-bold mb-6">Session Completed!</h2>
+            <button
+              onClick={handleBackToHome}
+              className="bg-[#E85A4F] text-white px-4 py-2 rounded focus:outline-none"
+            >
+              Back to Home
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Sliding Drawer with Scrolling */}
+      <SlidingDrawerWithScrolling Content={() => (
+        <div className="flex flex-col p-4 gap-4">
+          <h2 className="text-xl font-bold text-center mb-4">Session Record</h2>
+          {completedExercises.map((session, index) => (
+            <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
+              <h3 className="text-lg font-semibold">{session.program.name}</h3>
+              <div className="exercises-list">
+                {session.exercises.map((exercise, idx) => (
+                  <div key={idx} className="exercise-entry p-2">
+                    <p>{exercise.exercise}</p>
+                    <p>Weight: {exercise.weight}</p>
+                    <p>Reps: {exercise.reps}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )} />
+
     </div>
   );
 }

@@ -46,7 +46,7 @@ function Programs() {
   return (
     <div className="background gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
-      <div className='flex gap-1 justify-center'>
+      <div className='flex gap-1 justify-center mt-2'>
         <SearchBar />
         <button className='w-[20%] bg-green-400' onClick={addNewProgram}>+</button>
       </div>
