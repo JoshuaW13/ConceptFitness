@@ -73,7 +73,7 @@ function Programs() {
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
       <div className='flex gap-1 justify-center'>
         <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
-        <button className='w-[10%]' onClick={addNewProgram}>+</button>
+        <button className='w-[15%] flex bg-gray-300 justify-center items-center' onClick={addNewProgram}>+</button>
       </div>
       <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden">
         {filteredPrograms.map((program) => {
