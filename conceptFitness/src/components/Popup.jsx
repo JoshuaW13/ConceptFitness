@@ -4,7 +4,7 @@ import '../App.css';
 function Popup({ onClick, Content, contentProps }) {
   return (
     <div className="absolute top-0 right-0 bg-white shadow-lg rounded p-2 z-10 flex flex-col text-sm w-48">
-      <div className="flex-grow mb-4"> {/* Flex-grow allows the content area to expand */}
+      <div className="flex-grow mb-2"> {/* Flex-grow allows the content area to expand */}
         {React.createElement(Content, contentProps)}
       </div>
       <button 

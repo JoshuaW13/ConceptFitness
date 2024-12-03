@@ -6,7 +6,7 @@ function ConfirmationPopup({message, onConfirm}) {
   return (
     <div className="flex flex-col">
         <p>{message}</p>
-          <button onClick={onConfirm} className="bg-gray-300 text-black pl-2 pr-2">Yes</button>
+          <button onClick={onConfirm} className="px-1 py-1 bg-gray-300 text-black rounded mt-4">Delete</button>
     </div>
   )
 }
@@ -14,3 +14,10 @@ function ConfirmationPopup({message, onConfirm}) {
 export default ConfirmationPopup
 
 
+
+// <button 
+//         className="px-1 py-1 bg-red-500 text-white rounded" 
+//         onClick={onClick}
+//       >
+//         Close
+//       </button>
