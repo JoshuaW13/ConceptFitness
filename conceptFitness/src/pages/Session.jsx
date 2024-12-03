@@ -242,13 +242,13 @@ function Session() {
             className="session-time-button bg-gray-300 p-1 w-1/4 text-sm"
             onClick={handleFinishSession}
           >
-            Finish Session
+            Finish
           </button>
         </div>
 
-        <div className="flex flex-col w-full px-8 gap-4 flex-grow">
+        <div className="flex flex-col w-full px-8 gap-2 flex-grow">
           {/* Weight and Reps Section */}
-          <div className="controls flex items-center justify-center gap-4 w-full mb-4">
+          <div className="controls flex items-center justify-center gap-4 w-full mb-2">
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center gap-2">
                 <label className="text-base">Weight:</label>
@@ -273,7 +273,7 @@ function Session() {
           </div>
 
           {/* Current Exercise Box */}
-          <div className="exercise-description-box bg-gray-200 p-4 rounded-md">
+          <div className="exercise-description-box bg-gray-200 p-2 rounded-md">
             <div className='flex justify-center items-center gap-4'>
               {
                 selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[0] && (
@@ -291,7 +291,7 @@ function Session() {
             </div>
             {currentExercise ? (
               <>
-                <div className="video-placeholder bg-white w-full relative mb-2">
+                <div className="video-placeholder bg-white w-full h-40 relative mb-2">
                   <video
                     src="https://www.youtube.com/embed/IODxDxX7oi4"
                     type="video/mp4"
@@ -328,7 +328,7 @@ function Session() {
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
         <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-          <div className="p-6 rounded-lg shadow-lg relative">
+          <div className="p-2 rounded-lg shadow-lg relative">
             <Popup
               onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
               Content={ConfirmationPopup}

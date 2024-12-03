@@ -192,11 +192,6 @@ label {
   scrollbar-width: none;
 }
 
-/* Responsive adjustments */
-.video-placeholder {
-  height: 150px;
-}
-
 @media (min-width: 768px) {
   .video-placeholder {
     height: 200px;
