@@ -291,7 +291,7 @@ function Session() {
             </div>
             {currentExercise ? (
               <>
-                <div className="video-placeholder bg-white w-full h-40 relative mb-2">
+                <div className="video-placeholder bg-white w-full h-40 relative">
                   <video
                     src="https://www.youtube.com/embed/IODxDxX7oi4"
                     type="video/mp4"
