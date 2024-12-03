@@ -64,6 +64,10 @@ function Programs() {
     filterSearch();
   }, [searchState]);
 
+  useEffect(() => {
+    filterSearch();
+  }, [programs, searchText]); // Re-run search when `programs` or `searchText` changes  
+
   const addNewProgram = ()=>{
     navigate("/catalogue")
   }
