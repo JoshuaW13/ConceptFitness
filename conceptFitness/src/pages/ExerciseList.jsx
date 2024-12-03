@@ -98,6 +98,7 @@ function ExerciseLists() {
 
   useEffect(() => {
     filterSearch();
+    console.log("Triggered")
   }, [searchState]);
 
   useEffect(() => {
@@ -196,6 +197,8 @@ function ExerciseLists() {
           setProgramName: setProgramName,
           numExercises: numExercises,
           setNumExercises: setNumExercises,
+          setSearchText: setSearchText,
+          setSearchState: setSearchState,
         }}
         numExercises={numExercises} 
         setTarget={setTarget}

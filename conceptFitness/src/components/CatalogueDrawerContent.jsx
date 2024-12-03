@@ -10,7 +10,7 @@ import ExerciseInfoShort from '../components/ExerciseInfoShort';
 import { useNavigate } from 'react-router-dom';
 import Tag from '../components/Tag';
 
-function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, setTags, programName, setProgramName, setNumExercises}) {
+function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, setTags, programName, setProgramName, setNumExercises, setSearchText, setSearchState }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(null); // Track which item is currently hovered over
   const [inputTag, setInputTag] = useState("");
@@ -105,6 +105,8 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
                 activeItem={activeItem}
                 plannedExercises={plannedExercises}
                 setPlannedExercises={setPlannedExercises}
+                setSearchText={setSearchText}
+                setSearchState={setSearchState}
               />
             ))}
             {setNumExercises(plannedExercises.length)}
@@ -115,7 +117,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
   );
 }
 
-const SortableItem = ({ exercise, activeItem, setPlannedExercises, plannedExercises }) => {
+const SortableItem = ({ exercise, activeItem, setPlannedExercises, plannedExercises, setSearchText, setSearchState }) => {
   const { setNodeRef, listeners, attributes, isDragging } = useSortable({
     id: exercise.id,
   });
@@ -145,6 +147,8 @@ const SortableItem = ({ exercise, activeItem, setPlannedExercises, plannedExerci
         exerciseEquipment={exercise.equipment}
         plannedExercises={plannedExercises}
         setPlannedExercises={setPlannedExercises}
+        setSearchText={setSearchText}
+        setSearchState={setSearchState}
         onRemove={()=>{
           const id = exercise.id
           setPlannedExercises((prevExercises) =>

@@ -6,7 +6,7 @@ import SearchIcon from "../assets/SearchIcon.png"
 import ExerciseDataPopupSearch from "../components/ExerciseDataPopupSearch"
 
 
-function ExerciseInfoHeaderShort({id, onClick, exerciseName, exerciseEquipment, onRemove}) {
+function ExerciseInfoHeaderShort({id, onClick, exerciseName, exerciseEquipment, onRemove, setSearchText, setSearchState }) {
 
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
@@ -28,7 +28,7 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
           >
           <Menu />
           {isPopupVisible && (
-          <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={ExerciseDataPopupSearch} className=''></Popup>
+            <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={ExerciseDataPopupSearch} contentProps={{exerciseId: id, setSearchState: setSearchState, setSearchText: setSearchText}} className=''></Popup>
           )}
         </button>
       </div>
