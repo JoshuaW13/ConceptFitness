@@ -33,14 +33,14 @@ function SessionLogs() {
         sessionLogs.forEach((sessionLog) => {
             for (let i = 0; i < programs.length; i++) {
                 const program = programs[i];
-                if ((program.name.includes(searchText) || program.tags.find((item) => item.includes(searchText)) != undefined) && program.id == sessionLog.programId) {
+                if ((program.name.toLowerCase().includes(searchText.toLowerCase()) || program.tags.find((item) => item.toLowerCase().includes(searchText.toLowerCase())) != undefined) && program.id == sessionLog.programId) {
                     filteredList.push(sessionLog);
                     break;
                 }
             }
             for (let i = 0; i < exercises.length; i++) {
                 const exercise = exercises[i];
-                if ((exercise.name.includes(searchText) || exercise.equipment.includes(searchText)) && sessionLog.exerciseRecords.find((item) => item.id == exercise.id) != undefined) {
+                if ((exercise.name.toLowerCase().includes(searchText.toLowerCase()) || exercise.equipment.toLowerCase().includes(searchText.toLowerCase())) && sessionLog.exerciseRecords.find((item) => item.id == exercise.id) != undefined) {
                     filteredList.push(sessionLog);
                     break;
                 }
