@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
@@ -16,6 +16,8 @@ import Popup from '../components/Popup';
 import ConfirmationPopup from '../components/ConfirmationPopup';
 import { useSessionLogContext } from '../contexts/SessionLogContext';
 import { useExerciseLogContext } from '../contexts/ExerciseLogContext';
+import PauseIcon from"@mui/icons-material/Pause"
+import PlayIcon from "@mui/icons-material/PlayArrow"
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -105,7 +107,6 @@ function Session() {
     const exerciseIndexToSet = currentExerciseIndex+1;
     const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
     resetSetData(exerciseIdToSet)
-    console.log("Swapping to exercise "+exerciseIdToSet)
     swapCurrentExercise(exerciseIdToSet);
   }
 
@@ -184,11 +185,11 @@ function Session() {
 
   const deleteSetData = (indexToDelete, exerciseToDelete)=>{
     const newExerciseToLogMap = new Map(exerciseToLogData);
-    const newRecords = newExerciseToLogMap.get(exerciseToDelete) || [];
+      const newRecords = newExerciseToLogMap.get(exerciseToDelete) || [];
     if(newRecords.length>=indexToDelete){
       newRecords.splice(indexToDelete,1);
-    }
-    newExerciseToLogMap.set(exerciseToDelete, newRecords);
+      }
+      newExerciseToLogMap.set(exerciseToDelete, newRecords);
     setExerciseToLogData(newExerciseToLogMap);
   }
 
@@ -203,20 +204,20 @@ function Session() {
 
   const saveSet = ()=>{
     const newExerciseToLogMap = new Map(exerciseToLogData);
-    const newRecords = newExerciseToLogMap.get(currentExercise.id) || [];
-    const updatedSetData = { ...currentSetData };
-
+      const newRecords = newExerciseToLogMap.get(currentExercise.id) || [];
+      const updatedSetData = { ...currentSetData };
+  
     if(newRecords.length>=currentSetData.number){
       newRecords[currentSetData.number-1] = {weight: currentSetData.weight, reps: currentSetData.reps}
       updatedSetData.number = newRecords.length+1;
     }else{
       newRecords.push({weight: currentSetData.weight, reps: currentSetData.reps})
       updatedSetData.number = updatedSetData.number+1;
-    }
-    newExerciseToLogMap.set(currentExercise.id, newRecords);
+      }
+      newExerciseToLogMap.set(currentExercise.id, newRecords);
     setExerciseToLogData(newExerciseToLogMap);
-    updatedSetData.weight = 0;
-    updatedSetData.reps = 0;
+      updatedSetData.weight = 0;
+      updatedSetData.reps = 0;
     setCurrentSetData(updatedSetData)
   }
 
@@ -240,16 +241,17 @@ function Session() {
       <div className="overflow-auto scrollbar-none" >
 
         <div className="flex justify-between w-full px-8 py-4 ">
-          {isTimerRunning ? (
-            <button className="time-button bg-gray-300 p-1 w-1/4 text-sm">{formatTime(timer)}</button>
-          ) : (
-            <button
-              className="time-button bg-gray-300 p-1 w-1/4 text-sm"
-              onClick={() => setIsTimerRunning(true)} // Start the timer
-            >
-              Start Timer
-            </button>
-          )}
+          <button
+            className="time-button bg-gray-300 p-1 w-1/4 text-sm"
+            onClick={() => setIsTimerRunning(!isTimerRunning)} // Start the timer
+          >
+            {isTimerRunning ? <PauseIcon/>: <PlayIcon/>}
+          </button>
+          <div 
+            className="flex justify-center items-center session-time-button bg-gray-300 p-1 w-1/4 text-sm rounded-lg"
+          >
+            {formatTime(timer)}
+          </div>
           <button 
             className="session-time-button bg-gray-300 p-1 w-1/4 text-sm"
             onClick={handleFinishSession}

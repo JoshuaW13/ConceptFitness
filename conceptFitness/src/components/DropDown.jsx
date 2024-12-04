@@ -1,58 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../App.css';
 import DropDownArrow from "@mui/icons-material/ArrowDropDown";
 
-function DropDown({ InitialComponent: InitialComponentProp, HiddenComponents, InitialProps , HiddenProps, isActive=true}) {
-    const [isContentVisible, setIsContentVisible] = useState(false);
-    const [isPressed, setIsPressed] = useState(false);
+function DropDown({
+  InitialComponent: InitialComponentProp,
+  HiddenComponents,
+  InitialProps,
+  HiddenProps,
+  isActive = true
+}) {
+  const [isPressed, setIsPressed] = useState(false); // Track button press state
+  const contentVisibleRef = useRef(false); // Store visibility state without causing re-renders
 
-    const handleClick = () => {
-        if(!isActive){
-            return;
-        }
-        setIsContentVisible(!isContentVisible);
-        setIsPressed(true);
-        console.log(isPressed)
-        setTimeout(() => {setIsPressed(false);}, 100); 
-        console.log(isPressed)
-    };
+  const handleClick = () => {
+    if (!isActive) {
+      return;
+    }
 
-    const InitialComponent = InitialComponentProp;
+    // Toggle visibility using ref (no re-render)
+    contentVisibleRef.current = !contentVisibleRef.current;
 
-    const hiddenComponentsArray = Array.isArray(HiddenComponents) ? HiddenComponents : [HiddenComponents];
+    // Handle button press state
+    setIsPressed(true);
 
-    return (
-        <div className="w-full flex flex-col items-center">
-            <div className="flex text-black w-full rounded-t-lg shadow-md" style = {{backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(223 226 235)', transition: 'background-color 0.3s ease'}} onClick={handleClick}>
-                {/* Render InitialComponent */}
-                {isActive&&<DropDownArrow
-                    className=" cursor-pointer"
-                    sx={{
-                        transition: 'transform 0.3s ease',
-                        transform: isContentVisible ? 'rotate(-90deg)' : 'rotate(0deg)', // Rotate when content is visible
-                    }}
-                />}
-                {React.createElement(InitialComponent, InitialProps)}
-                
-                {/* Position the DropDownArrow absolutely to overlap */}
-                
-            </div>
+    // Reset button pressed state after 100ms
+    setTimeout(() => {
+      setIsPressed(false);
+    }, 100);
+  };
 
-            {isContentVisible && (
-                <div
-                    className={`flex flex-col gap-4 bg-white w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
-                    style={{
-                        opacity: isContentVisible ? 1 : 0,
-                        transform: isContentVisible ? 'translateY(0)' : 'translateY(-10px)',
-                    }}
-                >
-                     {hiddenComponentsArray.map((Component, index) => (
-                        React.createElement(Component, { ...HiddenProps, key: index })
-                    ))}
-                </div>
-            )}
+  useEffect(()=>{
+    console.log("Is active is geting change to "+isActive)
+  },[isActive])
+
+  // Extract the InitialComponent and the HiddenComponents
+  const InitialComponent = InitialComponentProp;
+  const hiddenComponentsArray = Array.isArray(HiddenComponents) ? HiddenComponents : [HiddenComponents];
+
+  return (
+    <div className="w-full flex flex-col items-center">
+      <div
+        className="flex text-black w-full rounded-t-lg shadow-md"
+        style={{
+          backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(223 226 235)',
+          transition: 'background-color 0.3s ease'
+        }}
+        onClick={handleClick}
+      >
+        {/* Render DropDown Arrow and InitialComponent */}
+        {isActive && <DropDownArrow
+          className="cursor-pointer"
+          sx={{
+            transition: 'transform 0.3s ease',
+            transform: contentVisibleRef.current ? 'rotate(-90deg)' : 'rotate(0deg)',
+          }}
+        />}
+        {React.createElement(InitialComponent, InitialProps)}
+      </div>
+
+      {/* Only render hidden content when visible */}
+      {contentVisibleRef.current && (
+        <div
+          className={`flex flex-col gap-4 bg-white w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
+          style={{
+            opacity: contentVisibleRef.current ? 1 : 0,
+            transform: contentVisibleRef.current ? 'translateY(0)' : 'translateY(-10px)',
+          }}
+        >
+          {hiddenComponentsArray.map((Component, index) => (
+            React.createElement(Component, { ...HiddenProps, key: index })
+          ))}
         </div>
-    );
+      )}
+    </div>
+  );
 }
 
 export default DropDown;
