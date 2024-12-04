@@ -16,8 +16,7 @@ import Popup from '../components/Popup';
 import ConfirmationPopup from '../components/ConfirmationPopup';
 import { useSessionLogContext } from '../contexts/SessionLogContext';
 import { useExerciseLogContext } from '../contexts/ExerciseLogContext';
-import PauseIcon from"@mui/icons-material/Pause"
-import PlayIcon from "@mui/icons-material/PlayArrow"
+import Timer from "../components/Timer"
 
 function Session() {
   const location = useLocation(); // Access the location object
@@ -26,10 +25,6 @@ function Session() {
   const [selectedProgram, setSelectedProgram] = useState(null); // Selected program
   const [currentExercise, setCurrentExercise] = useState();
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
-  const [weights, setWeights] = useState({}); // State to store weights
-  const [reps, setReps] = useState({}); // State to store reps
-  const [timer, setTimer] = useState(0); // Timer state to track elapsed time
-  const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
   const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
   const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
   const [currentSetData, setCurrentSetData]=useState({number:1,weight:0,reps:0});
@@ -47,9 +42,13 @@ function Session() {
     setSelectedProgram(programToSelect);
     //setSearchTerm(program.name); // Set the search input to the selected program's name
     setCurrentExercise(exercises.find(exercise=>exercise.id===programToSelect.exercises[0])); // Reset to the first exercise
-    setWeights({}); // Reset weights
-    setReps({}); // Reset reps
   },[])
+
+  useEffect(()=>{
+    console.log("exercise to log data being change!")
+    console.log(exerciseToLogData)
+
+  },[exerciseToLogData])
 
   // Load completed exercises from localStorage when the component is mounted
   useEffect(() => {
@@ -70,26 +69,14 @@ function Session() {
       localStorage.setItem('completedExercises', JSON.stringify(completedExercises));
     }
   }, [completedExercises]);
-
-  // Timer logic: increment time every second if the timer is running
-  useEffect(() => {
-    let interval;
-    if (isTimerRunning) {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer + 1);
-      }, 1000); // Increment timer by 1 second
-    } else {
-      clearInterval(interval); // Clear interval when timer is stopped
-    }
-
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [isTimerRunning]);
+  
 
   const resetSetData = (exerciseId)=>{
     const updatedSetData = { ...currentSetData };
     updatedSetData.weight =0;
     updatedSetData.reps =0;
     const exerciseData = exerciseToLogData.get(exerciseId);
+    console.log("reset data being called");
     updatedSetData.number = (exerciseData && exerciseData.length > 0) ? exerciseData.length + 1 : 1;
     setCurrentSetData(updatedSetData);
   }
@@ -136,7 +123,6 @@ function Session() {
     setIsPopupVisible(true);
 
     // Stop the timer when session is finished
-    setIsTimerRunning(false);
   };
 
   const saveSessionLogAndReturnHome = ()=>{
@@ -229,36 +215,23 @@ function Session() {
   // Get current exercise details based on the selected program and current exercise index
 
   // Format the timer in mm:ss format
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  };
+
 
   return (
     <div className="session-page w-full h-full relative">
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
       <div className="overflow-auto scrollbar-none" >
 
-        <div className="flex justify-between w-full px-8 py-4 ">
-          <button
-            className="time-button bg-gray-300 p-1 w-1/4 text-sm"
-            onClick={() => setIsTimerRunning(!isTimerRunning)} // Start the timer
-          >
-            {isTimerRunning ? <PauseIcon/>: <PlayIcon/>}
-          </button>
-          <div 
-            className="flex justify-center items-center session-time-button bg-gray-300 p-1 w-1/4 text-sm rounded-lg"
-          >
-            {formatTime(timer)}
-          </div>
-          <button 
-            className="session-time-button bg-gray-300 p-1 w-1/4 text-sm"
-            onClick={handleFinishSession}
-          >
-            Finish
-          </button>
-        </div>
+      <div className="flex justify-between items-center w-full px-8 py-4">
+        <Timer /> {/* Timer Component */}
+        <button 
+          className="session-time-button bg-gray-300 p-1 text-sm h-full flex items-center justify-center"
+          onClick={handleFinishSession}
+        >
+          Finish
+        </button>
+      </div>
+
 
         <div className="flex flex-col w-full px-8 gap-2 flex-grow">
           {/* Weight and Reps Section */}
@@ -378,7 +351,7 @@ function Session() {
                   return (
                     <DropDown
                       key={index}
-                      isActive={exerciseToLogData.get(exercise.id)?.length>0}
+                      isActive={useMemo(() => exerciseToLogData.get(exercise.id)?.length > 0, [exerciseToLogData, exercise.id])}
                       InitialComponent={SessionExerciseHeader}
                       InitialProps={{
                         exerciseName: exercise.name,
