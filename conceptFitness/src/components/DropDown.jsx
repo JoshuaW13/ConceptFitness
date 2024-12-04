@@ -25,11 +25,6 @@ function DropDown({
     setIsPressed(!isPressed);    
   };
 
-  useEffect(() => {
-    // Logging the state of isActive for debugging
-    console.log("Is active is getting changed to: " + isActive);
-  }, [isActive]);
-
   // Extract the InitialComponent and the HiddenComponents
   const InitialComponent = InitialComponentProp;
   const hiddenComponentsArray = Array.isArray(HiddenComponents) ? HiddenComponents : [HiddenComponents];
