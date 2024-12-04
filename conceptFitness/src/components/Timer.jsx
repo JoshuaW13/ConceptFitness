@@ -3,7 +3,7 @@ import '../App.css';
 import PauseIcon from "@mui/icons-material/Pause";
 import PlayIcon from "@mui/icons-material/PlayArrow";
 
-function Timer() {
+function Timer({timerRef}) {
     const [timer, setTimer] = useState(0); // Timer state to track elapsed time
     const [isTimerRunning, setIsTimerRunning] = useState(false); // State to track if timer is running
 
@@ -25,6 +25,10 @@ function Timer() {
     
         return () => clearInterval(interval); // Cleanup interval on unmount
     }, [isTimerRunning]);
+
+    useEffect(()=>{
+        timerRef.current = formatTime(timer);
+    },[timer])
 
     return (
         <div className="flex items-center justify-center gap-4 w-full px-8 py-4">

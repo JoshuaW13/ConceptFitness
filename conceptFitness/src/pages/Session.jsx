@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import '../App.css';
 import NavBar from '../components/NavBar';
 import HomeButton from '../components/HomeButton';
@@ -33,6 +33,8 @@ function Session() {
   const {exercises} = useExerciseCatalogueContext();
   const {sessionLogs, addSessionLog} = useSessionLogContext();
   const {exerciseLogs, updateExerciseLog} = useExerciseLogContext();
+
+  const timerRef = useRef(0);
 
   const navigate = useNavigate();
 
@@ -131,7 +133,7 @@ function Session() {
       id: sessionLogs.length+1,
       programId: selectedProgram.id,
       date: Date('2024-11-29'),
-      durationMinutes: 90,
+      durationMinutes: timerRef.current,
       exerciseRecords:[],
     }
     exerciseToLogData.forEach((recordArray, exerciseId) => {
@@ -224,7 +226,7 @@ function Session() {
 
       <div className="flex justify-between items-center w-full px-12 py-4">
   <div className="flex items-center justify-start"> {/* Timer is wrapped in a div to control alignment better */}
-      <Timer /> {/* Timer Component */}
+      <Timer timerRef={timerRef}/> {/* Timer Component */}
     </div>
 
     <button 
