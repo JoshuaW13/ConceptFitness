@@ -276,7 +276,8 @@ function Session() {
                   </button>
                 )
               }
-              <h3 className="text-lg font-bold mb-2">{currentExercise&& currentExercise.name}</h3>
+              <h3 className="flex items-center justify-center text-lg font-bold mb-1">{currentExercise&& currentExercise.name}</h3>
+              <h4 className='flex justify-center items-center font-bold  mb-1'>Set: {currentSetData&&currentSetData.number}</h4>
                 {selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[selectedProgram.exercises.length-1] && 
                 (<button className='flex w-6 h-6 bg-gray-300' onClick={nextExercise}>
                   <NextIcon/>
@@ -301,22 +302,6 @@ function Session() {
               <p className="text-sm">Select a program to begin.</p>
             )}
           </div>
-
-          {/* Program Input and Dropdown */}
-          {/* <div className="workout-list bg-gray-100 p-4 rounded-md">
-            <h3 className="text-lg font-bold mb-2">{selectedProgram&& selectedProgram.name}</h3>
-
-            {selectedProgram&&<div className='flex flex-col gap-1'>
-              {
-                selectedProgram.exercises.map((exerciseId, index)=>(
-                    <SessionExerciseHeader key={index}
-                      exerciseName={exercises.find(exercise=>exercise.id===exerciseId).name}
-                    >
-                    </SessionExerciseHeader>
-                ))
-              }
-            </div>}
-          </div> */}
         </div>
 
         {/* Finish Session Confirmation Popup */}
