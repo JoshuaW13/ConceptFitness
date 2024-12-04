@@ -34,7 +34,7 @@ function Home() {
   }
 
   return (
-      <div className='background w-full h-full flex '>
+      <div className='w-full h-full flex flex-col justify-center items-center'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
         <Calender></Calender>
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
