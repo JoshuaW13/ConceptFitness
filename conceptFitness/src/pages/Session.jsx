@@ -87,7 +87,8 @@ function Session() {
     const updatedSetData = { ...currentSetData };
     updatedSetData.weight =0;
     updatedSetData.reps =0;
-    updatedSetData.number = exerciseToLogData.get(exerciseId).length+1;
+    const exerciseData = exerciseToLogData.get(exerciseId);
+    updatedSetData.number = (exerciseData && exerciseData.length > 0) ? exerciseData.length + 1 : 1;
     setCurrentSetData(updatedSetData);
   }
 
@@ -104,6 +105,7 @@ function Session() {
     const exerciseIndexToSet = currentExerciseIndex+1;
     const exerciseIdToSet = selectedProgram.exercises[exerciseIndexToSet];
     resetSetData(exerciseIdToSet)
+    console.log("Swapping to exercise "+exerciseIdToSet)
     swapCurrentExercise(exerciseIdToSet);
   }
 
