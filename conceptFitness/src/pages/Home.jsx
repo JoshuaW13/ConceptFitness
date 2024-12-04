@@ -7,20 +7,21 @@ import ProfileButton from '../components/ProfileButton'
 import Calender from '../components/Calender'
 import { useNavigate } from 'react-router-dom';
 import { useCalendarContext } from '../contexts/CalendarContext'
+import dayjs from 'dayjs'
 
 function Home() {
-  const{days} = useCalendarContext();
+  const{days, dayPrograms} = useCalendarContext();
 
   const navigate = useNavigate();
 
   const startSession = () =>{
-    const today = new Date();
-    const dayOfWeek = today.getDay();
-    const daySchedule = days.find((d) => d.id == dayOfWeek)
-    if(daySchedule.program===undefined){
+    const todayDate = dayjs();
+    const formattedDate = dayjs(todayDate).format('MMM D, YYYY')
+    const dayProgram = dayPrograms.find((dayProgram) => dayProgram.date == formattedDate)
+    if(dayProgram===undefined){
       navigate("/programs");
     }else{
-      navigate("/session",{ state: { programToStart: daySchedule.program } })
+      navigate("/session",{ state: { programToStart: dayProgram.program } })
     }
   }
   const navigateCatalogue = () =>{
