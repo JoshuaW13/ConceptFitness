@@ -6,27 +6,26 @@ function NavBar({ FirstButton, SecondButton, OtherButtons }) {
   const otherButtonsArray = Array.isArray(OtherButtons) ? OtherButtons : [];
 
   return (
-    <nav className="navbar">
+    <nav className="navbar p-2">
       {FirstButton && <FirstButton />}
-      {otherButtonsArray.map((Component, index) => (
-        <Component key={index} />
-      ))}
+      {otherButtonsArray.map((getButtonProps, index) => {
+        // Invoke the function to get the component and props
+        const { component: ButtonComponent, props } = getButtonProps();
+        return <ButtonComponent key={index} {...props} />;
+      })}
       {SecondButton && <SecondButton />}
     </nav>
   );
 }
 
 NavBar.propTypes = {
-  FirstButton: PropTypes.func, 
+  FirstButton: PropTypes.func,
   SecondButton: PropTypes.func,
-  OtherButtons: PropTypes.oneOfType([ 
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.func)
-  ])
+  OtherButtons: PropTypes.arrayOf(PropTypes.func), // Array of functions that return component/props objects
 };
 
 NavBar.defaultProps = {
-  OtherButtons: [], 
+  OtherButtons: [],
 };
 
 export default NavBar;

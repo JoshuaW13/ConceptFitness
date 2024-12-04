@@ -43,7 +43,7 @@ function ExerciseLogs() {
 
     return (
         <div className='w-full h-full flex flex-col items-center gap-2'>
-            <LogNavbar />
+            <LogNavbar typeSelected={"exercise"} />
             <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."}></SearchBar>
             <div className='h-[75%] w-[75%] bg-gray-100 flex flex-col gap-4 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
                 {filteredExerciseLog.map((exerciseLog,index)=>(
