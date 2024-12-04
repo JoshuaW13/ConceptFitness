@@ -42,10 +42,11 @@ function Timer({timerRef}) {
 
             {/* Smaller Timer Display */}
             <div
-                className="flex justify-center items-center bg-gray-600 text-white p-2 rounded-lg shadow-md w-18 h-18 text-base font-mono"
+                className=" bg-gray-600 text-white p-2 rounded-lg shadow-md w-18 h-18 text-base font-mono"
                 style={{ fontSize: '1rem' }}
             >
-                {formatTime(timer)}
+                <h3>Session Duration</h3>
+                <p className='bg-gray-500'>{formatTime(timer)}</p>
             </div>
         </div>
     );
