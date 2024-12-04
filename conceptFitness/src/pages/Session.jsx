@@ -222,42 +222,47 @@ function Session() {
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
       <div className="overflow-auto scrollbar-none" >
 
-      <div className="flex justify-between items-center w-full px-8 py-4">
-        <Timer /> {/* Timer Component */}
-        <button 
-          className="session-time-button bg-gray-300 p-1 text-sm h-full flex items-center justify-center"
-          onClick={handleFinishSession}
-        >
-          Finish
-        </button>
-      </div>
+      <div className="flex justify-between items-center w-full px-12 py-4">
+  <div className="flex items-center justify-start"> {/* Timer is wrapped in a div to control alignment better */}
+      <Timer /> {/* Timer Component */}
+    </div>
+
+    <button 
+      className="session-time-button bg-gray-300 p-2 text-sm flex items-center justify-center h-full"
+      onClick={handleFinishSession}
+    >
+      Finish
+    </button>
+  </div>
+
 
 
         <div className="flex flex-col w-full px-8 gap-2 flex-grow">
           {/* Weight and Reps Section */}
           <div className="controls flex items-center justify-center gap-4 w-full mb-2">
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center gap-2">
-                <label className="text-base">Weight:</label>
-                <input
-                  type="number"
-                  className="weight-input w-16 text-center border p-1"
-                  value={currentSetData.weight || ''}
-                  onChange={(e) => handleInputChange('weight', e.target.value)}
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <label className="text-base">Reps:</label>
-                <input
-                  type="number"
-                  className="reps-input w-16 text-center border p-1"
-                  value={currentSetData.reps || ''}
-                  onChange={(e) => handleInputChange('reps', e.target.value)}
-                />
-              </div>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-2 justify-center">
+              <label className="text-base w-20 text-center">Weight:</label>
+              <input
+                type="number"
+                className="weight-input w-16 text-center border p-1"
+                value={currentSetData.weight || ''}
+                onChange={(e) => handleInputChange('weight', e.target.value)}
+              />
             </div>
-            <button className='text-sm' onClick={saveSet}>Save Set</button>
+            <div className="flex items-center gap-2 justify-center">
+              <label className="text-base w-20 text-center">Reps:</label>
+              <input
+                type="number"
+                className="reps-input w-16 text-center border p-1"
+                value={currentSetData.reps || ''}
+                onChange={(e) => handleInputChange('reps', e.target.value)}
+              />
+            </div>
           </div>
+          <button className='text-sm flex w-12 h-12 bg-gray-300 items-center' onClick={saveSet}>Save Set</button>
+        </div>
+
 
           {/* Current Exercise Box */}
           <div className="exercise-description-box bg-gray-200 p-2 rounded-md">
@@ -288,7 +293,7 @@ function Session() {
                     Your browser do not support video tag
                  </video>
                 </div>
-                <p className="text-sm">{currentExercise.description}</p>
+                <p className="text-lg">{currentExercise.description}</p>
               </>
             ) : (
               <p className="text-sm">Select a program to begin.</p>
