@@ -117,7 +117,7 @@ function ExerciseStatsWindow() {
 
     return (
         <div className="w-full max-w-lg bg-gray-50 rounded-lg shadow-lg flex flex-col border border-gray-300 text-black relative">
-            <div className="flex items-center p-1">
+            <div className="flex items-center gap-1 justify-center">
                 <div className="flex w-6 h-6 bg-gray-300 cursor-pointer" onClick={handlePrev}>
                     <BackIcon />
                 </div>
