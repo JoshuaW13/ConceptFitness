@@ -40,7 +40,7 @@ function ProfileInputs ( {onSave, initialData} ) {
                     rows={3}
                     placeholder='Write a Bio...'
                     maxLength={maxChars}
-                    className="w-[100%] bg-white text-black text-sm border border-black rounded px-2 py-1"
+                    className="w-[100%] bg-white text-black text-sm border border-black rounded px-2 py-1 resize-none scrollbar-hidden"
                 ></textarea>
             </div>
 

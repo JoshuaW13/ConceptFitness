@@ -221,11 +221,11 @@ function Session() {
 
   return (
     <div className="session-page w-full h-full relative">
-        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
+        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
       <div className="overflow-auto scrollbar-none" >
 
-      <div className="flex justify-between items-center w-full px-12 py-4">
-  <div className="flex items-center justify-start"> {/* Timer is wrapped in a div to control alignment better */}
+      <div className="flex justify-center items-center w-full px-12 py-4">
+  <div className="flex items-center justify-center"> {/* Timer is wrapped in a div to control alignment better */}
       <Timer timerRef={timerRef}/> {/* Timer Component */}
     </div>
 
@@ -242,7 +242,7 @@ function Session() {
         <div className="flex flex-col w-full px-8 gap-2 flex-grow">
           {/* Weight and Reps Section */}
           <div className="controls flex items-center justify-center gap-4 w-full mb-2">
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex items-center gap-2 justify-center">
               <label className="text-base w-20 text-center">Weight:</label>
               <input
