@@ -136,21 +136,19 @@ function Session() {
       durationMinutes: timerRef.current,
       exerciseRecords:[],
     }
+    let amountOfNewLogsAdded = 1;
     exerciseToLogData.forEach((recordArray, exerciseId) => {
       const setsToAdd=[];
       let newExerciseLog = exerciseLogs.find((exerciseLog) => exerciseLog.exerciseId == exerciseId)
       if(newExerciseLog===undefined){
-        console.log("Made a new log!");
         newExerciseLog={
-          id:exerciseLogs.length+1,
+          id:exerciseLogs.length+amountOfNewLogsAdded,
           exerciseId: exerciseId,
           reps:0,
           sets:0,
           weight:0,
         }
-      }else{
-      console.log("Updating existing exercise!");
-
+        amountOfNewLogsAdded +=1;
       }
       if(newExerciseLog.sets<recordArray.length){
         newExerciseLog.sets = recordArray.length
