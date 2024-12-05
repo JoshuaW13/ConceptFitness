@@ -13,7 +13,7 @@ function NavBar({ FirstButton, SecondButton, OtherButtons, PageTitle }) {
         const { component: ButtonComponent, props } = getButtonProps();
         return <ButtonComponent key={index} {...props} />;
       })}
-      {PageTitle&& <h2 className=" flex justify-center items-center text-2xl font-bold text-gray-800">{PageTitle}</h2>}
+      {PageTitle&& <h2 className=" flex justify-center items-center text-xl font-bold text-gray-800">{PageTitle}</h2>}
       {SecondButton && <SecondButton />}
     </nav>
   );
