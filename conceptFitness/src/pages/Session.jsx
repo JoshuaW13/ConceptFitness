@@ -128,7 +128,6 @@ function Session() {
   };
 
   const saveSessionLogAndReturnHome = ()=>{
-    //save exercise log
     let sessionRecordToSave = {
       id: sessionLogs.length+1,
       programId: selectedProgram.id,
@@ -314,7 +313,7 @@ function Session() {
                 "No exercises recorded. Are you sure you would like to return to the main menu?":
                 "Would you like to complete this workout?"
                 ,
-                onConfirm: saveSessionLogAndReturnHome,
+                onConfirm: exerciseToLogData.size==0? ()=>{navigate("/home")}:saveSessionLogAndReturnHome,
               }}
               isCentered={true}  // Ensures it's centered
             />
