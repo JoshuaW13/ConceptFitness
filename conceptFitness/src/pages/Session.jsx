@@ -304,8 +304,8 @@ function Session() {
 
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
-        <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-          <div className="p-2 rounded-lg shadow-lg relative">
+        <div className="absolute inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+          <div className="p-2 rounded-lg shadow-lg relative w-[100%]">
             <Popup
               onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
               Content={ConfirmationPopup}
