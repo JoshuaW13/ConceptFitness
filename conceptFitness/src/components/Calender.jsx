@@ -11,6 +11,7 @@ function Calender() {
   const navigate = useNavigate();
   var firstDate = new Date()
   var lastDate = new Date()
+  const [firstLoad, setFirstLoad] = useState(false)
   const [firstDay, setFirstDay] = useState("")
   const [lastDay, setLastDay] = useState("")
   const [currDay, setCurrDay] = useState(0)
@@ -30,11 +31,11 @@ function Calender() {
   const changeWeek = (i) => {
     var firstDateNew = (dayjs(firstDay).add((7 * i), 'days')).toDate()
     setFirstDay(dayjs(firstDateNew).format('MMM D, YYYY'))
-    console.log(firstDay)
+    // console.log(firstDay)
 
     var lastDateNew = (dayjs(firstDateNew).add(6, 'days')).toDate()
     setLastDay(dayjs(lastDateNew).format('MMM D, YYYY'))
-    console.log(lastDay)
+    // console.log(lastDay)
   }
 
   const generateCalender = () => {
@@ -56,11 +57,14 @@ function Calender() {
   }, [firstDay])
 
   const focusCalender = () => {
-    setTimeout(() => {
-      const cal = document.getElementById("calender"); 
-      const calObject = cal.getBoundingClientRect();
-      cal.scrollLeft =  calObject.width * (((currDay - 1) * 0.5 ) + 0.25); 
-    }, 10); 
+    if(!firstLoad) {
+      setTimeout(() => {
+        const cal = document.getElementById("calender"); 
+        const calObject = cal.getBoundingClientRect();
+        cal.scrollLeft =  calObject.width * (((currDay - 1) * 0.5 ) + 0.25); 
+        setFirstLoad(true)
+      }, 10); 
+    }
   }
 
   return (
