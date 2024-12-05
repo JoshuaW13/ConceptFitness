@@ -12,7 +12,7 @@ function ExerciseLog({exerciseRecord}) {
   return (
     <div className="bg-gray-100 w-full rounded-lg shadow-md mb-4 relative">
       <div className="flex items-center justify-between bg-gray-200 p-3 rounded-lg">
-        <p className="text-gray-700 text-base font-medium">
+        <p className="text-gray-700 text-lg font-semibold">
           {exercises.find((exercise) => exercise.id == exerciseRecord.id).name}
         </p>
         <button
@@ -30,7 +30,7 @@ function ExerciseLog({exerciseRecord}) {
 
       <div className="flex flex-col space-y-2">
         {exerciseRecord.sets.map((set, index)=>(
-        <p key={index}className="text-gray-700 text-base">Set {index+1} Weight:{set.weight} Reps:{set.reps}</p>
+        <p key={index}className="text-gray-700 text-lg"><span className='font-semibold'>Set {index+1}:</span>  Weight:{set.weight}kg Reps:{set.reps}</p>
         ))}
       </div>
     </div>
