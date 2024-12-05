@@ -1,65 +1,85 @@
 import React, { createContext, useState, useContext } from 'react';
+import { useNotifContext } from "../contexts/NotifContext.jsx";
 
-const ProgramContext = createContext();
+const GoalContext = createContext();
 
 // Create a provider component
-export const ProgramProvider = ({ children }) => {
-  const [assignedGoals, setAssignedGoals]=useState([{
-    id: 1,
-    name: "Monday Arms",
-    tags: ["arms", "upper body", "fun"],
-    exercises:[1,2,5,6,10],
-  },
-  {
-    id: 2,
-    name: "Tuesday Kicks",
-    tags: ["legs", "glutes"],
-    exercises:[4,9,14,15],
-  }
+export const GoalProvider = ({ children }) => {
+  const { showNotif } = useNotifContext();
+
+  const [assignedGoals, setAssignedGoals] = useState([{
+      id: 1,
+      goalType: 1,
+      exercise: 1,
+      value: 10,
+      date: "Dec 10, 2024"
+    },
+    {
+      id: 2,
+      goalType: 1,
+      exercise: 1,
+      value: 10,
+      date: "Dec 10, 2024"
+    }
   ]);
 
-  const
+  const [goalTypes, setGoalTypes] = useState([{
+      goal: "Weight Gain",
+      unit: "lbs",
+      id: 1,
+    },
+    {
+      goal: "Weight Loss",
+      unit: "lbs",
+      id: 2,
+    },
+    {
+      goal: "Max Rep",
+      unit: "reps",
+      id: 3,
+    },
+    {
+      goal: "Max Weight (set)",
+      unit: "lbs",
+      id: 4,
+    },
+    {
+      goal: "Max Weight (single)",
+      unit: "lbs",
+      id: 5,
+    }
+  ]);
 
-  const addProgram = (program) => {
-    setPrograms((prevPrograms) => {
-      const programExists = prevPrograms.some((p) => p.id === program.id);
+  const addGoal = (goalType, exercise, value, date) => {
+    const newGoal = {goalType: goalType, exercise: exercise, value: value, date: date}
+    setPrograms((prevGoals) => {
+      const goalExists = prevGoals.some((g) => (g.goalType === newGoal.goalType && g.date === newGoal.date));
       
-      if (programExists) {
-        return prevPrograms.map((p) =>
-          p.id === program.id ? { ...p, ...program } : p
+      if (goalExists) {
+        showNotif("Goal Updated")
+        return prevGoals.map((g) =>
+          (g.goalType === newGoal.goalType && g.date === newGoal.date) ? { ...g, ...newGoal } : g
         );
       } else {
-        return [...prevPrograms, program];
+        showNotif("Goal Added")
+        return [...prevGoals, newGoal];
       }
     });
   };
   
 
-  const removeProgram = (id) => {
-    setPrograms((prevPrograms) => prevPrograms.filter(ex => ex.id !== id));
-  };
-
-  const removeExerciseFromProgram = (programId, exerciseId) => {
-    setPrograms((prevPrograms) => {
-      return prevPrograms.map((program) => {
-        if (program.id === programId) {
-          // Remove the exercise from the program's exercises array
-          const updatedExercises = program.exercises.filter((exercise) => exercise !== exerciseId);
-          return { ...program, exercises: updatedExercises };
-        }
-        return program;
-      });
-    });
+  const removeGoal = (id) => {
+    setAssignedGoals((prevGoals) => prevGoals.filter((g) => g.id !== id));
   };
 
   return (
-    <ProgramContext.Provider value={{ programs, addProgram, removeProgram, removeExerciseFromProgram }}>
+    <GoalContext.Provider value={{ assignedGoals, goalTypes, addGoal, removeGoal }}>
       {children}
-    </ProgramContext.Provider>
+    </GoalContext.Provider>
   );
 };
 
 // Custom hook to access the context easily
-export const useProgramContext = () => {
-  return useContext(ProgramContext);
+export const useGoalContext = () => {
+  return useContext(GoalContext);
 };
