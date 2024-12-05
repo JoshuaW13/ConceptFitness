@@ -79,7 +79,7 @@ function Programs() {
         <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
         <button className='w-[15%] flex bg-gray-300 justify-center items-center' onClick={addNewProgram}>+</button>
       </div>
-      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2 scrollbar-hidden">
+      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2">
         {filteredPrograms.map((program) => {
           return (
             <DropDown

@@ -273,4 +273,42 @@ label {
   margin: 0.5rem;
   color: white;
 }
+
+/* General scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px; /* Minimal width for mobile */
+  height: 6px; /* Minimal height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Light grey for the thumb */
+  border-radius: 6px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Darker thumb color on hover */
+}
+
+/* Style for scrollbar track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Light background for the track */
+  border-radius: 6px;
+}
+
+/* Make the scrollbar disappear after a few seconds */
+.scroll-container {
+  overflow-y: auto;
+  max-height: 100vh;
+  scrollbar-width: thin; /* Firefox styling */
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* Firefox colors */
+  transition: scrollbar-width 0.3s ease, scrollbar-color 0.3s ease;
+}
+
+/* When scrolled, make the scrollbar more visible */
+.scroll-container.scrolled {
+  scrollbar-width: auto; /* Make it thicker when scrolled */
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Darken the thumb when scrolled */
+}
+
 }

@@ -84,11 +84,11 @@ function SessionLogs() {
                 Exercises
                 </div>
             </div>
-            <div className="pt-6 px-4 pb-4 bg-white rounded-b-lg border-t-2 border-gray-300 flex-grow flex flex-col items-center scrollbar-hidden">
+            <div className="pt-6 px-4 pb-4 bg-white rounded-b-lg border-t-2 border-gray-300 flex-grow flex flex-col items-center overflow-hidden">
 
                 <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."}></SearchBar>
                 <DateInput></DateInput>
-                <div className='w-[75%] bg-gray-100 flex flex-col gap-2 overflow-y-auto m-3 scrollbar-hidden shadow-md'>
+                <div className='w-[75%] bg-gray-100 flex flex-col gap-2 overflow-y-auto m-3 shadow-md overflow-auto'>
                     {filteredSessionLog.map((sessionLog, index)=>(
                         <DropDown
                             key={index}
