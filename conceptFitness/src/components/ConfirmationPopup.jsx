@@ -12,5 +12,3 @@ function ConfirmationPopup({message, onConfirm}) {
 }
 
 export default ConfirmationPopup
-
-

@@ -73,14 +73,14 @@ function Programs() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center gap-2">
+    <div className="background gap-2">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Programs"}></NavBar>
       <div className='flex gap-1 justify-center'>
         <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Name, Tags, etc."} />
-        <button className='w-[15%] flex bg-gray-300 justify-center items-center' onClick={addNewProgram}>+</button>
+        <button className='w-[20%] flex bg-green-400 justify-center items-center' onClick={addNewProgram}>+</button>
       </div>
-      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg overflow-y-auto m-2">
-        {filteredPrograms.map((program) => {
+      <div className="h-[80%] w-[85%] flex flex-col gap-2 p-2 rounded-lg shadow-lg border-gray border-2 overflow-y-auto m-2 scrollbar-hidden bg-white">
+        {programs.map((program) => {
           return (
             <DropDown
               key={program.id}

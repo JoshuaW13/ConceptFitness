@@ -30,7 +30,7 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                         name="goal"
                         value={formData.goal}
                         onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                        className="input-field w-[50%] text-sm"
                     >
                         <option value="Select Goal">Select</option>
                         <option value="Lose Weight">Lose Weight</option>
@@ -48,7 +48,7 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                         name='targetWeight'
                         value={formData.targetWeight}
                         onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                        className="input-field w-[50%]"
                     />
                 </div>
             </div>
@@ -60,17 +60,17 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                     name="targetDate"
                     value={formData.targetDate}
                     onChange={handleChange}
-                    className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                    className="input-field w-[50%]"
                     style={{colorScheme: "light"}}
                 />
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='save-button'>
-                    Save
-                </button>
                 <button onClick={onCancel} className='cancel-button'>
                     Cancel
+                </button>
+                <button onClick={handleSave} className='save-button'>
+                    Save
                 </button>
             </div>
 

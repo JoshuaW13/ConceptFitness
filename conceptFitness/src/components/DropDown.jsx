@@ -34,7 +34,7 @@ function DropDown({
       <div
         className="flex text-black w-full rounded-t-lg shadow-md"
         style={{
-          backgroundColor: isPressed ? 'rgb(209 213 219)' : 'rgb(223 226 235)',
+          backgroundColor: isPressed ? 'rgb(209 213 219)' : '#EAE7DC',
           transition: 'background-color 0.3s ease'
         }}
         onClick={handleClick}

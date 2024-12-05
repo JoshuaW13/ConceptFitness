@@ -18,7 +18,7 @@ function SearchBar({InitialText, searchSetter, searchState, searchStateSetter}) 
   }
 
   return (
-    <div className="flex items-center bg-gray-300 rounded-lg w-[75%] p-1">
+    <div className="flex items-center bg-white rounded-lg w-[75%] p-1">
       <SearchIcon
         className="text-black ml-2 cursor-text"
         onClick={handleIconClick} // Add onClick handler

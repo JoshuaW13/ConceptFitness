@@ -27,6 +27,7 @@ function Session() {
   const [completedExercises, setCompletedExercises] = useState([]); // Completed exercises
   const [slidingDrawerOpen, setSlidingDrawerOpen] = useState(false);
   const [exerciseToLogData, setExerciseToLogData] = useState(new Map());
+  const [activeExerciseIndex, setActiveExerciseIndex] = useState(null);
   const [currentSetData, setCurrentSetData]=useState({number:1,weight:0,reps:0});
 
   const {programs} = useProgramContext();
@@ -217,7 +218,7 @@ function Session() {
 
 
   return (
-    <div className="session-page w-full h-full relative">
+    <div className="background session-page relative overflow-y-auto">
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
       <div className="overflow-auto scrollbar-none" >
 
@@ -227,7 +228,7 @@ function Session() {
     </div>
 
     <button 
-      className="session-time-button bg-gray-300 p-2 text-sm flex items-center justify-center h-full"
+      className="button"
       onClick={handleFinishSession}
     >
       Finish
@@ -244,7 +245,7 @@ function Session() {
               <label className="text-base w-20 text-center">Weight(lbs):</label>
               <input
                 type="number"
-                className="weight-input w-16 text-center border p-1"
+                className="input-field w-[40%] p-1"
                 value={currentSetData.weight || ''}
                 onChange={(e) => handleInputChange('weight', e.target.value)}
               />
@@ -253,7 +254,7 @@ function Session() {
               <label className="text-base w-20 text-center">Reps:</label>
               <input
                 type="number"
-                className="reps-input w-16 text-center border p-1"
+                className="input-field w-[45%] text-center border p-1"
                 value={currentSetData.reps || ''}
                 onChange={(e) => handleInputChange('reps', e.target.value)}
               />
@@ -303,7 +304,7 @@ function Session() {
 
         {/* Finish Session Confirmation Popup */}
         {isPopupVisible && (
-        <div className="absolute inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+        <div className="absolute inset-0 bg-gay-800 bg-opacity-50 flex justify-center items-center">
           <div className="p-2 rounded-lg shadow-lg relative w-[100%]">
             <Popup
               onClick={(e) => { setIsPopupVisible(false); e.stopPropagation(); }} 
@@ -326,54 +327,25 @@ function Session() {
 
 
         {/* Sliding Drawer with Scrolling */}
-        <SlidingDrawerWithScrolling 
-          isDrawerOpen={slidingDrawerOpen}
-          setIsDrawerOpen={setSlidingDrawerOpen}
-          Content={() => (
-            selectedProgram && (
-              <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
-                {selectedProgram.exercises.map((exerciseId, index) => {
-                  const exercise = exercises.find(ex => ex.id === exerciseId);
-                  if (!exercise) return null; // Handle case where exercise is not found
-
-                  return (
-                    <DropDown
-                      key={index}
-                      isActive={useMemo(() => exerciseToLogData.get(exercise.id)?.length > 0, [exerciseToLogData, exercise.id])}
-                      InitialComponent={SessionExerciseHeader}
-                      InitialProps={{
-                        exerciseName: exercise.name,
-                        onClick: (e) => {
-                          e.stopPropagation();
-                          setSlidingDrawerOpen(false);
-                          swapCurrentExercise(exerciseId);
-                          resetSetData(exerciseId)
-                        },
-                      }}
-                      HiddenComponents={SessionSetLog}
-                      HiddenProps={{
-                        exerciseRecords: exerciseToLogData.get(exercise.id),
-                        onEdit: (e, setData)=>{
-                          console.log("setting new set!");
-                          e.stopPropagation();
-                          swapCurrentExercise(exercise.id);
-                          setSlidingDrawerOpen(false);
-                          setCurrentSetData(setData);
-                        },
-                        onDelete: (e, indexToRemove)=>{
-                          e.stopPropagation();
-                          deleteSetData(indexToRemove, exercise.id)
-                          setSlidingDrawerOpen(false);
-                        }
-                      }}
-                    />
-                  );
-                })}
+        <SlidingDrawerWithScrolling Content={() => (
+          <div className="flex flex-col p-4 gap-4">
+            <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
+            {completedExercises.map((session, index) => (
+              <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
+                <h3 className="text-lg font-semibold">{session.program.name}</h3>
+                <div className="exercises-list">
+                  {session.exercises.map((exercise, idx) => (
+                    <div key={idx} className="exercise-entry p-2">
+                      <p>{exercise.exercise}</p>
+                      <p>Weight: {exercise.weight}</p>
+                      <p>Reps: {exercise.reps}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            )
-          )}
-        />
+            ))}
+          </div>
+        )} />
       </div>
     </div>
   );

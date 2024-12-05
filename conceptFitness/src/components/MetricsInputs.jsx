@@ -32,7 +32,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                         name="age"
                         value={formData.age}
                         onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                        className="input-field w-[50%]"
                     />
                 </div>
             </div>
@@ -45,7 +45,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                         name="weight"
                         value={formData.weight}
                         onChange={handleChange}
-                        className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                        className="input-field w-[50%]"
                     />
                 </div>
             </div>
@@ -59,7 +59,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                             name='height'
                             value={formData.height}
                             onChange={handleChange}
-                            className="w-[50%] bg-white border border-black rounded px-2 py-1"
+                            className="input-field w-[50%]"
                         />
                     ) : (
                         <div className="flex gap-2 w-[50%]">
@@ -68,7 +68,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                                 name="heightFt"
                                 value={formData.heightFt || ''}
                                 onChange={handleChange}
-                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                className="input-field w-[35%]"
                                 placeholder="ft"
                             ></input>
                             <input
@@ -76,7 +76,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                                 name="heightIn"
                                 value={formData.heightIn || ''}
                                 onChange={handleChange}
-                                className="w-[35%] bg-white border border-black rounded px-2 py-1"
+                                className="input-field w-[35%]"
                                 placeholder="in"
                             ></input>
                         </div>
@@ -90,7 +90,7 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                     name="activityLevel"
                     value={formData.activityLevel}
                     onChange={handleChange}
-                    className="w-[50%] bg-white border border-black rounded px-2 py-1 text-sm"
+                    className="input-field text-sm w-[50%]"
                 >
                     <option value="" disabled>Select</option>
                     <option value="Sedentary">Sedentary</option>
@@ -101,11 +101,11 @@ function MetricsInputs( {onSave, onCancel, initialData, unitSystem} ) {
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={handleSave} className='save-button'>
-                    Save
-                </button>
                 <button onClick={onCancel} className='cancel-button'>
                     Cancel
+                </button>
+                <button onClick={handleSave} className='save-button'>
+                    Save
                 </button>
             </div>
 

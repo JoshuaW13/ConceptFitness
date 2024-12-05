@@ -12,14 +12,14 @@ function SlidingDrawerWithScrolling({ Content, isDrawerOpen, setIsDrawerOpen }) 
     <>
       {/* Right Drawer */}
       <div
-        className={`h-full w-[90%] bg-gray-500 top-0 right-0 absolute transform ${
+        className={`h-full w-[90%] bg-[#8E8D8A] top-0 right-0 absolute transform ${
           isDrawerOpen ? 'translate-x-0 visible' : 'translate-x-[100%]'
         } transition-transform duration-500 ease-in-out flex flex-col items-center`}
       >
         {/* Drawer Toggle Button */}
         <button
           onClick={toggleDrawer}
-          className="absolute w-7 h-14 left-[-2.5rem] bg-gray-500 text-white p-0 rounded"
+          className="absolute w-7 h-14 left-[-2.5rem] bg-[#8E8D8A] text-white p-0 rounded"
           style={{
             top: '50%',
             transform: 'translateY(-50%) translateX(50%)',
