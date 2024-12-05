@@ -15,6 +15,7 @@ import { CalendarProvider } from './contexts/CalendarContext.jsx';
 import { SessionLogProvider } from './contexts/SessionLogContext.jsx';
 import { ExerciseLogProvider } from './contexts/ExerciseLogContext.jsx';
 import { NotifProvider} from "./contexts/NotifContext.jsx";
+import { GoalProvider } from './contexts/GoalsContext.jsx';
 
 function App() {
   return (
@@ -25,20 +26,22 @@ function App() {
             <ExerciseLogProvider>
               <CalendarProvider>
                 <NotifProvider>
-                <div className="sm:aspect-[9/18] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden">
-                <Routes>
-                      <Route path="/" element={<Login />} />
-                      <Route path="/home" element={<Home />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/session" element={<Session />} />
-                      <Route path="/catalogue" element={<Catalogue />} />
-                      <Route path="/programs" element={<Programs />} />
-                      <Route path="/sessionLogs" element={<SessionLogs />} />
-                      <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-                      <Route path="/signUp" element={<SignUp />} />
-                    </Routes>
-                    <Popup_Notif/>
-                  </div>
+                  <GoalProvider>
+                    <div className="sm:aspect-[9/18] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden">
+                    <Routes>
+                          <Route path="/" element={<Login />} />
+                          <Route path="/home" element={<Home />} />
+                          <Route path="/profile" element={<Profile />} />
+                          <Route path="/session" element={<Session />} />
+                          <Route path="/catalogue" element={<Catalogue />} />
+                          <Route path="/programs" element={<Programs />} />
+                          <Route path="/sessionLogs" element={<SessionLogs />} />
+                          <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+                          <Route path="/signUp" element={<SignUp />} />
+                        </Routes>
+                        <Popup_Notif/>
+                      </div>
+                  </GoalProvider>
                 </NotifProvider>
               </CalendarProvider>
             </ExerciseLogProvider>
