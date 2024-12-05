@@ -4,6 +4,7 @@ import Menu from "@mui/icons-material/Menu";
 import Popup from './Popup';
 import ExerciseLogPopup from './ExerciseLogPopup';
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
+import ExerciseDataPopup from "../components/ExerciseDataPopup";
 
 function ExerciseLog({exerciseRecord}) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -16,16 +17,24 @@ function ExerciseLog({exerciseRecord}) {
           {exercises.find((exercise) => exercise.id == exerciseRecord.id).name}
         </p>
         <button
-          className="flex items-center justify-center text-gray-700 bg-gray-300 px-4 py-2 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 w-[33%]"
-          onClick={() => setIsPopupVisible(!isPopupVisible)}
+          className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none"
+          onClick={(event) => {setIsPopupVisible(!isPopupVisible)
+            event.stopPropagation();  // Prevent the event from bubbling up to the parent
+          }}
         >
-          <Menu />
+          +
         </button>
       </div>
 
       {/* Popup */}
       {isPopupVisible && (
-        <Popup onClick={() => setIsPopupVisible(false)} Content={ExerciseLogPopup} />
+        <Popup
+        onClick={(event) => {
+          event.stopPropagation();  // Prevent the event from bubbling up to the parent
+          setIsPopupVisible(false);  // Close the popup
+        }} 
+        Content={()=> <ExerciseDataPopup currentExerciseId={exerciseRecord.id}/>} 
+         />
       )}
 
       <div className="flex flex-col space-y-2">
