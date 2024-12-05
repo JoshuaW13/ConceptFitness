@@ -221,7 +221,7 @@ function Session() {
 
   return (
     <div className="session-page w-full h-full relative">
-        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} />
+        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
       <div className="overflow-auto scrollbar-none" >
 
       <div className="flex justify-between items-center w-full px-12 py-4">
