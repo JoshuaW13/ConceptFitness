@@ -327,25 +327,54 @@ function Session() {
 
 
         {/* Sliding Drawer with Scrolling */}
-        <SlidingDrawerWithScrolling Content={() => (
-          <div className="flex flex-col p-4 gap-4">
-            <h2 className="text-xl font-bold text-center mb-4">Session Records</h2>
-            {completedExercises.map((session, index) => (
-              <div key={index} className="session-record p-2 mb-2 bg-white rounded-md shadow-md">
-                <h3 className="text-lg font-semibold">{session.program.name}</h3>
-                <div className="exercises-list">
-                  {session.exercises.map((exercise, idx) => (
-                    <div key={idx} className="exercise-entry p-2">
-                      <p>{exercise.exercise}</p>
-                      <p>Weight: {exercise.weight}</p>
-                      <p>Reps: {exercise.reps}</p>
-                    </div>
-                  ))}
-                </div>
+        <SlidingDrawerWithScrolling 
+          isDrawerOpen={slidingDrawerOpen}
+          setIsDrawerOpen={setSlidingDrawerOpen}
+          Content={() => (
+            selectedProgram && (
+              <div className="flex flex-col gap-1">
+                <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
+                {selectedProgram.exercises.map((exerciseId, index) => {
+                  const exercise = exercises.find(ex => ex.id === exerciseId);
+                  if (!exercise) return null; // Handle case where exercise is not found
+
+                  return (
+                    <DropDown
+                      key={index}
+                      isActive={useMemo(() => exerciseToLogData.get(exercise.id)?.length > 0, [exerciseToLogData, exercise.id])}
+                      InitialComponent={SessionExerciseHeader}
+                      InitialProps={{
+                        exerciseName: exercise.name,
+                        onClick: (e) => {
+                          e.stopPropagation();
+                          setSlidingDrawerOpen(false);
+                          swapCurrentExercise(exerciseId);
+                          resetSetData(exerciseId)
+                        },
+                      }}
+                      HiddenComponents={SessionSetLog}
+                      HiddenProps={{
+                        exerciseRecords: exerciseToLogData.get(exercise.id),
+                        onEdit: (e, setData)=>{
+                          console.log("setting new set!");
+                          e.stopPropagation();
+                          swapCurrentExercise(exercise.id);
+                          setSlidingDrawerOpen(false);
+                          setCurrentSetData(setData);
+                        },
+                        onDelete: (e, indexToRemove)=>{
+                          e.stopPropagation();
+                          deleteSetData(indexToRemove, exercise.id)
+                          setSlidingDrawerOpen(false);
+                        }
+                      }}
+                    />
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        )} />
+            )
+          )}
+        />
       </div>
     </div>
   );
