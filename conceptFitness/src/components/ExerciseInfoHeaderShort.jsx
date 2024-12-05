@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import '../App.css'
 import Popup from './Popup'
-import Menu from "@mui/icons-material/Menu";
-import SearchIcon from "../assets/SearchIcon.png"
-import ExerciseDataPopupSearch from "../components/ExerciseDataPopupSearch"
-
+import ExerciseDataPopup from './ExerciseDataPopup';
 
 function ExerciseInfoHeaderShort({id, onClick, exerciseName, exerciseEquipment, onRemove, setSearchText, setSearchState }) {
+  console.log("THE ID IS "+id)
 
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
@@ -23,14 +21,14 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
           -
         </button>
         <button 
-          className="flex relative items-center text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 rounded transition duration-200 focus:outline-none" 
-          onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}}
-          >
-          <Menu />
+            onClick={(e)=>{e.stopPropagation();setIsPopupVisible(true)}}
+            className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none" 
+            >
+            +
+          </button>
           {isPopupVisible && (
-            <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={ExerciseDataPopupSearch} contentProps={{exerciseId: id, setSearchState: setSearchState, setSearchText: setSearchText}} className=''></Popup>
+            <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={()=> <ExerciseDataPopup currentExerciseId={id}/>}></Popup>
           )}
-        </button>
       </div>
     </div>
   )

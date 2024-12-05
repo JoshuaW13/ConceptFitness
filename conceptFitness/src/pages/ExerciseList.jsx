@@ -173,6 +173,7 @@ function ExerciseLists() {
             InitialComponent={ExerciseInfoHeader}
             HiddenComponents={ExerciseInfo}
             InitialProps={{
+              exerciseId: exercise.id,
               exerciseName: exercise.name,
               exerciseEquipment: exercise.equipment,
               targetMuscle: exercise.targetMuscle,

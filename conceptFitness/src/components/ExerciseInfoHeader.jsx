@@ -5,7 +5,7 @@ import Menu from "@mui/icons-material/Menu";
 import ExerciseDataPopup from "../components/ExerciseDataPopup"
 
 
-function ExerciseInfoHeader({onClick, exerciseName, exerciseEquipment, targetMuscle, handleClick}) {
+function ExerciseInfoHeader({exerciseId, onClick, exerciseName, exerciseEquipment, targetMuscle, handleClick}) {
 const [isPopupVisible, setIsPopupVisible] = useState(false);
   return (
     <div className='w-full'>
@@ -21,14 +21,8 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
             >
             +
           </button>
-          <button 
-            className="flex items-center text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 rounded transition duration-200 focus:outline-none" 
-            onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}}
-            >
-            <Menu />
-          </button>
           {isPopupVisible && (
-            <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={ExerciseDataPopup}></Popup>
+            <Popup onClick={(e) => {setIsPopupVisible(!isPopupVisible); e.stopPropagation()}} Content={()=> <ExerciseDataPopup currentExerciseId={exerciseId}/>}></Popup>
           )}
         </div>
       </div>

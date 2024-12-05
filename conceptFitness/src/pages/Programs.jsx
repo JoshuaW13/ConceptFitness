@@ -28,7 +28,7 @@ function Programs() {
         InitialComponent={ExerciseInfoHeaderShort}
         HiddenComponents={ExerciseInfoShortish}
         InitialProps={{
-          id: index,
+          id: exercise.id,
           exerciseName: exercise.name,
           exerciseEquipment: exercise.equipment,
           onRemove: onRemove, 
