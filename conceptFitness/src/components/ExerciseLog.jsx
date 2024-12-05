@@ -39,7 +39,7 @@ function ExerciseLog({exerciseRecord}) {
 
       <div className="flex flex-col space-y-2">
         {exerciseRecord.sets.map((set, index)=>(
-        <p key={index}className="text-gray-700 text-lg"><span className='font-semibold'>Set {index+1}:</span>  Weight:{set.weight}kg Reps:{set.reps}</p>
+        <p key={index}className="text-gray-700 text-lg"><span className='font-semibold'>Set {index+1}:</span>  Weight:{set.weight} lbs, Reps:{set.reps}</p>
         ))}
       </div>
     </div>

@@ -14,7 +14,7 @@ function ExerciseData({ onClick, exercise }) {
           <span className="font-semibold">Current Sets:</span> {exercise.sets}
         </p>
         <p className="text-gray-700 text-lg">
-          <span className="font-semibold">Max Weight:</span> {exercise.weight}
+          <span className="font-semibold">Max Weight:</span> {exercise.weight} lbs
         </p>
       </div>
       <div className='w-full'>

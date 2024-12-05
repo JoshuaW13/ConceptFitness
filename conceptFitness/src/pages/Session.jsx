@@ -241,7 +241,7 @@ function Session() {
           <div className="controls flex items-center justify-center gap-4 w-full mb-2">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex items-center gap-2 justify-center">
-              <label className="text-base w-20 text-center">Weight:</label>
+              <label className="text-base w-20 text-center">Weight(lbs):</label>
               <input
                 type="number"
                 className="weight-input w-16 text-center border p-1"
