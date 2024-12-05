@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
 
-function NavBar({ FirstButton, SecondButton, OtherButtons }) {
+function NavBar({ FirstButton, SecondButton, OtherButtons, PageTitle }) {
   const otherButtonsArray = Array.isArray(OtherButtons) ? OtherButtons : [];
 
   return (
@@ -13,6 +13,7 @@ function NavBar({ FirstButton, SecondButton, OtherButtons }) {
         const { component: ButtonComponent, props } = getButtonProps();
         return <ButtonComponent key={index} {...props} />;
       })}
+      {PageTitle&& <h2 className=" flex justify-center items-center text-2xl font-bold text-gray-800">{PageTitle}</h2>}
       {SecondButton && <SecondButton />}
     </nav>
   );
