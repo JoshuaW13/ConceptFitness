@@ -68,13 +68,13 @@ function Calender() {
   }
 
   return (
-    <div className="w-[90%] h-[35%] bg-gray-50 rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 border-gray border-2 z-2 overflow-hidden">        
+    <div className="w-[90%] h-[35%] bg-[#eeede8] rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 font-bold border-4 border-[#D8C3A5] z-2 overflow-hidden text-[#E85A4F]">        
       <div className='flex sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between'>
-        <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
+        <button className='bg-[#D8C3A5] w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
           <ArrowLeftIcon fontSize='large'/>
         </button>
         <p className='flex text-2xl font-semibold pb-1 pt-1'>{firstDay.substring(0, firstDay.indexOf(","))} - {lastDay.substring(0, lastDay.indexOf(","))} </p>
-        <button className='bg-gray-300 w-8 h-8 justify-center items-center' onClick={() => changeWeek(1)}>
+        <button className='bg-[#D8C3A5] w-8 h-8 justify-center items-center' onClick={() => changeWeek(1)}>
           <ArrowRightIcon fontSize='large'/>
         </button>
       </div>
