@@ -4,7 +4,7 @@ import ProfilePicture from '../assets/profilePicture.png'
 
 function ProfileInfo ( {data} ) {
     return (
-        <div className="flex p-4 relative">
+        <div className="flex p-4 relative w-[95%]">
             <div className='flex flex-col justify-center w-1/2'>
               <div className="w-[70%] mb-1">
                 <img src={ProfilePicture} className='mb-1'></img>
