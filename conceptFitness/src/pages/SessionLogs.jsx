@@ -30,7 +30,7 @@ function SessionLogs() {
     }
 
     const [searchText, setSearchText] = useState("");
-    const [searchDate, setSearchDate] = useState(undefined);
+    const [searchDate, setSearchDate] = useState("");
     const [searchState, setSearchState] = useState(true);
     const [filteredSessionLog, setFilteredSessionLog] = useState([])
 
@@ -45,6 +45,10 @@ function SessionLogs() {
     useEffect(()=>{
         console.log("Loggin the filtered session logs "+filteredSessionLog);
     },[filteredSessionLog])
+
+    useEffect(() => {
+        filterSearch();
+    }, [searchState]);
   
     const filterSearch = () => {
         let filteredList = [];  // Clear the filtered list each time

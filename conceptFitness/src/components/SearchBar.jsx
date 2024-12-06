@@ -13,6 +13,7 @@ function SearchBar({InitialText, searchSetter, searchState, searchStateSetter}) 
     console.log(searchState)
     if (document.getElementById("exerciseSearch").value != null && searchState) {
       searchSetter(document.getElementById("exerciseSearch").value)
+      searchStateSetter(false);
     }
   }
 
