@@ -163,8 +163,8 @@ function ExerciseLists() {
   }
 
   return (
-    <div ref={screen} className="w-full h-full flex flex-col items-center gap-0">
-      <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Exercise Catalogue"}></NavBar>
+    <div ref={screen} className="background w-full h-full flex flex-col items-center gap-2">
+      <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Exercises"}></NavBar>
       <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
       <div className='h-[80%] w-[85%] flex flex-col bg-white gap-2 p-2 rounded-lg overflow-y-auto m-2' style={{scrollbarWidth: 'thin'}}>
         {filteredExercises.map((exercise) => (
