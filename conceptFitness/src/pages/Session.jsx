@@ -103,12 +103,15 @@ function Session() {
   // Function to handle weight and reps input change
   const handleInputChange = (type, value) => {
     // Create a copy of currentSetData and update the specific field
-    const updatedSetData = { ...currentSetData }; 
+    const updatedSetData = { ...currentSetData };
+  
+    // Sanitize input value to remove any non-numeric and negative sign characters
+    const sanitizedValue = value.replace(/[^0-9]/g, ''); // This will only allow positive numbers
   
     if (type === 'weight') {
-      updatedSetData.weight = value; // Update the weight field
+      updatedSetData.weight = sanitizedValue; // Update the weight field
     } else if (type === 'reps') {
-      updatedSetData.reps = value; // Update the reps field
+      updatedSetData.reps = sanitizedValue; // Update the reps field
     }
   
     // Set the new state with updatedSetData
@@ -244,17 +247,21 @@ function Session() {
             <div className="flex items-center gap-2 justify-center">
               <label className="text-base w-20 text-center">Weight(lbs):</label>
               <input
-                type="number"
+                type="text"
+                min="1"
+                step="1"
                 className="input-field w-[40%] p-1"
                 value={currentSetData.weight || ''}
                 onChange={(e) => handleInputChange('weight', e.target.value)}
               />
             </div>
             <div className="flex items-center gap-2 justify-center">
-              <label className="text-base w-20 text-center">Reps:</label>
+              <label className="text-base w-20">Reps:</label>
               <input
-                type="number"
-                className="input-field w-[45%] text-center border p-1"
+                type="text"
+                min="1"
+                step="1"
+                className="input-field w-[45%] border p-1"
                 value={currentSetData.reps || ''}
                 onChange={(e) => handleInputChange('reps', e.target.value)}
               />
