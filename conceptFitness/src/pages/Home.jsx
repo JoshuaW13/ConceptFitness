@@ -41,13 +41,13 @@ function Home() {
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
           <div className='flex flex-row gap-2 flex-grow'>
             <div className='flex flex-col w-[40%] gap-4 flex-grow'>
-              <button className='bg-[#EAE7DC] text-[#E85A4F] text-sm flex items-center justify-center p-3 border-3 border-[#D8C3A5] rounded-full font-bold'
+              <button className='bg-[#EAE7DC] text-[#E85A4F] text-lg flex items-center justify-center p-3 border-4 border-[#D8C3A5] rounded-full font-bold'
                 onClick={navigateCatalogue} 
               >Exercises</button>
-              <button className='bg-[#EAE7DC] text-[#E85A4F] text-sm flex items-center justify-center p-3 border-3 border-[#D8C3A5] rounded-full font-bold'
+              <button className='bg-[#EAE7DC] text-[#E85A4F] text-lg flex items-center justify-center p-3 border-4 border-[#D8C3A5] rounded-full font-bold'
                 onClick={navigatePrograms} 
               >Programs</button>
-              <button className='bg-[#EAE7DC] text-[#E85A4F] text-sm flex items-center justify-center p-3 border-3 border-[#D8C3A5] rounded-full font-bold'
+              <button className='bg-[#EAE7DC] text-[#E85A4F] text-lg flex items-center justify-center p-3 border-4 border-[#D8C3A5] rounded-full font-bold'
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
