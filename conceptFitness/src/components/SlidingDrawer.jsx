@@ -35,8 +35,8 @@ function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
           style={{ top: '50%', transform: 'translateY(-50%) translateX(50%)' }} // Center vertically and move slightly outside
           >
           <img src={ListIcon} alt="" className="p-1" />
-          <div className='absolute w-4 h-4 -top-1 -left-1 bg-[#E85A4F] text-black border border-black rounded-sm p-2'>
-            <p className='absolute -top-1 left-1'>{numExercises}</p>
+          <div className='absolute flex justify-center items-center align-middle  w-6 h-6 -top-2 -left-1 bg-[#E85A4F] text-black border border-black rounded-sm p-1'>
+            <p className='absolute text-center'>{numExercises}</p>
           </div>
         </button>
         {React.createElement(Content, contentProps)}
