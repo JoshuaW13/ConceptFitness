@@ -3,7 +3,7 @@ import '../App.css'
 import { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import HomeButton from '../components/HomeButton'
-import settingsLogo from '/settings.svg'
+import SettingsIcon from '@mui/icons-material/Settings'
 import MetricsWindow from '../components/MetricsWindow'
 import GoalsWindow from '../components/GoalsWindow'
 import StatisticsWindow from '../components/StatisticsWindow'
@@ -97,24 +97,28 @@ function Profile() {
     }
   }, []);
 
-  function SettingsButton() {
+  function SettingsButton({ handleSettings }) {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
-          <button className="h-10 font-bold hover:bg-gray-200 focus:outline-none border-black flex items-center justify-center"
-            style={{ backgroundColor: '#EAE7DC' }}
-            onClick={handleSettings}
-          >
-              <img src={settingsLogo} alt="" className="p-6" />
-          </button>
-      
-          {showSettings && <SettingsPopup onClose={handleSettingsClose} onUnitChange={handleUnitChange}/>}
+        <button
+          className="text-black px-4 py-2 border-black rounded focus:outline-none relative"
+          style={{ backgroundColor: '#EAE7DC' }}
+          onClick={handleSettings}
+        >
+          <SettingsIcon
+            style={{
+              color: 'black',
+            }}
+          />
+        </button>
       </div>
-    )
+    );
   }
+  
 
   return (
     // very outer div on profile page has background class from App.css and makes the background relative
-    <div className='background relative background'>
+    <div className='h-full background relative'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
           <div className="w-[100%] h-[50%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
