@@ -97,7 +97,7 @@ function Profile() {
     }
   }, []);
 
-  function SettingsButton({ handleSettings }) {
+  function SettingsButton() {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
         <button
@@ -111,6 +111,9 @@ function Profile() {
             }}
           />
         </button>
+
+        {showSettings && <SettingsPopup onClose={handleSettingsClose} onUnitChange={handleUnitChange}/>}
+
       </div>
     );
   }
