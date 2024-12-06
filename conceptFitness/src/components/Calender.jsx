@@ -73,7 +73,9 @@ function Calender() {
         <button className='bg-[#D8C3A5] w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
           <ArrowLeftIcon fontSize='large'/>
         </button>
-        <p className='flex text-2xl font-semibold pb-1 pt-1'>{firstDay.substring(0, firstDay.indexOf(","))} - {lastDay.substring(0, lastDay.indexOf(","))} </p>
+        <p className='flex text-2xl font-semibold pb-1 pt-1 relative'>{firstDay.substring(0, firstDay.indexOf(","))} - {lastDay.substring(0, lastDay.indexOf(","))} 
+          <p className='absolute text-sm -right-10'> {firstDay.substring(firstDay.indexOf(",") + 2,)}</p>
+        </p>
         <button className='bg-[#D8C3A5] w-8 h-8 justify-center items-center' onClick={() => changeWeek(1)}>
           <ArrowRightIcon fontSize='large'/>
         </button>

@@ -75,7 +75,7 @@ function Programs() {
   return (
     <div className="background gap-2 h-full">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Programs"}></NavBar>
-      <div className='flex gap-1 justify-center'>
+      <div className='flex gap-3 justify-end w-[85%] mt-2'>
         <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Name, Tags, etc."} />
         <button className='w-[20%] flex bg-green-400 justify-center items-center' onClick={addNewProgram}>+</button>
       </div>

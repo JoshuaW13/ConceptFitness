@@ -10,7 +10,7 @@ export const GoalProvider = ({ children }) => {
   const [assignedGoals, setAssignedGoals] = useState([{
       id: 1,
       goalType: 1,
-      exercise: 1,
+      exercise: 0,
       value: 10,
       date: "Dec 10, 2024"
     },
@@ -20,31 +20,43 @@ export const GoalProvider = ({ children }) => {
       exercise: 1,
       value: 10,
       date: "Dec 10, 2024"
-    }
+    },
+    {
+      id: 3,
+      goalType: 1,
+      exercise: 1,
+      value: 10,
+      date: "Dec 10, 2024"
+    },
   ]);
 
   const [goalTypes, setGoalTypes] = useState([{
       goal: "Weight Gain",
+      text: "Target Weight",
       unit: "lbs",
       id: 1,
     },
     {
       goal: "Weight Loss",
+      text: "Target Weight",
       unit: "lbs",
       id: 2,
     },
     {
-      goal: "Max Rep",
+      goal: "Max Reps",
+      text: "Target Reps",
       unit: "reps",
       id: 3,
     },
     {
       goal: "Max Weight (set)",
+      text: "Target Weight",
       unit: "lbs",
       id: 4,
     },
     {
       goal: "Max Weight (single)",
+      text: "Target Weight",
       unit: "lbs",
       id: 5,
     }

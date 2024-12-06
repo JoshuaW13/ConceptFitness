@@ -4,7 +4,7 @@ import { useProgramContext } from "../contexts/ProgramsContext";
 import ProgramHeader from '../components/ProgramHeader';
 import ProgramHeaderContent from '../components/ProgramHeaderContent';
 
-function CalenderPopup({onClick, selectedDate}) {
+function CalenderGoalPopup({onClick, selectedDate}) {
   const { programs } = useProgramContext()
 
   return (
@@ -31,6 +31,6 @@ function CalenderPopup({onClick, selectedDate}) {
   )
 }
 
-export default CalenderPopup
+export default CalenderGoalPopup
 
 

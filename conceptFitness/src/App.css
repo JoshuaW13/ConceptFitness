@@ -294,7 +294,7 @@ label {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2); /* Light grey for the thumb */
+  background-color: #E98074; /* Light grey for the thumb */
   border-radius: 6px; /* Rounded corners */
   transition: background-color 0.3s ease; /* Smooth transition for hover */
 }
