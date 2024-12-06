@@ -53,7 +53,7 @@ function Profile() {
   }
 
   const [profileData, setProfileData] = useState({
-    bio: 'Write a Bio...',
+    bio: '',
   })
 
   const handleSave = (data) => {
@@ -121,7 +121,7 @@ function Profile() {
 
   return (
     // very outer div on profile page has background class from App.css and makes the background relative
-    <div className='h-full background relative'>
+    <div className='h-full background relative overflow-y-auto overflow-x-hidden'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
           <div className="w-[100%] h-[50%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
