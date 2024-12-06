@@ -17,7 +17,7 @@ function ProfileButton() {
 
   return (
     <div className='relative'>
-      <button className="text-black px-4 py-2 border-[#D8C3A5] border-4 rounded mr-4 focus:outline-none relative"
+      <button className="text-black px-4 py-2 border-[#D8C3A5] hover:border-[#E85A4F] border-4 rounded mr-4 focus:outline-none relative"
         style={{ backgroundColor: '#EAE7DC' }}
         onClick={handleClick}
       >

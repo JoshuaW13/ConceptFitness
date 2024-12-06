@@ -8,7 +8,7 @@ function MetricsInfo( {data, unitSystem} ) {
 
     return (
         <div className='flex justify-between px-4'>
-            <div className='flex flex-col items-start justify-center h-full pl-2 pb-4 gap-4'>
+            <div className='flex flex-col items-start justify-center h-full pb-4 gap-4'>
                 <p>Age</p>
                 <p>Weight ({weightUnit})</p>
                 <p>Height ({heightUnit})</p>

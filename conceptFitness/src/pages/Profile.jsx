@@ -97,11 +97,11 @@ function Profile() {
     }
   }, []);
 
-  function SettingsButton({ handleSettings }) {
+  function SettingsButton() {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
         <button
-          className="text-black px-4 py-2 rounded focus:outline-none relative button"
+          className="text-black px-4 py-2 rounded focus:outline-none relative button hover:border-[#E85A4F]"
           style={{ backgroundColor: '#EAE7DC' }}
           onClick={handleSettings}
         >
@@ -111,6 +111,9 @@ function Profile() {
             }}
           />
         </button>
+
+        {showSettings && <SettingsPopup onClose={handleSettingsClose} onUnitChange={handleUnitChange}/>}
+
       </div>
     );
   }
@@ -137,11 +140,11 @@ function Profile() {
               {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
-              <button className={`button ${activeTab === "Metrics" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Metrics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleMetrics('Metrics')}>Metrics</button>
-              <button className={`button ${activeTab === "Goals" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Goals" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleGoals('Goals')}>Goals</button>
-              <button className={`button ${activeTab === "Statistics" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Statistics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}
