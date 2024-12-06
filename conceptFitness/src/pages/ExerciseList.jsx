@@ -163,7 +163,7 @@ function ExerciseLists() {
   }
 
   return (
-    <div ref={screen} className="background relative gap-2 overflow-y-hidden overflow-x-hidden">
+    <div ref={screen} className="background relative gap-2 overflow-y-hidden overflow-x-hidden h-full">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Exercise Catalogue"}></NavBar>
       <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Pull-Up, Tricep, Barbell, etc..."} />
       <div className='h-[80%] w-[85%] flex flex-col bg-white gap-2 p-2 rounded-lg overflow-y-auto m-2' style={{scrollbarWidth: 'thin'}}>

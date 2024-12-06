@@ -35,7 +35,7 @@ function Home() {
   }
 
   return (
-      <div className='w-full h-full flex flex-col justify-center items-center'>
+      <div className='w-full h-full flex flex-col justify-center items-center bg-[#EAE7DC]'>
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton}></NavBar>
         <Calender></Calender>
         <div className='flex flex-col m-4 w-[90%] gap-4 flex-grow'>
@@ -51,11 +51,11 @@ function Home() {
                 onClick={navigateLogs} 
               >Logs</button>
             </div>
-            <div className='w-[80%] bg-[#D8C3A5] rounded-lg flex-grow text-l font-bold border border-black text-white'>
-              <p className='pt-1'>Goals</p>
+            <div className='w-[80%] bg-[#EAE7DC] rounded-lg flex-grow text-l font-bold border-4 border-[#D8C3A5] text-white'>
+              <p className='pt-1 font-semibold text-lg text-[#E85A4F]'>Goals</p>
             </div>
           </div>
-          <button className='button text-xl bg-[#8E8D8A]'
+          <button className='button text-xl'
             onClick={startSession}          
           >Start Session</button>
         </div>

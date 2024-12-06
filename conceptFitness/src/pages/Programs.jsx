@@ -73,7 +73,7 @@ function Programs() {
   }
 
   return (
-    <div className="background gap-2">
+    <div className="background gap-2 h-full">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Programs"}></NavBar>
       <div className='flex gap-1 justify-center'>
         <SearchBar searchSetter={setSearchText} searchState={searchState} searchStateSetter={setSearchState} InitialText={"Name, Tags, etc."} />

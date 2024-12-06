@@ -28,6 +28,14 @@
   color: black
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, p {
+  font-family: 'Roboto', sans-serif;
+}
+
 .session-page {
   display: flex;
   flex-direction: column;
@@ -47,7 +55,8 @@
   padding-bottom: 0.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  background: #8E8D8A;
+  background: #E98074;
+  border-bottom: 4px solid #D8C3A5;
   /* background: #EAE7DC; */
   color: white;
 }
@@ -242,16 +251,16 @@ label {
 }
 
 .button {
-  background-color: #D8C3A5; /* Equivalent to bg-gray-300 */
-  font-size: 0.875rem; /* Equivalent to text-sm */
+  background-color: #EAE7DC; /* Equivalent to bg-gray-300 */
+  font-size: 0.70rem; /* Equivalent to text-sm */
   display: flex; /* Flexbox for alignment */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
-  padding: 0.75rem; /* Equivalent to p-3 */
+  padding: 0.70rem; /* Equivalent to p-3 */
   border-radius: 0.25rem; /* Slightly rounded corners */
-  border: black 1px solid; /* Black border with 1px width */
+  border: #D8C3A5 3px solid; /* Black border with 1px width */
   font-weight: bold; /* Bold text */
-  color: white;
+  color: #E85A4F;
   border-radius: 9999px;
 }
 

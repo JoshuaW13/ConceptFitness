@@ -218,7 +218,7 @@ function Session() {
 
 
   return (
-    <div className="background session-page relative overflow-y-auto">
+    <div className="background session-page relative overflow-y-auto h-full">
         <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
       <div className="overflow-auto scrollbar-none" >
 
