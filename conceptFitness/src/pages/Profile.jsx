@@ -101,13 +101,13 @@ function Profile() {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
         <button
-          className="text-black px-4 py-2 border-black rounded focus:outline-none relative"
+          className="text-black px-4 py-2 rounded focus:outline-none relative button"
           style={{ backgroundColor: '#EAE7DC' }}
           onClick={handleSettings}
         >
           <SettingsIcon
             style={{
-              color: 'black',
+              color: '#E85A4F',
             }}
           />
         </button>
@@ -137,11 +137,11 @@ function Profile() {
               {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
-              <button className={`button ${activeTab === "Metrics" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Metrics" ? "bg-[#D8C3A5]" : ""}`}
               onClick={() => handleMetrics('Metrics')}>Metrics</button>
-              <button className={`button ${activeTab === "Goals" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Goals" ? "bg-[#D8C3A5]" : ""}`}
               onClick={() => handleGoals('Goals')}>Goals</button>
-              <button className={`button ${activeTab === "Statistics" ? "bg-[#E85A4F]" : ""}`}
+              <button className={`button ${activeTab === "Statistics" ? "bg-[#D8C3A5]" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}

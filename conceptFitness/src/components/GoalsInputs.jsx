@@ -1,18 +1,25 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import '../App.css'
 
-function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
+function GoalsInputs({ onSave, onCancel, initialData, unitSystem }) {
 
     const [formData, setFormData] = useState(initialData)
 
     const weightUnit = unitSystem === 'metric' ? 'kg' : 'lbs'
 
+    // Handle input change, sanitize numerical values
     const handleChange = (e) => {
-        const {name, value} = e.target
+        const { name, value } = e.target
+
+        // Sanitize numerical values for 'targetWeight'
+        const sanitizedValue = name === 'targetWeight'
+            ? value.replace(/[^0-9.]/g, '')  // Allow only digits and one decimal point
+                .replace(/(\..*?)\..*/g, '$1')  // Ensure only one decimal point
+            : value  // No sanitization for other fields
+
         setFormData({
             ...formData,
-            [name]: value
+            [name]: sanitizedValue
         })
     }
 
@@ -22,7 +29,8 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
     }
 
     return (
-        <div className='flex flex-col gap-4'>            
+        <div className='flex flex-col gap-4'>
+            {/* Goal selection */}
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
                     <p className="w-[25%] text-right">Goal</p>
@@ -40,12 +48,13 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                 </div>
             </div>
 
+            {/* Target Weight input */}
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>
                     <p className="w-[25%] text-right">Target Weight ({weightUnit})</p>
                     <input
                         type="text"
-                        name='targetWeight'
+                        name="targetWeight"
                         value={formData.targetWeight}
                         onChange={handleChange}
                         className="input-field w-[50%]"
@@ -53,6 +62,7 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                 </div>
             </div>
 
+            {/* Target Date input */}
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <p className="w-[25%] text-right">Target Date</p>
                 <input
@@ -61,10 +71,11 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
                     value={formData.targetDate}
                     onChange={handleChange}
                     className="input-field w-[50%]"
-                    style={{colorScheme: "light"}}
+                    style={{ colorScheme: "light" }}
                 />
             </div>
 
+            {/* Save/Cancel buttons */}
             <div className='flex justify-center'>
                 <button onClick={onCancel} className='cancel-button'>
                     Cancel
@@ -76,7 +87,6 @@ function GoalsInputs( {onSave, onCancel, initialData, unitSystem} ) {
 
         </div>
     )
-
 }
 
 export default GoalsInputs
