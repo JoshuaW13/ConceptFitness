@@ -47,7 +47,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
           </option>
         ))}
       </select>
-      { (selectedGoal != "Select a Goal" || selectedGoal != "") && (!selectedGoal.includes("Weight")) && (
+      { (selectedGoal != "Select a Goal" || selectedGoal != "") && !(selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) && (
         <button onClick={() => {setIsExercisePopupVisible(true)}} className='h-10 rounded-md bg-[#EAE7DC] border-[3px] border-[#D8C3A5] font-bold text-[#E85A4F]'>{selectedExercise}</button>
       )}
       { valueLabel != "" && unitLabel != "" && (
@@ -68,7 +68,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
         </div>
       )}
       { inputValue != "" && (
-        <button onClick={(e)=>{e.stopPropagation(); addGoal(goalTypes.find((g) => g.goal == selectedGoal).id, exercises.find((e) => e.name == selectedExercise).id, inputValue, dayjs(dateValue).format('MMM D, YYYY')); onConfirm();}} className="bg-gray-300 text-black pl-2 pr-2">Add New Goal!</button>
+        <button onClick={(e)=>{e.stopPropagation(); addGoal(goalTypes.find((g) => g.goal == selectedGoal).id, exercises.find((ex) => ex.name == selectedExercise).id, inputValue, dayjs(dateValue).format('MMM D, YYYY')); onConfirm();}} className="bg-gray-300 text-black pl-2 pr-2">Add New Goal!</button>
       )}
     </div>
   )

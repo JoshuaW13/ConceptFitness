@@ -20,8 +20,8 @@ function CalenderExercisePopup({onClick, selectedDate}) {
                 exerciseName: exercise.name,
                 exerciseEquipment: exercise.equipment,
                 targetMuscle: exercise.targetMuscle,
+                onClick: onClick,
               }}
-              onClick={onClick}
             />
           );
         })}
