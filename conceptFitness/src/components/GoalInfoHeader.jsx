@@ -7,6 +7,8 @@ import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContex
 function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, closePopupClick}) {
   const { goalTypes, removeGoal } = useGoalContext()
   const { exercises } = useExerciseCatalogueContext()
+  const [goalTypeText, setGoalTypeText] = useState("")
+  const [goalExerciseText, setGoalExerciseText] = useState("")
 
   const clickHandler = () => {
     removeGoal(goalId)
@@ -14,8 +16,8 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
   }
 
   const getText = () => {
-    goalTypeText = goalTypes.find((g) => g.id == goalType).goalDate
-    goalExerciseText = exercises.find((e) => e.id = goalExercise).name
+    setGoalTypeText(goalTypes.find((g) => g.id == goalType).goalDate)
+    setGoalExerciseText(exercises.find((e) => e.id = goalExercise).name)
   }
 
   useEffect(() => {
