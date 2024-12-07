@@ -126,7 +126,7 @@ function ExerciseLists() {
     const exercisesToAdd = currentPlannedExercises.map((plannedExercise) => {
       return plannedExercise.id;
     })
-    const idToAdd = programToEditId?programToEditId: programs.length + 1
+    const idToAdd = programToEditId?programToEditId: programs[programs.length-1].id + 1
     let programToAdd = {
       id: idToAdd,
       name: name===""?"My Program #"+idToAdd: name,
