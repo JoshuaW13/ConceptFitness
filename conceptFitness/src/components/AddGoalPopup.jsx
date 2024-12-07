@@ -64,7 +64,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
             ></input>
             <p className='text-lg mx-3 justify-center items-center align-middle text-center'>{unitLabel}</p>
           </div>
-          <input value={dateValue} onChange={handleDateChange} type='date' className='h-10 rounded-md bg-[#EAE7DC] border-[3px] border-[#D8C3A5] font-bold text-[#E85A4F]'></input>
+          <input value={dateValue} onChange={handleDateChange} type='date' className='h-10 rounded-md bg-[#EAE7DC] border-[3px] border-[#D8C3A5] font-bold text-[#E85A4F]' defaultValue={date}></input>
         </div>
       )}
       { inputValue != "" && (

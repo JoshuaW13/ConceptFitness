@@ -136,7 +136,7 @@ function CalenderBox({Day, Date}) {
                     message: "Add Goal",
                     setIsExercisePopupVisible: (state) => {setIsExercisePopupVisible(state)},
                     onConfirm: ()=>{setIsGoalPopupVisible(false); setIsPopupVisible(false); showNotif("Goal Added");},
-                    date=Date,
+                    date:Date,
                   }}
                   isCentered={true}  // Ensures it's centered
                 />
