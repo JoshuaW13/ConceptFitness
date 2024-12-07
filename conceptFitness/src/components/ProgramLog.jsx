@@ -53,13 +53,13 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
 
           {/* The below div is overflowing outside it's parent!!! */}
           <div className='flex flex-col justify-between w-auto gap-1 relative'>
-            <button className='flex w-6 h-6 border-black bg-[#E98074] text-white' onClick={navigateSession}>
+            <button className='flex w-6 h-6 border-black bg-blue-400 text-white' onClick={navigateSession}>
               <StartIcon/>
             </button>
-            <button className='flex w-6 h-6 border-black bg-[#E98074] text-white' onClick={navigateCatalogue}>
+            <button className='flex w-6 h-6 border-black bg-yellow-400 text-white' onClick={navigateCatalogue}>
               <EditIcon/>
             </button>
-            <button className='flex w-6 h-6 border-black bg-[#E98074] text-white' onClick={(e)=>{e.stopPropagation();handleProgramDelete()}}>
+            <button className='flex w-6 h-6 border-black bg-black text-white' onClick={(e)=>{e.stopPropagation();handleProgramDelete()}}>
               <DeleteIcon/>
             </button>
             {isPopupVisible && (

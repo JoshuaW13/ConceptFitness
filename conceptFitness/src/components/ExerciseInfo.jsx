@@ -6,9 +6,9 @@ import ExerciseImage from "../assets/ExerciseImage.png"
 function ExerciseInfo({onClick, description}) {
 
   return (
-    <div className='bg-[#D8C3A5] w-full h-[100%] rounded-lg font-semibold overflow-y-auto scrollbar-hidden' onClick={onClick}>
-        <p className='text-black text-xl'>Description:</p>
-        <p className='text-black pl-2 pr-3 text-sm'>{description}</p>
+    <div className='bg-[#E8E7DC] w-full h-[100%] rounded-lg font-semibold overflow-y-auto scrollbar-hidden' onClick={onClick}>
+        <p className='text-black text-xl bg-[#EAE7DC]'>Description:</p>
+        <p className='text-black pl-2 pr-3 text-sm bg-[#EAE7DC]'>{description}</p>
         <img src={VideoBox} alt="" className='p-5' />
         <img src={ExerciseImage} alt="" className='p-5' />
     </div>

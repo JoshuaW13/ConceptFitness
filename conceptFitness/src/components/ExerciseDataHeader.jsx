@@ -16,7 +16,7 @@ function ExerciseDataHeader({ onClick, exercise }) {
       </div>
 
       <button
-        className="flex text-black bg-gray-300 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none"
+        className="flex text-black bg-green-400 hover:bg-green-600 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none"
         onClick={(event) => {setIsPopupVisible(!isPopupVisible)
           event.stopPropagation();  // Prevent the event from bubbling up to the parent
         }}

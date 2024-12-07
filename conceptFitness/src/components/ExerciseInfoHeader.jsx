@@ -15,7 +15,7 @@ const [isPopupVisible, setIsPopupVisible] = useState(false);
             <p className='flex pt-1 justify-center'>Equipment: {exerciseEquipment}</p>
         </div>
         <div className='flex flex-col justify-between relative'>
-          <button 
+          <button
             onClick={handleClick}
             className="flex text-black bg-green-500 hover:bg-gray-400 w-6 h-6 px-1.5 text-center rounded transition duration-200 focus:outline-none" 
             >

@@ -34,7 +34,7 @@ function DropDown({
       <div
         className="flex text-black w-full rounded-t-lg shadow-md"
         style={{
-          backgroundColor: isPressed ? 'rgb(209 213 219)' : '#EAE7DC',
+          backgroundColor: isPressed ? '#E98074' : '#EAE7DC',
           transition: 'background-color 0.3s ease'
         }}
         onClick={handleClick}
@@ -53,14 +53,14 @@ function DropDown({
       {/* Only render hidden content when visible */}
       {isContentVisible && (
         <div
-          className={`flex flex-col gap-4 bg-white w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
+          className={`flex flex-col gap-4 bg-[#E98074] w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}
           style={{
             opacity: isContentVisible ? 1 : 0,
             transform: isContentVisible ? 'translateY(0)' : 'translateY(-10px)',
           }}
         >
           {hiddenComponentsArray.map((Component, index) => (
-            React.createElement(Component, { ...HiddenProps, key: index })
+            React.createElement(Component, { ...HiddenProps, key: index})
           ))}
         </div>
       )}
