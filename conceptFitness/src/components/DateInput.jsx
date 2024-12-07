@@ -8,8 +8,8 @@ function DateInput({ searchDate }) {
   };
 
   return (
-    <form className="flex justify-center items-center gap-2">
-      <label htmlFor="date" className="block text-xs font-medium text-gray-700">
+    <form className="flex items-end gap-2 mt-3">
+      <label htmlFor="date" className="block text-lg font-semibold text-black">
         Date:
       </label>
       <input
@@ -17,7 +17,8 @@ function DateInput({ searchDate }) {
         id="date"
         name="date"
         onChange={handleDateChange}  // Handle the change event
-        className="mt-1 p-1 text-sm block w-32 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        className="bg-white mt-1 p-1 text-sm block w-32 border border-gray-300 rounded-lg shadow-sm"
+        style={{ colorScheme: "light" }}
       />
     </form>
   );
