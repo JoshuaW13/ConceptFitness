@@ -42,12 +42,12 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
   }
 
   useEffect(() => {
-    console.log(dateValue)
+    // console.log(dateValue)
   }, [dateValue])
 
   useEffect(() => {
     if (selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) {
-      console.log(selectedExercise)
+      // console.log(selectedExercise)
     }
   }, [selectedGoal, selectedExercise])
   

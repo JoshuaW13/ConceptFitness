@@ -27,7 +27,7 @@ function GoalBox({id}) {
   }, []);
 
   return (
-    <div className = ''>
+    <div className = 'border-2 m-2 rounded-md border-[#D8C3A5]'>
       <p> {exerciseName} </p>
       <p> {goalType} </p>
       <p> {goalValue} </p>

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-function Popup_Bot({ onClick, progAssignClick, Content, selectedDate, goalAssignClick}) {
+function Popup_Bot({ onClick, progAssignClick, Content, selectedDate, goalAssignClick, goalDeleteClick}) {
   return (
     <div className="absolute bottom-0.5 right-0.5 bg-white shadow-lg rounded p-2 z-10 flex flex-col text-sm">
       <div className="flex-grow mb-4"> {/* Flex-grow allows the content area to expand */}
@@ -9,6 +9,7 @@ function Popup_Bot({ onClick, progAssignClick, Content, selectedDate, goalAssign
           progAssignClick={progAssignClick}
           selectedDate={selectedDate}
           goalAssignClick={goalAssignClick}
+          goalDeleteClick={goalDeleteClick}
         />
       </div>
       <button 
