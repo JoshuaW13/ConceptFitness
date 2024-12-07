@@ -52,6 +52,7 @@ function CalenderBox({Day, Date}) {
                     key = {i} 
                     id = {assignedGoals[i].id}
                     ></GoalBox>)
+                console.log(Date)
                 console.log(assignedGoals[i])
             }
         }

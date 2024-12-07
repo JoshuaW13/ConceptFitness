@@ -85,7 +85,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
         </div>
       )}
       { inputValue != "" && (
-        <button onClick={addClickHandler} className="bg-gray-300 text-black pl-2 pr-2">Add New Goal!</button>
+        <button onClick={addClickHandler} className="button h-10 rounded-md text-xl pl-2 pr-2">Add New Goal!</button>
       )}
     </div>
   )
