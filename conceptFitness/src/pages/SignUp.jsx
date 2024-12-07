@@ -32,7 +32,7 @@ function SignUp() {
 
 
     return (
-        <div className='w-full h-full flex flex-col justify-center items-center'>
+        <div className='w-full h-full bg-[#EAE7DC] flex flex-col justify-center items-center'>
             <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
                 <h2 className="text-xl text-black mb-6">Create an Account</h2>
                 <div className="mb-4">
@@ -82,12 +82,12 @@ function SignUp() {
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                 <button
                 type="submit"
-                className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
+                className="bg-[#E98074] text-white rounded w-full py-2 hover:bg-[#E85A4f]"
                 >
                 Sign Up
                 </button>
                 <p className='text-black m-2'>Already have an account?</p>
-                <button onClick={handleLogIn} className='bg-white text-blue-500 hover-underline'>
+                <button onClick={handleLogIn} className='text-[#E85A4f] hover-underline'>
                 Log In
                 </button>
             </form>
