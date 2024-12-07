@@ -77,7 +77,6 @@ export const GoalProvider = ({ children }) => {
       showNotif("Goal Exists")
     } else {
       setAssignedGoals((prevGoals) => [...prevGoals, newGoal])
-      setSelectedExercise(0)
       showNotif("Goal Added")
     }
   }  

@@ -39,19 +39,21 @@ function CalenderBox({Day, Date}) {
     }
 
     const getGoal = () => {
-        const dayGoal = assignedGoals.find((g) => g.date == Date)
-        if(dayGoal == undefined){
+        const dayCheck = assignedGoals.find((g) => g.date == Date)
+        if(dayCheck == undefined){
             console.log("No Goal Found: ", Date)
             setGoalData("")
             return
         }
         const dayGoals = []
         for(let i = 0; i < assignedGoals.length; i++) {
-            console.log(assignedGoals.find((g) => g.date == Date), ": ", Date)
-            dayGoals.push(<GoalBox 
-                key = {i} 
-                id = {(assignedGoals.find((g) => g.date == Date)).id}
-                ></GoalBox>)
+            if(assignedGoals[i].date == Date) {
+                dayGoals.push(<GoalBox 
+                    key = {i} 
+                    id = {assignedGoals[i].id}
+                    ></GoalBox>)
+                console.log(assignedGoals[i])
+            }
         }
         setGoalData(dayGoals)
     }
@@ -72,8 +74,8 @@ function CalenderBox({Day, Date}) {
                     <p className={`font-semibold text-xl ${programName == "" ? "hidden" : "visible"}`}>Program:</p>
                     <p className='font-normal text-xl'>{programName}</p>
                     <p className={`font-semibold text-xl w-full ${goalData == "" ? "hidden" : "visible"}`}>Goal:</p>
-                    <p className='font-normal text-xl w-full '>{goalData}</p>
-                    <div>
+                    <div className='flex flex-col font-normal text-xl w-full overflow-y-auto h-full'>{goalData}</div>
+                    <div className=''>
                         <button className='absolute h-8 w-8 bottom-1 right-1 bg-[#D8C3A5] rounded-md'
                         onClick={(event) => {setIsPopupVisible(!isPopupVisible)
                             console.log(Day)
@@ -118,7 +120,6 @@ function CalenderBox({Day, Date}) {
                 <Popup_FullScreen
                     onClick={(event) => {
                         setIsExercisePopupVisible(false);  
-                        setIsPopupVisible(false);
                         days.find((d) => d.id == Day).selected = false
                     }} 
                     Content={CalenderExercisePopup}

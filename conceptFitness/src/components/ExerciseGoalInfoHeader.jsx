@@ -7,13 +7,13 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import { useGoalContext } from '../contexts/GoalsContext';
 import { useExerciseCatalogueContext } from '../contexts/ExerciseCatalogueContext';
 
-function ExerciseGoalInfoHeader({exerciseId, onClick, exerciseName, exerciseEquipment, targetMuscle}) {
+function ExerciseGoalInfoHeader({exerciseId, closePopupClick, exerciseName, exerciseEquipment, targetMuscle}) {
   const { setSelectedExercise } = useGoalContext()
   const { exercises } = useExerciseCatalogueContext()
 
   const clickHandler = () => {
     setSelectedExercise(exercises.find((e) => e.id == exerciseId).name)
-    onClick
+    closePopupClick
   }
 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -21,11 +21,11 @@ function ExerciseGoalInfoHeader({exerciseId, onClick, exerciseName, exerciseEqui
   return (
     <div className='w-full'>
       <div className='flex p-1 w-full rounded-t-lg font-semibold'>
-        <div className="flex flex-col rounded-lg w-full relative" onClick={onClick}>
+        <div className="flex flex-col rounded-lg w-full relative" onClick={closePopupClick}>
             <p className='flex text-lg rounded-t-lg justify-center'>{exerciseName}</p>
             <p className='flex pt-1 justify-center font-normal'>Equipment: {exerciseEquipment}</p>
             <EventAvailableIcon className='absolute right-0 rounded-md bg-gray-400' fontSize='medium' 
-              onClick={clickHandler()}
+              onClick={() => {clickHandler()}}
             />
         </div>
       </div>

@@ -30,16 +30,26 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
     setDateValue(event.target.value);
   };
 
+  const addClickHandler = (event) => {
+    event.stopPropagation() 
+    if(selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) {
+      addGoal(goalTypes.find((g) => g.goal == selectedGoal).id, 0, inputValue, dayjs(dateValue).format('MMM D, YYYY')) 
+    }
+    else {
+      addGoal(goalTypes.find((g) => g.goal == selectedGoal).id, exercises.find((e) => e.name == selectedExercise).id, inputValue, dayjs(dateValue).format('MMM D, YYYY')) 
+    }
+    onConfirm()
+  }
+
   useEffect(() => {
     console.log(dateValue)
   }, [dateValue])
 
   useEffect(() => {
     if (selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) {
-      setSelectedExercise("Select an Exercise")
       console.log(selectedExercise)
     }
-  }, [selectedGoal])
+  }, [selectedGoal, selectedExercise])
   
   return (
     <div className="flex flex-col gap-2 h-full w-full">
@@ -75,7 +85,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
         </div>
       )}
       { inputValue != "" && (
-        <button onClick={(e)=>{e.stopPropagation(); addGoal(goalTypes.find((g) => g.goal == selectedGoal).id, exercises.find((ex) => ex.name == selectedExercise).id, inputValue, dayjs(dateValue).format('MMM D, YYYY')); setSelectedExercise("Select an Exercise"); onConfirm();}} className="bg-gray-300 text-black pl-2 pr-2">Add New Goal!</button>
+        <button onClick={addClickHandler} className="bg-gray-300 text-black pl-2 pr-2">Add New Goal!</button>
       )}
     </div>
   )
