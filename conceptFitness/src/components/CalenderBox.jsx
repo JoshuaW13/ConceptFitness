@@ -142,7 +142,7 @@ function CalenderBox({Day, Date}) {
                     }} 
                     Content={CalenderGoalListPopup}
                     selectedDate={Date}
-                    Title={'Select Exercise'}
+                    Title={'Delete Goals'}
                 />
             )}
             {isGoalPopupVisible && (

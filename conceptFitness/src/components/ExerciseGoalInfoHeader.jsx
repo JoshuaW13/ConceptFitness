@@ -14,7 +14,7 @@ function ExerciseGoalInfoHeader({exerciseId, closePopupClick, exerciseName, exer
   const clickHandler = () => {
     console.log("Debug")
     setSelectedExercise(exercises.find((e) => e.id == exerciseId).name)
-    closePopupClick
+    closePopupClick()
   }
 
   return (

@@ -13,7 +13,7 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
 
   const clickHandler = () => {
     removeGoal(goalId)
-    closePopupClick
+    // closePopupClick()
   }
 
   const getText = () => {
@@ -33,7 +33,7 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
   return (
     <div className='w-full'>
       <div className='flex p-1 w-full rounded-t-lg font-semibold'>
-        <div className="flex flex-col rounded-lg w-full relative" onClick={closePopupClick}>
+        <div className="flex flex-col rounded-lg w-full relative">
             <p className='flex text-lg rounded-t-lg justify-center'>{goalTypeText}</p>
             <p className='flex text-lg rounded-t-lg justify-center'>{goalExerciseText}</p>
             <p className='flex pt-1 justify-center font-normal'>{goalValue} {goalUnit}</p>
