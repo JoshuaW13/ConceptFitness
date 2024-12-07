@@ -28,19 +28,19 @@ function App() {
                 <NotifProvider>
                   <GoalProvider>
                     <div className="sm:aspect-[9/15] sm:h-[95vh] w-full sm:w-auto sm:mx-auto h-full bg-gray-50 rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden">
-                    <Routes>
-                          <Route path="/" element={<Login />} />
-                          <Route path="/home" element={<Home />} />
-                          <Route path="/profile" element={<Profile />} />
-                          <Route path="/session" element={<Session />} />
-                          <Route path="/catalogue" element={<Catalogue />} />
-                          <Route path="/programs" element={<Programs />} />
-                          <Route path="/sessionLogs" element={<SessionLogs />} />
-                          <Route path="/exerciseLogs" element={<ExerciseLogs />} />
-                          <Route path="/signUp" element={<SignUp />} />
-                        </Routes>
-                        <Popup_Notif/>
-                      </div>
+                      <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/session" element={<Session />} />
+                        <Route path="/catalogue" element={<Catalogue />} />
+                        <Route path="/programs" element={<Programs />} />
+                        <Route path="/sessionLogs" element={<SessionLogs />} />
+                        <Route path="/exerciseLogs" element={<ExerciseLogs />} />
+                        <Route path="/signUp" element={<SignUp />} />
+                      </Routes>
+                      <Popup_Notif/>
+                    </div>
                   </GoalProvider>
                 </NotifProvider>
               </CalendarProvider>

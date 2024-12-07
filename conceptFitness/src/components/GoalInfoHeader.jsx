@@ -9,6 +9,7 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
   const { exercises } = useExerciseCatalogueContext()
   const [goalTypeText, setGoalTypeText] = useState("")
   const [goalExerciseText, setGoalExerciseText] = useState("")
+  const [goalUnit, setGoalUnit] = useState("")
 
   const clickHandler = () => {
     removeGoal(goalId)
@@ -16,8 +17,13 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
   }
 
   const getText = () => {
-    setGoalTypeText(goalTypes.find((g) => g.id == goalType).goalDate)
-    setGoalExerciseText(exercises.find((e) => e.id = goalExercise).name)
+    console.log(goalId, goalType, goalExercise, goalValue)
+    setGoalTypeText(goalTypes.find((g) => g.id == goalType).goal)
+    setGoalUnit(goalTypes.find((g) => g.id == goalType).unit)
+    if(goalExercise != 0) {
+      setGoalExerciseText((exercises.find((e) => e.id = goalExercise)).name)
+      console.log((exercises.find((e) => e.id = goalExercise)).name)
+    }
   }
 
   useEffect(() => {
@@ -30,7 +36,7 @@ function GoalInfoHeader({goalId, goalType, goalExercise, goalValue, goalDate, cl
         <div className="flex flex-col rounded-lg w-full relative" onClick={closePopupClick}>
             <p className='flex text-lg rounded-t-lg justify-center'>{goalTypeText}</p>
             <p className='flex text-lg rounded-t-lg justify-center'>{goalExerciseText}</p>
-            <p className='flex pt-1 justify-center font-normal'>{goalValue}</p>
+            <p className='flex pt-1 justify-center font-normal'>{goalValue} {goalUnit}</p>
             <DeleteIcon className='absolute right-0 rounded-md bg-gray-400' fontSize='medium' 
               onClick={() => {clickHandler()}}
             />

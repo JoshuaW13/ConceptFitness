@@ -68,7 +68,7 @@ function Calender() {
   }
 
   return (
-    <div className="w-[90%] h-[35%] bg-[#eeede8] rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 font-bold border-2 border-[#D8C3A5] z-2 overflow-hidden text-black">        
+    <div className="w-full h-full bg-[#eeede8] rounded-lg shadow-lg flex flex-col items-start justify-between mt-6 pl-3 pr-3 pt-2 pb-2 font-bold border-2 border-[#D8C3A5] z-2 overflow-hidden text-black">        
       <div className='flex sticky h-[20%] top-0 w-full left-0 align-middle items-center justify-between'>
         <button className='bg-[#D8C3A5] w-8 h-8 justify-center items-center' onClick={() => changeWeek(-1)}>
           <ArrowLeftIcon fontSize='large'/>

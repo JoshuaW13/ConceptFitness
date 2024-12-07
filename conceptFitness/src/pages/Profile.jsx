@@ -14,7 +14,6 @@ import SettingsPopup from '../components/SettingsPopup'
 import CancelPopup from '../components/CancelPopup'
 
 function Profile() {
-
   const [showMetrics, setShowMetrics] = useState(false)
   const [showGoals, setShowGoals] = useState(false)
   const [showStatistics, setShowStatistics] = useState(false)
