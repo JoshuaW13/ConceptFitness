@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import viteLogo from "/ConceptFitnessLogo.png";
+import Logo from "/ConceptFitnessLogo.png";
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +20,10 @@ function Login() {
 
   return (
       <div className='w-full h-full bg-[#EAE7DC] flex flex-col justify-center items-center gap-10'>
+         <div className='flex justify-center items-center'>
+          <img src={Logo} alt="" />
+
+          </div>
         <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
         <h2 className="text-xl text-black mb-4">Login</h2>
         <div className="mb-4">
