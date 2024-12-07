@@ -7,6 +7,7 @@ function ExerciseDataPopup({currentExerciseId}) {
   const {programs, addProgram} = useProgramContext();
   return (
     <div className="flex flex-col gap-1 overflow-auto" onClick={(e) => e.stopPropagation()}>
+      <h2 className='font-semibold'>Add to program:</h2>
       {programs.map((program, index)=>(
           !program.exercises.find((exercise) => exercise == currentExerciseId)&&
           <button key={index}className="bg-gray-300 text-black pl-2 pr-2"

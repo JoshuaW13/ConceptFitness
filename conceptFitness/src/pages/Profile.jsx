@@ -139,11 +139,11 @@ function Profile() {
               {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
-              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Metrics" ? "bg-[#E85A4F] text-white" : ""}`}
+              <button className={`text-black flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Metrics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleMetrics('Metrics')}>Metrics</button>
-              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Goals" ? "bg-[#E85A4F] text-white" : ""}`}
+              <button className={`text-black flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Goals" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleGoals('Goals')}>Goals</button>
-              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Statistics" ? "bg-[#E85A4F] text-white" : ""}`}
+              <button className={`text-black flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Statistics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}
