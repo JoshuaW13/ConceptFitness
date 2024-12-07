@@ -33,8 +33,6 @@ function ExerciseLists() {
   const [flyer, setFlyer] = useState(null);
   const [target, setTarget] = useState(null);
 
-
-
   const prepareProgramToEdit = () =>{
     if(programToEditId===undefined){
       return;

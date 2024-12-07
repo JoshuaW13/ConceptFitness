@@ -1,11 +1,15 @@
 import React, { createContext, useState, useContext } from 'react';
 import { useNotifContext } from "../contexts/NotifContext.jsx";
+import { useProgramContext } from './ProgramsContext.jsx';
 
 const GoalContext = createContext();
 
 // Create a provider component
 export const GoalProvider = ({ children }) => {
-  const { showNotif } = useNotifContext();
+  const { showNotif } = useNotifContext()
+  const { addPrograms } = useProgramContext()
+
+  const [selectedExercise, setSelectedExercise] = useState("")
 
   const [assignedGoals, setAssignedGoals] = useState([{
       id: 1,
@@ -64,28 +68,26 @@ export const GoalProvider = ({ children }) => {
 
   const addGoal = (goalType, exercise, value, date) => {
     const newGoal = {goalType: goalType, exercise: exercise, value: value, date: date}
-    setPrograms((prevGoals) => {
-      const goalExists = prevGoals.some((g) => (g.goalType === newGoal.goalType && g.date === newGoal.date));
-      
-      if (goalExists) {
-        showNotif("Goal Updated")
-        return prevGoals.map((g) =>
-          (g.goalType === newGoal.goalType && g.date === newGoal.date) ? { ...g, ...newGoal } : g
-        );
-      } else {
-        showNotif("Goal Added")
-        return [...prevGoals, newGoal];
-      }
-    });
-  };
-  
+    console.log(newGoal)
+
+    const goalExists = assignedGoals.find((g) => (g.goalType === newGoal.goalType && g.date === newGoal.date))
+
+    console.log(goalExists)
+    if (goalExists != undefined) {
+      showNotif("Goal Exists")
+    } else {
+      setAssignedGoals((prevGoals) => [...prevGoals, newGoal])
+      setSelectedExercise(0)
+      showNotif("Goal Added")
+    }
+  }  
 
   const removeGoal = (id) => {
     setAssignedGoals((prevGoals) => prevGoals.filter((g) => g.id !== id));
   };
 
   return (
-    <GoalContext.Provider value={{ assignedGoals, goalTypes, addGoal, removeGoal }}>
+    <GoalContext.Provider value={{ assignedGoals, goalTypes, addGoal, removeGoal, selectedExercise, setSelectedExercise }}>
       {children}
     </GoalContext.Provider>
   );

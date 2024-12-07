@@ -4,6 +4,7 @@ import Menu from "@mui/icons-material/Menu";
 import Popup_FullScreen from './Popup_FullScreen';
 import CalenderPopupMini from "../components/CalenderPopupMini";
 import CalenderProgramPopup from "./CalenderProgramPopup"
+import CalenderExercisePopup from './CalenderExercisePopup.jsx';
 import GoalBox from "../components/GoalBox"
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useCalendarContext } from '../contexts/CalendarContext';
@@ -17,6 +18,7 @@ function CalenderBox({Day, Date}) {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [isBigPopupVisible, setIsBigPopupVisible] = useState(false);
     const [isGoalPopupVisible, setIsGoalPopupVisible] = useState(false);
+    const [isExercisePopupVisible, setIsExercisePopupVisible] = useState(false)
     const [programName, setProgramName] = useState("")
     const [goalData, setGoalData] = useState([])
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -46,7 +48,10 @@ function CalenderBox({Day, Date}) {
         const dayGoals = []
         for(let i = 0; i < assignedGoals.length; i++) {
             console.log(assignedGoals.find((g) => g.date == Date), ": ", Date)
-            dayGoals.push(<GoalBox key={i} id={(assignedGoals.find((g) => g.date == Date)).id}></GoalBox>)
+            dayGoals.push(<GoalBox 
+                key = {i} 
+                id = {(assignedGoals.find((g) => g.date == Date)).id}
+                ></GoalBox>)
         }
         setGoalData(dayGoals)
     }
@@ -100,8 +105,8 @@ function CalenderBox({Day, Date}) {
             {isBigPopupVisible && (
             <Popup_FullScreen
                 onClick={(event) => {
-                    setIsBigPopupVisible(false);  // Close the popup
-                    setIsPopupVisible(false);  // Close the popup
+                    setIsBigPopupVisible(false);
+                    setIsPopupVisible(false);
                     days.find((d) => d.id == Day).selected = false
                 }} 
                 Content={CalenderProgramPopup}
@@ -109,15 +114,29 @@ function CalenderBox({Day, Date}) {
                 Title={'Add Program'}
             />
             )}
+            {isExercisePopupVisible && (
+                <Popup_FullScreen
+                    onClick={(event) => {
+                        setIsExercisePopupVisible(false);  
+                        setIsPopupVisible(false);
+                        days.find((d) => d.id == Day).selected = false
+                    }} 
+                    Content={CalenderExercisePopup}
+                    selectedDate={Date}
+                    Title={'Select Exercise'}
+                />
+            )}
             {isGoalPopupVisible && (
-            <div className="absolute inset-0 bg-gay-800 bg-opacity-50 flex justify-center items-center">
+            <div className="absolute inset-0 flex justify-center items-center">
               <div className="p-2 rounded-lg shadow-lg relative w-[100%]">
                 <Popup
                   onClick={(e) => {setIsGoalPopupVisible(false); setIsPopupVisible(false); e.stopPropagation();}} 
                   Content={AddGoalPopup}
                   contentProps={{
                     message: "Add Goal",
+                    setIsExercisePopupVisible: (state) => {setIsExercisePopupVisible(state)},
                     onConfirm: ()=>{setIsGoalPopupVisible(false); setIsPopupVisible(false); showNotif("Goal Added");},
+                    date=Date,
                   }}
                   isCentered={true}  // Ensures it's centered
                 />
