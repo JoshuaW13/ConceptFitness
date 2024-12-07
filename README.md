@@ -52,35 +52,35 @@ Below we will outline each of the key pages of the application.
 ### Exercises Page
 
 The exercises page shows a list of all the exercise in the system. For the purpose of this prototype we have a small selection the user can browse through. There also a search bar that can search exercises via name, muscle group or equipment.\
-![alt text](./readmeimages/image-1.png)\
+![alt text](./readmeImages/image-1.png)\
 
  Each exercise in the list displays those key details that can be searched and doubles as a dropdown. When clicked the exercise will expand to show more details which are hardcoded. \
-![alt text](./readmeimages/image.png) \
+![alt text](./readmeImages/image.png) \
 
 The page also doubles as a Program creation window. The system will assume a program is currently in creation. If the user presses the add button on an exercise it will be added to the program. Currently edited program details can be seen in the sliding drawer on the right. \
-![alt text](./readmeimages/image-2.png) \
+![alt text](./readmeImages/image-2.png) \
 Here the user can edit the program name, add tags to it as well as remove exercises and add them to other programs through the add buttons here. There is also a book icon that navigates the user to the Programs page. If the user ever navigates away from the page with exercises in the cart the program will be saved. If there is no name it will be saved under the name "My program #x".
 
 ### Program Page
 
 The Program page shows a list of the users currently created workouts. Programs can be searched via name, tag, and exercises. For each program the user can press the play icon to start it which will navigate the user to the Session page. The edit button to be navigated to the exercises page where they can make changes and finally the option to delete a program. There is also a button to add a program next to the search bar which will navigate the user to the Exercises page for the creation. \
-![alt text](./readmeimages/image-3.png) \
+![alt text](./readmeImages/image-3.png) \
 In addition each Program can be expanded to show the exercises it contains. Exercises can be removed or added to other programs from here \
-![alt text](./readmeimages/image-4.png) \
+![alt text](./readmeImages/image-4.png) \
 
 
 ### Session Page
 
 The Session page can be navigated to in a variety of ways. If the Start session button is clicked from the homepage the user will be navigated to the page directly if there is a program scheduled for that day otherwise they will be brought to the programs page where they can select a program to perform which will bring them to Session page below. \
-![alt text](./readmeimages/image-5.png) \
+![alt text](./readmeImages/image-5.png) \
 The top buttons control the timer and the session. The user can optionally start a timer to record the duration of their session which will be saved along with all other session data when finish session is clicked. \
 
 Below is the exercise relevant data. There are boxes to enter the current weight and reps for the current exercise as well as to save a set. Below these inputs the current exercise and set are listed along with a description of the exercise paired with an instructional video. There are also arrows next to the exercise title so the user can scroll through the exercises in the session. 
 
 If the user needs to go back and edit a set or wants to perform exercises in a different order they can open the sliding drawer. \
-![alt text](./readmeimages/image-6.png) \
+![alt text](./readmeImages/image-6.png) \
 This gives the user the ability to select and exercise they want to do a set for with the play button. If they want to edit or delete a set they can open the dropdown for the exercise and click the corresponding icon. Note the dropdown only appears if there are sets recorded. \
-![alt text](./readmeimages/image-7.png) \
+![alt text](./readmeImages/image-7.png) \
 If the user edits an exercise set that sets data will be put into the main window and once the set is saved it will increment to that exercise's current set.\
 
 Finally, when a session is finished the user is asked to confirm their choice in which case all data will be saved in the form of a Session log. Any all time records for exercises will be saved to an Exercise log.
@@ -88,31 +88,31 @@ Finally, when a session is finished the user is asked to confirm their choice in
 ### Logs Page
 
 The logs page has 2 main sections the Session logs and the Exercise Logs \
-![alt text](./readmeimages/image-8.png) \
+![alt text](./readmeImages/image-8.png) \
 
 First looking at Session logs which is pictured above the user can search a log via program name, contained exercise or date. With no date inputted a list of all logs will be presented. The log is a dropdown which shows the program name, date and duration by default. When expanded the user can see a list of all exercises and sets performed in that session. They also have the ability to add that exercise to another program. \
-![alt text](./readmeimages/image-9.png) \
+![alt text](./readmeImages/image-9.png) \
 
 The Exercise logs tab provides a log of all time data on all exercises that the user has done. They can search exercises via name and equipment. Each exercise in the list is a drop down which shows the name and equipment for the exercise in addition to having a button for adding the exercise to another program. \
-![alt text](./readmeimages/image-10.png) \
+![alt text](./readmeImages/image-10.png) \
 Once expanded the user can see their max reps, sets and weight for the exercise. In addition there is a graph of progress on the exercise that can be scrolled through in weekly increments. Note that the graph is hardcoded for 31 data points and the date input below it does not actually search the date on the graph.
-![alt text](./readmeimages/image-11.png) \
+![alt text](./readmeImages/image-11.png) \
 
 ### Profile Page
 
 The profile page provides the user with the ability to edit their profile. The top provides customization elements for their profile picture, username and a short bio while the lower section lets them see a display of metrics, goals and statistics. \
-![alt text](./readmeimages/image-12.png) \
-![alt text](./readmeimages/image-13.png) \
+![alt text](./readmeImages/image-12.png) \
+![alt text](./readmeImages/image-13.png) \
 Metrics are all the key user details. Here they can edit data such as their age, weight, height and activity level. If there were a backend these pieces of information would be used in the goal system.
-![alt text](./readmeimages/image-14.png)\
-![alt text](./readmeimages/image-15.png) \
+![alt text](./readmeImages/image-14.png)\
+![alt text](./readmeImages/image-15.png) \
 The goals tab lets the user defined high level goals related to weight. They can create goals to gain, lose or maintain weight. \
-![alt text](./readmeimages/image-16.png) \
-![alt text](./readmeimages/image-17.png) \
+![alt text](./readmeImages/image-16.png) \
+![alt text](./readmeImages/image-17.png) \
 Finally, the statistics tab shows a graph related to the user's high level weight goal to show their progress over time. \
-![alt text](./readmeimages/image-18.png) \
+![alt text](./readmeImages/image-18.png) \
 Finally, there is a settings button that creates a popup that allows the user to change their unit preferences. Please note that persistence through the whole website has not yet been implemented. \
-![alt text](./readmeimages/image-19.png) \
+![alt text](./readmeImages/image-19.png) \
 
 
 
