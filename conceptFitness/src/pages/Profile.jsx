@@ -53,7 +53,7 @@ function Profile() {
   }
 
   const [profileData, setProfileData] = useState({
-    bio: 'Write a Bio...',
+    bio: '',
   })
 
   const handleSave = (data) => {
@@ -97,20 +97,23 @@ function Profile() {
     }
   }, []);
 
-  function SettingsButton({ handleSettings }) {
+  function SettingsButton() {
     return (
       <div className='w-1/4 h-10 flex items-center justify-center'>
         <button
-          className="text-black px-4 py-2 rounded focus:outline-none relative button"
+          className="text-black px-4 py-2 rounded focus:outline-none relative button hover:border-[#E85A4F]"
           style={{ backgroundColor: '#EAE7DC' }}
           onClick={handleSettings}
         >
           <SettingsIcon
             style={{
-              color: '#E85A4F',
+              color: 'black',
             }}
           />
         </button>
+
+        {showSettings && <SettingsPopup onClose={handleSettingsClose} onUnitChange={handleUnitChange}/>}
+
       </div>
     );
   }
@@ -118,11 +121,11 @@ function Profile() {
 
   return (
     // very outer div on profile page has background class from App.css and makes the background relative
-    <div className='h-full background relative'>
+    <div className='h-full background relative overflow-y-auto overflow-x-hidden'>
         <NavBar FirstButton={HomeButton} SecondButton={SettingsButton} />
         <div className='flex flex-col items-center m-4 w-[90%] gap-4 flex-grow'>
           <div className="w-[100%] h-[50%] bg-gray-50 rounded-lg shadow-lg flex border-gray border-2 p-4 relative">
-              <button onClick={handleEdit} className='absolute top-2 right-2 bg-gray-300 z-[99]'>
+              <button onClick={handleEdit} className='absolute top-2 right-2 bg-gray-300'>
                   <img src={editIcon} alt="" className='w-6 h-6 p-1'></img>
               </button>
               {showProfileInput && <ProfileInputs
@@ -137,11 +140,11 @@ function Profile() {
               {showProfileInfo && <ProfileInfo data={profileData} />}
           </div>
           <div className='flex flex-wrap justify-center gap-3 w-full m-2'>
-              <button className={`button ${activeTab === "Metrics" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Metrics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleMetrics('Metrics')}>Metrics</button>
-              <button className={`button ${activeTab === "Goals" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Goals" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleGoals('Goals')}>Goals</button>
-              <button className={`button ${activeTab === "Statistics" ? "bg-[#D8C3A5]" : ""}`}
+              <button className={`text-[#E85A4F] flex items-center justify-center p-2 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow ${activeTab === "Statistics" ? "bg-[#E85A4F] text-white" : ""}`}
               onClick={() => handleStatistics('Statistics')}>Statistics</button>
           </div>
           {showMetrics && <MetricsWindow unitSystem={unitSystem}/>}

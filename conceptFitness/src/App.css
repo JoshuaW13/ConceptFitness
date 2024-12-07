@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  color: black
+  color: black;
 }
 
 .background {
@@ -21,11 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #8E8D8A;
-  color: black
+  color: black;
 }
 
 body {
@@ -63,16 +59,17 @@ h1, h2, h3, p {
 
 /* <nav className="flex items-center justify-between p-4 bg-gray-100 w-full rounded-tr rounded-tl max-h-[12%]"> */
 
-
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -100,7 +97,6 @@ h1, h2, h3, p {
   color: #888;
 }
 
-
 /* Main scrollable container */
 .scrollable-container {
   flex-grow: 1; /* Let it expand to take remaining space */
@@ -113,6 +109,7 @@ h1, h2, h3, p {
 .controls {
   margin-bottom: 2rem; 
 }
+
 /* Triangle button styles */
 .triangle-left, .triangle-right {
   /* width: 10px;
@@ -129,15 +126,18 @@ h1, h2, h3, p {
 .triangle-right {
   border-left: 30px solid black;
 }
+
 .exercise-list {
   max-height: 300px;  
   overflow-y: auto;  
 }
+
 .exercise-item {
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .exercise-item:hover {
   background-color: #f0f0f0;
 }
@@ -146,7 +146,6 @@ label {
   font-size: 14px;
   font-weight: 600;
 }
-
 
 /* Workout Exercises Container */
 .workout-list {
@@ -181,54 +180,6 @@ label {
   flex-direction: column;
   gap: 1rem; /* Space between each item */
 }
-
-
-
-
-/* Hide scrollbar but keep content scrollable */
-.scrollbar-hidden {
-  overflow-y: auto;
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hidden {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@media (min-width: 768px) {
-  .video-placeholder {
-    height: 200px;
-  }
-
-.sortable-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.sortable-item {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: grab;
-  transition: transform 0.2s ease;
-}
-
-.sortable-item.dragging {
-  opacity: 0.5;
-}
-
-.sortable-item-content {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-
 
 /* Ensure the container holding draggable items behaves correctly on touch devices */
 .drag-container {
@@ -287,41 +238,68 @@ label {
   padding: 0.25rem 0.5rem;
 }
 
-/* General scrollbar styling */
+@media (min-width: 768px) {
+  .video-placeholder {
+    height: 200px;
+  }
+
+  .sortable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sortable-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: grab;
+    transition: transform 0.2s ease;
+  }
+
+  .sortable-item.dragging {
+    opacity: 0.5;
+  }
+
+  .sortable-item-content {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* General Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 6px; /* Minimal width for mobile */
-  height: 6px; /* Minimal height for horizontal scrollbar */
+  width: 8px; /* Thin width for the scrollbar */
+  height: 8px; /* Thin height for horizontal scrollbar */
 }
 
+/* Scrollbar thumb - the draggable part */
 ::-webkit-scrollbar-thumb {
-  background-color: #E98074; /* Light grey for the thumb */
-  border-radius: 6px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth transition for hover */
+  background-color: #888; /* Light grey thumb */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
+/* Hover effect on scrollbar thumb */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.5); /* Darker thumb color on hover */
+  background-color: #555; /* Darker grey when hovered */
 }
 
-/* Style for scrollbar track */
+/* Scrollbar track - the background part */
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); /* Light background for the track */
-  border-radius: 6px;
+  background: #f1f1f1; /* Light background for the track */
+  border-radius: 8px;
 }
 
-/* Make the scrollbar disappear after a few seconds */
-.scroll-container {
-  overflow-y: auto;
-  max-height: 100vh;
-  scrollbar-width: thin; /* Firefox styling */
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* Firefox colors */
-  transition: scrollbar-width 0.3s ease, scrollbar-color 0.3s ease;
+/* Hide scrollbar arrows (if any) */
+::-webkit-scrollbar-button {
+  display: none; /* Remove arrows from scrollbar */
 }
 
-/* When scrolled, make the scrollbar more visible */
-.scroll-container.scrolled {
-  scrollbar-width: auto; /* Make it thicker when scrolled */
-  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* Darken the thumb when scrolled */
+/* Firefox Styling */
+.scrollable-container {
+  scrollbar-width: thin; /* Thin scrollbar in Firefox */
+  scrollbar-color: #888 #f1f1f1; /* Thumb color, track color */
 }
 
 }

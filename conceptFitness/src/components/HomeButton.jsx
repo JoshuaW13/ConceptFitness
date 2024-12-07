@@ -12,12 +12,12 @@ function HomeButton() {
   
   return (
     <button 
-      className="text-black px-4 py-2 border-[#D8C3A5] border-4 rounded ml-4 focus:outline-none relative"
+      className="text-black px-4 py-2 border-[#D8C3A5] hover:border-[#E85A4F] border-4 rounded ml-4 focus:outline-none relative"
       style={{ backgroundColor: '#EAE7DC', }}
       onClick={handleClick}
     >
       <HomeIcon style={{
-              color: '#E85A4F',
+              color: 'black',
       }}/>
     </button>
   );

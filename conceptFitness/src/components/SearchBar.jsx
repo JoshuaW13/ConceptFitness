@@ -13,12 +13,12 @@ function SearchBar({InitialText, searchSetter, searchState, searchStateSetter}) 
     console.log(searchState)
     if (document.getElementById("exerciseSearch").value != null && searchState) {
       searchSetter(document.getElementById("exerciseSearch").value)
-      searchStateSetter(false)
+      searchStateSetter(false);
     }
   }
 
   return (
-    <div className="flex items-center bg-white rounded-lg w-[75%] p-1">
+    <div className="flex items-center bg-white rounded-lg w-[75%] p-1 border border-black">
       <SearchIcon
         className="text-black ml-2 cursor-text"
         onClick={handleIconClick} // Add onClick handler

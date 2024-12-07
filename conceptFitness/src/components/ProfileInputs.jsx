@@ -29,7 +29,7 @@ function ProfileInputs ( {onSave, onCancel, initialData} ) {
                     value={formData.username}
                     onChange={handleChange}
                     placeholder='New Username'
-                    className='w-[100%] w-[70%] bg-white border border-black rounded px-2 py-1 mb-3 text-black text-sm'
+                    className='w-full max-w-full bg-white border border-black rounded px-2 py-1 mb-3 text-black text-sm'
                 ></input>
             </div>       
             <div className="flex justify-center w-full max-w-md">
@@ -40,11 +40,11 @@ function ProfileInputs ( {onSave, onCancel, initialData} ) {
                     rows={3}
                     placeholder='Write a Bio...'
                     maxLength={maxChars}
-                    className="w-[100%] bg-white text-black text-sm border border-black rounded px-2 py-1 resize-none scrollbar-hidden"
+                    className="w-full max-w-full bg-white text-black text-sm border border-black rounded px-2 py-1 resize-none scrollbar-hidden"
                 ></textarea>
             </div>
 
-            <div className="text-left text-gray-500 text-sm mb-6">
+            <div className="text-left text-gray-500 text-sm">
                 {maxChars - formData.bio.length} characters remaining
             </div>
 

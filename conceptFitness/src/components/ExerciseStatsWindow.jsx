@@ -118,11 +118,11 @@ function ExerciseStatsWindow() {
     return (
         <div className="w-full max-w-lg bg-gray-50 rounded-lg shadow-lg flex flex-col border border-gray-300 text-black relative">
             <div className="flex items-center gap-1 justify-center">
-                <div className="flex w-6 h-6 bg-gray-300 cursor-pointer" onClick={handlePrev}>
+                <div className="flex w-6 h-6 bg-[#8E8D8A] cursor-pointer" onClick={handlePrev}>
                     <BackIcon />
                 </div>
                 <h2 className='text-l font-bold mb-4'>Weight Change Over Time</h2>
-                <div className="flex w-6 h-6 bg-gray-300 cursor-pointer" onClick={handleNext}>
+                <div className="flex w-6 h-6 bg-[#8E8D8A] cursor-pointer" onClick={handleNext}>
                     <NextIcon />
                 </div>
             </div>

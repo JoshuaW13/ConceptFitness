@@ -19,7 +19,7 @@ function SlidingDrawerWithScrolling({ Content, isDrawerOpen, setIsDrawerOpen }) 
         {/* Drawer Toggle Button */}
         <button
           onClick={toggleDrawer}
-          className="absolute w-7 h-14 left-[-2.5rem] bg-[#8E8D8A] text-white p-0 rounded"
+          className="absolute w-7 h-14 left-[-2.5rem] bg-[#8E8D8A] hover:bg-[#E98074] text-white p-0 rounded"
           style={{
             top: '50%',
             transform: 'translateY(-50%) translateX(50%)',
