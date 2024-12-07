@@ -70,16 +70,18 @@ export const GoalProvider = ({ children }) => {
     const newGoal = {goalType: goalType, exercise: exercise, value: value, date: date}
     console.log(newGoal)
 
-    const goalExists = assignedGoals.find((g) => (g.goalType === newGoal.goalType && g.date === newGoal.date))
+    const goalExists = assignedGoals.some((g) => (g.goalType === newGoal.goalType && g.date === newGoal.date && g.exercise == newGoal.exercise))
 
     console.log(goalExists)
-    if (goalExists != undefined) {
+    if (goalExists) {
       showNotif("Goal Exists")
     } else {
+      newGoal.id = assignedGoals[assignedGoals.length - 1].id + 1
       setAssignedGoals((prevGoals) => [...prevGoals, newGoal])
       showNotif("Goal Added")
     }
   }  
+
 
   const removeGoal = (id) => {
     setAssignedGoals((prevGoals) => prevGoals.filter((g) => g.id !== id));
