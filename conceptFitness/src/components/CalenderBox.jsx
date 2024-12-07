@@ -5,6 +5,7 @@ import Popup_FullScreen from './Popup_FullScreen';
 import CalenderPopupMini from "../components/CalenderPopupMini";
 import CalenderProgramPopup from "./CalenderProgramPopup"
 import CalenderExercisePopup from './CalenderExercisePopup.jsx';
+import CalenderGoalListPopup from './CalenderGoalListPopup.jsx';
 import GoalBox from "../components/GoalBox"
 import { useProgramContext } from "../contexts/ProgramsContext";
 import { useCalendarContext } from '../contexts/CalendarContext';
@@ -19,6 +20,7 @@ function CalenderBox({Day, Date}) {
     const [isBigPopupVisible, setIsBigPopupVisible] = useState(false);
     const [isGoalPopupVisible, setIsGoalPopupVisible] = useState(false);
     const [isExercisePopupVisible, setIsExercisePopupVisible] = useState(false)
+    const [isGoalListPopupVisible, setIsGoalListPopupVisible] = useState(false)
     const [programName, setProgramName] = useState("")
     const [goalData, setGoalData] = useState([])
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -30,18 +32,18 @@ function CalenderBox({Day, Date}) {
     const getProgramName = () => {
         const daySchedule = dayPrograms.find((d) => d.date == Date)
         if(daySchedule == undefined){
-            console.log("No Program Found: ", Date)
+            // console.log("No Program Found: ", Date)
             setProgramName("")
             return
         }
-        console.log(programs.find((p) => p.id == (dayPrograms.find((d) => d.date == Date)).program).name, ": ", Date)
+        // console.log(programs.find((p) => p.id == (dayPrograms.find((d) => d.date == Date)).program).name, ": ", Date)
         setProgramName(programs.find((p) => p.id == (dayPrograms.find((d) => d.date == Date)).program).name)
     }
 
     const getGoal = () => {
         const dayCheck = assignedGoals.find((g) => g.date == Date)
         if(dayCheck == undefined){
-            console.log("No Goal Found: ", Date)
+            // console.log("No Goal Found: ", Date)
             setGoalData("")
             return
         }
@@ -52,8 +54,8 @@ function CalenderBox({Day, Date}) {
                     key = {i} 
                     id = {assignedGoals[i].id}
                     ></GoalBox>)
-                console.log(Date)
-                console.log(assignedGoals[i])
+                // console.log(Date)
+                // console.log(assignedGoals[i])
             }
         }
         setGoalData(dayGoals)
@@ -73,13 +75,13 @@ function CalenderBox({Day, Date}) {
             <div className='relative h-full w-full border-2 border-[#D8C3A5] overflow-y-auto'>
                 <div className='overflow-y-auto scrollbar-none h-full w-full'>
                     <p className={`font-semibold text-xl ${programName == "" ? "hidden" : "visible"}`}>Program:</p>
-                    <p className='font-normal text-xl'>{programName}</p>
-                    <p className={`font-semibold text-xl w-full ${goalData == "" ? "hidden" : "visible"}`}>Goal:</p>
+                    <p className={`font-normal text-xl mb-4 ${programName == "" ? "hidden" : "visible"}`}>{programName}</p>
+                    <p className={`font-semibold text-xl w-full ${goalData == "" ? "hidden" : "visible"}`}>Goals:</p>
                     <div className='flex flex-col font-normal text-xl w-full overflow-y-auto h-full'>{goalData}</div>
                     <div className=''>
                         <button className='absolute h-8 w-8 bottom-1 right-1 bg-[#D8C3A5] rounded-md'
                         onClick={(event) => {setIsPopupVisible(!isPopupVisible)
-                            console.log(Day)
+                            // console.log(Day)
                             days.find((d) => d.id == Day).selected = true
                             event.stopPropagation();  // Prevent the event from bubbling up to the parent
                         }}
@@ -98,6 +100,10 @@ function CalenderBox({Day, Date}) {
                   }}        
                   goalAssignClick = {(event) => {
                     setIsGoalPopupVisible(true)
+                  }}
+                  goalDeleteClick = {(event) => {
+                    setIsGoalListPopupVisible(true)
+                    console.log("Test")
                   }}
                   selectedDate={Date}
                   programName={programName}
@@ -124,6 +130,17 @@ function CalenderBox({Day, Date}) {
                         days.find((d) => d.id == Day).selected = false
                     }} 
                     Content={CalenderExercisePopup}
+                    selectedDate={Date}
+                    Title={'Select Exercise'}
+                />
+            )}
+            {isGoalListPopupVisible && (
+                <Popup_FullScreen
+                    onClick={(event) => {
+                        setIsGoalListPopupVisible(false);  
+                        days.find((d) => d.id == Day).selected = false
+                    }} 
+                    Content={CalenderGoalListPopup}
                     selectedDate={Date}
                     Title={'Select Exercise'}
                 />

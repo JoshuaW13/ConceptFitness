@@ -4,9 +4,8 @@ import { useCalendarContext } from '../contexts/CalendarContext';
 import { useGoalContext } from '../contexts/GoalsContext.jsx';
 import { useNotifContext } from "../contexts/NotifContext.jsx";
 
-function CalenderPopupMini({progAssignClick, selectedDate, programName, goalAssignClick}) {
+function CalenderPopupMini({progAssignClick, selectedDate, programName, goalAssignClick, goalDeleteClick}) {
   const { removeProgramFromDay, dayPrograms } = useCalendarContext()
-  const { removeGoal, assignedGoals } = useGoalContext()
   const { showNotif } = useNotifContext();
 
   const removeProgram = () => {
@@ -20,17 +19,6 @@ function CalenderPopupMini({progAssignClick, selectedDate, programName, goalAssi
     }
   }
 
-  const removeGoals = () => {
-    const dayGoal = assignedGoals.find((g) => g.date == selectedDate)
-    if(dayGoal == undefined){
-      showNotif("No Goal Scheduled")
-    }
-    else {
-      removeGoal(dayGoal)
-      showNotif("Goal Deleted")
-    }
-  }
-
   return (
     <div className="flex flex-col text-black">
       { programName != "" ? (
@@ -39,7 +27,7 @@ function CalenderPopupMini({progAssignClick, selectedDate, programName, goalAssi
         (<button onClick={removeProgram}>Delete Program</button>)
       }
       <button onClick={goalAssignClick}>Add Goal</button>
-      <button onClick={removeGoals}>Remove Goal</button>
+      <button onClick={goalDeleteClick}>Remove Goal</button>
     </div>
   )
 }
