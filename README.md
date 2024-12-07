@@ -2,6 +2,12 @@
 
 The following application is a prototype fitness application that provides a complete front end but not backend. The following readme offers information on how to access the website as well as a high level overview of how to interact with the system.
 
+#### Developers
+- Joshua Walters
+- Nicholas Lam
+- Raisa Rafi
+- Fairooz Haque
+
 ## How to Access
 
 ### Deployed Website
