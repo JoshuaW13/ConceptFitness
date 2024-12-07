@@ -19,7 +19,7 @@ function Login() {
     };
 
   return (
-      <div className='w-full h-full flex flex-col justify-center items-center gap-10'>
+      <div className='w-full h-full bg-[#EAE7DC] flex flex-col justify-center items-center gap-10'>
         <form onSubmit={handleSubmit} className="bg-white-100 p-6 w-full">
         <h2 className="text-xl text-black mb-4">Login</h2>
         <div className="mb-4">
@@ -46,12 +46,12 @@ function Login() {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded w-full py-2 hover:bg-blue-600"
+          className="bg-[#E98074] text-white rounded w-full py-2 hover:bg-[#E85A4F]"
         >
           Login
         </button>
         <p className='text-black m-2'>Don't have an account?</p>
-        <button onClick={handleSignUp} className='bg-white text-blue-500 hover-underline'>
+        <button onClick={handleSignUp} className='text-[#E85A4F] hover-underline'>
           Sign Up
         </button>
       </form>
