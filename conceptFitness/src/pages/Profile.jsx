@@ -107,7 +107,7 @@ function Profile() {
         >
           <SettingsIcon
             style={{
-              color: '#E85A4F',
+              color: 'black',
             }}
           />
         </button>

@@ -17,7 +17,7 @@ function HomeButton() {
       onClick={handleClick}
     >
       <HomeIcon style={{
-              color: '#E85A4F',
+              color: 'black',
       }}/>
     </button>
   );

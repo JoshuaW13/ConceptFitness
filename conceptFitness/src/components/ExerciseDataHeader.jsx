@@ -11,8 +11,8 @@ function ExerciseDataHeader({ onClick, exercise }) {
   return (
     <div className="p-4 flex w-full justify-between items-center relative">
       <div className="flex items-start flex-col justify-between gap-1" onClick={onClick}>
-        <p className="text-lg text-gray-800 font-semibold">{exercise.name}</p>
-        <p className="text-lg text-gray-600">Equipment: {exercise.equipment}</p>
+        <p className="text-lg text-black font-semibold">{exercise.name}</p>
+        <p className="text-lg text-black">Equipment: {exercise.equipment}</p>
       </div>
 
       <button

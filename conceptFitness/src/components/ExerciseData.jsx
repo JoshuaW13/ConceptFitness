@@ -5,15 +5,15 @@ import ExerciseStatsWindow from './ExerciseStatsWindow';
 
 function ExerciseData({ onClick, exercise }) {
   return (
-    <div className="bg-gray-100 w-full rounded-lg shadow-sm font-semibold">
-      <div className="flex flex-col gap-2 mb-4">
-        <p className="text-gray-700 text-lg">
+    <div className="bg-[#EAE7DC] w-full rounded-lg shadow-sm font-semibold">
+      <div className="flex flex-col gap-2 mb-4 mt-4">
+        <p className="text-black">
           <span className="font-semibold">Current Reps:</span> {exercise.reps}
         </p>
-        <p className="text-gray-700 text-lg">
+        <p className="text-black">
           <span className="font-semibold">Current Sets:</span> {exercise.sets}
         </p>
-        <p className="text-gray-700 text-lg">
+        <p className="text-black">
           <span className="font-semibold">Max Weight:</span> {exercise.weight} lbs
         </p>
       </div>

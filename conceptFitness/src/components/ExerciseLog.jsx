@@ -11,9 +11,9 @@ function ExerciseLog({exerciseRecord}) {
   const {exercises}=useExerciseCatalogueContext();
 
   return (
-    <div className="bg-gray-100 w-full rounded-lg shadow-md mb-4 relative">
+    <div className="bg-[#EAE7DC] w-full rounded-lg shadow-md mb-4 relative">
       <div className="flex items-center justify-between bg-[#EAE7DC] p-3 rounded-lg">
-        <p className="text-gray-700 text-lg font-semibold">
+        <p className="text-black text-lg font-semibold">
           {exercises.find((exercise) => exercise.id == exerciseRecord.id).name}
         </p>
         <button

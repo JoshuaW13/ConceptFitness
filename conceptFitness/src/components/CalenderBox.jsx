@@ -60,7 +60,7 @@ function CalenderBox({Day, Date}) {
         <div className='flex flex-col flex-shrink-0 h-full w-[50%] z-3'>
             <div className='relative h-[30%] w-full font-bold border-2 border-[#D8C3A5]'>
                 <p className='flex text-xl font-semibold h-full items-center justify-center -mt-0.5'>{dayNames[Day]}</p>
-                <p className='absolute text-xl -top-1 right-1 text-[#E85A4F]'>{Date.substring(4, Date.indexOf(","))}</p>
+                <p className='absolute text-xl -top-1 right-1 text-black'>{Date.substring(4, Date.indexOf(","))}</p>
             </div>
             <div className='relative h-full w-full border-2 border-[#D8C3A5] overflow-y-auto'>
                 <div className='overflow-y-auto scrollbar-none h-full w-full'>

@@ -8,7 +8,7 @@ function DateInput({ searchDate }) {
   };
 
   return (
-    <form className="flex items-end gap-2 mt-3">
+    <form className="flex items-end justify-center gap-2 m-3">
       <label htmlFor="date" className="block text-lg font-semibold text-black">
         Date:
       </label>

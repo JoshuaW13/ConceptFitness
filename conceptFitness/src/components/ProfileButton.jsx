@@ -22,7 +22,7 @@ function ProfileButton() {
         onClick={handleClick}
       >
       <Profile style={{
-              color: '#E85A4F',
+              color: 'black',
       }} />
     </button>
     {/* Popup */}
