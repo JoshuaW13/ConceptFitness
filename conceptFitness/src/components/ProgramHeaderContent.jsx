@@ -17,7 +17,7 @@ function ProgramHeaderContent({ onClick, selectedDate, id, name, tags, numExerci
   }
 
   return (
-    <div className='flex text-black w-full rounded-t-lg font-semibold justify-center'>
+    <div className='flex text-black w-full rounded-t-lg font-semibold justify-center]'>
       <div className='flex rounded-t-lg w-full h-full p-1 items-center'>
         <div className='flex flex-col w-full'>
           <p className='relative text-lg w-full'>{name}

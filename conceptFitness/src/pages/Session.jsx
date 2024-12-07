@@ -221,62 +221,61 @@ function Session() {
 
 
   return (
-    <div className="background session-page relative overflow-y-auto h-full">
-        <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
-      <div className="overflow-auto scrollbar-none" >
+    <div className="background overflow-y-auto overflow-x-hidden h-full">
+      <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />
+      <div>
+        <div className="flex justify-center items-center w-full px-12 py-4">
+          <div className="flex items-center justify-center"> {/* Timer is wrapped in a div to control alignment better */}
+              <Timer timerRef={timerRef}/> {/* Timer Component */}
+          </div>
 
-      <div className="flex justify-center items-center w-full px-12 py-4">
-  <div className="flex items-center justify-center"> {/* Timer is wrapped in a div to control alignment better */}
-      <Timer timerRef={timerRef}/> {/* Timer Component */}
-    </div>
-
-    <button 
-      className="button"
-      onClick={handleFinishSession}
-    >
-      Finish
-    </button>
-  </div>
-
-
+          <button 
+            className="bg-[#E98074] text-white text-sm flex items-center justify-center p-4 hover:bg-[#E85A4F] rounded-2xl font-semibold flex-grow"
+            onClick={handleFinishSession}
+            >
+            Finish
+          </button>
+        </div>
 
         <div className="flex flex-col w-full px-8 gap-2 flex-grow">
           {/* Weight and Reps Section */}
           <div className="controls flex items-center justify-center gap-4 w-full mb-2">
-          <div className="flex flex-col items-center justify-center gap-4">
-            <div className="flex items-center gap-2 justify-center">
-              <label className="text-base w-20 text-center">Weight(lbs):</label>
-              <input
-                type="text"
-                min="1"
-                step="1"
-                className="input-field w-[40%] p-1"
-                value={currentSetData.weight || ''}
-                onChange={(e) => handleInputChange('weight', e.target.value)}
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-center">
-              <label className="text-base w-20">Reps:</label>
-              <input
-                type="text"
-                min="1"
-                step="1"
-                className="input-field w-[45%] border p-1"
-                value={currentSetData.reps || ''}
-                onChange={(e) => handleInputChange('reps', e.target.value)}
-              />
+            <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex items-center gap-2 justify-center">
+                <label className="text-base w-25 text-center mr-2">Weight (lbs)</label>
+                <input
+                  type="text"
+                  min="1"
+                  step="1"
+                  className="input-field w-[40%] p-1"
+                  value={currentSetData.weight || ''}
+                  onChange={(e) => handleInputChange('weight', e.target.value)}
+                />
+              </div>
+              <div className="flex items-center gap-2 justify-center">
+                <label className="text-base w-20 mr-2">Reps</label>
+                <input
+                  type="text"
+                  min="1"
+                  step="1"
+                  className="input-field w-[40%] border p-1"
+                  value={currentSetData.reps || ''}
+                  onChange={(e) => handleInputChange('reps', e.target.value)}
+                />
+              </div>
             </div>
           </div>
-          <button className='text-sm flex w-12 h-12 bg-gray-300 items-center' onClick={saveSet}>Save Set</button>
-        </div>
+          <div className='flex justify-center'>
+            <button className='text-sm flex w-[25%] h-12 font-semibold bg-green-400 items-center justify-center' onClick={saveSet}>Save Set</button>
+          </div>
 
 
           {/* Current Exercise Box */}
-          <div className="exercise-description-box bg-gray-200 p-2 rounded-md">
+          <div className="exercise-description-box mt-4 bg-[#D8C3A5] p-2 rounded-md">
             <div className='flex justify-center items-center gap-4'>
               {
                 selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[0] && (
-                  <button className="flex w-6 h-6 bg-gray-300" onClick={prevExercise}>
+                  <button className="flex w-6 h-6 bg-[#8E8D8A] text-white" onClick={prevExercise}>
                     <BackIcon />
                   </button>
                 )
@@ -284,7 +283,7 @@ function Session() {
               <h3 className="flex items-center justify-center text-lg font-bold mb-1">{currentExercise&& currentExercise.name}</h3>
               <h4 className='flex justify-center items-center font-bold  mb-1'>Set: {currentSetData&&currentSetData.number}</h4>
                 {selectedProgram?.exercises?.[0] && currentExercise.id !== selectedProgram.exercises[selectedProgram.exercises.length-1] && 
-                (<button className='flex w-6 h-6 bg-gray-300' onClick={nextExercise}>
+                (<button className='flex w-6 h-6 bg-[#8E8D8A] text-white' onClick={nextExercise}>
                   <NextIcon/>
                 </button>)
               }
@@ -340,7 +339,7 @@ function Session() {
           Content={() => (
             selectedProgram && (
               <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-bold mb-2">{selectedProgram.name}</h3>
+                <h3 className="text-lg font-bold mb-2 text-white">{selectedProgram.name}</h3>
                 {selectedProgram.exercises.map((exerciseId, index) => {
                   const exercise = exercises.find(ex => ex.id === exerciseId);
                   if (!exercise) return null; // Handle case where exercise is not found

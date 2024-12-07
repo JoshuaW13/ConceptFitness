@@ -34,7 +34,7 @@ function Timer({timerRef}) {
         <div className="flex items-center justify-center gap-4 w-full px-8 py-4">
             {/* Play/Pause Button */}
             <button
-                className="flex items-center justify-center bg-gray-400 hover:bg-gray-500 text-white p-2 rounded-full shadow-md transition-all duration-200 ease-in-out w-12 h-12"
+                className="flex items-center justify-center bg-[#E98074] hover:bg-[#E85A4F] text-white p-2 rounded-full shadow-md transition-all duration-200 ease-in-out w-12 h-12"
                 onClick={() => setIsTimerRunning(!isTimerRunning)} // Start or pause the timer
             >
                 {isTimerRunning ? <PauseIcon sx={{ fontSize: 24 }} /> : <PlayIcon sx={{ fontSize: 24 }} />}
@@ -42,11 +42,11 @@ function Timer({timerRef}) {
 
             {/* Smaller Timer Display */}
             <div
-                className=" bg-gray-600 text-white p-2 rounded-lg shadow-md w-18 h-18 text-base font-mono"
+                className=" bg-[#8E8D8A] text-white p-2 ml-4 rounded-lg shadow-md w-18 h-18 text-base font-mono"
                 style={{ fontSize: '1rem' }}
             >
                 <h3>Session Duration</h3>
-                <p className='bg-gray-500'>{formatTime(timer)}</p>
+                <p className='bg-[#8E8D8A]'>{formatTime(timer)}</p>
             </div>
         </div>
     );

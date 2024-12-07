@@ -6,7 +6,15 @@ import ExerciseDataPopup from "../components/ExerciseDataPopup"
 
 
 function ExerciseInfoHeader({exerciseId, onClick, exerciseName, exerciseEquipment, targetMuscle, handleClick}) {
+
 const [isPopupVisible, setIsPopupVisible] = useState(false);
+const [isExpanded, setIsExpanded] = useState(false);
+
+const handleTextClick = () => {
+  setIsExpanded((prevState) => !prevState);
+  onClick();
+}
+
   return (
     <div className='w-full'>
       <div className='flex p-1 w-full rounded-t-lg font-semibold'>

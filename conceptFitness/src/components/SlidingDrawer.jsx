@@ -31,11 +31,11 @@ function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
         <button
           ref={drawerButton}
           onClick={toggleDrawer}
-          className="absolute w-7 h-14 left-[-2.5rem] bg-[#8E8D8A] hover:bg-gray-400 text-white p-0 rounded-l-lg rounded-r-none"
+          className="absolute w-7 h-14 left-[-2.5rem] bg-[#8E8D8A] hover:bg-[#E98074] text-white p-0 rounded-l-lg rounded-r-none"
           style={{ top: '50%', transform: 'translateY(-50%) translateX(50%)' }} // Center vertically and move slightly outside
           >
           <img src={ListIcon} alt="" className="p-1" />
-          <div className='absolute flex justify-center items-center align-middle  w-6 h-6 -top-2 -left-1 bg-[#E85A4F] text-black border border-black rounded-sm p-1'>
+          <div className='absolute flex justify-center items-center align-middle w-6 h-6 -top-2 -left-1 bg-[#E85A4F] text-black border border-black rounded-sm p-1'>
             <p className='absolute text-center'>{numExercises}</p>
           </div>
         </button>
