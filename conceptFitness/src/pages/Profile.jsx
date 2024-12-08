@@ -89,6 +89,7 @@ function Profile() {
     setShowProfileInfo(false)
   }
 
+  // ChatGPT was used to assist in creating the username and bio saving functionality
   useEffect(() => {
     const savedData = sessionStorage.getItem('profileData');
     if (savedData) {
@@ -156,10 +157,3 @@ function Profile() {
 }
 
 export default Profile
-
-
-// very outer div on profile page
-// w-full h-full flex flex-col items-center overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 rounded-lg
-
-// metrics, goals, and statistics buttons
-// <button className='bg-gray-300 text-sm flex items-center justify-center hover:bg-gray-400 focus:outline-none w-full sm:w-auto p-3'

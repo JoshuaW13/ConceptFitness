@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '../App.css'
 
+// ChatGPT was used to assist in saving the input data to the goals info page
+
 function GoalsInputs({ onSave, onCancel, initialData, unitSystem }) {
 
     const [formData, setFormData] = useState(initialData)

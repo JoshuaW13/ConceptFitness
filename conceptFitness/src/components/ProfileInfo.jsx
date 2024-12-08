@@ -11,7 +11,7 @@ function ProfileInfo ( {data} ) {
                 <p className='text-black text-lg'>{ data.username || 'Username' }</p>
               </div>
             </div>
-
+            {/* ChatGPT was used to assist in switching between the default text and the bio */}
             <div className='flex flex-col justify-center w-[80%] pl-2'>
               <p className='text-black text-lg'>{data.bio || 'Write a Bio...'}</p>
             </div>

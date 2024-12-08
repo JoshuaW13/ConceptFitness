@@ -44,6 +44,7 @@ function ProfileInputs ( {onSave, onCancel, initialData} ) {
                 ></textarea>
             </div>
 
+            {/* ChatGPT was used to assist in calculating the characters remaining in the bio input field*/}
             <div className="text-left text-gray-500 text-sm">
                 {maxChars - formData.bio.length} characters remaining
             </div>

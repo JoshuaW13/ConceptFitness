@@ -1,5 +1,6 @@
 import React from 'react'
 
+// ChatGPT was used to assist in styling the cancel confirmation pop-up
 function CancelPopup({ onConfirmCancel, onKeepEditing }) {
     return (
         <div className='pop-up container absolute p-2 inset-0 bg-black bg-opacity-50 flex justify-center items-center'>

@@ -15,6 +15,12 @@ function SettingsPopup({ onClose, onUnitChange }) {
         onClose()
     }
 
+    {/* ChatGPT was used to assist in the code responsible for switching between metric and imperial unit systems.
+        - This includes the changes in units in the metrics and goals tabs.
+        - This includes changing the height input field in the metrics tab go to from one input field (kg) to two
+        input fields (ft/in)      
+    */}
+    
     return (
         <div className="absolute p-2 inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white rounded-lg p-6 shadow-lg w-[90%] sm:w-[400px]">

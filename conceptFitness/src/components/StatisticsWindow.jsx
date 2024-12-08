@@ -20,6 +20,8 @@ ChartJS.register (
     Tooltip,
 );
 
+// ChatGPT was used to assist in the creation of the graph, including the data points
+
 function StatisticsWindow() {
 
     const data = {
