@@ -64,7 +64,7 @@ function Home() {
       </div>
       <div className='flex flex-col m-2 w-[90%] gap-4 pb-5 flex-grow overflow-auto'>
         <div className='flex flex-row gap-2 w-full h-[80%]'>
-          <div className='flex flex-col w-[40%] gap-4 h-full'>
+          <div className='flex flex-col w-[40%] gap-2 h-full'>
             <button className='bg-[#EAE7DC] text-black text-xl flex items-center justify-center p-3 border-4 border-[#D8C3A5] hover:border-[#E85A4F] rounded-2xl font-bold flex-grow'
               onClick={navigateCatalogue} 
             >Exercises</button>
