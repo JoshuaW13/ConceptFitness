@@ -31,10 +31,15 @@ As for data persistence most functionality in the app works unless otherwise spe
 
 ## Application Navigation
 
-### Login/Sign up Page
+### Login Page
 When first accessing the website the user will be greeted by a login screen.
-![alt text](./readmeImages/login.png)
+![alt text](./readmeImages/login.png)\
 The user can either sign up or login. There are checks to ensure that a valid email address is entered but since this is a prototype there is no validation on what password or email is entered.
+
+### Sign up Page
+If the user does not have an account and wishes to create one, they can go to the sign up page
+![alt text](./readmeImages/signup.png)\
+Similar to the login page, there are checks to ensure that a valid email address is entered but since this is a prototype there is no validation on what password or email is entered. There are also checks to ensure that the "Password" field matches the "Confirm Password" field.
 
 ### Home Page
 After successful credential validation the user will be brought to the following homepage
@@ -100,18 +105,18 @@ Once expanded the user can see their max reps, sets and weight for the exercise.
 
 ### Profile Page
 
-The profile page provides the user with the ability to edit their profile. The top provides customization elements for their profile picture, username and a short bio while the lower section lets them see a display of metrics, goals and statistics. \
+The profile page provides the user with the ability to edit their profile. The top provides customization elements for their username and a short bio while the lower section lets them see a display of metrics, goals and statistics. The profile picture cannot be edited. \
 ![alt text](./readmeImages/image-12.png) \
 ![alt text](./readmeImages/image-13.png) \
-Metrics are all the key user details. Here they can edit data such as their age, weight, height and activity level. If there were a backend these pieces of information would be used in the goal system.
+Metrics are all the key user details. Here they can edit data such as their age, weight, height and activity level. If there were a backend, these pieces of information would be used in the goal system.
 ![alt text](./readmeImages/image-14.png)\
 ![alt text](./readmeImages/image-15.png) \
-The goals tab lets the user defined high level goals related to weight. They can create goals to gain, lose or maintain weight. \
+The goals tab lets the user defined high level goals related to weight. They can set their goal to gain, lose or maintain weight. For now, there are no validation checks for inconsistent inputs. For example, if the user sets their goal to "lose weight" and then sets their target weight to be greater than their current weight, the form would still save. This is included in the portfolio as an improvement that can be implemented.  \
 ![alt text](./readmeImages/image-16.png) \
 ![alt text](./readmeImages/image-17.png) \
-Finally, the statistics tab shows a graph related to the user's high level weight goal to show their progress over time. \
+The statistics tab shows a graph related to the user's high level weight goal to show their progress over time. The data points in the graph are hard coded and are not linked to any kind of information that the user logs. Our goal was to make other types of graphs like weekly averages over a month and then allow users to switch between them, but it could not be done due to time constraints. \
 ![alt text](./readmeImages/image-18.png) \
-Finally, there is a settings button that creates a popup that allows the user to change their unit preferences. Please note that persistence through the whole website has not yet been implemented. \
+Finally, there is a settings button that creates a popup that allows the user to change their unit preferences between metric and imperial. Please note that persistence through the whole website has not yet been implemented. \
 ![alt text](./readmeImages/image-19.png) \
 
 
