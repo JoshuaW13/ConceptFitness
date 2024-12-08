@@ -23,7 +23,7 @@ Concept Fitness is deployed at the following address.\
 ## How to Use the System
 
 ### Best Way to View the Application
-The application is technically a web application designed in a way to simulate a mobile one through sizing of the view. While the device can be viewed in the normal web browser view it can create weird formatting if the screen is large. Ideally, it is best to open the app in the dev tools and use a mobile device. This can be done through inspect element and then changing the device to a phone model.
+The application is technically a web application designed in a way to simulate a mobile one through sizing of the view. While the device can be viewed in the normal web browser view it can create weird formatting if the screen is large. Ideally, it is best to open the app in the dev tools and use a mobile device such as the Iphone 14. This can be done through inspect element and then changing the device to a phone model. Also please note sometimes the dev tools will not open the phone view properly, toggling between the phone view and responsive should fix this.
 ### High level Overview
 The application is meant to be a touch application as it is mobile although mouse can control some aspects anyways allowing it to be used for convenience while testing. 
 
