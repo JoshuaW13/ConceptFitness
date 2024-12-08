@@ -95,7 +95,7 @@ Finally, when a session is finished the user is asked to confirm their choice in
 The logs page has 2 main sections the Session logs and the Exercise Logs \
 ![alt text](./readmeImages/image-8.png) \
 
-First looking at Session logs which is pictured above the user can search a log via program name, contained exercise or date. With no date inputted a list of all logs will be presented. The log is a dropdown which shows the program name, date and duration by default. When expanded the user can see a list of all exercises and sets performed in that session. They also have the ability to add that exercise to another program. \
+First looking at Session logs which is pictured above the user can search a log via program name, contained exercise or date. With no date inputted a list of all logs will be presented. The log is a dropdown which shows the program name, date and duration by default. When expanded the user can see a list of all exercises and sets performed in that session. They also have the ability to add that exercise to another program.
 ![alt text](./readmeImages/image-9.png) \
 
 The Exercise logs tab provides a log of all time data on all exercises that the user has done. They can search exercises via name and equipment. Each exercise in the list is a drop down which shows the name and equipment for the exercise in addition to having a button for adding the exercise to another program. \
@@ -108,7 +108,7 @@ Once expanded the user can see their max reps, sets and weight for the exercise.
 The profile page provides the user with the ability to edit their profile. The top provides customization elements for their username and a short bio while the lower section lets them see a display of metrics, goals and statistics. The profile picture cannot be edited. \
 ![alt text](./readmeImages/image-12.png) \
 ![alt text](./readmeImages/image-13.png) \
-Metrics are all the key user details. Here they can edit data such as their age, weight, height and activity level. If there were a backend, these pieces of information would be used in the goal system.
+Metrics are all the key user details. Here they can edit data such as their age, weight, height and activity level. If there were a backend, these pieces of information would be used in the goal system. \
 ![alt text](./readmeImages/image-14.png)\
 ![alt text](./readmeImages/image-15.png) \
 The goals tab lets the user defined high level goals related to weight. They can set their goal to gain, lose or maintain weight. For now, there are no validation checks for inconsistent inputs. For example, if the user sets their goal to "lose weight" and then sets their target weight to be greater than their current weight, the form would still save. This is included in the portfolio as an improvement that can be implemented.  \
