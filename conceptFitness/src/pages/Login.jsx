@@ -55,7 +55,7 @@ function Login() {
           Login
         </button>
         <p className='text-black m-2'>Don't have an account?</p>
-        <button onClick={handleSignUp} className='text-[#E85A4F] hover-underline'>
+        <button onClick={handleSignUp} className='text-[#E85A4F] bg-[#EAE7DC] hover-underline'>
           Sign Up
         </button>
       </form>

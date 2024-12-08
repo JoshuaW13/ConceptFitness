@@ -87,7 +87,7 @@ function SignUp() {
                 Sign Up
                 </button>
                 <p className='text-black m-2'>Already have an account?</p>
-                <button onClick={handleLogIn} className='text-[#E85A4f] hover-underline'>
+                <button onClick={handleLogIn} className='text-[#E85A4f] bg-[#EAE7DC] hover-underline'>
                 Log In
                 </button>
             </form>
