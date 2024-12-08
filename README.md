@@ -60,7 +60,7 @@ The exercises page shows a list of all the exercise in the system. For the purpo
 ![alt text](./readmeImages/image-1.png)\
 
  Each exercise in the list displays those key details that can be searched and doubles as a dropdown. When clicked the exercise will expand to show more details which are hardcoded. \
-![alt text](./readmeImages/image.png) \
+![alt text](./readmeImages/image.png)
 
 The page also doubles as a Program creation window. The system will assume a program is currently in creation. If the user presses the add button on an exercise it will be added to the program. Currently edited program details can be seen in the sliding drawer on the right. \
 ![alt text](./readmeImages/image-2.png) \
@@ -71,14 +71,14 @@ Here the user can edit the program name, add tags to it as well as remove exerci
 The Program page shows a list of the users currently created workouts. Programs can be searched via name, tag, and exercises. For each program the user can press the play icon to start it which will navigate the user to the Session page. The edit button to be navigated to the exercises page where they can make changes and finally the option to delete a program. There is also a button to add a program next to the search bar which will navigate the user to the Exercises page for the creation. \
 ![alt text](./readmeImages/image-3.png) \
 In addition each Program can be expanded to show the exercises it contains. Exercises can be removed or added to other programs from here \
-![alt text](./readmeImages/image-4.png) \
+![alt text](./readmeImages/image-4.png)
 
 
 ### Session Page
 
 The Session page can be navigated to in a variety of ways. If the Start session button is clicked from the homepage the user will be navigated to the page directly if there is a program scheduled for that day otherwise they will be brought to the programs page where they can select a program to perform which will bring them to Session page below. \
 ![alt text](./readmeImages/image-5.png) \
-The top buttons control the timer and the session. The user can optionally start a timer to record the duration of their session which will be saved along with all other session data when finish session is clicked. \
+The top buttons control the timer and the session. The user can optionally start a timer to record the duration of their session which will be saved along with all other session data when finish session is clicked.
 
 Below is the exercise relevant data. There are boxes to enter the current weight and reps for the current exercise as well as to save a set. Below these inputs the current exercise and set are listed along with a description of the exercise paired with an instructional video. There are also arrows next to the exercise title so the user can scroll through the exercises in the session. 
 
@@ -86,22 +86,23 @@ If the user needs to go back and edit a set or wants to perform exercises in a d
 ![alt text](./readmeImages/image-6.png) \
 This gives the user the ability to select and exercise they want to do a set for with the play button. If they want to edit or delete a set they can open the dropdown for the exercise and click the corresponding icon. Note the dropdown only appears if there are sets recorded. \
 ![alt text](./readmeImages/image-7.png) \
-If the user edits an exercise set that sets data will be put into the main window and once the set is saved it will increment to that exercise's current set.\
+If the user edits an exercise set that sets data will be put into the main window and once the set is saved it will increment to that exercise's current set.
 
 Finally, when a session is finished the user is asked to confirm their choice in which case all data will be saved in the form of a Session log. Any all time records for exercises will be saved to an Exercise log.
 
 ### Logs Page
 
 The logs page has 2 main sections the Session logs and the Exercise Logs \
-![alt text](./readmeImages/image-8.png) \
+![alt text](./readmeImages/image-8.png)
 
 First looking at Session logs which is pictured above the user can search a log via program name, contained exercise or date. With no date inputted a list of all logs will be presented. The log is a dropdown which shows the program name, date and duration by default. When expanded the user can see a list of all exercises and sets performed in that session. They also have the ability to add that exercise to another program.
-![alt text](./readmeImages/image-9.png) \
+\
+![alt text](./readmeImages/image-9.png)
 
 The Exercise logs tab provides a log of all time data on all exercises that the user has done. They can search exercises via name and equipment. Each exercise in the list is a drop down which shows the name and equipment for the exercise in addition to having a button for adding the exercise to another program. \
 ![alt text](./readmeImages/image-10.png) \
-Once expanded the user can see their max reps, sets and weight for the exercise. In addition there is a graph of progress on the exercise that can be scrolled through in weekly increments. Note that the graph is hardcoded for 31 data points and the date input below it does not actually search the date on the graph.
-![alt text](./readmeImages/image-11.png) \
+Once expanded the user can see their max reps, sets and weight for the exercise. In addition there is a graph of progress on the exercise that can be scrolled through in weekly increments. Note that the graph is hardcoded for 31 data points and the date input below it does not actually search the date on the graph. \
+![alt text](./readmeImages/image-11.png)
 
 ### Profile Page
 
