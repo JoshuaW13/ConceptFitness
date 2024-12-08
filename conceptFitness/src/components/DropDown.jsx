@@ -29,6 +29,7 @@ function DropDown({
   const InitialComponent = InitialComponentProp;
   const hiddenComponentsArray = Array.isArray(HiddenComponents) ? HiddenComponents : [HiddenComponents];
 
+  //ChatGPT used to generate dropdown box
   return (
     <div className="w-full flex flex-col items-center">
       <div
@@ -39,7 +40,6 @@ function DropDown({
         }}
         onClick={handleClick}
       >
-        {/* Render DropDown Arrow and InitialComponent */}
         {isActive && <DropDownArrow
           className="cursor-pointer"
           sx={{
@@ -50,7 +50,6 @@ function DropDown({
         {React.createElement(InitialComponent, InitialProps)}
       </div>
 
-      {/* Only render hidden content when visible */}
       {isContentVisible && (
         <div
           className={`flex flex-col gap-4 bg-[#E98074] w-full p-2 rounded-b-lg shadow-md transition-all duration-300 ease-in-out transform ${hiddenComponentsArray.length === 1 ? 'overflow-clip' : 'overflow-y-auto'}`}

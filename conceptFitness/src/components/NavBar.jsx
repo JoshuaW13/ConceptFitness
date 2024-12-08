@@ -7,7 +7,6 @@ function NavBar({ FirstButton, SecondButton, OtherButtons, PageTitle }) {
 
   return (
     <nav className="navbar p-2 flex justify-between items-center">
-      {/* Left-aligned buttons */}
       <div className="left-buttons flex items-center">
         {FirstButton && <FirstButton />}
         {otherButtonsArray.map((getButtonProps, index) => {
@@ -17,12 +16,10 @@ function NavBar({ FirstButton, SecondButton, OtherButtons, PageTitle }) {
         })}
       </div>
       
-      {/* Centered PageTitle */}
       {PageTitle && (
         <h2 className="text-xl font-bold text-gray-800 mx-4 flex-1 text-center">{PageTitle}</h2>
       )}
 
-      {/* Right-aligned second button */}
       {SecondButton && <div className="ml-auto">{<SecondButton />}</div>}
     </nav>
   );

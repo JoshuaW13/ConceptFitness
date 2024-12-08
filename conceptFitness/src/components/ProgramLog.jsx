@@ -36,7 +36,7 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
         <div className='flex flex-col w-full'>
           <p className='text-xl w-[92%] mb-2' onClick={onClick}>{name}</p>
 
-          {/* Tags is causing the problem */}
+          {/*ChatGPT used to help debug tag rendering method */}
           <div className='flex-wrap h-[5%] flex gap-1'>
             {tags && tags.length > 0 ? (
               tags.map((tag, index) => (
@@ -50,8 +50,6 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
 
           <p className='text-lg mt-2' onClick={onClick}># of Exercises: {numExercises}</p>
         </div>
-
-          {/* The below div is overflowing outside it's parent!!! */}
           <div className='flex flex-col justify-between w-auto gap-1 relative'>
             <button className='flex w-6 h-6 border-black bg-blue-400 text-white' onClick={navigateSession}>
               <StartIcon/>

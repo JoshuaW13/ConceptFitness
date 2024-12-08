@@ -51,7 +51,7 @@ function ExerciseLogs() {
     return (
         <div className='w-full h-full flex flex-col items-center scrollbar-hidden'>
             <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={"Logs"}></NavBar>
-            <div className="w-full h-full bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md relative pt-4 overflow-y-auto flex flex-col justify-center"> {/* Main container with folder look */}
+            <div className="w-full h-full bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md relative pt-4 overflow-y-auto flex flex-col justify-center"> 
             <div className="flex px-2">
                 <div
                 className={`cursor-pointer py-2 px-4 border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg transition-all ease-in-out

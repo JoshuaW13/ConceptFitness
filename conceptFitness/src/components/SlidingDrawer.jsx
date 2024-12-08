@@ -19,15 +19,14 @@ function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
     })
   }, [])
 
+    //ChatGPT used to get translation function
   return (
     <>
-      {/* Right Drawer */}
       <div
         className={`h-full w-[90%] bg-[#8E8D8A] rounded-md top-0 right-0 absolute transform ${
           isDrawerOpen ? 'translate-x-0 visible' : 'translate-x-[100%]'
         } transition-transform duration-500 ease-in-out flex flex-col items-center`}
       >
-        {/* Drawer Toggle Button */}
         <button
           ref={drawerButton}
           onClick={toggleDrawer}
@@ -41,7 +40,6 @@ function SlidingDrawer({Content, contentProps, numExercises, setTarget}) {
         </button>
         {React.createElement(Content, contentProps)}
       </div>
-      
     </>
   );
 }

@@ -23,7 +23,7 @@ function ProgramHeaderContent({ onClick, selectedDate, id, name, tags, numExerci
           <p className='relative text-lg w-full'>{name}
             <EventAvailableIcon className='absolute right-0 rounded-md bg-gray-400' fontSize='medium' onClick={assignProgram}/>
           </p>
-          {/* Only render the tags once, conditionally */}
+          {/*ChatGPT used to help debug tag rendering method */}
           <div className='flex gap-1 justify-center'>
             {tags && tags.length > 0 ? (
               tags.map((tag, index) => (

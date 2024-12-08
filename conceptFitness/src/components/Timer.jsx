@@ -32,6 +32,7 @@ function Timer({timerRef}) {
 
     return (
         <div className="flex items-center justify-center gap-4 w-full px-8 py-4">
+            {/*ChatGPT used to generate the following button and timer*/}
             {/* Play/Pause Button */}
             <button
                 className="flex items-center justify-center bg-[#E98074] hover:bg-[#E85A4F] text-white p-2 rounded-full shadow-md transition-all duration-200 ease-in-out w-12 h-12"

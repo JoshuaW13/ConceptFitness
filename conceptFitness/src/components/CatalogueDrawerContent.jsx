@@ -90,6 +90,7 @@ function CatalogueDrawerContent({ plannedExercises, setPlannedExercises, tags, s
         <input onChange={handleTagInputChanged} onKeyDown={handleTagEntered} value={inputTag} type="text" className="w-[85%] text-black bg-[#EAE7DC] pl-2 rounded-md" placeholder="Arm, Upper Body, etc..." />
       </div>
 
+      {/*ChatGPT used to generate this drag and drop function */}
       {/* DnD context with sensors */}
       <DndContext
         onDragEnd={handleDragEnd}

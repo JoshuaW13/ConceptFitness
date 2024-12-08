@@ -8,9 +8,9 @@ export const SortableItem = ({ id, index, draggedItem }) => {
     id: id,
   });
 
-  // Check if this item is being dragged
   const isOver = over && over.id === id;
 
+  /*ChatGPT used to generate the draggable object*/
   return (
     <div
       ref={setNodeRef}
@@ -27,7 +27,6 @@ export const SortableItem = ({ id, index, draggedItem }) => {
         {id}. Item {id}
       </div>
 
-      {/* Placeholder effect for where the item is about to drop */}
       {isOver && <div className="sortable-item-placeholder">Drop here</div>}
     </div>
   );

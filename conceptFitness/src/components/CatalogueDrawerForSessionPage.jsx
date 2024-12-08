@@ -19,7 +19,6 @@ function CatalogueDrawerForSessionPage({ programs, setSelectedProgram }) {
     <div className="catalogue-drawer-for-session-page w-full bg-gray-100 p-4 rounded-md">
       <h3 className="text-lg font-bold mb-4">Select a Program</h3>
 
-      {/* Program Search Input */}
       <div className="relative">
         <input
           type="text"
@@ -31,7 +30,8 @@ function CatalogueDrawerForSessionPage({ programs, setSelectedProgram }) {
             setIsDropdownVisible(true); // Show dropdown when typing
           }}
         />
-        
+
+        {/*ChatGPT used to generate the checks for visibility */}
         {/* Dropdown for filtered programs */}
         {isDropdownVisible && searchTerm && (
           <div className="absolute top-full left-0 w-full bg-white border rounded shadow-md max-h-40 overflow-y-auto z-10">

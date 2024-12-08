@@ -32,6 +32,7 @@ function MetricsInputs({ onSave, onCancel, initialData, unitSystem }) {
 
     return (
         <div className='flex flex-col gap-4'>
+            {/*ChatGPT used to generate the following three inputs and buttons*/}
             {/* Age Input */}
             <div className="flex flex-row items-center w-full max-w-md gap-4">
                 <div className='flex flex-row items-center w-full max-w-md gap-4'>

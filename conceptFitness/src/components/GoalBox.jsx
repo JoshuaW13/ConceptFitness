@@ -13,6 +13,7 @@ function GoalBox({id, bool}) {
   const [goalDate, setGoalDate] = useState("")
 
   const getGoalInfo = (id) => {
+    //ChatGPT used to help debug find statements and get correct values
     setGoalType(goalTypes.find((goal) => goal.id == (assignedGoals.find((g) => g.id == id).goalType)).goal)
     if((assignedGoals.find((g) => g.id == id)).exercise != 0) {
       setExerciseName(exercises.find(((exercise) => exercise.id == (assignedGoals.find((g) => g.id == id)).exercise)).name)

@@ -25,7 +25,6 @@ function ProfileButton() {
               color: 'black',
       }} />
     </button>
-    {/* Popup */}
     {isPopupVisible && (
         <Popup onClick={() => setIsPopupVisible(false)} Content={ProfilePopup} />
       )}

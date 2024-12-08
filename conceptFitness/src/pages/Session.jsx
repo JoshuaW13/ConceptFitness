@@ -220,6 +220,7 @@ function Session() {
   // Format the timer in mm:ss format
 
 
+  /*ChatGPT used to generate the following*/
   return (
     <div className="background overflow-y-auto overflow-x-hidden h-full">
       <NavBar FirstButton={HomeButton} SecondButton={ProfileButton} PageTitle={programs.find(program=>program.id===programToStart).name} />

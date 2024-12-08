@@ -26,7 +26,6 @@ function ExerciseLog({exerciseRecord}) {
         </button>
       </div>
 
-      {/* Popup */}
       {isPopupVisible && (
         <Popup
         onClick={(event) => {

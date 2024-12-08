@@ -10,7 +10,8 @@ function TabbedContainer({ FirstTab, SecondTab }) {
   };
 
   return (
-    <div className="w-full h-full bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md relative pt-8 overflow-y-auto"> {/* Main container with folder look */}
+    <div className="w-full h-full bg-gray-100 border-2 border-gray-300 rounded-lg shadow-md relative pt-8 overflow-y-auto"> 
+      {/*ChatGPT used to generate tabbed windows*/}
       <div className="flex ">
         <div
           className={`cursor-pointer py-2 px-4 border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg transition-all ease-in-out ${

@@ -65,7 +65,8 @@ function CalenderBox({Day, Date}) {
         getProgramName()
         getGoal()
     }, [Date, programs, assignedGoals, isBigPopupVisible])
-
+    
+    //ChatGPT used to help create hidden visible inline function
     return (
         <div className='flex flex-col flex-shrink-0 h-full w-[50%] z-3'>
             <div className='relative h-[30%] w-full font-bold border-2 border-[#D8C3A5]'>
