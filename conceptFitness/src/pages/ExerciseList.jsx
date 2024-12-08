@@ -37,14 +37,16 @@ function ExerciseLists() {
     if(programToEditId===undefined){
       return;
     }
+    let settingUpProgramToEdit = true;
     const programToEdit = programs.find((program)=>program.id===programToEditId);
     setProgramName(programToEdit.name)
     for(let i=0;i<programToEdit.exercises.length;i++){
-      planExercise(programToEdit.exercises[i]);
+      planExercise(programToEdit.exercises[i], settingUpProgramToEdit);
     }
     for(let i=0;i<programToEdit.tags.length;i++){
       addTag(programToEdit.tags[i]);
     }
+    settingUpProgramToEdit = false;
   }
 
   const addTag = (tagToAdd)=>{
@@ -57,15 +59,18 @@ function ExerciseLists() {
     })
   }
 
-  const planExercise = (key, e) => {
+  const planExercise = (key, settingUpProgramToEdit=false, e) => {
     const exerciseToAdd = exercises.find((exercise) => exercise.id === key);
     if (!exerciseToAdd) return;  // Ensure the exercise exists
   
     // Directly check for duplicates before updating state
     setPlannedExercises((prevExercises) => {
       // Avoid adding if the exercise is already in the planned exercises list
+      console.log("The edit status is "+settingUpProgramToEdit);
       if (prevExercises.some((exercise) => exercise.id === exerciseToAdd.id)) {
-        showNotif("Exercise Already In Program")
+        if(!settingUpProgramToEdit){
+          showNotif("Exercise Already In Program")
+        }
         return prevExercises;
       }
       if(e != undefined)
@@ -177,7 +182,7 @@ function ExerciseLists() {
               targetMuscle: exercise.targetMuscle,
               handleClick: (e) => {
                 e.stopPropagation()
-                planExercise(exercise.id, e)
+                planExercise(exercise.id,false, e)
               }, // Pass the exercise.id as an argument
             }}
             HiddenProps={{

@@ -6,7 +6,7 @@ import ExerciseStatsWindow from './ExerciseStatsWindow';
 function ExerciseData({ onClick, exercise }) {
   return (
     <div className="bg-[#EAE7DC] w-full rounded-lg shadow-sm font-semibold">
-      <div className="flex flex-col gap-2 mb-4 mt-4">
+      <div className="flex flex-col gap-2 mb-4 mt-4 text-lg">
         <p className="text-black">
           <span className="font-semibold">Current Reps:</span> {exercise.reps}
         </p>

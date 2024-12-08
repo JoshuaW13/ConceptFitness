@@ -34,7 +34,7 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
     <div className='text-black w-full rounded-t-lg font-semibold'>
       <div className='flex rounded-t-lg w-full h-full p-1 items-center'>
         <div className='flex flex-col w-full'>
-          <p className='text-lg w-[92%] mb-2' onClick={onClick}>{name}</p>
+          <p className='text-xl w-[92%] mb-2' onClick={onClick}>{name}</p>
 
           {/* Tags is causing the problem */}
           <div className='flex-wrap h-[5%] flex gap-1'>
@@ -48,7 +48,7 @@ function ProgramLog({ id, onClick, name, tags, numExercises }) {
           </div>
 
 
-          <p className='text-base mt-2' onClick={onClick}># of Exercises: {numExercises}</p>
+          <p className='text-lg mt-2' onClick={onClick}># of Exercises: {numExercises}</p>
         </div>
 
           {/* The below div is overflowing outside it's parent!!! */}

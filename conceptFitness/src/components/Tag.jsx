@@ -3,7 +3,7 @@ import '../App.css'
 
 function Tag({ text, removable, onRemove }) {
   return (
-    <span className="cursor-default flex items-center justify-center gap-2 px-2 py-1 text-sm rounded-full bg-[#8E8D8A] text-white border border-gray-300 shadow-sm transition-shadow">
+    <span className="cursor-default flex items-center justify-center gap-2 px-2 py-1 text-base rounded-full bg-[#8E8D8A] text-white border border-gray-300 shadow-sm transition-shadow">
       #{text}
       
       {removable && (

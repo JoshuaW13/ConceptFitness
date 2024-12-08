@@ -19,8 +19,8 @@ const handleTextClick = () => {
     <div className='w-full'>
       <div className='flex p-1 w-full rounded-t-lg font-semibold'>
         <div className="flex flex-col rounded-lg w-[92%]" onClick={onClick}>
-            <p className='flex text-lg rounded-t-lg justify-center'>{exerciseName}</p>
-            <p className='flex pt-1 justify-center'>Equipment: {exerciseEquipment}</p>
+            <p className='flex text-xl rounded-t-lg justify-center'>{exerciseName}</p>
+            <p className='flex pt-1 justify-center text-lg'>Equipment: {exerciseEquipment}</p>
         </div>
         <div className='flex flex-col justify-between relative'>
           <button
@@ -34,7 +34,7 @@ const handleTextClick = () => {
           )}
         </div>
       </div>
-      <p className='text-black rounded-b-lg'>Target Muscle Groups: {targetMuscle}</p>
+      <p className='text-black rounded-b-lg text-lg'>Target Muscle Groups: {targetMuscle}</p>
     </div>
   )
 }

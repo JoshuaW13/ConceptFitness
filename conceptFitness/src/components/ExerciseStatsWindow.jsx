@@ -87,12 +87,12 @@ function ExerciseStatsWindow() {
                     display: true,
                     text: 'Days',
                     font: {
-                        size: 16 // Increase x-axis title font size
+                        size: 17 // Increase x-axis title font size
                     }
                 },
                 ticks: {
                     font: {
-                        size: 14 // Increase font size for x-axis tick labels
+                        size: 15 // Increase font size for x-axis tick labels
                     }
                 }
             },
@@ -101,12 +101,12 @@ function ExerciseStatsWindow() {
                     display: true,
                     text: 'Weight (lbs)',
                     font: {
-                        size: 16 // Increase y-axis title font size
+                        size: 17 // Increase y-axis title font size
                     }
                 },
                 ticks: {
                     font: {
-                        size: 14 // Increase font size for y-axis tick labels
+                        size: 15 // Increase font size for y-axis tick labels
                     }
                 },
                 min: 95,
@@ -121,7 +121,7 @@ function ExerciseStatsWindow() {
                 <div className="flex w-6 h-6 bg-[#8E8D8A] cursor-pointer" onClick={handlePrev}>
                     <BackIcon />
                 </div>
-                <h2 className='text-l font-bold mb-4'>Weight Change Over Time</h2>
+                <h2 className='text-lg font-bold mb-4'>Weight Change Over Time</h2>
                 <div className="flex w-6 h-6 bg-[#8E8D8A] cursor-pointer" onClick={handleNext}>
                     <NextIcon />
                 </div>
