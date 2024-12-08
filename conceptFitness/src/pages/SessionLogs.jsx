@@ -121,13 +121,13 @@ function SessionLogs() {
                   <div className="flex px-2 ">
                     <div
                       className={`cursor-pointer py-2 px-4 border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg transition-all ease-in-out
-                              bg-[#E85A4F] text-white shadow-lg`}
+                              bg-[#E85A4F] text-white shadow-lg text-xl`}
                     >
                       Sessions
                     </div>
                     <div
                       className={`cursor-pointer py-2 px-4 border-t-2 border-l-2 border-r-2 rounded-tl-lg rounded-tr-lg transition-all ease-in-out
-                              bg-white text-gray-700 shadow-lg`}
+                              bg-white text-gray-700 shadow-lg text-xl`}
                       onClick={() => navigateExercises()}
                     >
                       Exercises
