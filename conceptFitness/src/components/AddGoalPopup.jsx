@@ -64,7 +64,7 @@ function AddGoalPopup({date, message, onConfirm, setIsExercisePopupVisible}) {
           </option>
         ))}
       </select>
-      {(selectedGoal != "Select a Goal" || selectedGoal != "") && !(selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) && (
+      {!(selectedGoal == "Select a Goal" || selectedGoal == "" || selectedGoal.includes("Weight Loss") || selectedGoal.includes("Weight Gain")) && (
         <button onClick={() => {setIsExercisePopupVisible(true)}} className='h-10 rounded-md bg-[#EAE7DC] border-[3px] border-[#D8C3A5] font-bold text-[#E85A4F]'>{selectedExercise}</button>
       )}
       { valueLabel != "" && unitLabel != "" && (

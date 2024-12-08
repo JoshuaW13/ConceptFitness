@@ -11,27 +11,7 @@ export const GoalProvider = ({ children }) => {
 
   const [selectedExercise, setSelectedExercise] = useState("")
 
-  const [assignedGoals, setAssignedGoals] = useState([{
-      id: 1,
-      goalType: 1,
-      exercise: 0,
-      value: 10,
-      date: "Dec 10, 2024"
-    },
-    {
-      id: 2,
-      goalType: 1,
-      exercise: 1,
-      value: 10,
-      date: "Dec 10, 2024"
-    },
-    {
-      id: 3,
-      goalType: 1,
-      exercise: 1,
-      value: 10,
-      date: "Dec 10, 2024"
-    },
+  const [assignedGoals, setAssignedGoals] = useState([
   ]);
 
   const [goalTypes, setGoalTypes] = useState([{
@@ -76,7 +56,12 @@ export const GoalProvider = ({ children }) => {
     if (goalExists) {
       showNotif("Goal Exists")
     } else {
-      newGoal.id = assignedGoals[assignedGoals.length - 1].id + 1
+      if(assignedGoals.length != 0) {
+        newGoal.id = assignedGoals[assignedGoals.length - 1].id + 1
+      }
+      else {
+        newGoal.id = 1
+      }
       setAssignedGoals((prevGoals) => [...prevGoals, newGoal])
       showNotif("Goal Added")
     }
